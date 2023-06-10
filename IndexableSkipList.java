@@ -7,17 +7,18 @@ public class IndexableSkipList extends AbstractSkipList {
 
     @Override
     public Node find(int val) {
-    	int height = head.height();
+        int height = head.height();
         Node current = head;
-        for (int level = height; level >= 0 ; level--) {
-            while (current.getNext(level).key() < val) {
-            	//no need to check if has next because val cannot be larger than max_value and if it equals than current becomes the tail.
+
+        for (int level = height; level >= 0; level--) {
+            while (current.getNext(level) != null && current.getNext(level).key() <= val) {
                 current = current.getNext(level);
             }
         }
+        
         return current;
-    	
     }
+
 
     @Override
     public int generateHeight() {
