@@ -5,18 +5,20 @@ import java.util.List;
 abstract public class AbstractSkipList {
     final protected Node head;
     final protected Node tail;
+    public int size;
 
     public AbstractSkipList() {
         head = new Node(Integer.MIN_VALUE);
         tail = new Node(Integer.MAX_VALUE);
         increaseHeight();
+        size=0;
     }
 
     public void increaseHeight() {
         head.addLevel(tail, null);
+        head.skipping.add(size+1);
         tail.addLevel(null, head);
     }
-
     abstract Node find(int key);
 
     abstract public int generateHeight();
@@ -28,33 +30,52 @@ abstract public class AbstractSkipList {
     }
 
     public Node insert(int key) {
-        int nodeHeight = generateHeight();
-
-        while (nodeHeight > head.height()) {
-            increaseHeight();
-        }
-
-        Node prevNode = find(key);
-        if (prevNode.key() == key) {
-            return null;
-        }
-
-        Node newNode = new Node(key);
-
-        for (int level = 0; level <= nodeHeight && prevNode != null; ++level) {
-            Node nextNode = prevNode.getNext(level);
-
-            newNode.addLevel(nextNode, prevNode);
-            prevNode.setNext(level, newNode);
-            nextNode.setPrev(level, newNode);
-
-            while (prevNode != null && prevNode.height() == level) {
-                prevNode = prevNode.getPrev(level);
-            }
-        }
-
-        return newNode;
-    }
+    	  int nodeHeight = generateHeight();
+    	  while (nodeHeight > head.height()) {
+    	    increaseHeight();
+    	  }
+    	  Node prevNode = find(key);
+    	  if (prevNode.key() == key) {
+    	    return null;
+    	  }
+    	  size++;
+    	  Node newNode = new Node(key);
+    	  for (int i = 0; i <= nodeHeight; i++) {
+    	    newNode.skipping.add(1);
+    	  }
+    	  for (int level = 0; level <= nodeHeight && prevNode != null; level++) {
+    	    Node nextNode = prevNode.getNext(level);
+    	    newNode.addLevel(nextNode, prevNode);
+    	    prevNode.setNext(level, newNode);
+    	    nextNode.setPrev(level, newNode);
+    	    prevNode = prevNode.getPrev(level);
+    	  }
+    	  int height = head.height();
+    	  Node curr = head;
+    	  while (height > nodeHeight) {
+    	    if (curr.getNext(height).key() > newNode.key()) {
+    	      curr.skipping.set(height, curr.skipping.get(height) + 1);
+    	      height--;
+    	    } else {
+    	      curr = curr.getNext(height);
+    	    }
+    	  }
+    	  height = 0;
+    	  int c = 1;
+    	  Node prev = newNode.getPrev(height);
+    	  while (height <= nodeHeight) {
+    	    while (height <= prev.height && height <= nodeHeight) {
+    	      newNode.skipping.set(height, prev.skipping.get(height) - c + 1);
+    	      prev.skipping.set(height, c);
+    	      height++;
+    	    }
+    	    if (prev != null) {
+    	      prev = prev.getPrev(height - 1);
+    	    }
+    	    c += prev.skipping.get(height - 1);
+    	  }
+    	  return newNode;
+    	}
 
     public boolean delete(Node node) {
         for (int level = 0; level <= node.height(); ++level) {
@@ -119,12 +140,14 @@ abstract public class AbstractSkipList {
     public static class Node {
         final private List<Node> next;
         final private List<Node> prev;
+        public List<Integer> skipping;
         private int height;
         final private int key;
 
         public Node(int key) {
             next = new ArrayList<>();
             prev = new ArrayList<>();
+            skipping = new ArrayList<Integer>();
             this.height = -1;
             this.key = key;
         }
