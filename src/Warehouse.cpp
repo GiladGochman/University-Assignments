@@ -32,16 +32,11 @@ WareHouse::WareHouse(const string &configFilePath)
         // Extract the part before #
         std::string partBeforeHash = line.substr(0, posHash);
 
-        if (!line.empty())
+        size_t posSpace = line.find(' ');
+
+        if (!partBeforeHash.empty() & posSpace != 0)
         {
             // Find the position of space
-            size_t posSpace = line.find(' ');
-            while (posSpace == 0)
-            {
-                // Extract the part before #
-                std::string partBeforeHash = line.substr(1, 0);
-                size_t posSpace = line.find(' ');
-            }
 
             std::cout << partBeforeHash << std::endl;
         }
