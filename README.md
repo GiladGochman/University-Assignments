@@ -11,4 +11,4 @@ How to add a remote worker:
 3. git config --global user.email <email>
 4. press the branck icon in vscode
 5. write message
-6. press commit & push or on the keyboard:
+6. press commit & push
