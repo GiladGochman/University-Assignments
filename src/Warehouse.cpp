@@ -11,6 +11,11 @@ class WareHouse;
 
 WareHouse::WareHouse(const string &configFilePath)
 {
+    // Initialize fields:
+    // Question: how to initialize customers vector?
+    // vector<Customer *> customers;
+    // customers = vector<Customer *>();
+
     std::fstream inputFile(configFilePath);
 
     if (!inputFile.is_open())
@@ -67,7 +72,38 @@ WareHouse::WareHouse(const string &configFilePath)
                 words.push_back(trimmedLine);
 
                 // Now the line is stored word by word in words variable.
+                // for customer
+                // words[0] contains the role
+                // words[1] contains the name
+                // words[2] contains the type
+                // words[3] contains the distance
+                // words[4] contains the max orders number
+
                 // std::cout << words[2] << std::endl;
+
+                // Inset data
+                if (words[0] == "customer")
+                {
+                    if (words[2] == "soldier")
+                    {
+                        // Question: how to define customer? directly as soldierCustomer?
+                        // Customer *newCustomer(words[]);
+                    }
+                    else if (words[2] == "civilian")
+                    {
+                        // Customer *newCustomer(words[]);
+                    }
+                }
+                else if (words[0] == "volunteer")
+                {
+
+                    // DO SOMETHING
+                }
+                else
+                {
+                    // Code to execute if none of the conditions match
+                    std::cout << "Unknown type..." << std::endl;
+                }
             }
         }
     }
