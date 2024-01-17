@@ -1,4 +1,4 @@
-all: clean compile link
+all: clean compile link clean
 
 clean:
 	rm -f ./bin/*
