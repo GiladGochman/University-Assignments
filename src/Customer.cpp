@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include "../include/Customer.h"
+#include "../include/Order.h"
 using std::string;
 using std::vector;
 
@@ -25,4 +26,12 @@ int Customer:: getMaxOrders() const{
 
 int Customer:: getNumOrders() const{
     return ordersId.size();
+}
+
+bool Customer:: canMakeOrder() const{
+  return getNumOrders()<=maxOrders;
+}
+
+const vector<int> &Customer::getOrders() const {
+     return ordersId;
 }
