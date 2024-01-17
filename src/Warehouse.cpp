@@ -37,18 +37,38 @@ WareHouse::WareHouse(const string &configFilePath)
             // Trim leading whitespace from the line
             std::string trimmedLine = trimLeadingWhitespace(partBeforeHash);
             if (!trimmedLine.empty())
+            {
                 std::cout << trimmedLine << std::endl;
 
-            // Find the position of space
-            // size_t posSpace = partBeforeHash.find(' ');
+                // Now parse each line and insert into database
+                // Vector to store parsed words
+                std::vector<std::string> words;
 
-            // while (!partBeforeHash.empty() & posSpace == 0 & posSpace != std::string::npos)
-            // {
-            //     // Extract the part before #
-            //     std::string partBeforeHash = partBeforeHash.substr(1, 0);
-            //     posSpace = partBeforeHash.find(' ');
-            //     // std::cout << posSpace << std::endl;
-            // }
+                // Find the position of the first space in the string
+                size_t pos = trimmedLine.find(' ');
+
+                // Loop until no more spaces are found
+                while (pos != std::string::npos)
+                {
+                    // Extract the word before the space
+                    std::string word = trimmedLine.substr(0, pos);
+
+                    // Add the word to the vector
+                    words.push_back(word);
+
+                    // Remove the processed part (including the space)
+                    trimmedLine = trimmedLine.substr(pos + 1);
+
+                    // Find the position of the next space
+                    pos = trimmedLine.find(' ');
+                }
+
+                // Add the last word (or the only word if no space is found)
+                words.push_back(trimmedLine);
+
+                // Now the line is stored word by word in words variable.
+                // std::cout << words[2] << std::endl;
+            }
         }
     }
 
