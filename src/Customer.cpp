@@ -6,7 +6,7 @@ using std::string;
 using std::vector;
 
 
-Customer::Customer(int id, const string &name, int locationDistance, int maxOrders) : id(id), name(name), locationDistance(locationDistance), maxOrders(maxOrders){
+Customer::Customer(int id, const string &name, int locationDistance, int maxOrders) : id(id), name(name), locationDistance(locationDistance), maxOrders(maxOrders), {
     ordersId=vector<int>();
 }
 
@@ -34,7 +34,7 @@ bool Customer:: canMakeOrder() const{
   return getNumOrders()<=maxOrders;
 }
 
-const vector<int> &Customer::getOrders() const {
+vector<int> &Customer::getOrders() const {
      return ordersId;
 }
 
@@ -48,12 +48,12 @@ int Customer::addOrder(int orderId){
 
 SoldierCustomer :: SoldierCustomer(int id, string name, int locationDistance, int maxOrders) : Costumer(id, name, locationDistance, maxOrders){};
 
-SoldierCustomer *SoldierCustomer::clone(){
+SoldierCustomer *SoldierCustomer::clone() const{
    return new SoldierCustomer(*this)
 }
 
 CivilianCustomer :: CivilianCustomer(int id, string name, int locationDistance, int maxOrders) : Costumer(id, name, locationDistance, maxOrders){};
 
-CivilianCustomer *CivilianCustomer::clone(){
+CivilianCustomer *CivilianCustomer::clone() const{
    return new CivilianCustomer(*this)
 }
