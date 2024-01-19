@@ -48,5 +48,7 @@
     "streambuf": "cpp",
     "cinttypes": "cpp",
     "typeinfo": "cpp"
-  }
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
