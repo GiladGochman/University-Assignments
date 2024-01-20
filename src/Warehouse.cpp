@@ -12,6 +12,7 @@ class WareHouse;
 WareHouse::WareHouse(const string &configFilePath)
 {
     // Initialize fields:
+    int customerIdCounter = 1;
     // Question: how to initialize customers vector?
     // vector<Customer *> customers;
     // customers = vector<Customer *>();
@@ -73,30 +74,35 @@ WareHouse::WareHouse(const string &configFilePath)
 
                 // Now the line is stored word by word in words variable.
                 // for customer
-                // words[0] contains the role
-                // words[1] contains the name
-                // words[2] contains the type
-                // words[3] contains the distance
-                // words[4] contains the max orders number
-
-                // std::cout << words[2] << std::endl;
 
                 // Inset data
                 if (words[0] == "customer")
                 {
-                    if (words[2] == "soldier")
+                    // words[0] contains the role
+                    // words[1] contains the name
+                    // words[2] contains the type
+                    // words[3] contains the distance
+                    // words[4] contains the max orders number
+                    try
                     {
-                        // Question: how to define customer? directly as soldierCustomer?
-                        // Customer *newCustomer(words[]);
+                        if (words[2] == "soldier")
+                        {
+                            customers.push_back(new SoldierCustomer(customerIdCounter, words[1], std::stoi(words[3]), std::stoi(words[4])));
+                            ++customerIdCounter;
+                        }
+                        else if (words[2] == "civilian")
+                        {
+                            customers.push_back(new CivilianCustomer(customerIdCounter, words[1], std::stoi(words[3]), std::stoi(words[4])));
+                            ++customerIdCounter;
+                        }
                     }
-                    else if (words[2] == "civilian")
+                    catch (const std::exception &e)
                     {
-                        // Customer *newCustomer(words[]);
+                        std::cerr << "Wrong syntax, please check configuration file." << '\n';
                     }
                 }
                 else if (words[0] == "volunteer")
                 {
-
                     // DO SOMETHING
                 }
                 else
