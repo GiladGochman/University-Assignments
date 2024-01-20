@@ -32,8 +32,16 @@ bool CollectorVolunteer::canTakeOrder(const Order &order) const{
 
 }
 
-void CollectorVolunteer:: acceptOrder(const Order &order){
+void CollectorVolunteer::setTimeLeft(){
     timeLeft=coolDown;
+}
+
+bool CollectorVolunteer::hasOrdersLeft() const{
+    return true;
+}
+
+void CollectorVolunteer:: acceptOrder(const Order &order){
+    setTimeLeft();
     activeOrderId=order.getId(); 
 }
 

@@ -47,6 +47,7 @@ public:
     bool hasOrdersLeft() const override;
     bool canTakeOrder(const Order &order) const override;
     void acceptOrder(const Order &order) override;
+    void setTimeLeft();
     string toString() const override;
 
 private:
