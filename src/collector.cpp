@@ -45,8 +45,5 @@ void CollectorVolunteer:: step(){
             activeOrderId=NO_ORDER;
         }
     }
-    else{
-        acceptOrder()
-    }
 }
 
