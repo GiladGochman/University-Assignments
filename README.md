@@ -21,3 +21,14 @@ Having conflicts while syncing? No problem!
 3. Setlle the conflict after viewing the git output
    for example:
    git rm warehouse # to remove the file from the commit
+
+Valgrind usage:
+
+We will use the following Valgrind command:
+valgrind --leak-check=full --show-reachable=yes ./warehouse "./configFileExample.txt"
+The expected Valgrind output is:
+All heap blocks were freed -- no leaks are possible
+ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+•
+Compiler commands must include the following flags:
+-g -Wall -Weffc++ -std=c++11 -Iinclude
