@@ -31,4 +31,8 @@ int LimitedCollectorVolunteer::getMaxOrders() const{
 int LimitedCollectorVolunteer::getNumOrdersLeft() const{
     return ordersLeft;
 }
+
+string LimitedCollectorVolunteer::toString() const{
+    return "hey";
+}
 //NEED TO IMPLEMENT TOSTRING()

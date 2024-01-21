@@ -55,4 +55,8 @@ void CollectorVolunteer:: step(){
     }
 }
 
+string CollectorVolunteer::toString() const{
+    return "hey";
+}
+
 // NEED TO IMPLEMENT TOSTRING()

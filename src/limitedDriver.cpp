@@ -30,4 +30,8 @@ void LimitedDriverVolunteer::acceptOrder(const Order &order) {
     setDistanceLeft(order);
     ordersLeft--;
 }
+
+string LimitedDriverVolunteer::toString() const{
+    return "hey";
+}
 //need to implement toString()

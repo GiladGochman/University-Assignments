@@ -55,4 +55,8 @@ void DriverVolunteer::step(){
     }
 }
 
+string DriverVolunteer::toString() const{
+    return "hey";
+}
+
 // NEED TO IMPLEMENT TOSTRING()
