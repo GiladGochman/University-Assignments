@@ -42,7 +42,7 @@ bool CollectorVolunteer::hasOrdersLeft() const{
 
 void CollectorVolunteer:: acceptOrder(const Order &order){
     setTimeLeft();
-    activeOrderId=order.getId(); 
+    activeOrderId=order.getId();
 }
 
 void CollectorVolunteer:: step(){
@@ -55,3 +55,4 @@ void CollectorVolunteer:: step(){
     }
 }
 
+// NEED TO IMPLEMENT TOSTRING()

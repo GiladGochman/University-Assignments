@@ -28,6 +28,7 @@ class Order {
         void setDriverId(int driverId);
         int getCollectorId() const;
         int getDriverId() const;
+        int getOrderDistance() const;
         OrderStatus getStatus() const;
         const string toString() const;
 

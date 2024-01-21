@@ -89,6 +89,7 @@ public:
     bool canTakeOrder(const Order &order) const override; // Signal if the volunteer is not busy and the order is within the maxDistance
     void acceptOrder(const Order &order) override;        // Reset distanceLeft to maxDistance
     void step() override;                                 // Decrease distanceLeft by distancePerStep
+    void setDistanceLeft(const Order &order);             // Set Distance left based on the order's distance
     string toString() const override;
 
 private:
