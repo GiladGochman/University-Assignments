@@ -59,7 +59,7 @@ void DriverVolunteer::step(){
 
 string DriverVolunteer::toString() const{
     char buffer[100];
-    std::sprintf(buffer,"volunteer %s driver %d %d",getName(),getMaxDistance(),getDistancePerStep());
+    std::sprintf(buffer,"volunteer %s driver %d %d",getName().c_str(),getMaxDistance(),getDistancePerStep());
     string res=buffer;
     return res;
 }

@@ -36,7 +36,7 @@ int LimitedCollectorVolunteer::getNumOrdersLeft() const{
 
 string LimitedCollectorVolunteer::toString() const{
     char buffer[100];
-    std::sprintf(buffer,"volunteer %s limited_collector %d %d",getName(),getCoolDown(),getMaxOrders());
+    std::sprintf(buffer,"volunteer %s limited_collector %d %d",getName().c_str(),getCoolDown(),getMaxOrders());
     string res=buffer;
     return res;
 }

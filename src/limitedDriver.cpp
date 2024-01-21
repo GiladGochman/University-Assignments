@@ -35,7 +35,7 @@ void LimitedDriverVolunteer::acceptOrder(const Order &order) {
 
 string LimitedDriverVolunteer::toString() const{
     char buffer[100];
-    std::sprintf(buffer,"volunteer %s limited_driver %d %d %d",getName(),getMaxDistance(),getDistancePerStep(),getMaxOrders());
+    std::sprintf(buffer,"volunteer %s limited_driver %d %d %d",getName().c_str(),getMaxDistance(),getDistancePerStep(),getMaxOrders());
     string res=buffer;
     return res;
 }

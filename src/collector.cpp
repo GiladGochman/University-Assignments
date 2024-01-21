@@ -59,7 +59,7 @@ void CollectorVolunteer:: step(){
 
 string CollectorVolunteer::toString() const{
     char buffer[100];
-    std::sprintf(buffer,"volunteer %s collector %d %d",getName(),getCoolDown());
+    std::sprintf(buffer,"volunteer %s collector %d",getName().c_str(),getCoolDown());
     string res=buffer;
     return res;
 }
