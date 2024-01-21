@@ -1,4 +1,6 @@
 #include "../include/WareHouse.h"
+#include "../include/Volunteer.h"
+#include "../include/Customer.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,10 +11,9 @@ class WareHouse;
 
 // Warehouse responsible for Volunteers, Customers and Actions.
 
-WareHouse::WareHouse(const string &configFilePath)
+WareHouse::WareHouse(const string &configFilePath) // Initialize fields
+
 {
-    // Initialize fields:
-    int customerIdCounter = 1;
     // Question: how to initialize customers vector?
     // vector<Customer *> customers;
     // customers = vector<Customer *>();
@@ -87,13 +88,13 @@ WareHouse::WareHouse(const string &configFilePath)
                     {
                         if (words[2] == "soldier")
                         {
-                            customers.push_back(new SoldierCustomer(customerIdCounter, words[1], std::stoi(words[3]), std::stoi(words[4])));
-                            ++customerIdCounter;
+                            customers.push_back(new SoldierCustomer(customerCounter, words[1], std::stoi(words[3]), std::stoi(words[4])));
+                            ++customerCounter;
                         }
                         else if (words[2] == "civilian")
                         {
-                            customers.push_back(new CivilianCustomer(customerIdCounter, words[1], std::stoi(words[3]), std::stoi(words[4])));
-                            ++customerIdCounter;
+                            customers.push_back(new CivilianCustomer(customerCounter, words[1], std::stoi(words[3]), std::stoi(words[4])));
+                            ++customerCounter;
                         }
                     }
                     catch (const std::exception &e)
@@ -103,12 +104,38 @@ WareHouse::WareHouse(const string &configFilePath)
                 }
                 else if (words[0] == "volunteer")
                 {
-                    // DO SOMETHING
+                    try
+                    {
+                        if (words[2] == "collector") // Recieves a 4 word input
+                        {
+                            volunteers.push_back(new CollectorVolunteer(volunteerCounter, words[1], std::stoi(words[3])));
+                            ++volunteerCounter;
+                        }
+                        else if (words[2] == "limited_collector") // Recieves a 5 word input
+                        {
+                            volunteers.push_back(new LimitedCollectorVolunteer(volunteerCounter, words[1], std::stoi(words[3]), std::stoi(words[4])));
+                            ++volunteerCounter;
+                        }
+                        else if (words[2] == "driver") // Recieves a 5 word input
+                        {
+                            volunteers.push_back(new DriverVolunteer(volunteerCounter, words[1], std::stoi(words[3]), std::stoi(words[4])));
+                            ++volunteerCounter;
+                        }
+                        else if (words[2] == "limited_driver") // Recieves a 6 word input
+                        {
+                            volunteers.push_back(new LimitedDriverVolunteer(volunteerCounter, words[1], std::stoi(words[3]), std::stoi(words[4]), std::stoi(words[5])));
+                            ++volunteerCounter;
+                        }
+                    }
+                    catch (const std::exception &e)
+                    {
+                        std::cerr << "Wrong syntax, please check configuration file." << '\n';
+                    }
                 }
                 else
                 {
                     // Code to execute if none of the conditions match
-                    std::cout << "Unknown type..." << std::endl;
+                    std::cout << "Wrong syntax, please check configuration file." << std::endl;
                 }
             }
         }
