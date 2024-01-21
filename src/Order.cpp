@@ -43,6 +43,6 @@ void Order::setDriverId(int driverId){
 }
 
 const string Order::toString() const{
-    return "hey";
+    return "order "+customerId;
 }
 //need to implement toString()

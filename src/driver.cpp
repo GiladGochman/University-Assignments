@@ -1,5 +1,7 @@
 #include <vector>
 #include <string>
+#include <iostream>
+#include <cstdio>
 #include "../include/Volunteer.h"
 #include "../include/Order.h"
 
@@ -56,7 +58,10 @@ void DriverVolunteer::step(){
 }
 
 string DriverVolunteer::toString() const{
-    return "hey";
+    char buffer[100];
+    std::sprintf(buffer,"volunteer %s driver %d %d",getName(),getMaxDistance(),getDistancePerStep());
+    string res=buffer;
+    return res;
 }
 
 // NEED TO IMPLEMENT TOSTRING()

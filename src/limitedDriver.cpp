@@ -1,5 +1,7 @@
 #include <vector>
 #include <string>
+#include <iostream>
+#include <cstdio>
 #include "../include/Volunteer.h"
 #include "../include/Order.h"
 
@@ -32,6 +34,9 @@ void LimitedDriverVolunteer::acceptOrder(const Order &order) {
 }
 
 string LimitedDriverVolunteer::toString() const{
-    return "hey";
+    char buffer[100];
+    std::sprintf(buffer,"volunteer %s limited_driver %d %d %d",getName(),getMaxDistance(),getDistancePerStep(),getMaxOrders());
+    string res=buffer;
+    return res;
 }
 //need to implement toString()

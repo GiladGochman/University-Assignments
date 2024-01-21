@@ -1,5 +1,7 @@
 #include <vector>
 #include <string>
+#include <iostream>
+#include <cstdio>
 #include "../include/Volunteer.h"
 #include "../include/Order.h"
 
@@ -33,6 +35,9 @@ int LimitedCollectorVolunteer::getNumOrdersLeft() const{
 }
 
 string LimitedCollectorVolunteer::toString() const{
-    return "hey";
+    char buffer[100];
+    std::sprintf(buffer,"volunteer %s limited_collector %d %d",getName(),getCoolDown(),getMaxOrders());
+    string res=buffer;
+    return res;
 }
 //NEED TO IMPLEMENT TOSTRING()
