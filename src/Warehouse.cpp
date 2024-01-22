@@ -2,6 +2,7 @@
 #include "../include/Volunteer.h"
 #include "../include/Customer.h"
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include <string>
 
@@ -15,6 +16,15 @@ WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCount
 
 {
     parseFile(configFilePath);
+}
+
+void WareHouse::start(){
+    while(isOpen){
+        string s;
+        cin >> s;
+
+
+    }
 }
 
 // Function to trim leading whitespace from a string
@@ -61,29 +71,15 @@ void WareHouse::parseFile(const string &filePath){
 
                 // Now parse each line and insert into database
                 // Vector to store parsed words
+                std::istringstream iss(trimmedLine);
                 std::vector<std::string> words;
-
-                // Find the position of the first space in the string
-                size_t pos = trimmedLine.find(' ');
-
-                // Loop until no more spaces are found
-                while (pos != std::string::npos)
-                {
-                    // Extract the word before the space
-                    std::string word = trimmedLine.substr(0, pos);
-
-                    // Add the word to the vector
+                std::string word;
+                //breaking down the line into words.
+                while(std::getline(iss,word,' ')){
                     words.push_back(word);
-
-                    // Remove the processed part (including the space)
-                    trimmedLine = trimmedLine.substr(pos + 1);
-
-                    // Find the position of the next space
-                    pos = trimmedLine.find(' ');
                 }
-
                 // Add the last word (or the only word if no space is found)
-                words.push_back(trimmedLine);
+                // words.push_back(trimmedLine);
 
                 // Now the line is stored word by word in words variable.
                 // for customer
