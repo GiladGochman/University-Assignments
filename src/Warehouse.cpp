@@ -14,11 +14,23 @@ class WareHouse;
 WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCounter(0), volunteerCounter(0)
 
 {
-    // Question: how to initialize customers vector?
-    // vector<Customer *> customers;
-    // customers = vector<Customer *>();
+    parseFile(configFilePath);
+}
 
-    std::fstream inputFile(configFilePath);
+// Function to trim leading whitespace from a string
+std::string WareHouse::trimLeadingWhitespace(const std::string &str)
+{
+    size_t firstNonSpace = str.find_first_not_of(" \t");
+    if (firstNonSpace == std::string::npos)
+    {
+        // The string is all spaces, return an empty string
+        return "";
+    }
+    return str.substr(firstNonSpace);
+}
+
+void WareHouse::parseFile(const string &filePath){
+    std::fstream inputFile(filePath);
 
     if (!inputFile.is_open())
     {
@@ -143,36 +155,4 @@ WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCount
 
     // Close the file
     inputFile.close();
-}
-// void start();
-// const vector<BaseAction*> &getActionsLog() const;
-// void addOrder(Order* order);
-// void addAction(BaseAction* action);
-// void printActionsLogs();
-// Customer &getCustomer(int customerId) const;
-// Volunteer &getVolunteer(int volunteerId) const;
-// Order &getOrder(int orderId) const;
-// void close();
-// void open();
-
-// bool isOpen;
-// vector<BaseAction*> actionsLog;
-// vector<Volunteer*> volunteers;
-// vector<Order*> pendingOrders;
-// vector<Order*> vol;
-// vector<Order*> completedOrders;
-// vector<Customer*> customers;
-// int customerCounter; //For assigning unique customer IDs
-// int volunteerCounter; //For assigning unique volunteer IDs
-
-// Function to trim leading whitespace from a string
-std::string WareHouse::trimLeadingWhitespace(const std::string &str)
-{
-    size_t firstNonSpace = str.find_first_not_of(" \t");
-    if (firstNonSpace == std::string::npos)
-    {
-        // The string is all spaces, return an empty string
-        return "";
-    }
-    return str.substr(firstNonSpace);
 }
