@@ -11,8 +11,8 @@ compile:
 	g++ -c -o ./bin/file5.o ./src/collector.cpp
 	g++ -c -o ./bin/file6.o ./src/Order.cpp
 	g++ -c -o ./bin/file7.o ./src/driver.cpp
-	g++ -c -o ./bin/file8.o ./src/limitedCollector.cpp
-	g++ -c -o ./bin/file9.o ./src/limitedDriver.cpp
+	g++ -c -o ./bin/file8.o ./src/LimitedCollector.cpp
+	g++ -c -o ./bin/file9.o ./src/LimitedDriver.cpp
 
 link:
 	g++ -o ./warehouse ./bin/*.o
