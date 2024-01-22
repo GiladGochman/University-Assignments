@@ -12,7 +12,7 @@ class WareHouse;
 
 // Warehouse responsible for Volunteers, Customers and Actions.
 
-WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCounter(0), volunteerCounter(0)
+WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCounter(0), volunteerCounter(0), orderCounter(0)
 
 {
     parseFile(configFilePath);
@@ -57,6 +57,24 @@ void WareHouse::printActionsLogs(){
     //need to implement baseactions class for that
 }
 
+Customer &WareHouse::getCustomer(int customerId) const{
+    return *customers[customerId];
+} 
+
+Order &WareHouse::getOrder(int orderId) const{
+    for(Order *order:pendingOrders){
+        if(order->getId()==orderId) return *order;
+    }
+
+    for(Order *order:vol){
+        if(order->getId()==orderId) return *order;
+    }
+
+    for(Order *order:completedOrders){
+        if(order->getId()==orderId) return *order;
+    }
+
+}
 
 // Function to trim leading whitespace from a string
 std::string WareHouse::trimLeadingWhitespace(const std::string &str)
