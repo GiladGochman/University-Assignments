@@ -38,4 +38,5 @@ private:
     int customerCounter;  // For assigning unique customer IDs
     int volunteerCounter; // For assigning unique volunteer IDs
     std::string trimLeadingWhitespace(const string &str);
+    void parseFile(const string &filePath);
 };
