@@ -18,12 +18,12 @@ WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCount
     parseFile(configFilePath);
 }
 
-void WareHouse::start(){
-    while(isOpen){
+void WareHouse::start()
+{
+    while (isOpen)
+    {
         string s;
         cin >> s;
-
-
     }
 }
 
@@ -39,7 +39,8 @@ std::string WareHouse::trimLeadingWhitespace(const std::string &str)
     return str.substr(firstNonSpace);
 }
 
-void WareHouse::parseFile(const string &filePath){
+void WareHouse::parseFile(const string &filePath)
+{
     std::fstream inputFile(filePath);
 
     if (!inputFile.is_open())
@@ -74,8 +75,9 @@ void WareHouse::parseFile(const string &filePath){
                 std::istringstream iss(trimmedLine);
                 std::vector<std::string> words;
                 std::string word;
-                //breaking down the line into words.
-                while(std::getline(iss,word,' ')){
+                // breaking down the line into words.
+                while (std::getline(iss, word, ' '))
+                {
                     words.push_back(word);
                 }
                 // Add the last word (or the only word if no space is found)

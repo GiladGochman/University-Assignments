@@ -3,25 +3,29 @@
 #include <vector>
 #include <string>
 
-Volunteer::Volunteer(int id, const string &name): id(id), name(name), activeOrderId(NO_ORDER), completedOrderId(NO_ORDER) {}
+Volunteer::Volunteer(int id, const string &name) : id(id), name(name), activeOrderId(NO_ORDER), completedOrderId(NO_ORDER) {}
 
-int Volunteer::getId() const{
+int Volunteer::getId() const
+{
     return id;
 }
 
-const string &Volunteer::getName() const{
+const string &Volunteer::getName() const
+{
     return name;
 }
 
-int Volunteer::getActiveOrderId() const{
+int Volunteer::getActiveOrderId() const
+{
     return activeOrderId;
 }
 
-int Volunteer::getCompletedOrderId() const{
+int Volunteer::getCompletedOrderId() const
+{
     return completedOrderId;
 }
 
-bool Volunteer::isBusy() const{
-    return activeOrderId!=NO_ORDER;
+bool Volunteer::isBusy() const
+{
+    return activeOrderId != NO_ORDER;
 }
-
