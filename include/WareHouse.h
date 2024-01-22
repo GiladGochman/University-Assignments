@@ -37,7 +37,7 @@ private:
     vector<Customer *> customers;
     int customerCounter;  // For assigning unique customer IDs
     int volunteerCounter; // For assigning unique volunteer IDs
-    int orderCounter;
+    int orderCounter; //for assigning unique order IDs
     std::string trimLeadingWhitespace(const string &str);
     void parseFile(const string &filePath);
 };
