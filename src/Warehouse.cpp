@@ -51,9 +51,10 @@ void WareHouse::addAction(BaseAction *action){
 }
 
 void WareHouse::printActionsLogs(){
-    for(BaseAction *action : actionsLog){
-        cout<< *action.toString() <<endl;
-    }
+    // for(BaseAction *action : actionsLog){
+    //     cout<< *action.toString() <<endl;
+    // }
+    //need to implement baseactions class for that
 }
 
 
