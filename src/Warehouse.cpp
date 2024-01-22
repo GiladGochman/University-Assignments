@@ -11,7 +11,7 @@ class WareHouse;
 
 // Warehouse responsible for Volunteers, Customers and Actions.
 
-WareHouse::WareHouse(const string &configFilePath) //: isOpen(false), customers(new vector<Customer *>()) // Initialize fields
+WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCounter(0), volunteerCounter(0)
 
 {
     // Question: how to initialize customers vector?
