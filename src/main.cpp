@@ -16,7 +16,7 @@ int main(int argc, char** argv){
     WareHouse wareHouse(configurationFile);
     // std::cout << wareHouse.getCustomer(1).getName() << std::endl;
     
-    // wareHouse.start();
+    wareHouse.start();
     if(backup!=nullptr){
     	delete backup;
     	backup = nullptr;

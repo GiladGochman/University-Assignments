@@ -22,10 +22,38 @@ void WareHouse::start(){
     while(isOpen){
         string s;
         cin >> s;
-
-
+        std::istringstream iss(s);
+        vector<string> decodedString;
+        string word;
+        while(getline(iss,word,' ')){
+            decodedString.push_back(word);
+        }
+        for(int i=0; i<decodedString.size(); i++){
+            cout << decodedString[i] << endl;
+        }
+        // now the first word is about the action and the others are the parameters
+        // switch cases..
     }
 }
+
+const vector<BaseAction *> &WareHouse::getActionsLog() const{
+    return actionsLog;
+}
+
+void WareHouse::addOrder(Order *order){
+    pendingOrders.push_back(order);
+}
+
+void WareHouse::addAction(BaseAction *action){
+    actionsLog.push_back(action);
+}
+
+void WareHouse::printActionsLogs(){
+    for(BaseAction *action : actionsLog){
+        cout<< *action.toString() <<endl;
+    }
+}
+
 
 // Function to trim leading whitespace from a string
 std::string WareHouse::trimLeadingWhitespace(const std::string &str)
