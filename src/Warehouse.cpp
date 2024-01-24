@@ -47,22 +47,97 @@ WareHouse::~WareHouse(){
         delete customer;
     }
 
+    customers.clear();
+
     for(auto vol : volunteers){
         delete vol;
     }
+
+    volunteers.clear();
 
     for(auto orderP : pendingOrders){
         delete orderP;
     }
 
+    pendingOrders.clear();
+
     for(auto orderV : vol){
        delete orderV;
     }
+
+    vol.clear();
 
     for(auto orderC : completedOrders){
         delete orderC;
     }
 
+    completedOrders.clear();
+    
+
+}
+
+WareHouse &WareHouse::operator=(const WareHouse &other){
+    if(this != &other){
+        isOpen=other.isOpen;
+        volunteerCounter=other.volunteerCounter;
+        orderCounter=other.orderCounter;
+        customerCounter=other.customerCounter;
+
+        for(auto customer: customers){
+        delete customer;
+        }
+
+        customers.clear();
+
+        for(auto vol : volunteers){
+            delete vol;
+        }
+
+        volunteers.clear();
+
+        for(auto orderP : pendingOrders){
+            delete orderP;
+        }
+
+        pendingOrders.clear();
+
+        for(auto orderV : vol){
+        delete orderV;
+        }
+
+        vol.clear();
+
+        for(auto orderC : completedOrders){
+            delete orderC;
+        }
+
+        completedOrders.clear();
+
+        for(auto customer: other.customers){
+            customers.push_back(customer->clone());
+        }
+
+
+        for(auto orderP : other.pendingOrders){
+            pendingOrders.push_back(orderP->clone());
+        }
+
+        for(auto orderV : other.vol){
+            vol.push_back(orderV->clone());
+        }
+
+        for(auto orderC : other.completedOrders){
+            completedOrders.push_back(orderC->clone());
+        }
+
+        for(auto vol: other.volunteers){
+            volunteers.push_back(vol->clone());
+        }
+        
+
+    }
+    
+    return *this;
 }
 
 void WareHouse::start()
