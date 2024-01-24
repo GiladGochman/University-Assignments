@@ -48,4 +48,8 @@ string LimitedCollectorVolunteer::toString() const
     string res = buffer;
     return res;
 }
+
+LimitedCollectorVolunteer *LimitedCollectorVolunteer::clone() const{
+    return new LimitedCollectorVolunteer(*this);
+}
 // NEED TO IMPLEMENT TOSTRING()

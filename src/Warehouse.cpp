@@ -1,6 +1,7 @@
 #include "../include/WareHouse.h"
 #include "../include/Volunteer.h"
 #include "../include/Customer.h"
+#include "../include/Order.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -16,6 +17,32 @@ WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCount
 
 {
     parseFile(configFilePath);
+}
+
+WareHouse::WareHouse(const WareHouse &other): isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter){
+    for(auto customer: other.customers){
+        customers.push_back(customer->clone());
+    }
+
+    for(auto vol : other.volunteers){
+        volunteers.push_back(vol->clone());
+    }
+
+    for(auto orderP : other.pendingOrders){
+        pendingOrders.push_back(orderP->clone());
+    }
+
+    for(auto orderV : other.vol){
+        vol.push_back(orderV->clone());
+    }
+
+    for(auto orderC : other.completedOrders){
+        completedOrders.push_back(orderC->clone());
+    }
+
+    for(auto vol: other.volunteers){
+        volunteers.push_back(vol->clone());
+    }
 }
 
 void WareHouse::start()
@@ -202,4 +229,8 @@ void WareHouse::parseFile(const string &filePath)
 
     // Close the file
     inputFile.close();
+}
+
+bool WareHouse::checkIfCustomerExsists(int id){
+    return id < customerCounter;
 }

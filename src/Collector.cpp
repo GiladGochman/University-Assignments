@@ -76,4 +76,8 @@ string CollectorVolunteer::toString() const
     return res;
 }
 
+CollectorVolunteer *CollectorVolunteer::clone() const{
+    return new CollectorVolunteer(*this);
+}
+
 // NEED TO IMPLEMENT TOSTRING()

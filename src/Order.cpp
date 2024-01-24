@@ -55,4 +55,7 @@ const string Order::toString() const
 {
     return "order " + customerId;
 }
-// need to implement toString()
+
+Order *Order::clone() const{
+    return new Order(*this);
+}

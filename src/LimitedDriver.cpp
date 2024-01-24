@@ -46,4 +46,7 @@ string LimitedDriverVolunteer::toString() const
     string res = buffer;
     return res;
 }
-// need to implement toString()
+
+LimitedDriverVolunteer *LimitedDriverVolunteer::clone() const{
+    return new LimitedDriverVolunteer(*this);
+}

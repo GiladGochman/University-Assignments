@@ -38,6 +38,8 @@ private:
     int customerCounter;  // For assigning unique customer IDs
     int volunteerCounter; // For assigning unique volunteer IDs
     int orderCounter; //for assigning unique order IDs
-    std::string trimLeadingWhitespace(const string &str);
-    void parseFile(const string &filePath);
+    std::string trimLeadingWhitespace(const string &str); // For trim leading white spaces in strings 
+    void parseFile(const string &filePath); // Function to parse the file.
+    bool checkIfCustomerExsists(int id);
 };
+
