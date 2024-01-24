@@ -15,4 +15,4 @@ compile:
 	g++ -c -o ./bin/file9.o ./src/LimitedDriver.cpp
 
 link:
-	g++ -o ./warehouse ./bin/*.o
+	g++ -o ./bin/warehouse ./bin/*.o

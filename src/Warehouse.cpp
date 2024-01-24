@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-extern WareHouse* backup;
+extern WareHouse *backup;
 class BaseAction;
 class Volunteer;
 class WareHouse;
@@ -22,143 +22,166 @@ WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCount
     parseFile(configFilePath);
 }
 
-WareHouse::WareHouse(const WareHouse &other): isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter){
-    for(auto customer: other.customers){
+WareHouse::WareHouse(const WareHouse &other) : isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
+{
+    for (auto customer : other.customers)
+    {
         customers.push_back(customer->clone());
     }
 
-
-    for(auto orderP : other.pendingOrders){
+    for (auto orderP : other.pendingOrders)
+    {
         pendingOrders.push_back(orderP->clone());
     }
 
-    for(auto orderV : other.vol){
+    for (auto orderV : other.vol)
+    {
         vol.push_back(orderV->clone());
     }
 
-    for(auto orderC : other.completedOrders){
+    for (auto orderC : other.completedOrders)
+    {
         completedOrders.push_back(orderC->clone());
     }
 
-    for(auto vol: other.volunteers){
+    for (auto vol : other.volunteers)
+    {
         volunteers.push_back(vol->clone());
     }
 
-    for(auto action: other.actionsLog){
+    for (auto action : other.actionsLog)
+    {
         actionsLog.push_back(action->clone());
     }
 }
 
-WareHouse::~WareHouse(){
-    for(auto customer: customers){
+WareHouse::~WareHouse()
+{
+    for (auto customer : customers)
+    {
         delete customer;
     }
 
     customers.clear();
 
-    for(auto vol : volunteers){
+    for (auto vol : volunteers)
+    {
         delete vol;
     }
 
     volunteers.clear();
 
-    for(auto orderP : pendingOrders){
+    for (auto orderP : pendingOrders)
+    {
         delete orderP;
     }
 
     pendingOrders.clear();
 
-    for(auto orderV : vol){
-       delete orderV;
+    for (auto orderV : vol)
+    {
+        delete orderV;
     }
 
     vol.clear();
 
-    for(auto orderC : completedOrders){
+    for (auto orderC : completedOrders)
+    {
         delete orderC;
     }
 
     completedOrders.clear();
 
-    for(auto action : actionsLog){
+    for (auto action : actionsLog)
+    {
         delete action;
     }
 
     actionsLog.clear();
-    
-
 }
 
-WareHouse &WareHouse::operator=(const WareHouse &other){
-    if(this != &other){
-        isOpen=other.isOpen;
-        volunteerCounter=other.volunteerCounter;
-        orderCounter=other.orderCounter;
-        customerCounter=other.customerCounter;
+WareHouse &WareHouse::operator=(const WareHouse &other)
+{
+    if (this != &other)
+    {
+        isOpen = other.isOpen;
+        volunteerCounter = other.volunteerCounter;
+        orderCounter = other.orderCounter;
+        customerCounter = other.customerCounter;
 
-        for(auto customer: customers){
-        delete customer;
+        for (auto customer : customers)
+        {
+            delete customer;
         }
 
         customers.clear();
 
-        for(auto vol : volunteers){
+        for (auto vol : volunteers)
+        {
             delete vol;
         }
 
         volunteers.clear();
 
-        for(auto orderP : pendingOrders){
+        for (auto orderP : pendingOrders)
+        {
             delete orderP;
         }
 
         pendingOrders.clear();
 
-        for(auto orderV : vol){
-        delete orderV;
+        for (auto orderV : vol)
+        {
+            delete orderV;
         }
 
         vol.clear();
 
-        for(auto orderC : completedOrders){
+        for (auto orderC : completedOrders)
+        {
             delete orderC;
         }
 
         completedOrders.clear();
 
-        for(auto action : actionsLog){
+        for (auto action : actionsLog)
+        {
             delete action;
         }
 
         actionsLog.clear();
 
-        for(auto customer: other.customers){
+        for (auto customer : other.customers)
+        {
             customers.push_back(customer->clone());
         }
 
-
-        for(auto orderP : other.pendingOrders){
+        for (auto orderP : other.pendingOrders)
+        {
             pendingOrders.push_back(orderP->clone());
         }
 
-        for(auto orderV : other.vol){
+        for (auto orderV : other.vol)
+        {
             vol.push_back(orderV->clone());
         }
 
-        for(auto orderC : other.completedOrders){
+        for (auto orderC : other.completedOrders)
+        {
             completedOrders.push_back(orderC->clone());
         }
 
-        for(auto vol: other.volunteers){
+        for (auto vol : other.volunteers)
+        {
             volunteers.push_back(vol->clone());
         }
-        
-        for(auto action: other.actionsLog){
+
+        for (auto action : other.actionsLog)
+        {
             actionsLog.push_back(action->clone());
         }
-
     }
-    
+
     return *this;
 }
 
@@ -244,119 +267,141 @@ WareHouse &WareHouse::operator=(WareHouse &&other){
 
 void WareHouse::start()
 {
+    cout << "Warehouse is open!" << endl;
     while (isOpen)
     {
-        //breaking down the input
+        // breaking down the input
         string str;
         cin >> str;
         std::istringstream iss(str);
         vector<string> decodedString;
         string word;
-        while(getline(iss,word,' ')){
+        while (getline(iss, word, ' '))
+        {
             decodedString.push_back(word);
         }
-        
-        if(decodedString[0] == "customer"){
-            AddCustomer *action= new AddCustomer(decodedString[1],decodedString[2],std::stoi(decodedString[3]),std::stoi(decodedString[4]));
+
+        if (decodedString[0] == "customer")
+        {
+            AddCustomer *action = new AddCustomer(decodedString[1], decodedString[2], std::stoi(decodedString[3]), std::stoi(decodedString[4]));
             action->act(*this);
             actionsLog.push_back(action);
-
         }
-        if(decodedString[0] == "order"){
+        if (decodedString[0] == "order")
+        {
             AddOrder *action = new AddOrder(orderCounter);
             action->act(*this);
             actionsLog.push_back(action);
         }
 
-        if(decodedString[0] == "step"){
+        if (decodedString[0] == "step")
+        {
             SimulateStep *action = new SimulateStep(std::stoi(decodedString[1]));
             action->act(*this);
             actionsLog.push_back(action);
         }
-        if(decodedString[0] == "backup"){
+        if (decodedString[0] == "backup")
+        {
             BackupWareHouse *action = new BackupWareHouse();
             action->act(*this);
             actionsLog.push_back(action);
         }
-        if(decodedString[0] == "restore"){
+        if (decodedString[0] == "restore")
+        {
             RestoreWareHouse *action = new RestoreWareHouse();
             action->act(*this);
             actionsLog.push_back(action);
         }
-        if(decodedString[0] == "log"){
+        if (decodedString[0] == "log")
+        {
             PrintActionsLog *action = new PrintActionsLog();
             action->act(*this);
             actionsLog.push_back(action);
         }
-        if(decodedString[0] == "close"){
+        if (decodedString[0] == "close")
+        {
             Close *action = new Close();
             action->act(*this);
         }
-        if(decodedString[0] == "volunteerStatus"){
+        if (decodedString[0] == "volunteerStatus")
+        {
             PrintVolunteerStatus *action = new PrintVolunteerStatus(std::stoi(decodedString[1]));
             action->act(*this);
             actionsLog.push_back(action);
         }
-        if(decodedString[0] == "orderStatus"){
+        if (decodedString[0] == "orderStatus")
+        {
             PrintOrderStatus *action = new PrintOrderStatus(std::stoi(decodedString[1]));
             action->act(*this);
             actionsLog.push_back(action);
         }
-         if(decodedString[0] == "customerStatus"){
+        if (decodedString[0] == "customerStatus")
+        {
             PrintCustomerStatus *action = new PrintCustomerStatus(std::stoi(decodedString[1]));
             action->act(*this);
             actionsLog.push_back(action);
         }
-
-
-        
     }
 }
 
-const vector<BaseAction *> &WareHouse::getActionsLog() const{
+const vector<BaseAction *> &WareHouse::getActionsLog() const
+{
     return actionsLog;
 }
 
-void WareHouse::addOrder(Order *order){
+void WareHouse::addOrder(Order *order)
+{
     pendingOrders.push_back(order);
 }
 
-void WareHouse::addAction(BaseAction *action){
+void WareHouse::addAction(BaseAction *action)
+{
     actionsLog.push_back(action);
 }
 
-void WareHouse::printActionsLogs(){
-    for(BaseAction *action : actionsLog){
-        cout<< action->toString() <<endl;
+void WareHouse::printActionsLogs()
+{
+    for (BaseAction *action : actionsLog)
+    {
+        cout << action->toString() << endl;
     }
-    //need to implement baseactions class for that
+    // need to implement baseactions class for that
 }
 
-void WareHouse::open(){
+void WareHouse::open()
+{
     isOpen = true;
 }
 
-void WareHouse::close(){
+void WareHouse::close()
+{
     isOpen = false;
 }
 
-Customer &WareHouse::getCustomer(int customerId) const{
+Customer &WareHouse::getCustomer(int customerId) const
+{
     return *customers[customerId];
-} 
+}
 
-Order &WareHouse::getOrder(int orderId) const{
-    for(Order *order:pendingOrders){
-        if(order->getId()==orderId) return *order;
+Order &WareHouse::getOrder(int orderId) const
+{
+    for (Order *order : pendingOrders)
+    {
+        if (order->getId() == orderId)
+            return *order;
     }
 
-    for(Order *order:vol){
-        if(order->getId()==orderId) return *order;
+    for (Order *order : vol)
+    {
+        if (order->getId() == orderId)
+            return *order;
     }
 
-    for(Order *order:completedOrders){
-        if(order->getId()==orderId) return *order;
+    for (Order *order : completedOrders)
+    {
+        if (order->getId() == orderId)
+            return *order;
     }
-
 }
 
 // Function to trim leading whitespace from a string
@@ -487,6 +532,7 @@ void WareHouse::parseFile(const string &filePath)
     inputFile.close();
 }
 
-bool WareHouse::checkIfCustomerExsists(int id){
+bool WareHouse::checkIfCustomerExsists(int id)
+{
     return id < customerCounter;
 }
