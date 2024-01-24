@@ -2,11 +2,14 @@
 #include "../include/Volunteer.h"
 #include "../include/Customer.h"
 #include "../include/Order.h"
+#include "../include/Action.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <vector>
 
+extern WareHouse* backup;
 class BaseAction;
 class Volunteer;
 class WareHouse;
@@ -40,6 +43,10 @@ WareHouse::WareHouse(const WareHouse &other): isOpen(other.isOpen), customerCoun
     for(auto vol: other.volunteers){
         volunteers.push_back(vol->clone());
     }
+
+    for(auto action: other.actionsLog){
+        actionsLog.push_back(action->clone());
+    }
 }
 
 WareHouse::~WareHouse(){
@@ -72,6 +79,12 @@ WareHouse::~WareHouse(){
     }
 
     completedOrders.clear();
+
+    for(auto action : actionsLog){
+        delete action;
+    }
+
+    actionsLog.clear();
     
 
 }
@@ -113,6 +126,12 @@ WareHouse &WareHouse::operator=(const WareHouse &other){
 
         completedOrders.clear();
 
+        for(auto action : actionsLog){
+            delete action;
+        }
+
+        actionsLog.clear();
+
         for(auto customer: other.customers){
             customers.push_back(customer->clone());
         }
@@ -134,6 +153,9 @@ WareHouse &WareHouse::operator=(const WareHouse &other){
             volunteers.push_back(vol->clone());
         }
         
+        for(auto action: other.actionsLog){
+            actionsLog.push_back(action->clone());
+        }
 
     }
     
@@ -146,6 +168,7 @@ WareHouse::WareHouse(WareHouse &&other): isOpen(other.isOpen), customerCounter(o
     volunteers=other.volunteers;
     pendingOrders=other.pendingOrders;
     completedOrders=other.completedOrders;
+    actionsLog=other.actionsLog;
 
     for(auto customer:other.customers){
         customer = nullptr;
@@ -166,6 +189,10 @@ WareHouse::WareHouse(WareHouse &&other): isOpen(other.isOpen), customerCounter(o
     for(auto ord : other.completedOrders){
         ord = nullptr;
     }
+
+    for(auto action : other.actionsLog){
+        action = nullptr;
+    }
 }
 
 WareHouse &WareHouse::operator=(WareHouse &&other){
@@ -179,6 +206,7 @@ WareHouse &WareHouse::operator=(WareHouse &&other){
         pendingOrders=other.pendingOrders;
         vol=other.vol;
         completedOrders=other.completedOrders;
+        actionsLog=other.actionsLog;
 
         for(auto customer:other.customers){
             customer = nullptr;
@@ -199,6 +227,10 @@ WareHouse &WareHouse::operator=(WareHouse &&other){
         for(auto ord : other.completedOrders){
             ord = nullptr;
         }
+        
+        for(auto action : other.actionsLog){
+            action=nullptr;
+        }
             
     }
 }
@@ -207,19 +239,70 @@ void WareHouse::start()
 {
     while (isOpen)
     {
-        string s;
-        cin >> s;
-        std::istringstream iss(s);
+        //breaking down the input
+        string str;
+        cin >> str;
+        std::istringstream iss(str);
         vector<string> decodedString;
         string word;
         while(getline(iss,word,' ')){
             decodedString.push_back(word);
         }
-        for(int i=0; i<decodedString.size(); i++){
-            cout << decodedString[i] << endl;
+        
+        if(decodedString[0] == "customer"){
+            AddCustomer *action= new AddCustomer(decodedString[1],decodedString[2],std::stoi(decodedString[3]),std::stoi(decodedString[4]));
+            action->act(*this);
+            actionsLog.push_back(action);
+
         }
-        // now the first word is about the action and the others are the parameters
-        // switch cases..
+        if(decodedString[0] == "order"){
+            AddOrder *action = new AddOrder(orderCounter);
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+
+        if(decodedString[0] == "step"){
+            SimulateStep *action = new SimulateStep(std::stoi(decodedString[1]));
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+        if(decodedString[0] == "backup"){
+            BackupWareHouse *action = new BackupWareHouse();
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+        if(decodedString[0] == "restore"){
+            RestoreWareHouse *action = new RestoreWareHouse();
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+        if(decodedString[0] == "log"){
+            PrintActionsLog *action = new PrintActionsLog();
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+        if(decodedString[0] == "close"){
+            Close *action = new Close();
+            action->act(*this);
+        }
+        if(decodedString[0] == "volunteerStatus"){
+            PrintVolunteerStatus *action = new PrintVolunteerStatus(std::stoi(decodedString[1]));
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+        if(decodedString[0] == "orderStatus"){
+            PrintOrderStatus *action = new PrintOrderStatus(std::stoi(decodedString[1]));
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+         if(decodedString[0] == "customerStatus"){
+            PrintCustomerStatus *action = new PrintCustomerStatus(std::stoi(decodedString[1]));
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+
+
+        
     }
 }
 
