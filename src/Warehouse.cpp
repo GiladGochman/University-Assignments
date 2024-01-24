@@ -24,9 +24,6 @@ WareHouse::WareHouse(const WareHouse &other): isOpen(other.isOpen), customerCoun
         customers.push_back(customer->clone());
     }
 
-    for(auto vol : other.volunteers){
-        volunteers.push_back(vol->clone());
-    }
 
     for(auto orderP : other.pendingOrders){
         pendingOrders.push_back(orderP->clone());
@@ -43,6 +40,29 @@ WareHouse::WareHouse(const WareHouse &other): isOpen(other.isOpen), customerCoun
     for(auto vol: other.volunteers){
         volunteers.push_back(vol->clone());
     }
+}
+
+WareHouse::~WareHouse(){
+    for(auto customer: customers){
+        delete customer;
+    }
+
+    for(auto vol : volunteers){
+        delete vol;
+    }
+
+    for(auto orderP : pendingOrders){
+        delete orderP;
+    }
+
+    for(auto orderV : vol){
+       delete orderV;
+    }
+
+    for(auto orderC : completedOrders){
+        delete orderC;
+    }
+
 }
 
 void WareHouse::start()
