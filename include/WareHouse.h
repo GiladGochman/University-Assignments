@@ -16,6 +16,11 @@ class WareHouse
 
 public:
     WareHouse(const string &configFilePath);
+    WareHouse(const WareHouse &other);
+    WareHouse& operator=(const WareHouse& other);
+    WareHouse(WareHouse &&other);
+    WareHouse& operator=(WareHouse &&other);
+    ~WareHouse();
     void start();
     const vector<BaseAction *> &getActionsLog() const;
     void addOrder(Order *order);

@@ -163,36 +163,36 @@ WareHouse &WareHouse::operator=(const WareHouse &other){
 }
 
 WareHouse::WareHouse(WareHouse &&other): isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter){
-    customers=other.customers;
-    vol=other.vol;
-    volunteers=other.volunteers;
-    pendingOrders=other.pendingOrders;
-    completedOrders=other.completedOrders;
-    actionsLog=other.actionsLog;
+    customers=std::move(other.customers);
+    vol=std::move(other.vol);
+    volunteers=std::move(other.volunteers);
+    pendingOrders=std::move(other.pendingOrders);
+    completedOrders=std::move(other.completedOrders);
+    actionsLog=std::move(other.actionsLog);
 
-    for(auto customer:other.customers){
-        customer = nullptr;
-    }
+    // for(auto customer:other.customers){
+    //     customer = nullptr;
+    // }
 
-    for(auto ord: other.vol){
-        ord = nullptr;
-    }
+    // for(auto ord: other.vol){
+    //     ord = nullptr;
+    // }
 
-    for(auto vol : other.volunteers){
-        vol = nullptr;
-    }
+    // for(auto vol : other.volunteers){
+    //     vol = nullptr;
+    // }
 
-    for(auto ord : other.pendingOrders){
-        ord = nullptr;
-    }
+    // for(auto ord : other.pendingOrders){
+    //     ord = nullptr;
+    // }
 
-    for(auto ord : other.completedOrders){
-        ord = nullptr;
-    }
+    // for(auto ord : other.completedOrders){
+    //     ord = nullptr;
+    // }
 
-    for(auto action : other.actionsLog){
-        action = nullptr;
-    }
+    // for(auto action : other.actionsLog){
+    //     action = nullptr;
+    // }
 }
 
 WareHouse &WareHouse::operator=(WareHouse &&other){
@@ -201,38 +201,45 @@ WareHouse &WareHouse::operator=(WareHouse &&other){
         volunteerCounter=other.volunteerCounter;
         orderCounter=other.orderCounter;
         customerCounter=other.customerCounter;
-        customers=other.customers;
-        volunteers=other.volunteers;
-        pendingOrders=other.pendingOrders;
-        vol=other.vol;
-        completedOrders=other.completedOrders;
-        actionsLog=other.actionsLog;
+        customers=std::move(other.customers);
+        vol=std::move(other.vol);
+        volunteers=std::move(other.volunteers);
+        pendingOrders=std::move(other.pendingOrders);
+        completedOrders=std::move(other.completedOrders);
+        actionsLog=std::move(other.actionsLog);
+        // customers=other.customers;
+        // volunteers=other.volunteers;
+        // pendingOrders=other.pendingOrders;
+        // vol=other.vol;
+        // completedOrders=other.completedOrders;
+        // actionsLog=other.actionsLog;
 
-        for(auto customer:other.customers){
-            customer = nullptr;
-        }
+        // for(auto customer:other.customers){
+        //     customer = nullptr;
+        // }
 
-        for(auto ord: other.vol){
-            ord = nullptr;
-        }
+        // for(auto ord: other.vol){
+        //     ord = nullptr;
+        // }
 
-        for(auto vol : other.volunteers){
-            vol = nullptr;
-        }
+        // for(auto vol : other.volunteers){
+        //     vol = nullptr;
+        // }
 
-        for(auto ord : other.pendingOrders){
-            ord = nullptr;
-        }
+        // for(auto ord : other.pendingOrders){
+        //     ord = nullptr;
+        // }
 
-        for(auto ord : other.completedOrders){
-            ord = nullptr;
-        }
+        // for(auto ord : other.completedOrders){
+        //     ord = nullptr;
+        // }
         
-        for(auto action : other.actionsLog){
-            action=nullptr;
-        }
+        // for(auto action : other.actionsLog){
+        //     action=nullptr;
+        // }
             
     }
+    return *this;
 }
 
 void WareHouse::start()
