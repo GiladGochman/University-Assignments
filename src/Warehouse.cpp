@@ -140,6 +140,69 @@ WareHouse &WareHouse::operator=(const WareHouse &other){
     return *this;
 }
 
+WareHouse::WareHouse(WareHouse &&other): isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter){
+    customers=other.customers;
+    vol=other.vol;
+    volunteers=other.volunteers;
+    pendingOrders=other.pendingOrders;
+    completedOrders=other.completedOrders;
+
+    for(auto customer:other.customers){
+        customer = nullptr;
+    }
+
+    for(auto ord: other.vol){
+        ord = nullptr;
+    }
+
+    for(auto vol : other.volunteers){
+        vol = nullptr;
+    }
+
+    for(auto ord : other.pendingOrders){
+        ord = nullptr;
+    }
+
+    for(auto ord : other.completedOrders){
+        ord = nullptr;
+    }
+}
+
+WareHouse &WareHouse::operator=(WareHouse &&other){
+    if(this != &other){
+        isOpen=other.isOpen;
+        volunteerCounter=other.volunteerCounter;
+        orderCounter=other.orderCounter;
+        customerCounter=other.customerCounter;
+        customers=other.customers;
+        volunteers=other.volunteers;
+        pendingOrders=other.pendingOrders;
+        vol=other.vol;
+        completedOrders=other.completedOrders;
+
+        for(auto customer:other.customers){
+            customer = nullptr;
+        }
+
+        for(auto ord: other.vol){
+            ord = nullptr;
+        }
+
+        for(auto vol : other.volunteers){
+            vol = nullptr;
+        }
+
+        for(auto ord : other.pendingOrders){
+            ord = nullptr;
+        }
+
+        for(auto ord : other.completedOrders){
+            ord = nullptr;
+        }
+            
+    }
+}
+
 void WareHouse::start()
 {
     while (isOpen)
