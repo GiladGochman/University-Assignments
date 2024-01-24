@@ -319,10 +319,18 @@ void WareHouse::addAction(BaseAction *action){
 }
 
 void WareHouse::printActionsLogs(){
-    // for(BaseAction *action : actionsLog){
-    //     cout<< *action.toString() <<endl;
-    // }
+    for(BaseAction *action : actionsLog){
+        cout<< action->toString() <<endl;
+    }
     //need to implement baseactions class for that
+}
+
+void WareHouse::open(){
+    isOpen = true;
+}
+
+void WareHouse::close(){
+    isOpen = false;
 }
 
 Customer &WareHouse::getCustomer(int customerId) const{
