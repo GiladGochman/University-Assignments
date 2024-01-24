@@ -271,6 +271,7 @@ void WareHouse::start()
     while (isOpen)
     {
         // breaking down the input
+        cout << "WareHouse is open" << endl;
         string str;
         cin >> str;
         std::istringstream iss(str);
