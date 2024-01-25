@@ -15,9 +15,10 @@ int main(int argc, char **argv)
     }
     string configurationFile = argv[1];
     WareHouse wareHouse(configurationFile);
-    // std::cout << wareHouse.getCustomer(1).getName() << std::endl;
-    
-    wareHouse.start();
+    std::cout << wareHouse.getCustomer(1).getName() << std::endl;
+    backup = new WareHouse(wareHouse);
+    std::cout << wareHouse.getCustomer(1).getName() << std::endl;
+    // wareHouse.start();
     if(backup!=nullptr){
     	delete backup;
     	backup = nullptr;

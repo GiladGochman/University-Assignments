@@ -23,6 +23,11 @@ public:
     ~WareHouse();
     void start();
     const vector<BaseAction *> &getActionsLog() const;
+    const vector<Volunteer *> &getVolunteerVector() const;
+    const vector<Order *> &getPOrderVector() const;
+    const vector<Order *> &getVOrderVector() const;
+    const vector<Order *> &getCOrderVector() const;
+    const vector<Customer*> &getCustomerVector() const;
     void addOrder(Order *order);
     void addAction(BaseAction *action);
     void printActionsLogs();

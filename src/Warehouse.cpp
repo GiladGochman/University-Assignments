@@ -351,6 +351,27 @@ const vector<BaseAction *> &WareHouse::getActionsLog() const
     return actionsLog;
 }
 
+const vector<Customer*> &WareHouse::getCustomerVector() const{
+    return customers;
+}
+
+const vector<Order*> &WareHouse::getPOrderVector() const{
+    return pendingOrders;
+}
+
+const vector<Order *> &WareHouse::getVOrderVector() const{
+    return vol;
+}
+
+const vector<Order *> &WareHouse::getCOrderVector() const{
+    return completedOrders;
+}
+
+const vector<Volunteer *> &WareHouse::getVolunteerVector() const{
+    return volunteers;
+}
+
+
 void WareHouse::addOrder(Order *order)
 {
     pendingOrders.push_back(order);
@@ -407,6 +428,8 @@ Order &WareHouse::getOrder(int orderId) const
             return *order;
     }
 }
+
+
 
 // Function to trim leading whitespace from a string
 std::string WareHouse::trimLeadingWhitespace(const std::string &str)
