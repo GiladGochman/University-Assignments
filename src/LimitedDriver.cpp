@@ -47,6 +47,3 @@ string LimitedDriverVolunteer::toString() const
     return res;
 }
 
-LimitedDriverVolunteer *LimitedDriverVolunteer::clone() const{
-    return new LimitedDriverVolunteer(*this);
-}

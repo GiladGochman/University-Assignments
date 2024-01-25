@@ -49,7 +49,5 @@ string LimitedCollectorVolunteer::toString() const
     return res;
 }
 
-LimitedCollectorVolunteer *LimitedCollectorVolunteer::clone() const{
-    return new LimitedCollectorVolunteer(*this);
-}
+
 // NEED TO IMPLEMENT TOSTRING()

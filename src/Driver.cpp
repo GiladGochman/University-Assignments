@@ -78,8 +78,6 @@ string DriverVolunteer::toString() const
     return res;
 }
 
-DriverVolunteer *DriverVolunteer::clone() const{
-    return new DriverVolunteer(*this);
-}
+
 
 // NEED TO IMPLEMENT TOSTRING()
