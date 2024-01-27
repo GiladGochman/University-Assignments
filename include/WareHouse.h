@@ -38,6 +38,7 @@ public:
     void close();
     void open();
     bool checkIfCustomerExsists(int id);
+    bool checkIfOrderExsists(int id);
     int getOrderCounter();
     int getCustomerCounter();
     void setVolunteerCounter(int num);

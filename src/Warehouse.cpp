@@ -579,7 +579,7 @@ void WareHouse::parseFile(const string &filePath)
 
 bool WareHouse::checkIfCustomerExsists(int id)
 {
-    return id < customerCounter;
+    return id < customerCounter && id >= 0; // id < customerCounter -> because the ids start from 0 (when couner=1)
 }
 int WareHouse::getOrderCounter()
 {
@@ -604,4 +604,9 @@ void WareHouse::addCustomer(Customer *customer)
 int WareHouse::getCustomerCounter()
 {
     return customerCounter;
+}
+
+bool WareHouse::checkIfOrderExsists(int orderId)
+{
+    return orderId >= 0 && orderId < orderCounter; //  orderId < orderCounter -> because the ids start from 0 (when couner=1)
 }
