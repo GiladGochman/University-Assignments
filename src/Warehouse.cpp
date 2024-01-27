@@ -4,6 +4,7 @@
 #include "../include/Order.h"
 #include "../include/Action.h"
 #include <iostream>
+#include <algorithm>
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -352,22 +353,22 @@ const vector<BaseAction *> &WareHouse::getActionsLog() const
     return actionsLog;
 }
 
-const vector<Customer *> &WareHouse::getCustomerVector() const
+const vector<Customer *> &WareHouse::getCustomersVector() const
 {
     return customers;
 }
 
-const vector<Order *> &WareHouse::getPOrderVector() const
+const vector<Order *> &WareHouse::getPendingOrdersVector() const
 {
     return pendingOrders;
 }
 
-const vector<Order *> &WareHouse::getVOrderVector() const
+const vector<Order *> &WareHouse::getInProgressVector() const
 {
     return vol;
 }
 
-const vector<Order *> &WareHouse::getCOrderVector() const
+const vector<Order *> &WareHouse::getCompletedOrdersVector() const
 {
     return completedOrders;
 }
@@ -609,4 +610,13 @@ int WareHouse::getCustomerCounter()
 bool WareHouse::checkIfOrderExsists(int orderId)
 {
     return orderId >= 0 && orderId < orderCounter; //  orderId < orderCounter -> because the ids start from 0 (when couner=1)
+}
+
+void WareHouse::moveOrder(Order *order)
+{
+    vol.push_back(order);
+    int searchValue = order->getId();
+    auto it = std::find_if(pendingOrders.begin(), pendingOrders.end(), [searchValue](const Order *ptr)
+                           { return ptr != nullptr && ptr->getId() == searchValue; });
+    pendingOrders.erase(it);
 }

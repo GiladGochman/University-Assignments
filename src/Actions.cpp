@@ -5,6 +5,7 @@
 #include "../include/Action.h"
 #include "../include/WareHouse.h"
 #include "../include/Order.h"
+#include "../include/Volunteer.h"
 #include <iostream>
 #include <cstdio>
 
@@ -54,7 +55,7 @@ AddCustomer::AddCustomer(string customerName, string customerType, int distance,
 }
 void AddCustomer::act(WareHouse &wareHouse)
 {
-    int id = wareHouse.getCustomerVector().size();
+    int id = wareHouse.getCustomersVector().size();
     if (customerType == CustomerType::Soldier)
         Customer *newCustomer = new SoldierCustomer(wareHouse.getCustomerCounter(), customerName, distance, maxOrders);
     if (customerType == CustomerType::Civilian)
@@ -191,12 +192,114 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
 
 ////////////////////////SimulateStep/////////////////////////
 
-// 1. iterate pending orders vector and assign orders to free volunteers
+SimulateStep::SimulateStep(int numOfSteps) : BaseAction(), numOfSteps(numOfSteps) {}
+void SimulateStep::act(WareHouse &wareHouse)
+{
+    for (int i = 0; i < numOfSteps; i++)
+    {
+        // 1. iterate pending orders vector and assign orders to free volunteers
+        assignJobs(wareHouse);
+        // 2. iterate busy volunteers: decrease distance of drivers and decrease collectors cooldown
+        promoteOrders(wareHouse);
+        // 3. iterate volunteers and check who reached their destinations / finnished collecting and changes the order status and move to pending/completed vector.
+        freeUpVolunteers(wareHouse);
+        // 4. iterate volunteers and remove limited ones from the vector
+        fireVolunteers(wareHouse);
+        // 5. enjoy!
+    }
+}
 
-// 2. iterate busy volunteers: decrease distance of drivers and decrease collectors cooldown
+void SimulateStep::assignJobs(WareHouse &wareHouse)
+{
+    // iterate pending orders vector:
+    for (auto order : wareHouse.getPendingOrdersVector())
+    {
+        bool assignedJob = false;
+        // for each pending order iterate volenteers and check which one is free and able to reach
+        switch (order->getStatus())
+        {
+        case OrderStatus::PENDING:
+        {
+            for (auto volunteer : wareHouse.getVolunteerVector())
+            {
+                const std::type_info &type = typeid(volunteer);
 
-// 3. iterate volunteers and check who reached thier destinations / finnished collecting and changes the order status and move to pending/completed vector.
+                if (type.name() == "CollectorVolunteer")
+                {
+                    CollectorVolunteer *castedVol = dynamic_cast<CollectorVolunteer *>(volunteer);
+                    if (castedVol->canTakeOrder(*order))
+                    {
+                        order->setCollectorId(castedVol->getId());
+                        castedVol->acceptOrder(*order);
+                        assignedJob = true;
+                        break;
+                    }
+                }
 
-// 4. iterate volunteers and remove limited ones from the vector
+                if (type.name() == "LimitedCollectorVolunteer")
+                {
+                    LimitedCollectorVolunteer *castedVol = dynamic_cast<LimitedCollectorVolunteer *>(volunteer);
+                    if (castedVol->canTakeOrder(*order))
+                    {
+                        order->setCollectorId(castedVol->getId());
+                        castedVol->acceptOrder(*order);
+                        assignedJob = true;
+                        break;
+                    }
+                }
+            }
 
-// 5. enjoy!
+            break;
+        }
+
+        case OrderStatus::COLLECTING:
+        {
+            for (auto volunteer : wareHouse.getVolunteerVector())
+            {
+                const std::type_info &type = typeid(volunteer);
+
+                if (type.name() == "DriverVolunteer")
+                {
+                    DriverVolunteer *castedVol = dynamic_cast<DriverVolunteer *>(volunteer);
+                    if (castedVol->canTakeOrder(*order))
+                    {
+                        order->setDriverId(castedVol->getId());
+                        castedVol->acceptOrder(*order);
+                        assignedJob = true;
+                        break;
+                    }
+                }
+
+                if (type.name() == "LimitedDriverVolunteer")
+                {
+                    LimitedCollectorVolunteer *castedVol = dynamic_cast<LimitedCollectorVolunteer *>(volunteer);
+                    if (castedVol->canTakeOrder(*order))
+                    {
+                        order->setDriverId(castedVol->getId());
+                        castedVol->acceptOrder(*order);
+                        assignedJob = true;
+                        break;
+                    }
+                }
+            }
+
+            break;
+        }
+
+        default:
+            break;
+        }
+        // assign order to volunteer and move order from pending vector to vol(in progress vector)
+        if (assignedJob)
+            wareHouse.moveOrder(order);
+    }
+}
+void SimulateStep::promoteOrders(WareHouse &wareHouse)
+{
+}
+void SimulateStep::freeUpVolunteers(WareHouse &wareHouse)
+{
+}
+void SimulateStep::fireVolunteers(WareHouse &wareHouse)
+{
+}

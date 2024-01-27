@@ -49,6 +49,10 @@ public:
 
 private:
     const int numOfSteps;
+    void assignJobs(WareHouse &wareHouse);
+    void promoteOrders(WareHouse &wareHouse);
+    void freeUpVolunteers(WareHouse &wareHouse);
+    void fireVolunteers(WareHouse &wareHouse);
 };
 
 class AddOrder : public BaseAction

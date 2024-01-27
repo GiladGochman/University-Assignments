@@ -24,10 +24,10 @@ public:
     void start();
     const vector<BaseAction *> &getActionsLog() const;
     const vector<Volunteer *> &getVolunteerVector() const;
-    const vector<Order *> &getPOrderVector() const;
-    const vector<Order *> &getVOrderVector() const;
-    const vector<Order *> &getCOrderVector() const;
-    const vector<Customer *> &getCustomerVector() const;
+    const vector<Order *> &getPendingOrdersVector() const;
+    const vector<Order *> &getInProgressVector() const;
+    const vector<Order *> &getCompletedOrdersVector() const;
+    const vector<Customer *> &getCustomersVector() const;
     void addOrder(Order *order);
     void addCustomer(Customer *customer);
     void addAction(BaseAction *action);
@@ -43,6 +43,7 @@ public:
     int getCustomerCounter();
     void setVolunteerCounter(int num);
     void setCustomerCounter(int num);
+    void moveOrder(Order *order);
 
 private:
     bool isOpen;
