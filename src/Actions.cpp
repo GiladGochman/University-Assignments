@@ -39,9 +39,58 @@ AddOrder *AddOrder::clone() const
 {
     return new AddOrder(*this);
 }
-string AddOrder::toString() const{
-    if(ActionStatus::COMPLETED==getStatus()) {
-        return "order "+to_string(customerId)+"COMPLETED";
+string AddOrder::toString() const
+{
+    if (ActionStatus::COMPLETED == getStatus())
+    {
+        return "order " + to_string(customerId) + "COMPLETED";
     }
-    return "order "+to_string(customerId)+"ERROR";
+    return "order " + to_string(customerId) + "ERROR";
+}
+
+AddCustomer::AddCustomer(string customerName, string customerType, int distance, int maxOrders) : BaseAction(), customerName(customerName), customerType(CustomerType(convertCustomerType(customerType))), distance(distance), maxOrders(maxOrders)
+{
+}
+void AddCustomer::act(WareHouse &wareHouse)
+{
+    int id = wareHouse.getCustomerVector().size();
+    if (customerType == CustomerType::Soldier)
+        Customer *newCustomer = new SoldierCustomer(wareHouse.getCustomerCounter(), customerName, distance, maxOrders);
+    if (customerType == CustomerType::Civilian)
+        Customer *newCustomer = new CivilianCustomer(wareHouse.getCustomerCounter(), customerName, distance, maxOrders);
+}
+int AddCustomer::convertCustomerType(string customerType)
+{
+    if (customerType == "soldier")
+    {
+        return 0;
+    }
+    if (customerType == "civilian")
+    {
+        return 1;
+    }
+}
+
+AddCustomer *AddCustomer::clone() const
+{
+    return new AddCustomer(*this);
+}
+string AddCustomer::toString() const
+{
+    string res = "customer " + customerName;
+    if (customerType == CustomerType::Soldier)
+    {
+        res += " soldier ";
+    }
+    else if (customerType == CustomerType::Civilian)
+    {
+        res += " civilian ";
+    }
+    res += to_string(distance) + " " + to_string(maxOrders) + " ";
+
+    if (ActionStatus::COMPLETED == getStatus())
+    {
+        return res + "COMPLETED";
+    }
+    return res + "ERROR";
 }

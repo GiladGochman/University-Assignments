@@ -39,10 +39,9 @@ public:
     void open();
     bool checkIfCustomerExsists(int id);
     int getOrderCounter();
+    int getCustomerCounter();
     void setVolunteerCounter(int num);
     void setCustomerCounter(int num);
-
-    
 
 private:
     bool isOpen;

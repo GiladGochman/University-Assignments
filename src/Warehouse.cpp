@@ -586,14 +586,22 @@ int WareHouse::getOrderCounter()
     return orderCounter;
 }
 
-void WareHouse::setCustomerCounter(int increase){
+void WareHouse::setCustomerCounter(int increase)
+{
     customerCounter = customerCounter + increase;
 }
 
-void WareHouse::setVolunteerCounter(int increase){
+void WareHouse::setVolunteerCounter(int increase)
+{
     volunteerCounter = volunteerCounter + increase;
 }
 
-void WareHouse::addCustomer(Customer *customer){
+void WareHouse::addCustomer(Customer *customer)
+{
     customers.push_back(customer);
+    setCustomerCounter(1);
+}
+int WareHouse::getCustomerCounter()
+{
+    return customerCounter;
 }
