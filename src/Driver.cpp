@@ -78,6 +78,4 @@ string DriverVolunteer::toString() const
     return res;
 }
 
-
-
 // NEED TO IMPLEMENT TOSTRING()

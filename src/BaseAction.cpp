@@ -17,5 +17,6 @@ void BaseAction::complete()
 
 void BaseAction::error(string Msg)
 {
+    status = ActionStatus::ERROR;
     errorMsg = Msg;
 }
