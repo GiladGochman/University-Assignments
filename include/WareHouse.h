@@ -29,6 +29,7 @@ public:
     const vector<Order *> &getCOrderVector() const;
     const vector<Customer *> &getCustomerVector() const;
     void addOrder(Order *order);
+    void addCustomer(Customer *customer);
     void addAction(BaseAction *action);
     void printActionsLogs();
     Customer &getCustomer(int customerId) const;
@@ -38,6 +39,10 @@ public:
     void open();
     bool checkIfCustomerExsists(int id);
     int getOrderCounter();
+    void setVolunteerCounter(int num);
+    void setCustomerCounter(int num);
+
+    
 
 private:
     bool isOpen;
