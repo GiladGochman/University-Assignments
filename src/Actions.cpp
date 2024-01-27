@@ -5,6 +5,8 @@
 #include "../include/Action.h"
 #include "../include/WareHouse.h"
 #include "../include/Order.h"
+#include <iostream>
+#include <cstdio>
 
 AddOrder::AddOrder(int id) : BaseAction(), customerId(id) {}
 
@@ -16,6 +18,7 @@ void AddOrder::act(WareHouse &wareHouse)
         if (isAdded == -1)
         {
             error("Customer can't order!");
+            cout << "ERROR: " << getErrorMsg() << endl;
         }
         else
         { // Customer could order
@@ -28,10 +31,17 @@ void AddOrder::act(WareHouse &wareHouse)
     else
     {
         error("Customer doesn't exist!");
+        cout << "ERROR: " << getErrorMsg() << endl;
     }
 }
 
-AddOrder *clone() const
+AddOrder *AddOrder::clone() const
 {
+    return new AddOrder(*this);
 }
-string toString() const override;
+string AddOrder::toString() const{
+    if(ActionStatus::COMPLETED==getStatus()) {
+        return "order "+to_string(customerId)+"COMPLETED";
+    }
+    return "order "+to_string(customerId)+"ERROR";
+}
