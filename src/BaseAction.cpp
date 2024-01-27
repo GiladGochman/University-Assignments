@@ -1,24 +1,21 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "../include/Action.h"
 
-class BaseAction
+BaseAction::BaseAction() : status(ActionStatus::ERROR), errorMsg("") {}
+
+ActionStatus BaseAction::getStatus() const
 {
-    // ... Other members
+    return status;
+}
 
-public:
-    enum class ActionStatus
-    {
-        COMPLETED,
-        ERROR
-    };
+void BaseAction::complete()
+{
+    status = ActionStatus::COMPLETED;
+}
 
-    enum class CustomerType
-    {
-        Soldier,
-        Civilian
-    };
-    virtual ~BaseAction() = default;
-
-    // ... Other members
-};
+void BaseAction::error(string Msg)
+{
+    errorMsg = Msg;
+}
