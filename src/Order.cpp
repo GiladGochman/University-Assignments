@@ -53,7 +53,15 @@ void Order::setDriverId(int driverId)
 
 const string Order::toString() const
 {
-    return "order " + customerId;
+    char buffer[50];
+    string orderStatus;
+    if(OrderStatus::PENDING==status) orderStatus="PENDING";
+    if(OrderStatus::COLLECTING==status) orderStatus="COLLECTING";
+    if(OrderStatus::DELIVERING==status) orderStatus="DELIVERING";
+    if(OrderStatus::COMPLETED==status) orderStatus="COMPLETED";
+    std::sprintf(buffer, "OrderID: %d, CustomerID: %d, OrderStatus: %s",id,customerId,orderStatus.c_str());
+    string res = buffer;
+    return res;
 }
 
 Order *Order::clone() const{

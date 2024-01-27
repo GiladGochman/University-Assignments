@@ -16,11 +16,10 @@ class WareHouse;
 
 // Warehouse responsible for Volunteers, Customers and Actions.
 
-WareHouse::WareHouse(const string &configFilePath) : isOpen(true), customerCounter(0), volunteerCounter(0), orderCounter(0)
+WareHouse::WareHouse(const string &configFilePath) : isOpen(false), customerCounter(0), volunteerCounter(0), orderCounter(0)
 
 {
     parseFile(configFilePath);
-    open();
 }
 
 WareHouse::WareHouse(const WareHouse &other) : isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
@@ -268,7 +267,7 @@ WareHouse &WareHouse::operator=(WareHouse &&other){
 
 void WareHouse::start()
 {
-   
+    open();
     while (isOpen)
     {
         // breaking down the input
@@ -399,6 +398,17 @@ void WareHouse::open()
 
 void WareHouse::close()
 {
+    for(Order *order : pendingOrders){
+        cout << order->toString() <<endl;
+    }
+
+    for(Order *order : vol){
+        cout << order->toString() <<endl;
+    }
+
+    for(Order *order : completedOrders){
+        cout << order->toString() <<endl;
+    }
     isOpen = false;
     cout << "Closing the Warehouse" << endl;
 }
