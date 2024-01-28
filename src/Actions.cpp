@@ -1,5 +1,5 @@
 
-#pragma once
+
 #include <vector>
 #include <string>
 #include "../include/Action.h"
@@ -9,14 +9,41 @@
 #include <algorithm>
 #include <iostream>
 #include <cstdio>
+#include <vector>
+#include <string>
+#include "../include/Action.h"
+
+BaseAction::BaseAction() : status(ActionStatus::ERROR), errorMsg("") {}
+
+ActionStatus BaseAction::getStatus() const
+{
+    return status;
+}
+
+void BaseAction::complete()
+{
+    status = ActionStatus::COMPLETED;
+}
+
+void BaseAction::error(string Msg)
+{
+    status = ActionStatus::ERROR;
+    errorMsg = Msg;
+}
+
+string BaseAction::getErrorMsg() const{
+    return errorMsg;
+}
 
 //////////////AddOrder///////////////
 AddOrder::AddOrder(int id) : BaseAction(), customerId(id) {}
 
 void AddOrder::act(WareHouse &wareHouse)
 {
+    cout<<"hel"<<endl;
     if (wareHouse.checkIfCustomerExsists(customerId))
     {
+        cout<<"hey"<<endl;
         int isAdded = wareHouse.getCustomer(customerId).addOrder(wareHouse.getOrderCounter()); // Trys to add an order (expected = orderID, if customer can't order will return -1)
         if (isAdded == -1)
         {
@@ -111,10 +138,10 @@ void PrintOrderStatus::act(WareHouse &warehouse)
     }
     Order order = warehouse.getOrder(orderId);
     cout << "OrderId: " + to_string(orderId) << endl;
-    cout << "OrderStatus: " + to_string(order.getStatus()) << endl;
+    // cout << "OrderStatus: " + to_String(order.getStatus()) << endl;
     cout << "CustomerID: " + to_string(order.getCustomerId()) << endl;
-    cout << "Collector: " + volunteerIdToString(order.getCollectorId()) << endl;
-    cout << "Driver: " + volunteerIdToString(order.getDriverId()) << endl;
+    // cout << "Collector: " + volunteerIdToString(order.getCollectorId()) << endl;
+    // cout << "Driver: " + volunteerIdToString(order.getDriverId()) << endl;
     complete();
 }
 
@@ -128,7 +155,7 @@ string PrintOrderStatus::toString() const
     return "orderStatus " + to_string(orderId);
 }
 
-std::string to_string(OrderStatus status)
+std::string to_String(OrderStatus status)
 {
     switch (status)
     {
@@ -144,12 +171,12 @@ std::string to_string(OrderStatus status)
         return "Unknown"; // Handle unknown status, if necessary
     }
 }
-std::string volunteerIdToString(int volId)
-{
-    if (volId == -1)
-        return "None";
-    return to_string(volId);
-}
+// std::string volunteerIdToString(int volId)
+// {
+//     if (volId == -1)
+//         return "None";
+//     return to_string(volId);
+// }
 ////////////////////////////// printCustomerStatus////////////////////////////
 
 PrintCustomerStatus::PrintCustomerStatus(int customerId) : BaseAction(), customerId(customerId) {}
@@ -165,7 +192,7 @@ void PrintCustomerStatus::act(WareHouse &wareHouse)
     cout << "CustomerID: " + to_string(customerId) << endl;
     for (int orderId : wareHouse.getCustomer(customerId).getOrdersId())
     {
-        cout << "OrderStatus: " << to_string(wareHouse.getOrder(orderId).getStatus()) << endl;
+        // cout << "OrderStatus: " << to_String(wareHouse.getOrder(orderId).getStatus()) << endl;
     }
     cout << "numOrdersLeft: " + to_string(wareHouse.getCustomer(customerId).getNumOrders()) << endl;
     complete();
@@ -191,6 +218,14 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
 {
 }
 
+PrintVolunteerStatus *PrintVolunteerStatus::clone() const{
+    return new PrintVolunteerStatus(*this);
+}
+
+string PrintVolunteerStatus::toString() const{
+    return "volunteerStatus "+to_string(VolunteerId);
+}
+
 ////////////////////////SimulateStep/////////////////////////
 
 SimulateStep::SimulateStep(int numOfSteps) : BaseAction(), numOfSteps(numOfSteps) {}
@@ -208,6 +243,14 @@ void SimulateStep::act(WareHouse &wareHouse)
         fireVolunteers(wareHouse);
         // 5. enjoy!
     }
+}
+
+SimulateStep *SimulateStep::clone() const{
+    return new SimulateStep(*this);
+}
+
+string SimulateStep::toString() const{
+    return "step "+to_string(numOfSteps);
 }
 
 void SimulateStep::assignJobs(WareHouse &wareHouse)
