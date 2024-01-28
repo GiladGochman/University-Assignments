@@ -41,9 +41,12 @@ public:
     bool checkIfOrderExsists(int id);
     int getOrderCounter();
     int getCustomerCounter();
-    void setVolunteerCounter(int num);
+    void setVolunteerCounter(int numW);
     void setCustomerCounter(int num);
-    void moveOrder(Order *order);
+    void assignOrder(Order *order);
+    void moveFromVolunteerOrder(vector<Order *>::const_iterator it);
+    vector<Volunteer*>::const_iterator &fireVolunteer(vector<Volunteer *>::const_iterator it);
+
 
 private:
     bool isOpen;

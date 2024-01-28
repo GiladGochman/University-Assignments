@@ -59,11 +59,13 @@ void CollectorVolunteer::step()
 {
     if (isBusy())
     {
+        time++;
         decreaseCoolDown();
         if (getTimeLeft() == 0)
         {
             completedOrderId = activeOrderId;
             activeOrderId = NO_ORDER;
+            timeFinishedJob=time;
         }
     }
 }

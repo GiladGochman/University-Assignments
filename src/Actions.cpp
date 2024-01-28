@@ -6,6 +6,7 @@
 #include "../include/WareHouse.h"
 #include "../include/Order.h"
 #include "../include/Volunteer.h"
+#include <algorithm>
 #include <iostream>
 #include <cstdio>
 
@@ -272,7 +273,7 @@ void SimulateStep::assignJobs(WareHouse &wareHouse)
 
                 if (type.name() == "LimitedDriverVolunteer")
                 {
-                    LimitedCollectorVolunteer *castedVol = dynamic_cast<LimitedCollectorVolunteer *>(volunteer);
+                    LimitedDriverVolunteer *castedVol = dynamic_cast<LimitedDriverVolunteer *>(volunteer);
                     if (castedVol->canTakeOrder(*order))
                     {
                         order->setDriverId(castedVol->getId());
@@ -291,15 +292,84 @@ void SimulateStep::assignJobs(WareHouse &wareHouse)
         }
         // assign order to volunteer and move order from pending vector to vol(in progress vector)
         if (assignedJob)
-            wareHouse.moveOrder(order);
+            wareHouse.assignOrder(order);
     }
 }
 void SimulateStep::promoteOrders(WareHouse &wareHouse)
 {
+    for (auto volunteer : wareHouse.getVolunteerVector())
+    {
+        const std::type_info &type = typeid(volunteer);
+
+        if (type.name() == "CollectorVolunteer")
+        {
+            CollectorVolunteer *castedVol = dynamic_cast<CollectorVolunteer *>(volunteer);
+            if(castedVol->isBusy()){
+                castedVol->step();
+            }
+        }
+
+         if (type.name() == "LimitedCollectorVolunteer")
+        {
+            LimitedCollectorVolunteer *castedVol = dynamic_cast<LimitedCollectorVolunteer *>(volunteer);
+            if(castedVol->isBusy()){
+                castedVol->step();
+            }
+        }
+
+         if (type.name() == "DriverVolunteer")
+        {
+            DriverVolunteer *castedVol = dynamic_cast<DriverVolunteer *>(volunteer);
+            if(castedVol->isBusy()){
+                castedVol->step();
+            }
+        }
+         if (type.name() == "LimitedDriverVolunteer")
+        {
+            LimitedDriverVolunteer *castedVol = dynamic_cast<LimitedDriverVolunteer *>(volunteer);
+            if(castedVol->isBusy()){
+                castedVol->step();
+            }
+        }
+    }
 }
 void SimulateStep::freeUpVolunteers(WareHouse &wareHouse)
 {
+    for(auto volu : wareHouse.getVolunteerVector()){
+        if(volu->hasJustFinishedJob()){
+            int finishedId=volu->getCompletedOrderId();
+
+            auto it= find_if(wareHouse.getInProgressVector().begin(), wareHouse.getInProgressVector().end(),[finishedId](const Order *order){
+                return order!=nullptr && order->getId()==finishedId;
+            } );
+            wareHouse.moveFromVolunteerOrder(it);
+            
+        }
+    }
 }
 void SimulateStep::fireVolunteers(WareHouse &wareHouse)
 {
+    vector<Volunteer *>::const_iterator it = wareHouse.getVolunteerVector().begin();
+    while (it != wareHouse.getVolunteerVector().end())
+    {
+       const std::type_info &type = typeid(*it);
+       if(type.name()=="LimitedDriverVolunteer"){
+            auto castedVol=dynamic_cast<LimitedDriverVolunteer*>(*it);
+            if(!castedVol->isBusy() && !castedVol->hasOrdersLeft()){
+                it=wareHouse.fireVolunteer(it);
+                delete castedVol;
+            }
+       } 
+
+       if(type.name()=="LimitedCollectorVolunteer"){
+            auto castedVol=dynamic_cast<LimitedCollectorVolunteer*>(*it);
+            if(!castedVol->isBusy() && !castedVol->hasOrdersLeft()){
+                it=wareHouse.fireVolunteer(it);
+                delete castedVol;
+            }
+       }
+       ++it; 
+    }
+    
+
 }

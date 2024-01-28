@@ -15,7 +15,8 @@ public:
     const string &getName() const;
     int getActiveOrderId() const;
     int getCompletedOrderId() const;
-    bool isBusy() const;                                     // Signal whether the volunteer is currently processing an order
+    bool isBusy() const; 
+    bool hasJustFinishedJob() const;                                    // Signal whether the volunteer is currently processing an order
     virtual bool hasOrdersLeft() const = 0;                  // Signal whether the volunteer didn't reach orders limit,Always true for CollectorVolunteer and DriverVolunteer
     virtual bool canTakeOrder(const Order &order) const = 0; // Signal if the volunteer can take the order.
     virtual void acceptOrder(const Order &order) = 0;        // Prepare for new order(Reset activeOrderId,TimeLeft,DistanceLeft,OrdersLeft depends on the volunteer type)
@@ -28,6 +29,8 @@ public:
 protected:
     int completedOrderId; // Initialized to NO_ORDER if no order has been completed yet
     int activeOrderId;    // Initialized to NO_ORDER if no order is being processed
+    int time;
+    int timeFinishedJob;
 
 private:
     const int id;

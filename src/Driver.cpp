@@ -61,12 +61,14 @@ void DriverVolunteer::setDistanceLeft(const Order &order)
 
 void DriverVolunteer::step()
 {
+    time++;
     if (!isBusy())
         return;
     if (decreaseDistanceLeft())
     {
         completedOrderId = activeOrderId;
         activeOrderId = NO_ORDER;
+        timeFinishedJob=time;
     }
 }
 

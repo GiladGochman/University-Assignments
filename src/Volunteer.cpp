@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-Volunteer::Volunteer(int id, const string &name) : id(id), name(name), activeOrderId(NO_ORDER), completedOrderId(NO_ORDER) {}
+Volunteer::Volunteer(int id, const string &name) : id(id), name(name), activeOrderId(NO_ORDER), completedOrderId(NO_ORDER), time(0), timeFinishedJob(-1) {}
 
 int Volunteer::getId() const
 {
@@ -28,4 +28,8 @@ int Volunteer::getCompletedOrderId() const
 bool Volunteer::isBusy() const
 {
     return activeOrderId != NO_ORDER;
+}
+
+bool Volunteer::hasJustFinishedJob() const{
+    return time == timeFinishedJob;
 }
