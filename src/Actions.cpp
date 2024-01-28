@@ -471,3 +471,16 @@ string RestoreWareHouse::toString() const
         return "restore " + getErrorMsg() + " ERROR";
     return "restore Completed";
 }
+
+/////////////////////Close///////////////////////
+Close::Close() : BaseAction() {}
+
+void Close::act(WareHouse &wareHouse)
+{
+    wareHouse.close();
+}
+
+std::string Close::toString() const
+{
+    return "";
+}

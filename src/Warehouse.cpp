@@ -325,11 +325,11 @@ void WareHouse::start()
             action->act(*this);
             actionsLog.push_back(action);
         }
-        // if (decodedString[0] == "close")
-        // {
-        //     Close *action = new Close();
-        //     action->act(*this);
-        // }
+        if (decodedString[0] == "close")
+        {
+            Close *action = new Close();
+            action->act(*this);
+        }
         if (decodedString[0] == "volunteerStatus")
         {
             PrintVolunteerStatus *action = new PrintVolunteerStatus(std::stoi(decodedString[1]));
