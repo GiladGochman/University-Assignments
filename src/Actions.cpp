@@ -315,37 +315,7 @@ void SimulateStep::promoteOrders(WareHouse &wareHouse)
 {
     for (auto volunteer : wareHouse.getVolunteerVector())
     {
-
-        if (volunteer->type() == "Collector")
-        {
-            CollectorVolunteer *castedVol = dynamic_cast<CollectorVolunteer *>(volunteer);
-            
-                castedVol->step();
-            
-        }
-
-         if (volunteer->type() == "LimitedCollector")
-        {
-            LimitedCollectorVolunteer *castedVol = dynamic_cast<LimitedCollectorVolunteer *>(volunteer);
-           
-                castedVol->step();
-            
-        }
-
-         if (volunteer->type() == "Driver")
-        {
-            DriverVolunteer *castedVol = dynamic_cast<DriverVolunteer *>(volunteer);
-            
-                castedVol->step();
-            
-        }
-         if (volunteer->type() == "LimitedDriver")
-        {
-            LimitedDriverVolunteer *castedVol = dynamic_cast<LimitedDriverVolunteer *>(volunteer);
-           
-                castedVol->step();
-            
-        }
+       volunteer->step();
     }
 }
 void SimulateStep::freeUpVolunteers(WareHouse &wareHouse)
@@ -370,26 +340,17 @@ void SimulateStep::fireVolunteers(WareHouse &wareHouse)
     vector<Volunteer *>::const_iterator it = wareHouse.getVolunteerVector().begin();
     while (it != wareHouse.getVolunteerVector().end())
     {
-        const std::type_info &type = typeid(*it);
-        if (type.name() == "LimitedDriverVolunteer")
+        auto vol=*it;
+        if (vol->type() == "LimitedDriver"| vol->type() == "LimitedCollector")
         {
-            auto castedVol = dynamic_cast<LimitedDriverVolunteer *>(*it);
-            if (!castedVol->isBusy() && !castedVol->hasOrdersLeft())
+            // auto castedVol = dynamic_cast<LimitedDriverVolunteer *>(*it);
+            if (!vol->isBusy() && !vol->hasOrdersLeft())
             {
                 it = wareHouse.fireVolunteer(it);
-                delete castedVol;
+                delete vol;
             }
         }
 
-        if (type.name() == "LimitedCollectorVolunteer")
-        {
-            auto castedVol = dynamic_cast<LimitedCollectorVolunteer *>(*it);
-            if (!castedVol->isBusy() && !castedVol->hasOrdersLeft())
-            {
-                it = wareHouse.fireVolunteer(it);
-                delete castedVol;
-            }
-        }
         ++it;
     }
 }
