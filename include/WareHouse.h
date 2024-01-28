@@ -43,7 +43,8 @@ public:
     int getCustomerCounter();
     void setVolunteerCounter(int numW);
     void setCustomerCounter(int num);
-    void assignOrder(Order *order);
+    // vector<Order *>::iterator &pendingIt();
+    void assignOrder(vector<Order *>::const_iterator it);
     void moveFromVolunteerOrder(vector<Order *>::const_iterator it);
     vector<Volunteer*>::const_iterator &fireVolunteer(vector<Volunteer *>::const_iterator it);
 

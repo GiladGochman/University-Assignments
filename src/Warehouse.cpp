@@ -348,8 +348,9 @@ void WareHouse::start()
                 action->act(*this);
                 actionsLog.push_back(action);
             }
-            
+                cout << pendingOrders.size() << vol.size() << completedOrders.size() << endl;
     }
+
 }
 
 const vector<BaseAction *> &WareHouse::getActionsLog() const
@@ -616,15 +617,14 @@ bool WareHouse::checkIfOrderExsists(int orderId)
     return orderId >= 0 && orderId < orderCounter; //  orderId < orderCounter -> because the ids start from 0 (when couner=1)
 }
 
-void WareHouse::assignOrder(Order *order)
+ void WareHouse::assignOrder(vector<Order *>::const_iterator it)
 {
-    if(order->getStatus()==OrderStatus::PENDING) order->setStatus(OrderStatus::COLLECTING);
-    else if(order->getStatus()==OrderStatus::COLLECTING) order->setStatus(OrderStatus::DELIVERING);
-    vol.push_back(order);
-    int searchValue = order->getId();
-    auto it = std::find_if(pendingOrders.begin(), pendingOrders.end(), [searchValue](const Order *ptr)
-                           { return ptr != nullptr && ptr->getId() == searchValue; });
-    pendingOrders.erase(it);
+
+    vol.push_back(*it);
+    // int searchValue = order->getId();
+    // auto it = std::find_if(pendingOrders.begin(), pendingOrders.end(), [searchValue](const Order *ptr)
+    //                        { return ptr != nullptr && ptr->getId() == searchValue; });
+    auto newit=pendingOrders.erase(it);
 }
 
 void WareHouse::moveFromVolunteerOrder(vector<Order *>::const_iterator it){
@@ -641,3 +641,4 @@ vector<Volunteer *>::const_iterator &WareHouse::fireVolunteer(vector<Volunteer *
     vector<Volunteer*>::const_iterator itReturn =volunteers.erase(it);
     return itReturn;
 }
+
