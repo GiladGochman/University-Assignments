@@ -478,6 +478,7 @@ Close::Close() : BaseAction() {}
 void Close::act(WareHouse &wareHouse)
 {
     wareHouse.close();
+    complete();
 }
 
 std::string Close::toString() const
