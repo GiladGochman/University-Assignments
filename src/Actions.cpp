@@ -395,7 +395,7 @@ BackupWareHouse::BackupWareHouse():BaseAction(){}
 
 void BackupWareHouse::act(WareHouse &wareHouse){
     if(backup!=nullptr) delete backup;
-    backup = wareHouse;
+    backup = new WareHouse(wareHouse);
     complete();
 }
 
@@ -410,10 +410,10 @@ BackupWareHouse *BackupWareHouse::clone() const{
 
 RestoreWareHouse::RestoreWareHouse():BaseAction(){}
 
-void RestoreWareHouse::act(WareHouse &wareHouse) const{
+void RestoreWareHouse::act(WareHouse &wareHouse) {
     if(backup==nullptr) error("No backup Available");
     else {
-        wareHouse = backup;
+        wareHouse = *backup;
         complete();
     }
 }
