@@ -4,7 +4,7 @@
 
 using namespace std;
 
-WareHouse *backup = nullptr;
+WareHouse extern *backup = nullptr;
 
 int main(int argc, char **argv)
 {

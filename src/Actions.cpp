@@ -225,8 +225,8 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
     }
     cout << "VolunteerID: " + to_string(VolunteerId) << endl;
     auto myVolunteer = wareHouse.getVolunteer(VolunteerId);
-    cout << "IsBusy: " << to_string(myVolunteer.isBusy()) << endl;
-    cout << "OrderID: " << volunteerIdToString(myVolunteer.getActiveOrderId()) << endl; // volunteerIdToString also works for order IDs, might change later
+    cout << "IsBusy: " << to_string(myVolunteer->isBusy()) << endl;
+    cout << "OrderID: " << volunteerIdToString(myVolunteer->getActiveOrderId()) << endl; // volunteerIdToString also works for order IDs, might change later
 
     // under construction...
     complete();
@@ -274,7 +274,7 @@ SimulateStep *SimulateStep::clone() const
 
 string SimulateStep::toString() const
 {
-    return "step " + to_string(numOfSteps);
+    return "step " + to_string(numOfSteps)+ " Completed";
 }
 
 void SimulateStep::assignJobs(WareHouse &wareHouse)
@@ -366,4 +366,23 @@ void SimulateStep::fireVolunteers(WareHouse &wareHouse)
 
         ++it;
     }
+}
+
+/////////////////////////////////PrintActionsLog/////////////////////////
+
+PrintActionsLog::PrintActionsLog():BaseAction(){}
+
+void PrintActionsLog::act(WareHouse &wareHouse) {
+    for(auto action: wareHouse.getActionsLog()){
+        cout << action->toString() << endl;
+    }
+    complete();
+}
+
+PrintActionsLog *PrintActionsLog::clone() const{
+    return new PrintActionsLog(*this);
+}
+
+string PrintActionsLog::toString() const{
+    return "log Completed";
 }
