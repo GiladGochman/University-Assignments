@@ -12,7 +12,7 @@
 #include <vector>
 #include <string>
 #include "../include/Action.h"
-extern WareHouse* backup;
+extern WareHouse *backup;
 
 BaseAction::BaseAction() : status(ActionStatus::ERROR), errorMsg("") {}
 
@@ -225,7 +225,7 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
         return;
     }
     cout << "VolunteerID: " + to_string(VolunteerId) << endl;
-    
+
     auto myVolunteer = wareHouse.getVolunteer(VolunteerId);
     cout << "IsBusy: " << to_string(myVolunteer.isBusy()) << endl;
     cout << "OrderID: " << volunteerIdToString(myVolunteer.getActiveOrderId()) << endl; // volunteerIdToString also works for order IDs, might change later
@@ -302,7 +302,7 @@ SimulateStep *SimulateStep::clone() const
 
 string SimulateStep::toString() const
 {
-    return "step " + to_string(numOfSteps)+ " Completed";
+    return "step " + to_string(numOfSteps) + " Completed";
 }
 
 void SimulateStep::assignJobs(WareHouse &wareHouse)
@@ -403,57 +403,71 @@ void SimulateStep::fireVolunteers(WareHouse &wareHouse)
 
 /////////////////////////////////PrintActionsLog/////////////////////////
 
-PrintActionsLog::PrintActionsLog():BaseAction(){}
+PrintActionsLog::PrintActionsLog() : BaseAction() {}
 
-void PrintActionsLog::act(WareHouse &wareHouse) {
-    for(auto action: wareHouse.getActionsLog()){
+void PrintActionsLog::act(WareHouse &wareHouse)
+{
+    for (auto action : wareHouse.getActionsLog())
+    {
         cout << action->toString() << endl;
     }
     complete();
 }
 
-PrintActionsLog *PrintActionsLog::clone() const{
+PrintActionsLog *PrintActionsLog::clone() const
+{
     return new PrintActionsLog(*this);
 }
 
-string PrintActionsLog::toString() const{
+string PrintActionsLog::toString() const
+{
     return "log Completed";
 }
 
 //////////////BackUp/////////////////////
 
-BackupWareHouse::BackupWareHouse():BaseAction(){}
+BackupWareHouse::BackupWareHouse() : BaseAction() {}
 
-void BackupWareHouse::act(WareHouse &wareHouse){
-    if(backup!=nullptr) delete backup;
+void BackupWareHouse::act(WareHouse &wareHouse)
+{
+    if (backup != nullptr)
+        delete backup;
     backup = wareHouse;
     complete();
 }
 
-string BackupWareHouse::toString() const{
+string BackupWareHouse::toString() const
+{
     return "backup Completed";
 }
 
-BackupWareHouse *BackupWareHouse::clone() const{
+BackupWareHouse *BackupWareHouse::clone() const
+{
     return new BackupWareHouse(*this);
 }
 ///////////////////Restore///////////////////
 
-RestoreWareHouse::RestoreWareHouse():BaseAction(){}
+RestoreWareHouse::RestoreWareHouse() : BaseAction() {}
 
-void RestoreWareHouse::act(WareHouse &wareHouse) const{
-    if(backup==nullptr) error("No backup Available");
-    else {
+void RestoreWareHouse::act(WareHouse &wareHouse) const
+{
+    if (backup == nullptr)
+        error("No backup Available");
+    else
+    {
         wareHouse = backup;
         complete();
     }
 }
 
-RestoreWareHouse *RestoreWareHouse::clone() const{
+RestoreWareHouse *RestoreWareHouse::clone() const
+{
     return new RestoreWareHouse(*this);
 }
 
-string RestoreWareHouse::toString() const{
-    if(getStatus()==ActionStatus::ERROR) return "restore "+getErrorMsg()+" ERROR";
+string RestoreWareHouse::toString() const
+{
+    if (getStatus() == ActionStatus::ERROR)
+        return "restore " + getErrorMsg() + " ERROR";
     return "restore Completed";
 }
