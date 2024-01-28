@@ -31,7 +31,8 @@ void BaseAction::error(string Msg)
     errorMsg = Msg;
 }
 
-string BaseAction::getErrorMsg() const{
+string BaseAction::getErrorMsg() const
+{
     return errorMsg;
 }
 
@@ -43,7 +44,7 @@ void AddOrder::act(WareHouse &wareHouse)
 
     if (wareHouse.checkIfCustomerExsists(customerId))
     {
-        
+
         int isAdded = wareHouse.getCustomer(customerId).addOrder(wareHouse.getOrderCounter()); // Trys to add an order (expected = orderID, if customer can't order will return -1)
         if (isAdded == -1)
         {
@@ -138,7 +139,7 @@ void PrintOrderStatus::act(WareHouse &warehouse)
     }
     Order order = warehouse.getOrder(orderId);
     cout << "OrderId: " + to_string(orderId) << endl;
-    // cout << "OrderStatus: " + to_String(order.getStatus()) << endl;
+    cout << "OrderStatus: " + to_String(order.getStatus()) << endl;
     cout << "CustomerID: " + to_string(order.getCustomerId()) << endl;
     // cout << "Collector: " + volunteerIdToString(order.getCollectorId()) << endl;
     // cout << "Driver: " + volunteerIdToString(order.getDriverId()) << endl;
@@ -155,7 +156,7 @@ string PrintOrderStatus::toString() const
     return "orderStatus " + to_string(orderId);
 }
 
-std::string to_String(OrderStatus status)
+std::string BaseAction::to_String(OrderStatus status)
 {
     switch (status)
     {
@@ -218,12 +219,14 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
 {
 }
 
-PrintVolunteerStatus *PrintVolunteerStatus::clone() const{
+PrintVolunteerStatus *PrintVolunteerStatus::clone() const
+{
     return new PrintVolunteerStatus(*this);
 }
 
-string PrintVolunteerStatus::toString() const{
-    return "volunteerStatus "+to_string(VolunteerId);
+string PrintVolunteerStatus::toString() const
+{
+    return "volunteerStatus " + to_string(VolunteerId);
 }
 
 ////////////////////////SimulateStep/////////////////////////
@@ -245,12 +248,14 @@ void SimulateStep::act(WareHouse &wareHouse)
     }
 }
 
-SimulateStep *SimulateStep::clone() const{
+SimulateStep *SimulateStep::clone() const
+{
     return new SimulateStep(*this);
 }
 
-string SimulateStep::toString() const{
-    return "step "+to_string(numOfSteps);
+string SimulateStep::toString() const
+{
+    return "step " + to_string(numOfSteps);
 }
 
 void SimulateStep::assignJobs(WareHouse &wareHouse)
@@ -347,30 +352,34 @@ void SimulateStep::promoteOrders(WareHouse &wareHouse)
         if (type.name() == "CollectorVolunteer")
         {
             CollectorVolunteer *castedVol = dynamic_cast<CollectorVolunteer *>(volunteer);
-            if(castedVol->isBusy()){
+            if (castedVol->isBusy())
+            {
                 castedVol->step();
             }
         }
 
-         if (type.name() == "LimitedCollectorVolunteer")
+        if (type.name() == "LimitedCollectorVolunteer")
         {
             LimitedCollectorVolunteer *castedVol = dynamic_cast<LimitedCollectorVolunteer *>(volunteer);
-            if(castedVol->isBusy()){
+            if (castedVol->isBusy())
+            {
                 castedVol->step();
             }
         }
 
-         if (type.name() == "DriverVolunteer")
+        if (type.name() == "DriverVolunteer")
         {
             DriverVolunteer *castedVol = dynamic_cast<DriverVolunteer *>(volunteer);
-            if(castedVol->isBusy()){
+            if (castedVol->isBusy())
+            {
                 castedVol->step();
             }
         }
-         if (type.name() == "LimitedDriverVolunteer")
+        if (type.name() == "LimitedDriverVolunteer")
         {
             LimitedDriverVolunteer *castedVol = dynamic_cast<LimitedDriverVolunteer *>(volunteer);
-            if(castedVol->isBusy()){
+            if (castedVol->isBusy())
+            {
                 castedVol->step();
             }
         }
@@ -378,15 +387,15 @@ void SimulateStep::promoteOrders(WareHouse &wareHouse)
 }
 void SimulateStep::freeUpVolunteers(WareHouse &wareHouse)
 {
-    for(auto volu : wareHouse.getVolunteerVector()){
-        if(volu->hasJustFinishedJob()){
-            int finishedId=volu->getCompletedOrderId();
+    for (auto volu : wareHouse.getVolunteerVector())
+    {
+        if (volu->hasJustFinishedJob())
+        {
+            int finishedId = volu->getCompletedOrderId();
 
-            auto it= find_if(wareHouse.getInProgressVector().begin(), wareHouse.getInProgressVector().end(),[finishedId](const Order *order){
-                return order!=nullptr && order->getId()==finishedId;
-            } );
+            auto it = find_if(wareHouse.getInProgressVector().begin(), wareHouse.getInProgressVector().end(), [finishedId](const Order *order)
+                              { return order != nullptr && order->getId() == finishedId; });
             wareHouse.moveFromVolunteerOrder(it);
-            
         }
     }
 }
@@ -395,24 +404,26 @@ void SimulateStep::fireVolunteers(WareHouse &wareHouse)
     vector<Volunteer *>::const_iterator it = wareHouse.getVolunteerVector().begin();
     while (it != wareHouse.getVolunteerVector().end())
     {
-       const std::type_info &type = typeid(*it);
-       if(type.name()=="LimitedDriverVolunteer"){
-            auto castedVol=dynamic_cast<LimitedDriverVolunteer*>(*it);
-            if(!castedVol->isBusy() && !castedVol->hasOrdersLeft()){
-                it=wareHouse.fireVolunteer(it);
+        const std::type_info &type = typeid(*it);
+        if (type.name() == "LimitedDriverVolunteer")
+        {
+            auto castedVol = dynamic_cast<LimitedDriverVolunteer *>(*it);
+            if (!castedVol->isBusy() && !castedVol->hasOrdersLeft())
+            {
+                it = wareHouse.fireVolunteer(it);
                 delete castedVol;
             }
-       } 
+        }
 
-       if(type.name()=="LimitedCollectorVolunteer"){
-            auto castedVol=dynamic_cast<LimitedCollectorVolunteer*>(*it);
-            if(!castedVol->isBusy() && !castedVol->hasOrdersLeft()){
-                it=wareHouse.fireVolunteer(it);
+        if (type.name() == "LimitedCollectorVolunteer")
+        {
+            auto castedVol = dynamic_cast<LimitedCollectorVolunteer *>(*it);
+            if (!castedVol->isBusy() && !castedVol->hasOrdersLeft())
+            {
+                it = wareHouse.fireVolunteer(it);
                 delete castedVol;
             }
-       }
-       ++it; 
+        }
+        ++it;
     }
-    
-
 }

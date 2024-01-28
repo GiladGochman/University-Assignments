@@ -32,6 +32,7 @@ protected:
     void complete();
     void error(string errorMsg);
     string getErrorMsg() const;
+    string to_String(OrderStatus status);
 
 private:
     string errorMsg;
