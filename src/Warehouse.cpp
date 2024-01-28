@@ -307,18 +307,18 @@ void WareHouse::start()
             action->act(*this);
             actionsLog.push_back(action);
         }
-        // if (decodedString[0] == "backup")
-        // {
-        //     BackupWareHouse *action = new BackupWareHouse();
-        //     action->act(*this);
-        //     actionsLog.push_back(action);
-        // }
-        // if (decodedString[0] == "restore")
-        // {
-        //     RestoreWareHouse *action = new RestoreWareHouse();
-        //     action->act(*this);
-        //     actionsLog.push_back(action);
-        // }
+        if (decodedString[0] == "backup")
+        {
+            BackupWareHouse *action = new BackupWareHouse();
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
+        if (decodedString[0] == "restore")
+        {
+            RestoreWareHouse *action = new RestoreWareHouse();
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
         if (decodedString[0] == "log")
         {
             PrintActionsLog *action = new PrintActionsLog();
