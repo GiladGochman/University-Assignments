@@ -227,8 +227,34 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
     auto myVolunteer = wareHouse.getVolunteer(VolunteerId);
     cout << "IsBusy: " << to_string(myVolunteer.isBusy()) << endl;
     cout << "OrderID: " << volunteerIdToString(myVolunteer.getActiveOrderId()) << endl; // volunteerIdToString also works for order IDs, might change later
-
-    // under construction...
+    cout << "TimeLeft: ";
+    if (!myVolunteer.isBusy())
+    {
+        cout << "None" << endl; // If TimeLeft/DistanceLeft == 0 than isBusy is false.
+    }
+    else if (myVolunteer.type() == "LimitedCollector" || myVolunteer.type() == "Collector")
+    {
+        CollectorVolunteer *collectorVolunteerPtr = dynamic_cast<CollectorVolunteer *>(&myVolunteer);
+        cout << to_string(collectorVolunteerPtr->getTimeLeft()) << endl;
+    }
+    else if (myVolunteer.type() == "LimitedDriver" || myVolunteer.type() == "Driver")
+    {
+        DriverVolunteer *driverVolunteerPtr = dynamic_cast<DriverVolunteer *>(&myVolunteer);
+        cout << to_string(driverVolunteerPtr->getDistanceLeft()) << endl;
+    }
+    cout << "OrdersLeft: ";
+    if (myVolunteer.type() == "LimitedDriver")
+    {
+        LimitedDriverVolunteer *driverVolunteerPtr = dynamic_cast<LimitedDriverVolunteer *>(&myVolunteer);
+        cout << to_string(driverVolunteerPtr->getMaxOrders()) << endl;
+    }
+    else if (myVolunteer.type() == "LimitedCollector")
+    {
+        LimitedCollectorVolunteer *collectorVolunteerPtr = dynamic_cast<LimitedCollectorVolunteer *>(&myVolunteer);
+        cout << to_string(collectorVolunteerPtr->getMaxOrders()) << endl;
+    }
+    else
+        cout << "No Limit" << endl;
     complete();
 }
 
@@ -249,19 +275,19 @@ void SimulateStep::act(WareHouse &wareHouse)
 {
     for (int i = 0; i < numOfSteps; i++)
     {
-        
+
         // 1. iterate pending orders vector and assign orders to free volunteers
         assignJobs(wareHouse);
-        
+
         // 2. iterate busy volunteers: decrease distance of drivers and decrease collectors cooldown
         promoteOrders(wareHouse);
-    
+
         // 3. iterate volunteers and check who reached their destinations / finnished collecting and changes the order status and move to pending/completed vector.
         freeUpVolunteers(wareHouse);
-    
+
         // 4. iterate volunteers and remove limited ones from the vector
         fireVolunteers(wareHouse);
-        
+
         // 5. enjoy!
     }
     complete();
@@ -279,21 +305,26 @@ string SimulateStep::toString() const
 
 void SimulateStep::assignJobs(WareHouse &wareHouse)
 {
-    vector<Order *>::const_iterator it=wareHouse.getPendingOrdersVector().begin();
-    while (it != wareHouse.getPendingOrdersVector().end()){
-        Order *order=*it;
-        bool found= false;
-        if(order->getStatus()==OrderStatus::PENDING){
-            
-            auto volunteerIt=wareHouse.getVolunteerVector().begin();
-            while(!found && volunteerIt !=wareHouse.getVolunteerVector().end()){
-                auto volunteer=*volunteerIt;
+    vector<Order *>::const_iterator it = wareHouse.getPendingOrdersVector().begin();
+    while (it != wareHouse.getPendingOrdersVector().end())
+    {
+        Order *order = *it;
+        bool found = false;
+        if (order->getStatus() == OrderStatus::PENDING)
+        {
 
-                if(volunteer->type()=="Collector" || volunteer->type()=="LimitedCollector"){
-                    if(volunteer->canTakeOrder(*order)){
-                        
+            auto volunteerIt = wareHouse.getVolunteerVector().begin();
+            while (!found && volunteerIt != wareHouse.getVolunteerVector().end())
+            {
+                auto volunteer = *volunteerIt;
+
+                if (volunteer->type() == "Collector" || volunteer->type() == "LimitedCollector")
+                {
+                    if (volunteer->canTakeOrder(*order))
+                    {
+
                         volunteer->acceptOrder(*order);
-                        found=true;
+                        found = true;
                         order->setStatus(OrderStatus::COLLECTING);
                         wareHouse.assignOrder(it);
                     }
@@ -301,15 +332,19 @@ void SimulateStep::assignJobs(WareHouse &wareHouse)
                 ++volunteerIt;
             }
         }
-        else if(order->getStatus()==OrderStatus::COLLECTING){
-            auto volunteerIt=wareHouse.getVolunteerVector().begin();
-           
-            while(!found && volunteerIt !=wareHouse.getVolunteerVector().end()){
-                auto volunteer=*volunteerIt;
-                if(volunteer->type()=="Driver" || volunteer->type()=="LimitedDriver`"){
-                    if(volunteer->canTakeOrder(*order)){
+        else if (order->getStatus() == OrderStatus::COLLECTING)
+        {
+            auto volunteerIt = wareHouse.getVolunteerVector().begin();
+
+            while (!found && volunteerIt != wareHouse.getVolunteerVector().end())
+            {
+                auto volunteer = *volunteerIt;
+                if (volunteer->type() == "Driver" || volunteer->type() == "LimitedDriver`")
+                {
+                    if (volunteer->canTakeOrder(*order))
+                    {
                         volunteer->acceptOrder(*order);
-                        found=true;
+                        found = true;
                         order->setStatus(OrderStatus::DELIVERING);
                         wareHouse.assignOrder(it);
                     }
@@ -317,44 +352,40 @@ void SimulateStep::assignJobs(WareHouse &wareHouse)
                 ++volunteerIt;
             }
         }
-        if(!found) ++it;
-        
-        
+        if (!found)
+            ++it;
     }
-    
-  
 }
 void SimulateStep::promoteOrders(WareHouse &wareHouse)
 {
     for (auto volunteer : wareHouse.getVolunteerVector())
     {
-       volunteer->step();
+        volunteer->step();
     }
 }
 void SimulateStep::freeUpVolunteers(WareHouse &wareHouse)
 {
-    for(auto volu : wareHouse.getVolunteerVector()){
-        if(volu->hasJustFinishedJob()){
-            
+    for (auto volu : wareHouse.getVolunteerVector())
+    {
+        if (volu->hasJustFinishedJob())
+        {
 
-            int finishedId=volu->getCompletedOrderId();
+            int finishedId = volu->getCompletedOrderId();
 
-            auto it= find_if(wareHouse.getInProgressVector().begin(), wareHouse.getInProgressVector().end(),[finishedId](const Order *order){
-                return order!=nullptr && order->getId()==finishedId;
-            } );
-            
+            auto it = find_if(wareHouse.getInProgressVector().begin(), wareHouse.getInProgressVector().end(), [finishedId](const Order *order)
+                              { return order != nullptr && order->getId() == finishedId; });
+
             wareHouse.moveFromVolunteerOrder(it);
         }
     }
-    
 }
 void SimulateStep::fireVolunteers(WareHouse &wareHouse)
 {
     vector<Volunteer *>::const_iterator it = wareHouse.getVolunteerVector().begin();
     while (it != wareHouse.getVolunteerVector().end())
     {
-        auto vol=*it;
-        if (vol->type() == "LimitedDriver"| vol->type() == "LimitedCollector")
+        auto vol = *it;
+        if (vol->type() == "LimitedDriver" | vol->type() == "LimitedCollector")
         {
             // auto castedVol = dynamic_cast<LimitedDriverVolunteer *>(*it);
             if (!vol->isBusy() && !vol->hasOrdersLeft())
