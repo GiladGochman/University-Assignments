@@ -49,5 +49,8 @@ string LimitedCollectorVolunteer::toString() const
     return res;
 }
 
+string LimitedCollectorVolunteer::type() const{
+    return "LimitedCollector";
+}
 
 // NEED TO IMPLEMENT TOSTRING()

@@ -80,4 +80,7 @@ string DriverVolunteer::toString() const
     return res;
 }
 
+string DriverVolunteer::type() const{
+    return "Driver";
+}
 // NEED TO IMPLEMENT TOSTRING()

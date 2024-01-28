@@ -47,3 +47,6 @@ string LimitedDriverVolunteer::toString() const
     return res;
 }
 
+string LimitedDriverVolunteer::type() const{
+    return "LimitedDriver";
+}

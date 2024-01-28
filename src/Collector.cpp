@@ -57,9 +57,10 @@ void CollectorVolunteer::acceptOrder(const Order &order)
 
 void CollectorVolunteer::step()
 {
+    time++;
     if (isBusy())
     {
-        time++;
+        
         decreaseCoolDown();
         if (getTimeLeft() == 0)
         {
@@ -78,6 +79,9 @@ string CollectorVolunteer::toString() const
     return res;
 }
 
+string CollectorVolunteer::type() const{
+    return "Collector";
+}
 
 
 // NEED TO IMPLEMENT TOSTRING()
