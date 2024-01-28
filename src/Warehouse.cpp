@@ -319,12 +319,12 @@ void WareHouse::start()
         //     action->act(*this);
         //     actionsLog.push_back(action);
         // }
-        // if (decodedString[0] == "log")
-        // {
-        //     PrintActionsLog *action = new PrintActionsLog();
-        //     action->act(*this);
-        //     actionsLog.push_back(action);
-        // }
+        if (decodedString[0] == "log")
+        {
+            PrintActionsLog *action = new PrintActionsLog();
+            action->act(*this);
+            actionsLog.push_back(action);
+        }
         // if (decodedString[0] == "close")
         // {
         //     Close *action = new Close();
@@ -431,6 +431,15 @@ void WareHouse::close()
 Customer &WareHouse::getCustomer(int customerId) const
 {
     return *customers[customerId];
+}
+
+Volunteer &WareHouse::getVolunteer(int volunteerId) const
+{
+    for (auto volunteer : volunteers)
+    {
+        if (volunteer->getId() == volunteerId)
+            return *volunteer;
+    }
 }
 
 Order &WareHouse::getOrder(int orderId) const
