@@ -138,6 +138,7 @@ public:
     Close();
     void act(WareHouse &wareHouse) override;
     string toString() const override;
+    Close *clone() const override;
 
 private:
 };

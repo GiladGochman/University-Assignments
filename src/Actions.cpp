@@ -428,8 +428,10 @@ string PrintActionsLog::toString() const
 
 BackupWareHouse::BackupWareHouse() : BaseAction() {}
 
-void BackupWareHouse::act(WareHouse &wareHouse){
-    if(backup!=nullptr) delete backup;
+void BackupWareHouse::act(WareHouse &wareHouse)
+{
+    if (backup != nullptr)
+        delete backup;
     backup = new WareHouse(wareHouse);
     complete();
 }
@@ -447,9 +449,12 @@ BackupWareHouse *BackupWareHouse::clone() const
 
 RestoreWareHouse::RestoreWareHouse() : BaseAction() {}
 
-void RestoreWareHouse::act(WareHouse &wareHouse) {
-    if(backup==nullptr) error("No backup Available");
-    else {
+void RestoreWareHouse::act(WareHouse &wareHouse)
+{
+    if (backup == nullptr)
+        error("No backup Available");
+    else
+    {
         wareHouse = *backup;
         complete();
     }
@@ -478,4 +483,8 @@ void Close::act(WareHouse &wareHouse)
 std::string Close::toString() const
 {
     return "";
+}
+Close *Close::clone() const
+{
+    return new Close(*this);
 }
