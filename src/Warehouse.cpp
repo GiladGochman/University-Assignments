@@ -276,9 +276,10 @@ void WareHouse::start()
     {
         // breaking down the input
 
-            string str;
-            cin >> str;
-            std::istringstream iss(str);
+            string line;
+            getline(cin,line);
+            std::istringstream iss(line);
+           
             vector<string> decodedString;
             string word;
             while (getline(iss, word, ' '))
@@ -294,14 +295,10 @@ void WareHouse::start()
             }
             if (decodedString[0] == "order")
             {
-                cout<<"hey"<<endl;
-                int id = stoi(decodedString[1]);
-                // AddOrder *action = new AddOrder(id);
-                // cout<<"2"<<endl;
-                // action->act(*this);
-                // cout<<"3"<<endl;
-                // actionsLog.push_back(action);
-                // cout<<"4"<<endl;
+                
+                AddOrder *action = new AddOrder(stoi(decodedString[1]));
+                action->act(*this);
+                actionsLog.push_back(action);
             }
 
             if (decodedString[0] == "step")

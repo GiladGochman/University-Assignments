@@ -40,10 +40,10 @@ AddOrder::AddOrder(int id) : BaseAction(), customerId(id) {}
 
 void AddOrder::act(WareHouse &wareHouse)
 {
-    cout<<"hel"<<endl;
+
     if (wareHouse.checkIfCustomerExsists(customerId))
     {
-        cout<<"hey"<<endl;
+        
         int isAdded = wareHouse.getCustomer(customerId).addOrder(wareHouse.getOrderCounter()); // Trys to add an order (expected = orderID, if customer can't order will return -1)
         if (isAdded == -1)
         {
