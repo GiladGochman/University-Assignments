@@ -217,6 +217,19 @@ PrintVolunteerStatus::PrintVolunteerStatus(int id) : BaseAction(), VolunteerId(i
 
 void PrintVolunteerStatus::act(WareHouse &wareHouse)
 {
+    if (!wareHouse.checkIfCustomerExsists(VolunteerId))
+    {
+        error("Volunteer doesn't exsist.");
+        cout << "ERROR: " + getErrorMsg() << endl;
+        return;
+    }
+    cout << "VolunteerID: " + to_string(VolunteerId) << endl;
+    auto myVolunteer = wareHouse.getVolunteer(VolunteerId);
+    cout << "IsBusy: " << to_string(myVolunteer.isBusy()) << endl;
+    cout << "OrderID: " << volunteerIdToString(myVolunteer.getActiveOrderId()) << endl; // volunteerIdToString also works for order IDs, might change later
+
+    // under construction...
+    complete();
 }
 
 PrintVolunteerStatus *PrintVolunteerStatus::clone() const
