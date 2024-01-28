@@ -31,7 +31,8 @@ void BaseAction::error(string Msg)
     errorMsg = Msg;
 }
 
-string BaseAction::getErrorMsg() const{
+string BaseAction::getErrorMsg() const
+{
     return errorMsg;
 }
 
@@ -43,7 +44,7 @@ void AddOrder::act(WareHouse &wareHouse)
 
     if (wareHouse.checkIfCustomerExsists(customerId))
     {
-        
+
         int isAdded = wareHouse.getCustomer(customerId).addOrder(wareHouse.getOrderCounter()); // Trys to add an order (expected = orderID, if customer can't order will return -1)
         if (isAdded == -1)
         {
@@ -138,10 +139,10 @@ void PrintOrderStatus::act(WareHouse &warehouse)
     }
     Order order = warehouse.getOrder(orderId);
     cout << "OrderId: " + to_string(orderId) << endl;
-    // cout << "OrderStatus: " + to_String(order.getStatus()) << endl;
+    cout << "OrderStatus: " + to_String(order.getStatus()) << endl;
     cout << "CustomerID: " + to_string(order.getCustomerId()) << endl;
-    // cout << "Collector: " + volunteerIdToString(order.getCollectorId()) << endl;
-    // cout << "Driver: " + volunteerIdToString(order.getDriverId()) << endl;
+    cout << "Collector: " + volunteerIdToString(order.getCollectorId()) << endl;
+    cout << "Driver: " + volunteerIdToString(order.getDriverId()) << endl;
     complete();
 }
 
@@ -155,7 +156,7 @@ string PrintOrderStatus::toString() const
     return "orderStatus " + to_string(orderId);
 }
 
-std::string to_String(OrderStatus status)
+std::string BaseAction::to_String(OrderStatus status)
 {
     switch (status)
     {
@@ -171,12 +172,12 @@ std::string to_String(OrderStatus status)
         return "Unknown"; // Handle unknown status, if necessary
     }
 }
-// std::string volunteerIdToString(int volId)
-// {
-//     if (volId == -1)
-//         return "None";
-//     return to_string(volId);
-// }
+std::string BaseAction::volunteerIdToString(int volId)
+{
+    if (volId == -1)
+        return "None";
+    return to_string(volId);
+}
 ////////////////////////////// printCustomerStatus////////////////////////////
 
 PrintCustomerStatus::PrintCustomerStatus(int customerId) : BaseAction(), customerId(customerId) {}
@@ -192,7 +193,7 @@ void PrintCustomerStatus::act(WareHouse &wareHouse)
     cout << "CustomerID: " + to_string(customerId) << endl;
     for (int orderId : wareHouse.getCustomer(customerId).getOrdersId())
     {
-        // cout << "OrderStatus: " << to_String(wareHouse.getOrder(orderId).getStatus()) << endl;
+        cout << "OrderStatus: " << to_String(wareHouse.getOrder(orderId).getStatus()) << endl;
     }
     cout << "numOrdersLeft: " + to_string(wareHouse.getCustomer(customerId).getNumOrders()) << endl;
     complete();
@@ -218,12 +219,14 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
 {
 }
 
-PrintVolunteerStatus *PrintVolunteerStatus::clone() const{
+PrintVolunteerStatus *PrintVolunteerStatus::clone() const
+{
     return new PrintVolunteerStatus(*this);
 }
 
-string PrintVolunteerStatus::toString() const{
-    return "volunteerStatus "+to_string(VolunteerId);
+string PrintVolunteerStatus::toString() const
+{
+    return "volunteerStatus " + to_string(VolunteerId);
 }
 
 ////////////////////////SimulateStep/////////////////////////
@@ -251,12 +254,14 @@ void SimulateStep::act(WareHouse &wareHouse)
     complete();
 }
 
-SimulateStep *SimulateStep::clone() const{
+SimulateStep *SimulateStep::clone() const
+{
     return new SimulateStep(*this);
 }
 
-string SimulateStep::toString() const{
-    return "step "+to_string(numOfSteps);
+string SimulateStep::toString() const
+{
+    return "step " + to_string(numOfSteps);
 }
 
 void SimulateStep::assignJobs(WareHouse &wareHouse)
@@ -356,7 +361,6 @@ void SimulateStep::freeUpVolunteers(WareHouse &wareHouse)
             } );
             
             wareHouse.moveFromVolunteerOrder(it);
-            
         }
     }
     
@@ -366,24 +370,26 @@ void SimulateStep::fireVolunteers(WareHouse &wareHouse)
     vector<Volunteer *>::const_iterator it = wareHouse.getVolunteerVector().begin();
     while (it != wareHouse.getVolunteerVector().end())
     {
-       const std::type_info &type = typeid(*it);
-       if(type.name()=="LimitedDriverVolunteer"){
-            auto castedVol=dynamic_cast<LimitedDriverVolunteer*>(*it);
-            if(!castedVol->isBusy() && !castedVol->hasOrdersLeft()){
-                it=wareHouse.fireVolunteer(it);
+        const std::type_info &type = typeid(*it);
+        if (type.name() == "LimitedDriverVolunteer")
+        {
+            auto castedVol = dynamic_cast<LimitedDriverVolunteer *>(*it);
+            if (!castedVol->isBusy() && !castedVol->hasOrdersLeft())
+            {
+                it = wareHouse.fireVolunteer(it);
                 delete castedVol;
             }
-       } 
+        }
 
-       if(type.name()=="LimitedCollectorVolunteer"){
-            auto castedVol=dynamic_cast<LimitedCollectorVolunteer*>(*it);
-            if(!castedVol->isBusy() && !castedVol->hasOrdersLeft()){
-                it=wareHouse.fireVolunteer(it);
+        if (type.name() == "LimitedCollectorVolunteer")
+        {
+            auto castedVol = dynamic_cast<LimitedCollectorVolunteer *>(*it);
+            if (!castedVol->isBusy() && !castedVol->hasOrdersLeft())
+            {
+                it = wareHouse.fireVolunteer(it);
                 delete castedVol;
             }
-       }
-       ++it; 
+        }
+        ++it;
     }
-    
-
 }
