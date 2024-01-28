@@ -220,39 +220,70 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
 {
     if (!wareHouse.checkIfCustomerExsists(VolunteerId))
     {
-        error("Volunteer doesn't exsist.");
+        error("Volunteer doesn't exist.");
         cout << "ERROR: " + getErrorMsg() << endl;
         return;
     }
+
     cout << "VolunteerID: " + to_string(VolunteerId) << endl;
 
-    auto myVolunteer = wareHouse.getVolunteer(VolunteerId);
-    cout << "IsBusy: " << to_string(myVolunteer.isBusy()) << endl;
-    cout << "OrderID: " << volunteerIdToString(myVolunteer.getActiveOrderId()) << endl; // volunteerIdToString also works for order IDs, might change later
+    auto &volunteer = wareHouse.getVolunteer(VolunteerId);
+
+    // Declare myVolunteer outside the if-else blocks
+    Volunteer *myVolunteer = nullptr;
+
+    if (volunteer.type() == "Driver")
+    {
+        myVolunteer = dynamic_cast<DriverVolunteer *>(&volunteer);
+    }
+    else if (volunteer.type() == "Collector")
+    {
+        myVolunteer = dynamic_cast<CollectorVolunteer *>(&volunteer);
+    }
+    else if (volunteer.type() == "LimitedDriver")
+    {
+        myVolunteer = dynamic_cast<LimitedDriverVolunteer *>(&volunteer);
+    }
+    else // LimitedCollector
+    {
+        myVolunteer = dynamic_cast<LimitedCollectorVolunteer *>(&volunteer);
+    }
+
+    if (!myVolunteer)
+    {
+        // Handle the case where dynamic_cast failed
+        error("Failed to cast to the correct volunteer type.");
+        cout << "ERROR: " + getErrorMsg() << endl;
+        return;
+    }
+
+    // Continue with the rest of your code using myVolunteer
+    cout << "IsBusy: " << to_string(myVolunteer->isBusy()) << endl;
+    cout << "OrderID: " << volunteerIdToString(myVolunteer->getActiveOrderId()) << endl; // volunteerIdToString also works for order IDs, might change later
     cout << "TimeLeft: ";
-    if (!myVolunteer.isBusy())
+    if (!myVolunteer->isBusy())
     {
         cout << "None" << endl; // If TimeLeft/DistanceLeft == 0 than isBusy is false.
     }
-    else if (myVolunteer.type() == "LimitedCollector" || myVolunteer.type() == "Collector")
+    else if (myVolunteer->type() == "LimitedCollector" || myVolunteer->type() == "Collector")
     {
-        CollectorVolunteer *collectorVolunteerPtr = dynamic_cast<CollectorVolunteer *>(&myVolunteer);
+        CollectorVolunteer *collectorVolunteerPtr = dynamic_cast<CollectorVolunteer *>(myVolunteer);
         cout << to_string(collectorVolunteerPtr->getTimeLeft()) << endl;
     }
-    else if (myVolunteer.type() == "LimitedDriver" || myVolunteer.type() == "Driver")
+    else if (myVolunteer->type() == "LimitedDriver" || myVolunteer->type() == "Driver")
     {
-        DriverVolunteer *driverVolunteerPtr = dynamic_cast<DriverVolunteer *>(&myVolunteer);
+        DriverVolunteer *driverVolunteerPtr = dynamic_cast<DriverVolunteer *>(myVolunteer);
         cout << to_string(driverVolunteerPtr->getDistanceLeft()) << endl;
     }
     cout << "OrdersLeft: ";
-    if (myVolunteer.type() == "LimitedDriver")
+    if (myVolunteer->type() == "LimitedDriver")
     {
-        LimitedDriverVolunteer *driverVolunteerPtr = dynamic_cast<LimitedDriverVolunteer *>(&myVolunteer);
+        LimitedDriverVolunteer *driverVolunteerPtr = dynamic_cast<LimitedDriverVolunteer *>(myVolunteer);
         cout << to_string(driverVolunteerPtr->getMaxOrders()) << endl;
     }
-    else if (myVolunteer.type() == "LimitedCollector")
+    else if (myVolunteer->type() == "LimitedCollector")
     {
-        LimitedCollectorVolunteer *collectorVolunteerPtr = dynamic_cast<LimitedCollectorVolunteer *>(&myVolunteer);
+        LimitedCollectorVolunteer *collectorVolunteerPtr = dynamic_cast<LimitedCollectorVolunteer *>(myVolunteer);
         cout << to_string(collectorVolunteerPtr->getMaxOrders()) << endl;
     }
     else
