@@ -33,9 +33,10 @@ protected:
     void error(string errorMsg);
     string getErrorMsg() const;
     string to_String(OrderStatus status);
+    string volunteerIdToString(int volunteerId);
 
 private:
-    string errorMsg;
+    std::string errorMsg;
     ActionStatus status;
 };
 

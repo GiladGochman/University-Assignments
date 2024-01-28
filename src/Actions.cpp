@@ -141,8 +141,8 @@ void PrintOrderStatus::act(WareHouse &warehouse)
     cout << "OrderId: " + to_string(orderId) << endl;
     cout << "OrderStatus: " + to_String(order.getStatus()) << endl;
     cout << "CustomerID: " + to_string(order.getCustomerId()) << endl;
-    // cout << "Collector: " + volunteerIdToString(order.getCollectorId()) << endl;
-    // cout << "Driver: " + volunteerIdToString(order.getDriverId()) << endl;
+    cout << "Collector: " + volunteerIdToString(order.getCollectorId()) << endl;
+    cout << "Driver: " + volunteerIdToString(order.getDriverId()) << endl;
     complete();
 }
 
@@ -172,12 +172,12 @@ std::string BaseAction::to_String(OrderStatus status)
         return "Unknown"; // Handle unknown status, if necessary
     }
 }
-// std::string volunteerIdToString(int volId)
-// {
-//     if (volId == -1)
-//         return "None";
-//     return to_string(volId);
-// }
+std::string BaseAction::volunteerIdToString(int volId)
+{
+    if (volId == -1)
+        return "None";
+    return to_string(volId);
+}
 ////////////////////////////// printCustomerStatus////////////////////////////
 
 PrintCustomerStatus::PrintCustomerStatus(int customerId) : BaseAction(), customerId(customerId) {}
@@ -193,7 +193,7 @@ void PrintCustomerStatus::act(WareHouse &wareHouse)
     cout << "CustomerID: " + to_string(customerId) << endl;
     for (int orderId : wareHouse.getCustomer(customerId).getOrdersId())
     {
-        // cout << "OrderStatus: " << to_String(wareHouse.getOrder(orderId).getStatus()) << endl;
+        cout << "OrderStatus: " << to_String(wareHouse.getOrder(orderId).getStatus()) << endl;
     }
     cout << "numOrdersLeft: " + to_string(wareHouse.getCustomer(customerId).getNumOrders()) << endl;
     complete();
