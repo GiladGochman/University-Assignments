@@ -97,7 +97,7 @@ WareHouse::~WareHouse()
     {
         delete action;
     }
-
+    
     actionsLog.clear();
 }
 
@@ -195,29 +195,7 @@ WareHouse::WareHouse(WareHouse &&other) : isOpen(other.isOpen), customerCounter(
     completedOrders = std::move(other.completedOrders);
     actionsLog = std::move(other.actionsLog);
 
-    // for(auto customer:other.customers){
-    //     customer = nullptr;
-    // }
-
-    // for(auto ord: other.vol){
-    //     ord = nullptr;
-    // }
-
-    // for(auto vol : other.volunteers){
-    //     vol = nullptr;
-    // }
-
-    // for(auto ord : other.pendingOrders){
-    //     ord = nullptr;
-    // }
-
-    // for(auto ord : other.completedOrders){
-    //     ord = nullptr;
-    // }
-
-    // for(auto action : other.actionsLog){
-    //     action = nullptr;
-    // }
+   
 }
 
 WareHouse &WareHouse::operator=(WareHouse &&other)
@@ -234,36 +212,7 @@ WareHouse &WareHouse::operator=(WareHouse &&other)
         pendingOrders = std::move(other.pendingOrders);
         completedOrders = std::move(other.completedOrders);
         actionsLog = std::move(other.actionsLog);
-        // customers=other.customers;
-        // volunteers=other.volunteers;
-        // pendingOrders=other.pendingOrders;
-        // vol=other.vol;
-        // completedOrders=other.completedOrders;
-        // actionsLog=other.actionsLog;
-
-        // for(auto customer:other.customers){
-        //     customer = nullptr;
-        // }
-
-        // for(auto ord: other.vol){
-        //     ord = nullptr;
-        // }
-
-        // for(auto vol : other.volunteers){
-        //     vol = nullptr;
-        // }
-
-        // for(auto ord : other.pendingOrders){
-        //     ord = nullptr;
-        // }
-
-        // for(auto ord : other.completedOrders){
-        //     ord = nullptr;
-        // }
-
-        // for(auto action : other.actionsLog){
-        //     action=nullptr;
-        // }
+      
     }
     return *this;
 }
@@ -328,7 +277,9 @@ void WareHouse::start()
         if (decodedString[0] == "close")
         {
             Close *action = new Close();
+            actionsLog.push_back(action);
             action->act(*this);
+            
         }
         if (decodedString[0] == "volunteerStatus")
         {
@@ -504,7 +455,7 @@ void WareHouse::parseFile(const string &filePath)
             std::string trimmedLine = trimLeadingWhitespace(partBeforeHash);
             if (!trimmedLine.empty())
             {
-                std::cout << trimmedLine << std::endl;
+                // std::cout << trimmedLine << std::endl;
 
                 // Now parse each line and insert into database
                 // Vector to store parsed words
