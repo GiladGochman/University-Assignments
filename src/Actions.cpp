@@ -85,11 +85,17 @@ AddCustomer::AddCustomer(string customerName, string customerType, int distance,
 }
 void AddCustomer::act(WareHouse &wareHouse)
 {
-    int id = wareHouse.getCustomersVector().size();
-    if (customerType == CustomerType::Soldier)
+    if (customerType == CustomerType::Soldier){
         Customer *newCustomer = new SoldierCustomer(wareHouse.getCustomerCounter(), customerName, distance, maxOrders);
-    if (customerType == CustomerType::Civilian)
+        wareHouse.addCustomer(newCustomer);
+    }
+        
+
+    if (customerType == CustomerType::Civilian){
         Customer *newCustomer = new CivilianCustomer(wareHouse.getCustomerCounter(), customerName, distance, maxOrders);
+        wareHouse.addCustomer(newCustomer);
+    }
+        
     complete();
 }
 int AddCustomer::convertCustomerType(string customerType)
