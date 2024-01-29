@@ -218,7 +218,7 @@ PrintVolunteerStatus::PrintVolunteerStatus(int id) : BaseAction(), VolunteerId(i
 
 void PrintVolunteerStatus::act(WareHouse &wareHouse)
 {
-    if (!wareHouse.checkIfCustomerExsists(VolunteerId))
+    if (!wareHouse.checkIfVolunteerExsists(VolunteerId))
     {
         error("Volunteer doesn't exist.");
         cout << "ERROR: " + getErrorMsg() << endl;
@@ -359,6 +359,7 @@ void SimulateStep::assignJobs(WareHouse &wareHouse)
                         volunteer->acceptOrder(*order);
                         found = true;
                         order->setStatus(OrderStatus::COLLECTING);
+                        order->setCollectorId(volunteer->getId());
                         wareHouse.assignOrder(it);
                     }
                 }
@@ -379,6 +380,7 @@ void SimulateStep::assignJobs(WareHouse &wareHouse)
                         volunteer->acceptOrder(*order);
                         found = true;
                         order->setStatus(OrderStatus::DELIVERING);
+                        order->setDriverId(volunteer->getId());
                         wareHouse.assignOrder(it);
                     }
                 }
@@ -423,7 +425,7 @@ void SimulateStep::fireVolunteers(WareHouse &wareHouse)
             // auto castedVol = dynamic_cast<LimitedDriverVolunteer *>(*it);
             if (!vol->isBusy() && !vol->hasOrdersLeft())
             {
-                it = wareHouse.fireVolunteer(it);
+                wareHouse.fireVolunteer(it);
                 delete vol;
             }
         }
@@ -482,8 +484,12 @@ RestoreWareHouse::RestoreWareHouse() : BaseAction() {}
 
 void RestoreWareHouse::act(WareHouse &wareHouse)
 {
-    if (backup == nullptr)
+    cout<<1<<endl;
+    if (backup == nullptr){
+        cout<<2<<endl;
         error("No backup Available");
+        cout<<"ERROR: "<<getErrorMsg()<<endl;
+    }
     else
     {
         wareHouse = *backup;

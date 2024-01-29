@@ -39,6 +39,7 @@ public:
     void open();
     bool checkIfCustomerExsists(int id);
     bool checkIfOrderExsists(int id);
+    bool checkIfVolunteerExsists(int id);
     int getOrderCounter();
     int getCustomerCounter();
     void setVolunteerCounter(int numW);
@@ -46,7 +47,7 @@ public:
     // vector<Order *>::iterator &pendingIt();
     void assignOrder(vector<Order *>::const_iterator it);
     void moveFromVolunteerOrder(vector<Order *>::const_iterator it);
-    vector<Volunteer*>::const_iterator &fireVolunteer(vector<Volunteer *>::const_iterator it);
+    void fireVolunteer(vector<Volunteer *>::const_iterator it);
 
 
 private:

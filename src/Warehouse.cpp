@@ -648,8 +648,14 @@ void WareHouse::moveFromVolunteerOrder(vector<Order *>::const_iterator it)
     }
 }
 
-vector<Volunteer *>::const_iterator &WareHouse::fireVolunteer(vector<Volunteer *>::const_iterator it)
+void WareHouse::fireVolunteer(vector<Volunteer *>::const_iterator it)
 {
-    vector<Volunteer *>::const_iterator itReturn = volunteers.erase(it);
-    return itReturn;
+    volunteers.erase(it);
+}
+
+bool WareHouse::checkIfVolunteerExsists(int id){
+    for(auto vol : volunteers){
+        if(vol->getId()==id) return true;
+    }
+    return false;
 }
