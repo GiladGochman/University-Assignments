@@ -160,7 +160,9 @@ PrintOrderStatus *PrintOrderStatus::clone() const
 
 string PrintOrderStatus::toString() const
 {
-    return "orderStatus " + to_string(orderId);
+    if(getStatus()==ActionStatus::COMPLETED)  return "orderStatus " + to_string(orderId)+" COMPLETED";
+   
+     return "orderStatus " + to_string(orderId)+ " ERROR";
 }
 
 std::string BaseAction::to_String(OrderStatus status)
@@ -217,7 +219,7 @@ string PrintCustomerStatus::toString() const
     {
         return "customerStatus " + to_string(customerId) + " ERROR";
     }
-    return "customerStatus " + to_string(customerId) + " COMPLETE";
+    return "customerStatus " + to_string(customerId) + " COMPLETED";
 }
 ////////////////////////////////////////PrintVolunteerStatus/////////////////////////////////
 PrintVolunteerStatus::PrintVolunteerStatus(int id) : BaseAction(), VolunteerId(id) {}
@@ -303,8 +305,11 @@ PrintVolunteerStatus *PrintVolunteerStatus::clone() const
 }
 
 string PrintVolunteerStatus::toString() const
-{
-    return "volunteerStatus " + to_string(VolunteerId);
+{   
+    if(getStatus()==ActionStatus::COMPLETED) return "volunteerStatus " + to_string(VolunteerId)+" COMPLETED";
+   
+
+     return "volunteerStatus " + to_string(VolunteerId)+" ERROR";
 }
 
 ////////////////////////SimulateStep/////////////////////////
@@ -339,7 +344,7 @@ SimulateStep *SimulateStep::clone() const
 
 string SimulateStep::toString() const
 {
-    return "step " + to_string(numOfSteps) + " Completed";
+    return "step " + to_string(numOfSteps) + " COMPLETED";
 }
 
 void SimulateStep::assignJobs(WareHouse &wareHouse)
@@ -460,7 +465,7 @@ PrintActionsLog *PrintActionsLog::clone() const
 
 string PrintActionsLog::toString() const
 {
-    return "log Completed";
+    return "log COMPLETED";
 }
 
 //////////////BackUp/////////////////////
@@ -477,7 +482,7 @@ void BackupWareHouse::act(WareHouse &wareHouse)
 
 string BackupWareHouse::toString() const
 {
-    return "backup Completed";
+    return "backup COMPLETED";
 }
 
 BackupWareHouse *BackupWareHouse::clone() const
@@ -490,9 +495,9 @@ RestoreWareHouse::RestoreWareHouse() : BaseAction() {}
 
 void RestoreWareHouse::act(WareHouse &wareHouse)
 {
-    cout<<1<<endl;
+    
     if (backup == nullptr){
-        cout<<2<<endl;
+    
         error("No backup Available");
         cout<<"ERROR: "<<getErrorMsg()<<endl;
     }
@@ -512,7 +517,7 @@ string RestoreWareHouse::toString() const
 {
     if (getStatus() == ActionStatus::ERROR)
         return "restore " + getErrorMsg() + " ERROR";
-    return "restore Completed";
+    return "restore COMPLETED";
 }
 
 /////////////////////Close///////////////////////
