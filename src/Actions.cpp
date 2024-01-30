@@ -75,9 +75,9 @@ string AddOrder::toString() const
 {
     if (ActionStatus::COMPLETED == getStatus())
     {
-        return "order " + to_string(customerId) + "COMPLETED";
+        return "order " + to_string(customerId) + " COMPLETED";
     }
-    return "order " + to_string(customerId) + "ERROR";
+    return "order " + to_string(customerId) + " ERROR";
 }
 //////////////////////////////////////////AddCustomer///////////////////////////////////
 AddCustomer::AddCustomer(const string &customerName, const string &customerType, int distance, int maxOrders) : BaseAction(), customerName(customerName), customerType(CustomerType(convertCustomerType(customerType))), distance(distance), maxOrders(maxOrders)
