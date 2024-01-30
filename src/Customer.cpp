@@ -37,7 +37,7 @@ bool Customer::canMakeOrder() const
 {
     return getNumOrders() < maxOrders;
 }
-const vector<int> &Customer::getOrdersId() const
+const vector<int> &Customer::getOrdersIds() const
 {
     return ordersId;
 }

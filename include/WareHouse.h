@@ -22,7 +22,7 @@ public:
     WareHouse &operator=(WareHouse &&other);
     ~WareHouse();
     void start();
-    const vector<BaseAction *> &getActionsLog() const;
+    const vector<BaseAction *> &getActions() const;
     const vector<Volunteer *> &getVolunteerVector() const;
     const vector<Order *> &getPendingOrdersVector() const;
     const vector<Order *> &getInProgressVector() const;
@@ -31,7 +31,7 @@ public:
     void addOrder(Order *order);
     void addCustomer(Customer *customer);
     void addAction(BaseAction *action);
-    void printActionsLogs();
+    // void printActionsLogs();
     Customer &getCustomer(int customerId) const;
     Volunteer &getVolunteer(int volunteerId) const;
     Order &getOrder(int orderId) const;
@@ -55,7 +55,7 @@ private:
     vector<BaseAction *> actionsLog;
     vector<Volunteer *> volunteers;
     vector<Order *> pendingOrders;
-    vector<Order *> vol;
+    vector<Order *> inProcessOrders;
     vector<Order *> completedOrders;
     vector<Customer *> customers;
     int customerCounter;                                  // For assigning unique customer IDs

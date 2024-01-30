@@ -50,7 +50,7 @@ void AddOrder::act(WareHouse &wareHouse)
         if (isAdded == -1)
         {
             error("Customer can't order!");
-            cout << "ERROR: " << getErrorMsg() << endl;
+            std::cout << "ERROR: " << getErrorMsg() << endl;
         }
         else
         { // Customer could order
@@ -63,7 +63,7 @@ void AddOrder::act(WareHouse &wareHouse)
     else
     {
         error("Customer doesn't exist!");
-        cout << "ERROR: " << getErrorMsg() << endl;
+        std::cout << "ERROR: " << getErrorMsg() << endl;
     }
 }
 
@@ -80,7 +80,7 @@ string AddOrder::toString() const
     return "order " + to_string(customerId) + "ERROR";
 }
 //////////////////////////////////////////AddCustomer///////////////////////////////////
-AddCustomer::AddCustomer(string customerName, string customerType, int distance, int maxOrders) : BaseAction(), customerName(customerName), customerType(CustomerType(convertCustomerType(customerType))), distance(distance), maxOrders(maxOrders)
+AddCustomer::AddCustomer(const string &customerName, const string &customerType, int distance, int maxOrders) : BaseAction(), customerName(customerName), customerType(CustomerType(convertCustomerType(customerType))), distance(distance), maxOrders(maxOrders)
 {
 }
 void AddCustomer::act(WareHouse &wareHouse)
@@ -200,7 +200,7 @@ void PrintCustomerStatus::act(WareHouse &wareHouse)
         return;
     }
     cout << "CustomerID: " + to_string(customerId) << endl;
-    for (int orderId : wareHouse.getCustomer(customerId).getOrdersId())
+    for (int orderId : wareHouse.getCustomer(customerId).getOrdersIds())
     {
         cout << "OrderId: " << orderId << "OrderStatus: " << to_String(wareHouse.getOrder(orderId).getStatus()) << endl;
     }
@@ -222,20 +222,20 @@ string PrintCustomerStatus::toString() const
     return "customerStatus " + to_string(customerId) + " COMPLETED";
 }
 ////////////////////////////////////////PrintVolunteerStatus/////////////////////////////////
-PrintVolunteerStatus::PrintVolunteerStatus(int id) : BaseAction(), VolunteerId(id) {}
+PrintVolunteerStatus::PrintVolunteerStatus(int id) : BaseAction(), volunteerId(id) {}
 
 void PrintVolunteerStatus::act(WareHouse &wareHouse)
 {
-    if (!wareHouse.checkIfVolunteerExsists(VolunteerId))
+    if (!wareHouse.checkIfVolunteerExsists(volunteerId))
     {
         error("Volunteer doesn't exist.");
         cout << "ERROR: " + getErrorMsg() << endl;
         return;
     }
 
-    cout << "VolunteerID: " + to_string(VolunteerId) << endl;
+    cout << "VolunteerID: " + to_string(volunteerId) << endl;
 
-    auto &volunteer = wareHouse.getVolunteer(VolunteerId);
+    auto &volunteer = wareHouse.getVolunteer(volunteerId);
 
     // Declare myVolunteer outside the if-else blocks
     Volunteer *myVolunteer = nullptr;
@@ -306,10 +306,10 @@ PrintVolunteerStatus *PrintVolunteerStatus::clone() const
 
 string PrintVolunteerStatus::toString() const
 {   
-    if(getStatus()==ActionStatus::COMPLETED) return "volunteerStatus " + to_string(VolunteerId)+" COMPLETED";
+    if(getStatus()==ActionStatus::COMPLETED) return "volunteerStatus " + to_string(volunteerId)+" COMPLETED";
    
 
-     return "volunteerStatus " + to_string(VolunteerId)+" ERROR";
+     return "volunteerStatus " + to_string(volunteerId)+" ERROR";
 }
 
 ////////////////////////SimulateStep/////////////////////////
@@ -451,7 +451,7 @@ PrintActionsLog::PrintActionsLog() : BaseAction() {}
 
 void PrintActionsLog::act(WareHouse &wareHouse)
 {
-    for (auto action : wareHouse.getActionsLog())
+    for (auto action : wareHouse.getActions())
     {
         cout << action->toString() << endl;
     }

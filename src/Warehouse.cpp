@@ -35,9 +35,9 @@ WareHouse::WareHouse(const WareHouse &other) : isOpen(other.isOpen), customerCou
         pendingOrders.push_back(orderP->clone());
     }
 
-    for (auto orderV : other.vol)
+    for (auto orderV : other.inProcessOrders)
     {
-        vol.push_back(orderV->clone());
+        inProcessOrders.push_back(orderV->clone());
     }
 
     for (auto orderC : other.completedOrders)
@@ -79,12 +79,12 @@ WareHouse::~WareHouse()
 
     pendingOrders.clear();
 
-    for (auto orderV : vol)
+    for (auto orderV : inProcessOrders)
     {
         delete orderV;
     }
 
-    vol.clear();
+    inProcessOrders.clear();
 
     for (auto orderC : completedOrders)
     {
@@ -131,12 +131,12 @@ WareHouse &WareHouse::operator=(const WareHouse &other)
 
         pendingOrders.clear();
 
-        for (auto orderV : vol)
+        for (auto orderV : inProcessOrders)
         {
             delete orderV;
         }
 
-        vol.clear();
+        inProcessOrders.clear();
 
         for (auto orderC : completedOrders)
         {
@@ -162,9 +162,9 @@ WareHouse &WareHouse::operator=(const WareHouse &other)
             pendingOrders.push_back(orderP->clone());
         }
 
-        for (auto orderV : other.vol)
+        for (auto orderV : other.inProcessOrders)
         {
-            vol.push_back(orderV->clone());
+            inProcessOrders.push_back(orderV->clone());
         }
 
         for (auto orderC : other.completedOrders)
@@ -189,7 +189,7 @@ WareHouse &WareHouse::operator=(const WareHouse &other)
 WareHouse::WareHouse(WareHouse &&other) : isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
 {
     customers = std::move(other.customers);
-    vol = std::move(other.vol);
+    inProcessOrders = std::move(other.inProcessOrders);
     volunteers = std::move(other.volunteers);
     pendingOrders = std::move(other.pendingOrders);
     completedOrders = std::move(other.completedOrders);
@@ -207,7 +207,7 @@ WareHouse &WareHouse::operator=(WareHouse &&other)
         orderCounter = other.orderCounter;
         customerCounter = other.customerCounter;
         customers = std::move(other.customers);
-        vol = std::move(other.vol);
+        inProcessOrders = std::move(other.inProcessOrders);
         volunteers = std::move(other.volunteers);
         pendingOrders = std::move(other.pendingOrders);
         completedOrders = std::move(other.completedOrders);
@@ -299,11 +299,11 @@ void WareHouse::start()
             action->act(*this);
             actionsLog.push_back(action);
         }
-        cout << pendingOrders.size() << vol.size() << completedOrders.size() << endl;
+        cout << pendingOrders.size() << inProcessOrders.size() << completedOrders.size() << endl;
     }
 }
 
-const vector<BaseAction *> &WareHouse::getActionsLog() const
+const vector<BaseAction *> &WareHouse::getActions() const
 {
     return actionsLog;
 }
@@ -320,7 +320,7 @@ const vector<Order *> &WareHouse::getPendingOrdersVector() const
 
 const vector<Order *> &WareHouse::getInProgressVector() const
 {
-    return vol;
+    return inProcessOrders;
 }
 
 const vector<Order *> &WareHouse::getCompletedOrdersVector() const
@@ -344,14 +344,14 @@ void WareHouse::addAction(BaseAction *action)
     actionsLog.push_back(action);
 }
 
-void WareHouse::printActionsLogs()
-{
-    for (BaseAction *action : actionsLog)
-    {
-        cout << action->toString() << endl;
-    }
-    // need to implement baseactions class for that
-}
+// void WareHouse::printActionsLogs()
+// {
+//     for (BaseAction *action : actionsLog)
+//     {
+//         cout << action->toString() << endl;
+//     }
+//     // need to implement baseactions class for that
+// }
 
 void WareHouse::open()
 {
@@ -366,7 +366,7 @@ void WareHouse::close()
         cout << order->toString() << endl;
     }
 
-    for (Order *order : vol)
+    for (Order *order : inProcessOrders)
     {
         cout << order->toString() << endl;
     }
@@ -401,7 +401,7 @@ Order &WareHouse::getOrder(int orderId) const
             return *order;
     }
 
-    for (Order *order : vol)
+    for (Order *order : inProcessOrders)
     {
         if (order->getId() == orderId)
             return *order;
@@ -579,7 +579,7 @@ bool WareHouse::checkIfOrderExsists(int orderId)
 void WareHouse::assignOrder(vector<Order *>::const_iterator it)
 {
 
-    vol.push_back(*it);
+    inProcessOrders.push_back(*it);
     // int searchValue = order->stId();
     // auto it = std::find_if(pendingOrders.begin(), pendingOrders.end(), [searchValue](const Order *ptr)
     //                        { return ptr != nullptr && ptr->getId() == searchValue; });
@@ -589,7 +589,7 @@ void WareHouse::assignOrder(vector<Order *>::const_iterator it)
 void WareHouse::moveFromVolunteerOrder(vector<Order *>::const_iterator it)
 {
     Order *order = *it;
-    vol.erase(it);
+    inProcessOrders.erase(it);
     if (order->getStatus() == OrderStatus::COLLECTING)
         pendingOrders.push_back(order);
     else if (order->getStatus() == OrderStatus::DELIVERING)
