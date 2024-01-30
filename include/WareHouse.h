@@ -31,6 +31,7 @@ public:
     void addOrder(Order *order);
     void addCustomer(Customer *customer);
     void addAction(BaseAction *action);
+    void addVolunteer(Volunteer * volunteer);
     // void printActionsLogs();
     Customer &getCustomer(int customerId) const;
     Volunteer &getVolunteer(int volunteerId) const;

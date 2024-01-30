@@ -299,6 +299,25 @@ void WareHouse::start()
             action->act(*this);
             actionsLog.push_back(action);
         }
+        if(decodedString[0] == "volunteer")
+        {
+            if(decodedString[2]=="collector"){
+               CollectorVolunteer *newVolunteer= new CollectorVolunteer(volunteerCounter,decodedString[1],stoi(decodedString[3]));
+               addVolunteer(newVolunteer);
+            }
+            if(decodedString[2]=="limited_collector"){
+               LimitedCollectorVolunteer *newVolunteer= new LimitedCollectorVolunteer(volunteerCounter,decodedString[1],stoi(decodedString[3]),stoi(decodedString[4]));
+               addVolunteer(newVolunteer);
+            }
+            if(decodedString[2]=="driver"){
+                DriverVolunteer *newVolunteer = new DriverVolunteer(volunteerCounter,decodedString[1],stoi(decodedString[3]),stoi(decodedString[4]));
+                addVolunteer(newVolunteer);
+            }
+            if(decodedString[2]=="limited_driver"){
+                LimitedDriverVolunteer *newVolunteer = new LimitedDriverVolunteer(volunteerCounter,decodedString[1],stoi(decodedString[3]),stoi(decodedString[4]),stoi(decodedString[5]));
+                addVolunteer(newVolunteer);
+            }
+        }
         cout << pendingOrders.size() << inProcessOrders.size() << completedOrders.size() << endl;
     }
 }
@@ -609,4 +628,9 @@ bool WareHouse::checkIfVolunteerExsists(int id){
         if(vol->getId()==id) return true;
     }
     return false;
+}
+
+void WareHouse::addVolunteer(Volunteer *volunteer){
+    volunteers.push_back(volunteer);
+    setVolunteerCounter(1);
 }
