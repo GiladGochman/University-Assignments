@@ -16,6 +16,7 @@ public:
     int getActiveOrderId() const;
     int getCompletedOrderId() const;
     bool isBusy() const; 
+    virtual ~Volunteer(){};
     bool hasJustFinishedJob() const;                                    // Signal whether the volunteer is currently processing an order
     virtual bool hasOrdersLeft() const = 0;                  // Signal whether the volunteer didn't reach orders limit,Always true for CollectorVolunteer and DriverVolunteer
     virtual bool canTakeOrder(const Order &order) const = 0; // Signal if the volunteer can take the order.
@@ -44,6 +45,7 @@ public:
     CollectorVolunteer(int id, string name, int coolDown);
     CollectorVolunteer *clone() const override;
     void step() override;
+   
     int getCoolDown() const;
     int getTimeLeft() const;
     bool decreaseCoolDown(); // Decrease timeLeft by 1,return true if timeLeft=0,false otherwise

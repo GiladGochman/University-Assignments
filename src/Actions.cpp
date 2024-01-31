@@ -14,7 +14,7 @@
 #include "../include/Action.h"
 extern WareHouse *backup;
 
-BaseAction::BaseAction() : status(ActionStatus::ERROR), errorMsg("") {}
+BaseAction::BaseAction() :  errorMsg("") ,status(ActionStatus::ERROR){}
 
 ActionStatus BaseAction::getStatus() const
 {
@@ -100,14 +100,16 @@ void AddCustomer::act(WareHouse &wareHouse)
 }
 int AddCustomer::convertCustomerType(string customerType)
 {
+    int ret=-1;
     if (customerType == "soldier")
     {
-        return 0;
+        ret= 0;
     }
     if (customerType == "civilian")
     {
-        return 1;
+        ret= 1;
     }
+    return ret;
 }
 
 AddCustomer *AddCustomer::clone() const
@@ -434,7 +436,7 @@ void SimulateStep::fireVolunteers(WareHouse &wareHouse)
     while (it != wareHouse.getVolunteerVector().end())
     {
         auto vol = *it;
-        if (vol->type() == "LimitedDriver" | vol->type() == "LimitedCollector")
+        if ((vol->type() == "LimitedDriver") | (vol->type() == "LimitedCollector"))
         {
             // auto castedVol = dynamic_cast<LimitedDriverVolunteer *>(*it);
             if (!vol->isBusy() && !vol->hasOrdersLeft())

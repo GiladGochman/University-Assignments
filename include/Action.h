@@ -23,6 +23,7 @@ class BaseAction
 {
 public:
     BaseAction();
+    virtual ~BaseAction(){};
     ActionStatus getStatus() const;
     virtual void act(WareHouse &wareHouse) = 0;
     virtual string toString() const = 0;

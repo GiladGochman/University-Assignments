@@ -12,6 +12,7 @@ public:
     Customer(int id, const string &name, int locationDistance, int maxOrders);
     const string &getName() const;
     int getId() const;
+    virtual ~Customer(){};
     int getCustomerDistance() const;
     int getMaxOrders() const;  // Returns maxOrders
     int getNumOrders() const;  // Returns num of orders the customer has made so far

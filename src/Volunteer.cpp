@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-Volunteer::Volunteer(int id, const string &name) : id(id), name(name), activeOrderId(NO_ORDER), completedOrderId(NO_ORDER), time(0), timeFinishedJob(-1) {}
+Volunteer::Volunteer(int id, const string &name) :completedOrderId(NO_ORDER), activeOrderId(NO_ORDER) , time(0), timeFinishedJob(-1),id(id), name(name) {}
 
 int Volunteer::getId() const
 {

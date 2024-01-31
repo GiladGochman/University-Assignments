@@ -17,13 +17,13 @@ class WareHouse;
 
 // Warehouse responsible for Volunteers, Customers and Actions.
 
-WareHouse::WareHouse(const string &configFilePath) : isOpen(false), customerCounter(0), volunteerCounter(0), orderCounter(0)
+WareHouse::WareHouse(const string &configFilePath) : isOpen(false),actionsLog(vector<BaseAction *>()),  volunteers(vector<Volunteer *>()), pendingOrders(vector<Order *>()), inProcessOrders(vector<Order *>()), completedOrders(vector<Order *>()), customers(vector<Customer *>()),customerCounter(0), volunteerCounter(0),orderCounter(0)
 
 {
     parseFile(configFilePath);
 }
 
-WareHouse::WareHouse(const WareHouse &other) : isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
+WareHouse::WareHouse(const WareHouse &other) : isOpen(other.isOpen),actionsLog(vector<BaseAction *>()),  volunteers(vector<Volunteer *>()), pendingOrders(vector<Order *>()), inProcessOrders(vector<Order *>()), completedOrders(vector<Order *>()), customers(vector<Customer *>()), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
 {
     for (auto customer : other.customers)
     {
@@ -186,14 +186,14 @@ WareHouse &WareHouse::operator=(const WareHouse &other)
     return *this;
 }
 
-WareHouse::WareHouse(WareHouse &&other) : isOpen(other.isOpen), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
+WareHouse::WareHouse(WareHouse &&other) : isOpen(other.isOpen), actionsLog(std::move(other.actionsLog)),  volunteers(std::move(other.volunteers)), pendingOrders(std::move(other.pendingOrders)), inProcessOrders(std::move(other.inProcessOrders)), completedOrders(std::move(other.completedOrders)), customers(std::move(other.customers)),customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
 {
-    customers = std::move(other.customers);
-    inProcessOrders = std::move(other.inProcessOrders);
-    volunteers = std::move(other.volunteers);
-    pendingOrders = std::move(other.pendingOrders);
-    completedOrders = std::move(other.completedOrders);
-    actionsLog = std::move(other.actionsLog);
+    // customers = std::move(other.customers);
+    // inProcessOrders = std::move(other.inProcessOrders);
+    // volunteers = std::move(other.volunteers);
+    // pendingOrders = std::move(other.pendingOrders);
+    // completedOrders = std::move(other.completedOrders);
+    // actionsLog = std::move(other.actionsLog);
 
    
 }
@@ -405,32 +405,36 @@ Customer &WareHouse::getCustomer(int customerId) const
 
 Volunteer &WareHouse::getVolunteer(int volunteerId) const
 {
+    Volunteer *myVol=nullptr;
     for (auto volunteer : volunteers)
     {
         if (volunteer->getId() == volunteerId)
-            return *volunteer;
+            myVol=volunteer;
     }
+    return *myVol;
 }
 
 Order &WareHouse::getOrder(int orderId) const
 {
+    Order *myOrder=nullptr;
     for (Order *order : pendingOrders)
     {
         if (order->getId() == orderId)
-            return *order;
+            myOrder = order;
     }
 
     for (Order *order : inProcessOrders)
     {
         if (order->getId() == orderId)
-            return *order;
+            myOrder = order;
     }
 
     for (Order *order : completedOrders)
     {
         if (order->getId() == orderId)
-            return *order;
+            myOrder = order;
     }
+    return *myOrder;
 }
 
 // Function to trim leading whitespace from a string
@@ -602,7 +606,7 @@ void WareHouse::assignOrder(vector<Order *>::const_iterator it)
     // int searchValue = order->stId();
     // auto it = std::find_if(pendingOrders.begin(), pendingOrders.end(), [searchValue](const Order *ptr)
     //                        { return ptr != nullptr && ptr->getId() == searchValue; });
-    auto newit = pendingOrders.erase(it);
+    pendingOrders.erase(it);
 }
 
 void WareHouse::moveFromVolunteerOrder(vector<Order *>::const_iterator it)
