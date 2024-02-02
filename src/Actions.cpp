@@ -206,7 +206,7 @@ void PrintCustomerStatus::act(WareHouse &wareHouse)
     {
         cout << "OrderId: " << orderId << " OrderStatus: " << to_String(wareHouse.getOrder(orderId).getStatus()) << endl;
     }
-    cout << "numOrdersLeft: " + to_string(wareHouse.getCustomer(customerId).getNumOrders()) << endl;
+    cout << "numOrdersLeft: " + to_string(wareHouse.getCustomer(customerId).getNumOrdersLeft()) << endl;
     complete();
 }
 

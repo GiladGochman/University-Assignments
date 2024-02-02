@@ -16,6 +16,7 @@ public:
     int getCustomerDistance() const;
     int getMaxOrders() const;  // Returns maxOrders
     int getNumOrders() const;  // Returns num of orders the customer has made so far
+    int getNumOrdersLeft() const; //Returns how many orders left the customer has.
     bool canMakeOrder() const; // Returns true if the customer didn't reach max orders
     const vector<int> &getOrdersIds() const;
     int addOrder(int orderId); // return OrderId if order was added successfully, -1 otherwise
