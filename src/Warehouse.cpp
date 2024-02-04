@@ -188,14 +188,7 @@ WareHouse &WareHouse::operator=(const WareHouse &other)
 
 WareHouse::WareHouse(WareHouse &&other) : isOpen(other.isOpen), actionsLog(std::move(other.actionsLog)),  volunteers(std::move(other.volunteers)), pendingOrders(std::move(other.pendingOrders)), inProcessOrders(std::move(other.inProcessOrders)), completedOrders(std::move(other.completedOrders)), customers(std::move(other.customers)),customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
 {
-    // customers = std::move(other.customers);
-    // inProcessOrders = std::move(other.inProcessOrders);
-    // volunteers = std::move(other.volunteers);
-    // pendingOrders = std::move(other.pendingOrders);
-    // completedOrders = std::move(other.completedOrders);
-    // actionsLog = std::move(other.actionsLog);
-
-   
+    
 }
 
 WareHouse &WareHouse::operator=(WareHouse &&other)
@@ -318,7 +311,7 @@ void WareHouse::start()
                 addVolunteer(newVolunteer);
             }
         }
-        cout << pendingOrders.size() << inProcessOrders.size() << completedOrders.size() << endl;
+        
     }
 }
 
@@ -363,14 +356,7 @@ void WareHouse::addAction(BaseAction *action)
     actionsLog.push_back(action);
 }
 
-// void WareHouse::printActionsLogs()
-// {
-//     for (BaseAction *action : actionsLog)
-//     {
-//         cout << action->toString() << endl;
-//     }
-//     // need to implement baseactions class for that
-// }
+
 
 void WareHouse::open()
 {
