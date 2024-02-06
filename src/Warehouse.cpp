@@ -17,13 +17,13 @@ class WareHouse;
 
 // Warehouse responsible for Volunteers, Customers and Actions.
 
-WareHouse::WareHouse(const string &configFilePath) : isOpen(false),actionsLog(vector<BaseAction *>()),  volunteers(vector<Volunteer *>()), pendingOrders(vector<Order *>()), inProcessOrders(vector<Order *>()), completedOrders(vector<Order *>()), customers(vector<Customer *>()),customerCounter(0), volunteerCounter(0),orderCounter(0)
+WareHouse::WareHouse(const string &configFilePath) : isOpen(false), actionsLog(vector<BaseAction *>()), volunteers(vector<Volunteer *>()), pendingOrders(vector<Order *>()), inProcessOrders(vector<Order *>()), completedOrders(vector<Order *>()), customers(vector<Customer *>()), customerCounter(0), volunteerCounter(0), orderCounter(0)
 
 {
     parseFile(configFilePath);
 }
 
-WareHouse::WareHouse(const WareHouse &other) : isOpen(other.isOpen),actionsLog(vector<BaseAction *>()),  volunteers(vector<Volunteer *>()), pendingOrders(vector<Order *>()), inProcessOrders(vector<Order *>()), completedOrders(vector<Order *>()), customers(vector<Customer *>()), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
+WareHouse::WareHouse(const WareHouse &other) : isOpen(other.isOpen), actionsLog(vector<BaseAction *>()), volunteers(vector<Volunteer *>()), pendingOrders(vector<Order *>()), inProcessOrders(vector<Order *>()), completedOrders(vector<Order *>()), customers(vector<Customer *>()), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
 {
     for (auto customer : other.customers)
     {
@@ -97,7 +97,7 @@ WareHouse::~WareHouse()
     {
         delete action;
     }
-    
+
     actionsLog.clear();
 }
 
@@ -186,9 +186,8 @@ WareHouse &WareHouse::operator=(const WareHouse &other)
     return *this;
 }
 
-WareHouse::WareHouse(WareHouse &&other) : isOpen(other.isOpen), actionsLog(std::move(other.actionsLog)),  volunteers(std::move(other.volunteers)), pendingOrders(std::move(other.pendingOrders)), inProcessOrders(std::move(other.inProcessOrders)), completedOrders(std::move(other.completedOrders)), customers(std::move(other.customers)),customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
+WareHouse::WareHouse(WareHouse &&other) : isOpen(other.isOpen), actionsLog(std::move(other.actionsLog)), volunteers(std::move(other.volunteers)), pendingOrders(std::move(other.pendingOrders)), inProcessOrders(std::move(other.inProcessOrders)), completedOrders(std::move(other.completedOrders)), customers(std::move(other.customers)), customerCounter(other.customerCounter), volunteerCounter(other.volunteerCounter), orderCounter(other.orderCounter)
 {
-    
 }
 
 WareHouse &WareHouse::operator=(WareHouse &&other)
@@ -205,7 +204,6 @@ WareHouse &WareHouse::operator=(WareHouse &&other)
         pendingOrders = std::move(other.pendingOrders);
         completedOrders = std::move(other.completedOrders);
         actionsLog = std::move(other.actionsLog);
-      
     }
     return *this;
 }
@@ -272,7 +270,6 @@ void WareHouse::start()
             Close *action = new Close();
             actionsLog.push_back(action);
             action->act(*this);
-            
         }
         if (decodedString[0] == "volunteerStatus")
         {
@@ -292,26 +289,29 @@ void WareHouse::start()
             action->act(*this);
             actionsLog.push_back(action);
         }
-        if(decodedString[0] == "volunteer")
+        if (decodedString[0] == "volunteer")
         {
-            if(decodedString[2]=="collector"){
-               CollectorVolunteer *newVolunteer= new CollectorVolunteer(volunteerCounter,decodedString[1],stoi(decodedString[3]));
-               addVolunteer(newVolunteer);
-            }
-            if(decodedString[2]=="limited_collector"){
-               LimitedCollectorVolunteer *newVolunteer= new LimitedCollectorVolunteer(volunteerCounter,decodedString[1],stoi(decodedString[3]),stoi(decodedString[4]));
-               addVolunteer(newVolunteer);
-            }
-            if(decodedString[2]=="driver"){
-                DriverVolunteer *newVolunteer = new DriverVolunteer(volunteerCounter,decodedString[1],stoi(decodedString[3]),stoi(decodedString[4]));
+            if (decodedString[2] == "collector")
+            {
+                CollectorVolunteer *newVolunteer = new CollectorVolunteer(volunteerCounter, decodedString[1], stoi(decodedString[3]));
                 addVolunteer(newVolunteer);
             }
-            if(decodedString[2]=="limited_driver"){
-                LimitedDriverVolunteer *newVolunteer = new LimitedDriverVolunteer(volunteerCounter,decodedString[1],stoi(decodedString[3]),stoi(decodedString[4]),stoi(decodedString[5]));
+            if (decodedString[2] == "limited_collector")
+            {
+                LimitedCollectorVolunteer *newVolunteer = new LimitedCollectorVolunteer(volunteerCounter, decodedString[1], stoi(decodedString[3]), stoi(decodedString[4]));
+                addVolunteer(newVolunteer);
+            }
+            if (decodedString[2] == "driver")
+            {
+                DriverVolunteer *newVolunteer = new DriverVolunteer(volunteerCounter, decodedString[1], stoi(decodedString[3]), stoi(decodedString[4]));
+                addVolunteer(newVolunteer);
+            }
+            if (decodedString[2] == "limited_driver")
+            {
+                LimitedDriverVolunteer *newVolunteer = new LimitedDriverVolunteer(volunteerCounter, decodedString[1], stoi(decodedString[3]), stoi(decodedString[4]), stoi(decodedString[5]));
                 addVolunteer(newVolunteer);
             }
         }
-        
     }
 }
 
@@ -356,8 +356,6 @@ void WareHouse::addAction(BaseAction *action)
     actionsLog.push_back(action);
 }
 
-
-
 void WareHouse::open()
 {
     isOpen = true;
@@ -391,18 +389,18 @@ Customer &WareHouse::getCustomer(int customerId) const
 
 Volunteer &WareHouse::getVolunteer(int volunteerId) const
 {
-    Volunteer *myVol=nullptr;
+    Volunteer *myVol = nullptr;
     for (auto volunteer : volunteers)
     {
         if (volunteer->getId() == volunteerId)
-            myVol=volunteer;
+            myVol = volunteer;
     }
     return *myVol;
 }
 
 Order &WareHouse::getOrder(int orderId) const
 {
-    Order *myOrder=nullptr;
+    Order *myOrder = nullptr;
     for (Order *order : pendingOrders)
     {
         if (order->getId() == orderId)
@@ -613,14 +611,18 @@ void WareHouse::fireVolunteer(vector<Volunteer *>::const_iterator it)
     volunteers.erase(it);
 }
 
-bool WareHouse::checkIfVolunteerExsists(int id){
-    for(auto vol : volunteers){
-        if(vol->getId()==id) return true;
+bool WareHouse::checkIfVolunteerExsists(int id)
+{
+    for (auto vol : volunteers)
+    {
+        if (vol->getId() == id)
+            return true;
     }
     return false;
 }
 
-void WareHouse::addVolunteer(Volunteer *volunteer){
+void WareHouse::addVolunteer(Volunteer *volunteer)
+{
     volunteers.push_back(volunteer);
     setVolunteerCounter(1);
 }

@@ -31,7 +31,7 @@ public:
     void addOrder(Order *order);
     void addCustomer(Customer *customer);
     void addAction(BaseAction *action);
-    void addVolunteer(Volunteer * volunteer);
+    void addVolunteer(Volunteer *volunteer);
     // void printActionsLogs();
     Customer &getCustomer(int customerId) const;
     Volunteer &getVolunteer(int volunteerId) const;
@@ -49,7 +49,6 @@ public:
     void assignOrder(vector<Order *>::const_iterator it);
     void moveFromVolunteerOrder(vector<Order *>::const_iterator it);
     void fireVolunteer(vector<Volunteer *>::const_iterator it);
-
 
 private:
     bool isOpen;

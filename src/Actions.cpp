@@ -14,7 +14,7 @@
 #include "../include/Action.h"
 extern WareHouse *backup;
 
-BaseAction::BaseAction() :  errorMsg("") ,status(ActionStatus::ERROR){}
+BaseAction::BaseAction() : errorMsg(""), status(ActionStatus::ERROR) {}
 
 ActionStatus BaseAction::getStatus() const
 {
@@ -45,7 +45,6 @@ void AddOrder::act(WareHouse &wareHouse)
 
     if (wareHouse.checkIfCustomerExsists(customerId))
     {
-
         int isAdded = wareHouse.getCustomer(customerId).addOrder(wareHouse.getOrderCounter()); // Trys to add an order (expected = orderID, if customer can't order will return -1)
         if (isAdded == -1)
         {
@@ -85,29 +84,30 @@ AddCustomer::AddCustomer(const string &customerName, const string &customerType,
 }
 void AddCustomer::act(WareHouse &wareHouse)
 {
-    if (customerType == CustomerType::Soldier){
+    if (customerType == CustomerType::Soldier)
+    {
         Customer *newCustomer = new SoldierCustomer(wareHouse.getCustomerCounter(), customerName, distance, maxOrders);
         wareHouse.addCustomer(newCustomer);
     }
-        
 
-    if (customerType == CustomerType::Civilian){
+    if (customerType == CustomerType::Civilian)
+    {
         Customer *newCustomer = new CivilianCustomer(wareHouse.getCustomerCounter(), customerName, distance, maxOrders);
         wareHouse.addCustomer(newCustomer);
     }
-        
+
     complete();
 }
 int AddCustomer::convertCustomerType(string customerType)
 {
-    int ret=-1;
+    int ret = -1;
     if (customerType == "soldier")
     {
-        ret= 0;
+        ret = 0;
     }
     if (customerType == "civilian")
     {
-        ret= 1;
+        ret = 1;
     }
     return ret;
 }
@@ -162,9 +162,10 @@ PrintOrderStatus *PrintOrderStatus::clone() const
 
 string PrintOrderStatus::toString() const
 {
-    if(getStatus()==ActionStatus::COMPLETED)  return "orderStatus " + to_string(orderId)+" COMPLETED";
-   
-     return "orderStatus " + to_string(orderId)+ " ERROR";
+    if (getStatus() == ActionStatus::COMPLETED)
+        return "orderStatus " + to_string(orderId) + " COMPLETED";
+
+    return "orderStatus " + to_string(orderId) + " ERROR";
 }
 
 std::string BaseAction::to_String(OrderStatus status)
@@ -269,8 +270,10 @@ void PrintVolunteerStatus::act(WareHouse &wareHouse)
 
     // Continue with the rest of your code using myVolunteer
     string isVolBusy;
-    if(myVolunteer->isBusy()) isVolBusy = "True";
-    else isVolBusy = "False";
+    if (myVolunteer->isBusy())
+        isVolBusy = "True";
+    else
+        isVolBusy = "False";
     cout << "IsBusy: " << isVolBusy << endl;
     cout << "OrderID: " << volunteerIdToString(myVolunteer->getActiveOrderId()) << endl; // volunteerIdToString also works for order IDs, might change later
     cout << "TimeLeft: ";
@@ -310,11 +313,11 @@ PrintVolunteerStatus *PrintVolunteerStatus::clone() const
 }
 
 string PrintVolunteerStatus::toString() const
-{   
-    if(getStatus()==ActionStatus::COMPLETED) return "volunteerStatus " + to_string(volunteerId)+" COMPLETED";
-   
+{
+    if (getStatus() == ActionStatus::COMPLETED)
+        return "volunteerStatus " + to_string(volunteerId) + " COMPLETED";
 
-     return "volunteerStatus " + to_string(volunteerId)+" ERROR";
+    return "volunteerStatus " + to_string(volunteerId) + " ERROR";
 }
 
 ////////////////////////SimulateStep/////////////////////////
@@ -441,7 +444,7 @@ void SimulateStep::fireVolunteers(WareHouse &wareHouse)
             // auto castedVol = dynamic_cast<LimitedDriverVolunteer *>(*it);
             if (!vol->isBusy() && !vol->hasOrdersLeft())
             {
-                wareHouse.fireVolunteer(it);
+                wareHouse.fireVolunteer(it); // deletes from vector
                 delete vol;
             }
         }
@@ -500,11 +503,12 @@ RestoreWareHouse::RestoreWareHouse() : BaseAction() {}
 
 void RestoreWareHouse::act(WareHouse &wareHouse)
 {
-    
-    if (backup == nullptr){
-    
+
+    if (backup == nullptr)
+    {
+
         error("No backup Available");
-        cout<<"ERROR: "<<getErrorMsg()<<endl;
+        cout << "ERROR: " << getErrorMsg() << endl;
     }
     else
     {
