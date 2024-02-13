@@ -2,6 +2,7 @@ package bguspl.set.ex;
 
 import bguspl.set.Env;
 
+
 /**
  * This class manages the players' threads and data
  *
@@ -19,6 +20,11 @@ public class Player implements Runnable {
      * Game entities.
      */
     private final Table table;
+
+   /**
+    * Dealer
+    */
+    private final Dealer dealer;
 
     /**
      * The id of the player (starting from 0).
@@ -64,6 +70,7 @@ public class Player implements Runnable {
         this.table = table;
         this.id = id;
         this.human = human;
+        this.dealer=dealer;
     }
 
     /**
