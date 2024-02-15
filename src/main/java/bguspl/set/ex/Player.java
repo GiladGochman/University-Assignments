@@ -1,4 +1,6 @@
 package bguspl.set.ex;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import bguspl.set.Env;
 
@@ -57,6 +59,16 @@ public class Player implements Runnable {
     private int score;
 
     /**
+     * Queue for saving key actions
+     */
+    private ConcurrentLinkedQueue<Integer> queueActions;
+
+    /**
+     * an array to store the tokens that are placed or not placed
+     */
+    private int [] tokens;
+
+    /**
      * The class constructor.
      *
      * @param env    - the environment object.
@@ -71,6 +83,13 @@ public class Player implements Runnable {
         this.id = id;
         this.human = human;
         this.dealer=dealer;
+        this.queueActions=new ConcurrentLinkedQueue<>();
+        this.tokens= new int[3];
+       
+            
+       
+            
+        
     }
 
     /**
@@ -148,3 +167,4 @@ public class Player implements Runnable {
         return score;
     }
 }
+
