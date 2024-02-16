@@ -32,6 +32,13 @@ public class Dealer implements Runnable {
      */
     private volatile boolean terminate;
 
+    /*
+     * variable to hold the timer value in the ui
+     */
+    private long timerValue;
+
+
+
     /**
      * The time when the dealer needs to reshuffle the deck due to turn timeout.
      */
@@ -42,6 +49,8 @@ public class Dealer implements Runnable {
         this.table = table;
         this.players = players;
         deck = IntStream.range(0, env.config.deckSize).boxed().collect(Collectors.toList());
+        terminate=false;
+        timerValue=env.config.turnTimeoutMillis;
         // reshuffleTime=env.config.turnTimeoutMillis;
     }
 
@@ -53,10 +62,12 @@ public class Dealer implements Runnable {
         env.logger.info("thread " + Thread.currentThread().getName() + " starting.");
         shuffleDeck();
         placeCardsOnTable();
+
         for(Player player:players){
             Thread playerThread=new Thread(()->player.run());
             playerThread.start();
         }
+        env.ui.setCountdown(timerValue, false);
         while (!shouldFinish()) {
             placeCardsOnTable();
             timerLoop();
@@ -76,6 +87,8 @@ public class Dealer implements Runnable {
             updateTimerDisplay(false);
             removeCardsFromTable();
             placeCardsOnTable();
+            System.out.println("finnished loop, " + timerValue );
+
         }
     }
 
@@ -83,7 +96,13 @@ public class Dealer implements Runnable {
      * Called when the game should be terminated.
      */
     public void terminate() {
-        // TODO implement
+       try{
+        for(Player player:players){
+            player.terminate();
+        }
+        Thread.currentThread().join();
+       }catch (InterruptedException e){};
+     
     }
 
     /**
@@ -119,11 +138,21 @@ public class Dealer implements Runnable {
      * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
      */
     private void sleepUntilWokenOrTimeout() {
-        try{
-            Thread.sleep(1000);
-        } catch(InterruptedException i){
-            
+        
+        long start = System.currentTimeMillis();
+        long remainingTime=1000;
+        while(remainingTime>0){
+            try{
+                Thread.sleep(remainingTime);
+                remainingTime=0;
+            } catch(InterruptedException i){
+                //do some action
+    
+    
+                remainingTime=start+1000-System.currentTimeMillis();
+            }
         }
+        timerValue-=1000;
         
     }
 
@@ -131,14 +160,16 @@ public class Dealer implements Runnable {
      * Reset and/or update the countdown and the countdown display.
      */
     private void updateTimerDisplay(boolean reset) {
-        // TODO implement
+        if(reset) env.ui.setCountdown(env.config.turnTimeoutMillis, false);
+        else env.ui.setCountdown(timerValue, false);
+        System.out.println("updated timer display, " + timerValue );
     }
 
     /**
      * Returns all the cards from the table to the deck.
      */
     private void removeAllCardsFromTable() {
-        // TODO implement
+        
     }
 
     /**

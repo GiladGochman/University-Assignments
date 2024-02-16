@@ -109,7 +109,7 @@ public class Table {
      */
     public void placeCard(int card, int slot) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
         try {
             semaphore.acquire();
@@ -190,4 +190,11 @@ public class Table {
         int col = gridSlot % env.config.columns;
         return row*env.config.columns+col;
     }
+
+    // public void removeAllCards(){
+    //     try{
+    //         semaphore.acquire();
+           
+    //     }
+    // }
 }
