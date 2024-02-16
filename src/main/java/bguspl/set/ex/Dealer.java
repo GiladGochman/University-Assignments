@@ -174,8 +174,7 @@ public class Dealer implements Runnable {
                 // Wait for the semaphore with a timeout
                 boolean acquired = this.setSempahore.tryAcquire(1, remainingTime, TimeUnit.MILLISECONDS);
                 if (acquired) {
-                    // A player claimed a set, break out of the loop
-                    break;
+                    
                 }
             } catch (InterruptedException e) {
                 // Handle interruption if necessary

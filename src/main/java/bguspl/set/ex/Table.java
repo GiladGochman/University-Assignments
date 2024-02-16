@@ -175,7 +175,10 @@ public class Table {
                 } 
                 counter++;
             }
-            if(index==-1) return false;
+            if(index==-1){
+                semaphore.release();
+                return false;
+            } 
             tokens[slot].remove(index);
             env.ui.removeToken(player, slotForUi(slot));
            

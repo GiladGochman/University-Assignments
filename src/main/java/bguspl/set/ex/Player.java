@@ -102,6 +102,13 @@ public class Player implements Runnable {
         if (!human) createArtificialIntelligence();
 
         while (!terminate) {
+            if(queueActions.size()>0){
+
+                int slot=queueActions.remove();
+                if(!table.removeToken(id,slot )){
+                    table.placeToken(id, slot);
+                }
+            }
            
         }
         if (!human) try { aiThread.join(); } catch (InterruptedException ignored) {}
@@ -131,7 +138,7 @@ public class Player implements Runnable {
      * Called when the game should be terminated.
      */
     public void terminate() {
-       
+       terminate=true;
     }
 
     /**
@@ -140,7 +147,7 @@ public class Player implements Runnable {
      * @param slot - the slot corresponding to the key pressed.
      */
     public void keyPressed(int slot) {
-        // TODO implement
+       if(queueActions.size()<=3) queueActions.add(slot);
     }
 
     /**
