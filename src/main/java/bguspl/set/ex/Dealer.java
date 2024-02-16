@@ -1,7 +1,7 @@
 package bguspl.set.ex;
 
 import bguspl.set.Env;
-
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -42,6 +42,7 @@ public class Dealer implements Runnable {
         this.table = table;
         this.players = players;
         deck = IntStream.range(0, env.config.deckSize).boxed().collect(Collectors.toList());
+        reshuffleTime=env.config.turnTimeoutMillis;
     }
 
     /**
@@ -50,6 +51,12 @@ public class Dealer implements Runnable {
     @Override
     public void run() {
         env.logger.info("thread " + Thread.currentThread().getName() + " starting.");
+        shuffleDeck();
+        placeCardsOnTable();
+        for(Player player:players){
+            Thread playerThread=new Thread(()->player.run());
+            playerThread.start();
+        }
         while (!shouldFinish()) {
             placeCardsOnTable();
             timerLoop();
@@ -92,21 +99,32 @@ public class Dealer implements Runnable {
      * Checks cards should be removed from the table and removes them.
      */
     private void removeCardsFromTable() {
-        // TODO implement
+        
     }
 
     /**
      * Check if any cards can be removed from the deck and placed on the table.
      */
     private void placeCardsOnTable() {
-        // TODO implement
+       for(int i=0;i<table.slotToCard.length;i++){
+        if(table.slotToCard[i]==null){
+
+            int cardToPlace=deck.remove(0);
+            table.placeCard(cardToPlace, i);
+        }
+       }
     }
 
     /**
      * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
      */
     private void sleepUntilWokenOrTimeout() {
-        // TODO implement
+        try{
+            Thread.sleep(1000);
+        } catch(InterruptedException i){
+            
+        }
+        
     }
 
     /**
@@ -128,5 +146,9 @@ public class Dealer implements Runnable {
      */
     private void announceWinners() {
         // TODO implement
+    }
+
+    private void shuffleDeck(){
+        Collections.shuffle(deck);
     }
 }
