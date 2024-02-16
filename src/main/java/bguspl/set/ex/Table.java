@@ -1,10 +1,11 @@
 package bguspl.set.ex;
 
 import bguspl.set.Env;
-
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
 
 /**
@@ -29,6 +30,16 @@ public class Table {
      */
     protected final Integer[] cardToSlot; // slot per card (if any)
 
+    /*
+     * DataStructure to hold the tokens
+     */
+    protected LinkedList<Integer>[] tokens;
+
+    public Semaphore semaphore;
+
+
+    
+
     /**
      * Constructor for testing.
      *
@@ -41,6 +52,11 @@ public class Table {
         this.env = env;
         this.slotToCard = slotToCard;
         this.cardToSlot = cardToSlot;
+        this.tokens = new LinkedList[env.config.tableSize];
+        for (int i = 0; i < env.config.tableSize; i++) {
+            tokens[i] = new LinkedList<Integer>();
+        }
+        this.semaphore = new Semaphore(1,true);
     }
 
     /**
@@ -51,6 +67,11 @@ public class Table {
     public Table(Env env) {
 
         this(env, new Integer[env.config.tableSize], new Integer[env.config.deckSize]);
+        this.tokens = new LinkedList[env.config.tableSize];
+        for (int i = 0; i < env.config.tableSize; i++) {
+            tokens[i] = new LinkedList<Integer>();
+        }
+        this.semaphore = new Semaphore(1,true);
     }
 
     /**
@@ -90,11 +111,15 @@ public class Table {
         try {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
-
-        cardToSlot[card] = slot;
-        slotToCard[slot] = card;
-
-        // TODO implement
+        try {
+            semaphore.acquire();
+            cardToSlot[card] = slot;
+            slotToCard[slot] = card;
+            env.ui.placeCard(card, slotForUi(slot));
+        } catch (InterruptedException ignored) {
+        } finally {
+            semaphore.release();
+        }
     }
 
     /**
@@ -105,8 +130,15 @@ public class Table {
         try {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
-
-        // TODO implement
+        try{
+            semaphore.acquire();
+            int card = slotToCard[slot];
+            cardToSlot[card] = null;
+            slotToCard[slot] = null;
+            tokens[slot] = new LinkedList<Integer>();
+            env.ui.removeCard(slotForUi(slot));
+        } catch(InterruptedException ignored) {};
+        semaphore.release();
     }
 
     /**
@@ -115,7 +147,13 @@ public class Table {
      * @param slot   - the slot on which to place the token.
      */
     public void placeToken(int player, int slot) {
-        // TODO implement
+        try{
+            semaphore.acquire();
+            tokens[slot].add(player);
+            env.ui.placeToken(player, slotForUi(slot));
+        } catch(InterruptedException ignored){};
+        semaphore.release();
+        
     }
 
     /**
@@ -125,7 +163,31 @@ public class Table {
      * @return       - true iff a token was successfully removed.
      */
     public boolean removeToken(int player, int slot) {
-        // TODO implement
-        return false;
+        try {
+            semaphore.acquire();
+            int index=-1;
+            int counter=0;
+            for(int playerId:tokens[slot]){
+                if(playerId==player){
+                    index=counter;
+                    break;
+                } 
+                counter++;
+            }
+            if(index==-1) return false;
+            tokens[slot].remove(index);
+            env.ui.removeToken(player, slotForUi(slot));
+           
+        } catch (InterruptedException ignored) {
+           
+        } 
+        semaphore.release();
+        return true;
+    }
+
+    private int slotForUi(int gridSlot){
+        int row = (gridSlot)/env.config.columns;
+        int col = gridSlot % env.config.columns;
+        return row*env.config.rows+col;
     }
 }
