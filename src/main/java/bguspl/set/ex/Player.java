@@ -1,6 +1,7 @@
 package bguspl.set.ex;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CountDownLatch;
 
 import bguspl.set.Env;
 
@@ -58,11 +59,14 @@ public class Player implements Runnable {
      */
     private int score;
 
+
     /**
      * Queue for saving key actions
      */
     private ConcurrentLinkedQueue<Integer> queueActions;
 
+
+    int counterTokens;
     /**
      * an array to store the tokens that are placed or not placed
      */
@@ -85,6 +89,10 @@ public class Player implements Runnable {
         this.dealer=dealer;
         this.queueActions=new ConcurrentLinkedQueue<>();
         this.tokens= new int[3];
+        for(int i=0;i<3;i++){
+            tokens[i]=-1;
+        }
+        counterTokens=0;
        
             
        
@@ -103,10 +111,27 @@ public class Player implements Runnable {
 
         while (!terminate) {
             if(queueActions.size()>0){
-
                 int slot=queueActions.remove();
                 if(!table.removeToken(id,slot )){
                     table.placeToken(id, slot);
+                    for(int i=0;i<3;i++){
+                        if(tokens[i]==-1) {
+                            tokens[i]= slot;
+                            counterTokens++;
+                            System.out.println(counterTokens);
+                            break;
+                        }
+                    }
+                    if(counterTokens==3) dealer.claimSet(id);
+                }
+                else{
+                    counterTokens--;
+                    for(int i=0;i<3;i++){
+                        if(tokens[i]==slot) {
+                            tokens[i]= -1;
+                            break;
+                        }
+                    }
                 }
             }
            
@@ -157,21 +182,44 @@ public class Player implements Runnable {
      * @post - the player's score is updated in the ui.
      */
     public void point() {
-        // TODO implement
+        try{
+            ++score;
+            playerThread.sleep(env.config.pointFreezeMillis);
+            int ignored = table.countCards(); // this part is just for demonstration in the unit tests
+            env.ui.setScore(id, ++score);
+        }catch(InterruptedException e){};
+        
 
-        int ignored = table.countCards(); // this part is just for demonstration in the unit tests
-        env.ui.setScore(id, ++score);
+       
     }
 
     /**
      * Penalize a player and perform other related actions.
      */
     public void penalty() {
-        // TODO implement
+        
     }
 
     public int score() {
         return score;
+    }
+
+    public Thread getPlayerThread(){
+        return playerThread;
+    }
+
+    public boolean hasSameCardsThatFormsSet(){
+       return counterTokens == 3;
+    }
+
+    public int[] getCards(){
+        int[] cards= new int[3];
+        int i=0;
+        for(int slot:tokens){
+            cards[i]=table.slotToCard[slot];
+            i++;
+        }
+        return cards;
     }
 }
 

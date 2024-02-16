@@ -3,6 +3,8 @@ package bguspl.set.ex;
 import bguspl.set.Env;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -44,6 +46,17 @@ public class Dealer implements Runnable {
      */
     public Semaphore setSempahore;
 
+    /*
+    Hash map to find all the threds that locks the semaphore
+    */ 
+
+
+    public int playerWhoClaimedSet;
+
+    public int [] setCards;
+
+    public CountDownLatch latch;
+
 
 
     /**
@@ -56,10 +69,13 @@ public class Dealer implements Runnable {
         this.table = table;
         this.players = players;
         deck = IntStream.range(0, env.config.deckSize).boxed().collect(Collectors.toList());
-        terminate=false;
-        timerValue=env.config.turnTimeoutMillis;
+        terminate = false;
+        timerValue = env.config.turnTimeoutMillis;
         setSempahore = new Semaphore(1,true);
-        reshuffleTime=env.config.turnTimeoutMillis;
+        reshuffleTime = env.config.turnTimeoutMillis;
+        latch = new CountDownLatch(1);
+        playerWhoClaimedSet=-1;
+        setCards=new int[3];
     }
 
     /**
@@ -166,15 +182,24 @@ public class Dealer implements Runnable {
     //     timerValue-=1000;
         
     // }
+    /**
+     * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
+     */
     private void sleepUntilWokenOrTimeout() {
         long start = System.currentTimeMillis();
         long remainingTime = 1000;
         while (remainingTime > 0) {
             try {
-                // Wait for the semaphore with a timeout
-                boolean acquired = this.setSempahore.tryAcquire(1, remainingTime, TimeUnit.MILLISECONDS);
-                if (acquired) {
-                    
+                // Wait for players to latch or timeout
+                boolean latched = latch.await(remainingTime, TimeUnit.MILLISECONDS);
+                if (latched) {
+                   if(env.util.testSet(setCards)) {
+                    players[playerWhoClaimedSet].point();
+                    removeCardsFromTable();
+                   }
+                   else{
+                    players[playerWhoClaimedSet].penalty();
+                   }
                 }
             } catch (InterruptedException e) {
                 // Handle interruption if necessary
@@ -218,5 +243,23 @@ public class Dealer implements Runnable {
 
     private void shuffleDeck(){
         Collections.shuffle(deck);
+    }
+
+    public void claimSet(int player){
+        try{
+            System.out.println("hey");
+            setSempahore.acquire();
+            if(!players[player].hasSameCardsThatFormsSet()){
+                setSempahore.release();
+                return;
+            }
+            setCards=players[player].getCards();
+            playerWhoClaimedSet=player;
+            latch.countDown();
+            Thread.sleep(50);
+        } catch(InterruptedException e){
+
+        }
+        setSempahore.release();
     }
 }
