@@ -42,7 +42,7 @@ public class Dealer implements Runnable {
         this.table = table;
         this.players = players;
         deck = IntStream.range(0, env.config.deckSize).boxed().collect(Collectors.toList());
-        reshuffleTime=env.config.turnTimeoutMillis;
+        // reshuffleTime=env.config.turnTimeoutMillis;
     }
 
     /**

@@ -109,7 +109,7 @@ public class Table {
      */
     public void placeCard(int card, int slot) {
         try {
-            Thread.sleep(env.config.tableDelayMillis);
+            Thread.sleep(1000);
         } catch (InterruptedException ignored) {}
         try {
             semaphore.acquire();
@@ -184,10 +184,10 @@ public class Table {
         semaphore.release();
         return true;
     }
-
+    // function to convert slot for Ui placement
     private int slotForUi(int gridSlot){
         int row = (gridSlot)/env.config.columns;
         int col = gridSlot % env.config.columns;
-        return row*env.config.rows+col;
+        return row*env.config.columns+col;
     }
 }
