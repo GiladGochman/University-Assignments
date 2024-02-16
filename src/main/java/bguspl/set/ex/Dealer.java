@@ -3,6 +3,8 @@ package bguspl.set.ex;
 import bguspl.set.Env;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -37,6 +39,11 @@ public class Dealer implements Runnable {
      */
     private long timerValue;
 
+    /*
+     * semaphore for checking sets
+     */
+    public Semaphore setSempahore;
+
 
 
     /**
@@ -51,7 +58,8 @@ public class Dealer implements Runnable {
         deck = IntStream.range(0, env.config.deckSize).boxed().collect(Collectors.toList());
         terminate=false;
         timerValue=env.config.turnTimeoutMillis;
-        // reshuffleTime=env.config.turnTimeoutMillis;
+        setSempahore = new Semaphore(1,true);
+        reshuffleTime=env.config.turnTimeoutMillis;
     }
 
     /**
@@ -71,7 +79,7 @@ public class Dealer implements Runnable {
         while (!shouldFinish()) {
             placeCardsOnTable();
             timerLoop();
-            updateTimerDisplay(false);
+            updateTimerDisplay(true);
             removeAllCardsFromTable();
         }
         announceWinners();
@@ -82,12 +90,13 @@ public class Dealer implements Runnable {
      * The inner loop of the dealer thread that runs as long as the countdown did not time out.
      */
     private void timerLoop() {
-        while (!terminate && System.currentTimeMillis() < reshuffleTime) {
+        long start=System.currentTimeMillis();
+        while (!terminate && System.currentTimeMillis() <start+ reshuffleTime) {
             sleepUntilWokenOrTimeout();
             updateTimerDisplay(false);
             removeCardsFromTable();
             placeCardsOnTable();
-            System.out.println("finnished loop, " + timerValue );
+            // System.out.println("finnished loop, " + timerValue );
 
         }
     }
@@ -137,32 +146,61 @@ public class Dealer implements Runnable {
     /**
      * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
      */
+    // private void sleepUntilWokenOrTimeout() {
+        
+    //     long start = System.currentTimeMillis();
+    //     long remainingTime=1000;
+    //     while(remainingTime>0){
+           
+    //         try{
+
+    //             Thread.sleep(remainingTime);
+    //             remainingTime=0;
+    //         } catch(InterruptedException i){
+    //             //do some action
+    
+    
+    //             remainingTime=start+1000-System.currentTimeMillis();
+    //         }
+    //     }
+    //     timerValue-=1000;
+        
+    // }
     private void sleepUntilWokenOrTimeout() {
-        
         long start = System.currentTimeMillis();
-        long remainingTime=1000;
-        while(remainingTime>0){
-            try{
-                Thread.sleep(remainingTime);
-                remainingTime=0;
-            } catch(InterruptedException i){
-                //do some action
-    
-    
-                remainingTime=start+1000-System.currentTimeMillis();
+        long remainingTime = 1000;
+        while (remainingTime > 0) {
+            try {
+                // Wait for the semaphore with a timeout
+                boolean acquired = this.setSempahore.tryAcquire(1, remainingTime, TimeUnit.MILLISECONDS);
+                if (acquired) {
+                    // A player claimed a set, break out of the loop
+                    break;
+                }
+            } catch (InterruptedException e) {
+                // Handle interruption if necessary
+                Thread.currentThread().interrupt();
             }
+    
+            // Calculate remaining time after waiting for the semaphore
+            long elapsed = System.currentTimeMillis() - start;
+            remainingTime = 1000 - elapsed;
         }
-        timerValue-=1000;
         
+        // Decrease the timer value after waiting
+        timerValue -= 1000;
     }
 
     /**
      * Reset and/or update the countdown and the countdown display.
      */
     private void updateTimerDisplay(boolean reset) {
-        if(reset) env.ui.setCountdown(env.config.turnTimeoutMillis, false);
+        if(reset){
+            env.ui.setCountdown(env.config.turnTimeoutMillis, false);
+            timerValue=env.config.turnTimeoutMillis;
+        } 
         else env.ui.setCountdown(timerValue, false);
-        System.out.println("updated timer display, " + timerValue );
+        // System.out.println("updated timer display, " + timerValue );
     }
 
     /**

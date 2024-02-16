@@ -136,6 +136,7 @@ public class Table {
             cardToSlot[card] = null;
             slotToCard[slot] = null;
             tokens[slot] = new LinkedList<Integer>();
+            env.ui.removeTokens(slotForUi(slot));
             env.ui.removeCard(slotForUi(slot));
         } catch(InterruptedException ignored) {};
         semaphore.release();
