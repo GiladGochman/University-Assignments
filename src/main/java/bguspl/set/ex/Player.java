@@ -183,7 +183,6 @@ public class Player implements Runnable {
      */
     public void point() {
         try{
-            ++score;
             playerThread.sleep(env.config.pointFreezeMillis);
             int ignored = table.countCards(); // this part is just for demonstration in the unit tests
             env.ui.setScore(id, ++score);
@@ -197,6 +196,9 @@ public class Player implements Runnable {
      * Penalize a player and perform other related actions.
      */
     public void penalty() {
+        try{
+            playerThread.sleep(env.config.penaltyFreezeMillis);
+        } catch(InterruptedException e){};
         
     }
 
@@ -218,8 +220,13 @@ public class Player implements Runnable {
         for(int slot:tokens){
             cards[i]=table.slotToCard[slot];
             i++;
+           
         }
+        
         return cards;
+    }
+    public int[] getToken(){
+        return tokens;
     }
 }
 

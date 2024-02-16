@@ -110,7 +110,6 @@ public class Dealer implements Runnable {
         while (!terminate && System.currentTimeMillis() <start+ reshuffleTime) {
             sleepUntilWokenOrTimeout();
             updateTimerDisplay(false);
-            removeCardsFromTable();
             placeCardsOnTable();
             // System.out.println("finnished loop, " + timerValue );
 
@@ -143,7 +142,18 @@ public class Dealer implements Runnable {
      * Checks cards should be removed from the table and removes them.
      */
     private void removeCardsFromTable() {
-        
+        for(int i=0;i<2;i++){
+            System.out.println(setCards[i]);
+            table.removeCard(table.cardToSlot[setCards[i]]);
+            for(Player player:players){
+                for(int j=0;j<2;j++){
+                    if(player.getToken()[j]==setCards[i]){
+                        player.counterTokens--;
+                        player.getToken()[j]=-1;
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -196,6 +206,7 @@ public class Dealer implements Runnable {
                    if(env.util.testSet(setCards)) {
                     players[playerWhoClaimedSet].point();
                     removeCardsFromTable();
+                    latch = new CountDownLatch(1);
                    }
                    else{
                     players[playerWhoClaimedSet].penalty();
@@ -247,7 +258,6 @@ public class Dealer implements Runnable {
 
     public void claimSet(int player){
         try{
-            System.out.println("hey");
             setSempahore.acquire();
             if(!players[player].hasSameCardsThatFormsSet()){
                 setSempahore.release();
@@ -256,7 +266,6 @@ public class Dealer implements Runnable {
             setCards=players[player].getCards();
             playerWhoClaimedSet=player;
             latch.countDown();
-            Thread.sleep(50);
         } catch(InterruptedException e){
 
         }
