@@ -1,4 +1,5 @@
 package bguspl.set.ex;
+import java.time.Year;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
@@ -66,7 +67,11 @@ public class Player implements Runnable {
     private ConcurrentLinkedQueue<Integer> queueActions;
 
 
-    int counterTokens;
+    public int counterTokens;
+
+    public boolean foundSet;
+
+    Object counterTokenLock;
     /**
      * an array to store the tokens that are placed or not placed
      */
@@ -88,6 +93,8 @@ public class Player implements Runnable {
         this.dealer=dealer;
         this.queueActions=new ConcurrentLinkedQueue<>();
         counterTokens=0;
+        foundSet=false;
+        counterTokenLock = new Object();
        
             
        
@@ -107,12 +114,13 @@ public class Player implements Runnable {
         while (!terminate) {
             if(queueActions.size()>0){
                 int slot=queueActions.remove();
-                if(!table.removeToken(id,slot )){
+                if(!table.removeToken(id,slot)){
                     if(counterTokens< env.config.featureSize){
-                    table.placeToken(id, slot);
-                        counterTokens++;
-                    if(counterTokens==env.config.featureSize) dealer.claimSet(id);
-                    }
+                    table.placeToken(id, slot); 
+                    counterTokens++;  
+                    if(counterTokens==env.config.featureSize) claimSet();
+                    
+                }
                 }
                 else{
                     --counterTokens;
@@ -127,7 +135,8 @@ public class Player implements Runnable {
 
     /**
      * Creates an additional thread for an AI (computer) player. The main loop of this thread repeatedly generates
-     * key presses. If the queue of key presses is full, the thread waits until it is not full.
+     * key presses. If the queue ofY
+     *  key presses is full, the thread waits until it is not full.
      */
     private void createArtificialIntelligence() {
         // note: this is a very, very smart AI (!)
@@ -168,12 +177,18 @@ public class Player implements Runnable {
      */
     public void point() {
         try{
-            queueActions.clear();
-            counterTokens=0;
+            System.out.println(2);
+            
+           
             int ignored = table.countCards(); // this part is just for demonstration in the unit tests
             env.ui.setScore(id, ++score);
             Thread.sleep(env.config.pointFreezeMillis);
-        }catch(InterruptedException e){};
+            queueActions.clear();
+            counterTokens=0;
+        }catch(InterruptedException e){
+            if(!terminate)
+            Thread.currentThread().interrupt();
+        };
         
 
        
@@ -183,11 +198,23 @@ public class Player implements Runnable {
      * Penalize a player and perform other related actions.
      */
     public void penalty() {
-        try{
+        try {
             queueActions.clear();
-            Thread.sleep(env.config.penaltyFreezeMillis);
-        } catch(InterruptedException e){};
-        
+        } finally {
+            try {
+                for(int i=0;i<env.config.penaltyFreezeMillis/1000;i++){
+                    env.ui.setFreeze(id, env.config.penaltyFreezeMillis- i*1000 );
+                    Thread.sleep(1000);
+                    
+                }
+                
+            env.ui.setFreeze(id, 0);
+
+            } catch (InterruptedException e) {
+                // Re-interrupt the thread
+                Thread.currentThread().interrupt();
+            }
+        }
     }
 
     public int score() {
@@ -202,7 +229,51 @@ public class Player implements Runnable {
        return counterTokens == env.config.featureSize;
     }
 
-    
-   
+    public void claimSet() {
+        try {
+            this.foundSet = false;
+            dealer.setSempahore.acquire();
+            if (!hasSameCardsThatFormsSet()) {
+                dealer.setSempahore.release();
+                return;
+            }
+            dealer.playerWhoClaimedSet = id;
+            dealer.dealerThread.interrupt();
+            dealer.setSempahore.release();
+            
+            synchronized (dealer.setSempahore) {
+                dealer.setSempahore.wait();
+            }
+        } catch (InterruptedException e) {
+            System.out.println("got interrupted");
+            if (foundSet) 
+                point();
+            else 
+                penalty();
+        }
+    }
 }
+//     public void claimSet(){
+//         try{
+//             this.foundSet=false;
+//             dealer.setSempahore.acquire();
+//             if(!hasSameCardsThatFormsSet()){
+//                 dealer.setSempahore.release();
+//                 return;
+//             }
+//             dealer.playerWhoClaimedSet=id;
+//             dealer.dealerThread.interrupt();
+
+//             dealer.setSempahore.wait();
+//         } catch(InterruptedException e){
+//             System.out.println("got inturpted");
+//             if(foundSet=false) penalty();
+//             else point();
+//         }
+//         dealer.setSempahore.release();
+//     }
+// }
+
+   
+
 

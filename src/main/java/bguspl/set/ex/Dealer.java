@@ -57,7 +57,7 @@ public class Dealer implements Runnable {
 
     public int playerWhoClaimedSet;
 
-    public int [] setCards;
+    // public int [] setCards;
 
 
 
@@ -76,7 +76,7 @@ public class Dealer implements Runnable {
         setSempahore = new Semaphore(1,true);
         reshuffleTime = env.config.turnTimeoutMillis;
         playerWhoClaimedSet=-1;
-        setCards=new int[env.config.featureSize];
+        // setCards=new int[env.config.featureSize];
     }
 
     /**
@@ -144,17 +144,10 @@ public class Dealer implements Runnable {
      * Checks cards should be removed from the table and removes them.
      */
     private void removeCardsFromTable() {
-        // for(int i=0;i<3;i++){
-        //     table.removeCard(table.cardToSlot[setCards[i]]);
-        //     for(Player player:players){
-        //         for(int j=0;j<3;j++){
-        //             if(player.getToken()[j]==setCards[i]){
-        //                 player.counterTokens--;
-        //                 player.getToken()[j]=-1;
-        //             }
-        //         }
-        //     }
+        // if(playerWhoClaimedSet!= -1){
+        //    players[play]
         // }
+        
     }
 
     /**
@@ -174,31 +167,57 @@ public class Dealer implements Runnable {
      * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
      */
     private void sleepUntilWokenOrTimeout() {
-        
         long start = System.currentTimeMillis();
-        long remainingTime=1000;
-        while(remainingTime>0){
-           
-            try{
+        long remainingTime = 1000;
+    
+        while (remainingTime > 0) {
+            try {
                 Thread.sleep(remainingTime);
-                remainingTime=0;
-            } catch(InterruptedException i){
-                if(terminate) return;
-                if(env.util.testSet(setCards)) {
-                    players[playerWhoClaimedSet].point();
-                    removeCardsFromTable();
+                remainingTime = 0;
+            } catch (InterruptedException ignored) {
+                if (terminate) return;
+                if (playerWhoClaimedSet != -1) {
+                    synchronized (players[playerWhoClaimedSet]) {
+                        if (env.util.testSet(table.getSetCards(playerWhoClaimedSet))) {
+                            players[playerWhoClaimedSet].foundSet = true;
+                            removeCardsFromTable();
+                        }
+                        players[playerWhoClaimedSet].getPlayerThread().interrupt();
+                    }
                 }
-                else{
-                    players[playerWhoClaimedSet].penalty();
-                }
-    
-    
-                remainingTime=start+1000-System.currentTimeMillis();
+                remainingTime = start + 1000 - System.currentTimeMillis();
             }
         }
-        timerValue-=1000;
-        
+    
+        timerValue -= 1000;
     }
+    // private void sleepUntilWokenOrTimeout() {
+        
+    //     long start = System.currentTimeMillis();
+    //     long remainingTime=1000;
+    //     while(remainingTime>0){
+           
+    //         try{
+    //             Thread.sleep(remainingTime);
+    //             remainingTime=0;
+    //         } catch(InterruptedException i){
+    //             if(terminate) return;
+    //             if(env.util.testSet(table.getSetCards(playerWhoClaimedSet))) {
+    //                 System.out.println("1");
+    //                 players[playerWhoClaimedSet].foundSet=true;
+    //                 removeCardsFromTable();
+    //             }
+    //             System.out.println("now interupting");
+    //             players[playerWhoClaimedSet].getPlayerThread().interrupt();
+    //             System.out.println("h1");
+    
+    
+    //             remainingTime=start+1000-System.currentTimeMillis();
+    //         }
+    //     }
+    //     timerValue-=1000;
+        
+    // }
     /**
      * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
      */
@@ -263,20 +282,4 @@ public class Dealer implements Runnable {
         Collections.shuffle(deck);
     }
 
-    public void claimSet(int player){
-    //     try{
-    //         setSempahore.acquire();
-    //         if(!players[player].hasSameCardsThatFormsSet()){
-    //             setSempahore.release();
-    //             return;
-    //         }
-    //         setCards=players[player].getCards();
-    //         playerWhoClaimedSet=player;
-    //         dealerThread.interrupt();
-            
-    //     } catch(InterruptedException e){
-
-    //     }
-    //     setSempahore.release();
-    }
 }

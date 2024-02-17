@@ -37,9 +37,9 @@ public class Table {
 
     public LinkedList<Integer>[] playersTokens;
 
-    Object [] slotTokensLocks;
+    public Object [] slotLocks;
 
-    Object [] playersLock;
+    public Object [] playersLock;
 
 
     
@@ -64,9 +64,9 @@ public class Table {
         for(int i=0;i<env.config.players;i++){
             playersTokens[i] = new LinkedList<Integer>();
         }
-        this.slotTokensLocks = new Object[env.config.tableSize];
+        this.slotLocks = new Object[env.config.tableSize];
         for(int i=0;i<env.config.tableSize;i++){
-            slotTokensLocks[i] = new Object();
+            slotLocks[i] = new Object();
         }
 
         this.playersLock = new Object[env.config.players];
@@ -87,9 +87,9 @@ public class Table {
         for (int i = 0; i < env.config.tableSize; i++) {
             tokens[i] = new LinkedList<Integer>();
         }
-        this.slotTokensLocks = new Object[env.config.tableSize];
+        this.slotLocks = new Object[env.config.tableSize];
         for(int i=0;i<env.config.tableSize;i++){
-            slotTokensLocks[i] = new Object();
+            slotLocks[i] = new Object();
         }
         this.playersTokens=new LinkedList[env.config.players];
         for(int i=0;i<env.config.players;i++){
@@ -134,7 +134,7 @@ public class Table {
         try {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
-        synchronized(slotTokensLocks[slot]){
+        synchronized(slotLocks[slot]){
             cardToSlot[card] = slot;
             slotToCard[slot] = card;
             env.ui.placeCard(card, slotForUi(slot));
@@ -150,7 +150,7 @@ public class Table {
         try {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
-        synchronized(slotTokensLocks[slot]){
+        synchronized(slotLocks[slot]){
             int card = slotToCard[slot];
             cardToSlot[card] = null;
             slotToCard[slot] = null;
@@ -177,9 +177,11 @@ public class Table {
      * @param slot   - the slot on which to place the token.
      */
     public void placeToken(int player, int slot){
-        synchronized(slotTokensLocks[slot]) {
+        synchronized(slotLocks[slot]) {
             synchronized(playersLock[player]){
+                if(playersTokens[player].size()<env.config.featureSize)
                 tokens[slot].add(player);
+                playersTokens[player].add(slot);
                 env.ui.placeToken(player, slotForUi(slot));
             }
          }
@@ -193,7 +195,7 @@ public class Table {
      * @return       - true iff a token was successfully removed.
      */
     public boolean removeToken(int player, int slot) {
-        synchronized(slotTokensLocks[slot]){
+        synchronized(slotLocks[slot]){
             synchronized(playersLock[player]){
             int index=-1;
             int counter=0;
@@ -208,7 +210,11 @@ public class Table {
                 
                 return false;
             } 
+            for(int i=0;i<playersTokens[player].size();i++){
+                if(playersTokens[player].get(i)==slot) playersTokens[player].remove(i);
+            }
             tokens[slot].remove(index);
+            
             env.ui.removeToken(player, slotForUi(slot));
            
         
@@ -222,6 +228,20 @@ public class Table {
         int row = (gridSlot)/env.config.columns;
         int col = gridSlot % env.config.columns;
         return row*env.config.columns+col;
+    }
+
+    public int [] getSetCards(int player){
+        int [] cards = new int[env.config.featureSize];
+        int counter=0;
+        synchronized(playersLock[player]){
+            for(int slot:playersTokens[player]){
+                synchronized(slotLocks[slot]){
+                    cards[counter] = slotToCard[slot];
+                    counter++;
+                }
+            }
+        }
+        return cards;
     }
 
     // public void removeAllCards(){
