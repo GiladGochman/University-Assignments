@@ -180,7 +180,7 @@ public class Dealer implements Runnable {
                 remainingTime = 0;
             } catch (InterruptedException ignored) {
                 if (terminate) return;
-                if (playerWhoClaimedSet != -1) {
+                if (playerWhoClaimedSet != -1) { // A player found a set.
                     synchronized (players[playerWhoClaimedSet]) {
                         setCards=table.getSetCards(playerWhoClaimedSet);
                         if (env.util.testSet(setCards)) {

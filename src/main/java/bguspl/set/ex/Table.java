@@ -160,7 +160,7 @@ public class Table {
                     synchronized(playersLock[i]){
                     if(playerTokens.get(i)==slot){
                         playerTokens.remove(i);
-                        break;
+                        break; //breaks out of the player search loop, continues removing tokens from other players.
                     }
                  }
                 }
@@ -250,6 +250,7 @@ public class Table {
             for(int player:tokens[slot]){
                 players.add(player);
             }
+            System.out.println("getAllPlayersThatPlacedTokenOnSlot: " + players);
         }
         return players;
     }

@@ -67,7 +67,7 @@ public class Player implements Runnable {
     private ConcurrentLinkedQueue<Integer> queueActions;
 
 
-    public int counterTokens;
+    public int tokensCounter;
 
     public boolean foundSet;
 
@@ -92,7 +92,7 @@ public class Player implements Runnable {
         this.human = human;
         this.dealer=dealer;
         this.queueActions=new ConcurrentLinkedQueue<>();
-        counterTokens=0;
+        tokensCounter=0;
         foundSet=false;
         counterTokenLock = new Object();
        
@@ -115,15 +115,15 @@ public class Player implements Runnable {
             if(queueActions.size()>0){
                 int slot=queueActions.remove();
                 if(!table.removeToken(id,slot)){
-                    if(counterTokens< env.config.featureSize){
+                    if(tokensCounter< env.config.featureSize){
                     table.placeToken(id, slot); 
-                    counterTokens++;  
-                    if(counterTokens==env.config.featureSize) claimSet();
+                    tokensCounter++;  
+                    if(tokensCounter==env.config.featureSize) claimSet();
                     
                 }
                 }
                 else{
-                    --counterTokens;
+                    --tokensCounter;
                     
                 }
             }
@@ -194,7 +194,7 @@ public class Player implements Runnable {
             }
             env.ui.setFreeze(id,0);
             queueActions.clear();
-            counterTokens=0;
+            tokensCounter=0;
         }catch(InterruptedException e){
             if(terminate) terminate();
             Thread.currentThread().interrupt();
@@ -235,15 +235,15 @@ public class Player implements Runnable {
         return playerThread;
     }
 
-    public boolean hasSameCardsThatFormsSet(){
-       return counterTokens == env.config.featureSize;
+    public boolean allTokensPlaced(){
+       return tokensCounter == env.config.featureSize;
     }
 
     public void claimSet() {
         try {
             this.foundSet = false;
             dealer.setSempahore.acquire();
-            if (!hasSameCardsThatFormsSet()) {
+            if (!allTokensPlaced()) {
                 dealer.setSempahore.release();
                 return;
             }
