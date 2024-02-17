@@ -129,6 +129,10 @@ public class Player implements Runnable {
             }
            
         }
+        try{
+            Thread.currentThread().join();
+        } catch(InterruptedException e){};
+       
         if (!human) try { aiThread.join(); } catch (InterruptedException ignored) {}
         env.logger.info("thread " + Thread.currentThread().getName() + " terminated.");
     }
@@ -158,6 +162,8 @@ public class Player implements Runnable {
      */
     public void terminate() {
        terminate=true;
+       
+       
     }
 
     /**
@@ -182,11 +188,15 @@ public class Player implements Runnable {
            
             int ignored = table.countCards(); // this part is just for demonstration in the unit tests
             env.ui.setScore(id, ++score);
-            Thread.sleep(env.config.pointFreezeMillis);
+            for(int i=0;i<env.config.pointFreezeMillis/1000;i++){
+                env.ui.setFreeze(id, env.config.pointFreezeMillis-i*1000);
+                Thread.sleep(1000);
+            }
+            env.ui.setFreeze(id,0);
             queueActions.clear();
             counterTokens=0;
         }catch(InterruptedException e){
-            if(!terminate)
+            if(terminate) terminate();
             Thread.currentThread().interrupt();
         };
         
@@ -199,7 +209,7 @@ public class Player implements Runnable {
      */
     public void penalty() {
         try {
-            queueActions.clear();
+           queueActions.clear();
         } finally {
             try {
                 for(int i=0;i<env.config.penaltyFreezeMillis/1000;i++){
@@ -209,9 +219,9 @@ public class Player implements Runnable {
                 }
                 
             env.ui.setFreeze(id, 0);
-
+            queueActions.clear();
             } catch (InterruptedException e) {
-                // Re-interrupt the thread
+                if(terminate) terminate();
                 Thread.currentThread().interrupt();
             }
         }

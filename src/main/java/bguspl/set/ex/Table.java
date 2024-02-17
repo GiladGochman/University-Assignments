@@ -244,6 +244,16 @@ public class Table {
         return cards;
     }
 
+    public LinkedList<Integer> getAllPlayersThatPlacedTokenOnSlot(int slot){
+        LinkedList<Integer> players= new LinkedList<>();
+        synchronized(slotLocks[slot]){
+            for(int player:tokens[slot]){
+                players.add(player);
+            }
+        }
+        return players;
+    }
+
     // public void removeAllCards(){
     //     try{
     //         semaphore.acquire();

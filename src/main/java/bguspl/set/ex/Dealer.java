@@ -4,6 +4,7 @@ import bguspl.set.Env;
 
 import java.time.Year;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
@@ -57,7 +58,7 @@ public class Dealer implements Runnable {
 
     public int playerWhoClaimedSet;
 
-    // public int [] setCards;
+    public int [] setCards;
 
 
 
@@ -74,9 +75,9 @@ public class Dealer implements Runnable {
         terminate = false;
         timerValue = env.config.turnTimeoutMillis;
         setSempahore = new Semaphore(1,true);
-        reshuffleTime = env.config.turnTimeoutMillis;
+        // reshuffleTime = env.config.turnTimeoutMillis;
         playerWhoClaimedSet=-1;
-        // setCards=new int[env.config.featureSize];
+        setCards=new int[env.config.featureSize];
     }
 
     /**
@@ -94,11 +95,12 @@ public class Dealer implements Runnable {
             playerThread.start();
         }
         env.ui.setCountdown(timerValue, false);
-        while (!shouldFinish()) {
+        while (!shouldFinish()) { 
             placeCardsOnTable();
             timerLoop();
             updateTimerDisplay(true);
             removeAllCardsFromTable();
+            shuffleDeck();
         }
         announceWinners();
         env.logger.info("thread " + Thread.currentThread().getName() + " terminated.");
@@ -108,8 +110,8 @@ public class Dealer implements Runnable {
      * The inner loop of the dealer thread that runs as long as the countdown did not time out.
      */
     private void timerLoop() {
-        long start=System.currentTimeMillis();
-        while (!terminate && System.currentTimeMillis() <start+ reshuffleTime) {
+        reshuffleTime=System.currentTimeMillis()+ env.config.turnTimeoutMillis;
+        while (!terminate && System.currentTimeMillis() < reshuffleTime) {
             sleepUntilWokenOrTimeout();
             updateTimerDisplay(false);
             placeCardsOnTable();
@@ -144,9 +146,11 @@ public class Dealer implements Runnable {
      * Checks cards should be removed from the table and removes them.
      */
     private void removeCardsFromTable() {
-        // if(playerWhoClaimedSet!= -1){
-        //    players[play]
-        // }
+        if(playerWhoClaimedSet!=-1){
+            for(int card:setCards){
+                table.removeCard(table.cardToSlot[card]);
+            }
+        }
         
     }
 
@@ -178,11 +182,18 @@ public class Dealer implements Runnable {
                 if (terminate) return;
                 if (playerWhoClaimedSet != -1) {
                     synchronized (players[playerWhoClaimedSet]) {
-                        if (env.util.testSet(table.getSetCards(playerWhoClaimedSet))) {
+                        setCards=table.getSetCards(playerWhoClaimedSet);
+                        if (env.util.testSet(setCards)) {
                             players[playerWhoClaimedSet].foundSet = true;
                             removeCardsFromTable();
+                            players[playerWhoClaimedSet].getPlayerThread().interrupt();
+                            playerWhoClaimedSet=-1;
+                            reshuffleTime=System.currentTimeMillis() + env.config.turnTimeoutMillis;
+                            return;
                         }
                         players[playerWhoClaimedSet].getPlayerThread().interrupt();
+                        playerWhoClaimedSet=-1;
+                        
                     }
                 }
                 remainingTime = start + 1000 - System.currentTimeMillis();
@@ -275,7 +286,22 @@ public class Dealer implements Runnable {
      * Check who is/are the winner/s and displays them.
      */
     private void announceWinners() {
-        // TODO implement
+       LinkedList<Integer> winners = new LinkedList<>();
+       int highscore=0;
+       for(Player player: players){
+            if(player.score()== highscore) winners.add(player.id);
+            else if(player.score() > highscore){
+                winners.clear();
+                highscore=player.score();
+                winners.add(player.id);
+            }
+       }
+       int [] winnerPlayers = new int[winners.size()];
+       for(int i=0;i<winners.size();i++){
+        winnerPlayers[i]=winners.removeFirst();
+       }
+       env.ui.announceWinner(winnerPlayers);
+       
     }
 
     private void shuffleDeck(){
