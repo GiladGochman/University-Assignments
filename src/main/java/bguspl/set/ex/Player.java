@@ -118,7 +118,6 @@ public class Player implements Runnable {
                         if(tokens[i]==-1) {
                             tokens[i]= slot;
                             counterTokens++;
-                            System.out.println(counterTokens);
                             break;
                         }
                     }

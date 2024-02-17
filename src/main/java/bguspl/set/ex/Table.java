@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.Semaphore;
+// import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
 
 /**
@@ -35,7 +35,7 @@ public class Table {
      */
     protected LinkedList<Integer>[] tokens;
 
-    public Semaphore semaphore;
+    Object [] slotTokensLocks;
 
 
     
@@ -56,7 +56,10 @@ public class Table {
         for (int i = 0; i < env.config.tableSize; i++) {
             tokens[i] = new LinkedList<Integer>();
         }
-        this.semaphore = new Semaphore(1,true);
+        this.slotTokensLocks = new Object[env.config.tableSize];
+        for(int i=0;i<env.config.tableSize;i++){
+            slotTokensLocks[i] = new Object();
+        }
     }
 
     /**
@@ -71,7 +74,10 @@ public class Table {
         for (int i = 0; i < env.config.tableSize; i++) {
             tokens[i] = new LinkedList<Integer>();
         }
-        this.semaphore = new Semaphore(1,true);
+        this.slotTokensLocks = new Object[env.config.tableSize];
+        for(int i=0;i<env.config.tableSize;i++){
+            slotTokensLocks[i] = new Object();
+        }
     }
 
     /**
@@ -111,15 +117,12 @@ public class Table {
         try {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
-        try {
-            semaphore.acquire();
+        synchronized(slotTokensLocks[slot]){
             cardToSlot[card] = slot;
             slotToCard[slot] = card;
             env.ui.placeCard(card, slotForUi(slot));
-        } catch (InterruptedException ignored) {
-        } finally {
-            semaphore.release();
         }
+        
     }
 
     /**
@@ -130,32 +133,29 @@ public class Table {
         try {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
-        try{
-            semaphore.acquire();
+        synchronized(slotTokensLocks[slot]){
             int card = slotToCard[slot];
             cardToSlot[card] = null;
             slotToCard[slot] = null;
             tokens[slot] = new LinkedList<Integer>();
             env.ui.removeTokens(slotForUi(slot));
             env.ui.removeCard(slotForUi(slot));
-        } catch(InterruptedException ignored) {};
-        semaphore.release();
+        } 
     }
+    
 
     /**
      * Places a player token on a grid slot.
      * @param player - the player the token belongs to.
      * @param slot   - the slot on which to place the token.
      */
-    public void placeToken(int player, int slot) {
-        try{
-            semaphore.acquire();
-            tokens[slot].add(player);
-            env.ui.placeToken(player, slotForUi(slot));
-        } catch(InterruptedException ignored){};
-        semaphore.release();
-        
-    }
+    public void placeToken(int player, int slot){
+        synchronized(slotTokensLocks[slot]) {
+                tokens[slot].add(player);
+                env.ui.placeToken(player, slotForUi(slot));
+            }
+        }
+    
 
     /**
      * Removes a token of a player from a grid slot.
@@ -164,8 +164,7 @@ public class Table {
      * @return       - true iff a token was successfully removed.
      */
     public boolean removeToken(int player, int slot) {
-        try {
-            semaphore.acquire();
+        synchronized(slotTokensLocks[slot]){
             int index=-1;
             int counter=0;
             for(int playerId:tokens[slot]){
@@ -176,17 +175,16 @@ public class Table {
                 counter++;
             }
             if(index==-1){
-                semaphore.release();
+                
                 return false;
             } 
             tokens[slot].remove(index);
             env.ui.removeToken(player, slotForUi(slot));
            
-        } catch (InterruptedException ignored) {
-           
-        } 
-        semaphore.release();
+        
+       
         return true;
+        }
     }
     // function to convert slot for Ui placement
     private int slotForUi(int gridSlot){
