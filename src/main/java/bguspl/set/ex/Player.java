@@ -112,17 +112,25 @@ public class Player implements Runnable {
         if (!human) createArtificialIntelligence();
 
         while (!terminate) {
+            // checking if the queue is empty
             if(queueActions.size()>0){
+                //enqueing
                 int slot=queueActions.remove();
+                //trying to remove the token
                 if(!table.removeToken(id,slot)){
+                    // the token isnt removed
+                    // checking whther we already have 3 tokens on the table
                     if(tokensCounter< env.config.featureSize){
+                    //placing the token
                     table.placeToken(id, slot); 
                     tokensCounter++;  
+                    //checking if we put right now 3 tokens and then claim a set
                     if(tokensCounter==env.config.featureSize) claimSet();
                     
                 }
                 }
                 else{
+                    //decrease the counter because we successfully removed a token
                     --tokensCounter;
                     
                 }
@@ -130,6 +138,7 @@ public class Player implements Runnable {
            
         }
         try{
+            // at the end of the game we join the main thread
             Thread.currentThread().join();
         } catch(InterruptedException e){};
        
@@ -183,18 +192,21 @@ public class Player implements Runnable {
      */
     public void point() {
         try{
-            System.out.println(2);
-            
            
             int ignored = table.countCards(); // this part is just for demonstration in the unit tests
+            // setting the score in the ui
             env.ui.setScore(id, ++score);
+            // sleeping for 1 sec * pointFreezeMs
             for(int i=0;i<env.config.pointFreezeMillis/1000;i++){
+                // updating the timer
                 env.ui.setFreeze(id, env.config.pointFreezeMillis-i*1000);
+                //sleep for another sec;
                 Thread.sleep(1000);
             }
+            // unfreeze
             env.ui.setFreeze(id,0);
+            //clearing the queue actions.
             queueActions.clear();
-            tokensCounter=0;
         }catch(InterruptedException e){
             if(terminate) terminate();
             Thread.currentThread().interrupt();
@@ -212,12 +224,13 @@ public class Player implements Runnable {
            queueActions.clear();
         } finally {
             try {
+                // sleeping for freeze time like in point
                 for(int i=0;i<env.config.penaltyFreezeMillis/1000;i++){
                     env.ui.setFreeze(id, env.config.penaltyFreezeMillis- i*1000 );
                     Thread.sleep(1000);
                     
                 }
-                
+            // unfreeze and clear action queue
             env.ui.setFreeze(id, 0);
             queueActions.clear();
             } catch (InterruptedException e) {
@@ -241,26 +254,36 @@ public class Player implements Runnable {
 
     public void claimSet() {
         try {
+            //initilizing for not finding a set
             this.foundSet = false;
+            //accuire the semaphore
             dealer.setSempahore.acquire();
-            if (!allTokensPlaced()) {
+            // in case the dealer found someone else's set and my tokens were removed ill check again 
+            if (!allTokensPlaced())
+             {
+                // if my tokens are removed ill realse the semaphore
                 dealer.setSempahore.release();
                 return;
             }
+            // claiming my self as the player who want his set to be checked
             dealer.playerWhoClaimedSet = id;
+            // inturrpt the delaer
             dealer.dealerThread.interrupt();
-            dealer.setSempahore.release();
             
+            
+            // waiting for the dealer to check my set
             synchronized (dealer.setSempahore) {
                 dealer.setSempahore.wait();
             }
         } catch (InterruptedException e) {
-            System.out.println("got interrupted");
+            // the dealer stopped checking my set now ill check if my foundset flag has changed
             if (foundSet) 
                 point();
             else 
                 penalty();
         }
+        // realase the semaphore
+        dealer.setSempahore.release();
     }
 }
 //     public void claimSet(){

@@ -160,7 +160,7 @@ public class Dealer implements Runnable {
     private void placeCardsOnTable() {
        for(int i=0;i<table.slotToCard.length;i++){
         if(table.slotToCard[i]==null){
-
+            //pulling a card from the deck and adding it to the table
             int cardToPlace=deck.remove(0);
             table.placeCard(cardToPlace, i);
         }
@@ -176,19 +176,30 @@ public class Dealer implements Runnable {
     
         while (remainingTime > 0) {
             try {
+                // dealer thread trying to sleep for 1 sec
                 Thread.sleep(remainingTime);
                 remainingTime = 0;
             } catch (InterruptedException ignored) {
+                //the case some player tries to claim a set or the game is terminated
                 if (terminate) return;
-                if (playerWhoClaimedSet != -1) { // A player found a set.
+                //if someone tries to claim a set
+                if (playerWhoClaimedSet != -1) {
+                    //sync on the player who claim the set
                     synchronized (players[playerWhoClaimedSet]) {
+                        //get the cards from the table, each player has a list of tokens on the table data structure
                         setCards=table.getSetCards(playerWhoClaimedSet);
+                        //if there is a set
                         if (env.util.testSet(setCards)) {
+                            //update the field in the player whos waiting for set
                             players[playerWhoClaimedSet].foundSet = true;
+                            //removing the cards and will update in the function the token counters for players
                             removeCardsFromTable();
+                            // interrupt the player to update his state
                             players[playerWhoClaimedSet].getPlayerThread().interrupt();
                             playerWhoClaimedSet=-1;
+                            // update the time of reshuffeling
                             reshuffleTime=System.currentTimeMillis() + env.config.turnTimeoutMillis;
+                            //need to add a flag to change the time to reset
                             return;
                         }
                         players[playerWhoClaimedSet].getPlayerThread().interrupt();
@@ -288,18 +299,23 @@ public class Dealer implements Runnable {
     private void announceWinners() {
        LinkedList<Integer> winners = new LinkedList<>();
        int highscore=0;
+       // iterating through all players 
        for(Player player: players){
+            // if we found some player with the same highscore we add him
             if(player.score()== highscore) winners.add(player.id);
+            //if we found some player with higher score , we remove all the other players that were on the old highscore and add the player with the new highscore
             else if(player.score() > highscore){
                 winners.clear();
                 highscore=player.score();
                 winners.add(player.id);
             }
        }
+       // make an array from the linked list
        int [] winnerPlayers = new int[winners.size()];
        for(int i=0;i<winners.size();i++){
         winnerPlayers[i]=winners.removeFirst();
        }
+       //display the winner
        env.ui.announceWinner(winnerPlayers);
        
     }

@@ -34,10 +34,16 @@ public class Table {
      * DataStructure to hold the tokens
      */
     protected LinkedList<Integer>[] tokens;
-
+    /**
+     * data structure to hold all the playersTokens for each player
+     */
     public LinkedList<Integer>[] playersTokens;
-
+    /*
+     * objects to sync for slots usage
+     */
     public Object [] slotLocks;
+
+    // objects to sync for playerToken usage
 
     public Object [] playersLock;
 
@@ -151,10 +157,13 @@ public class Table {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
         synchronized(slotLocks[slot]){
+            // syncing the slot
             int card = slotToCard[slot];
             cardToSlot[card] = null;
             slotToCard[slot] = null;
+            // clear all tokens
             tokens[slot] = new LinkedList<Integer>();
+            // checking if players had thier token on that slot
             for(LinkedList<Integer> playerTokens:playersTokens){
                 for(int i=0;i<playerTokens.size();i++){
                     synchronized(playersLock[i]){
@@ -177,12 +186,17 @@ public class Table {
      * @param slot   - the slot on which to place the token.
      */
     public void placeToken(int player, int slot){
+        // sync the slot and the player
         synchronized(slotLocks[slot]) {
             synchronized(playersLock[player]){
-                if(playersTokens[player].size()<env.config.featureSize)
+                //checking if the player put already 3 tokens
+                if(playersTokens[player].size()<env.config.featureSize){
+                // adding the token to the playersToken array and to the table tokens
                 tokens[slot].add(player);
                 playersTokens[player].add(slot);
+                //displaying in the ui
                 env.ui.placeToken(player, slotForUi(slot));
+                }
             }
          }
         }
@@ -195,10 +209,12 @@ public class Table {
      * @return       - true iff a token was successfully removed.
      */
     public boolean removeToken(int player, int slot) {
+        // sync on the slot and on the player lock so only 1 action per player and per slot
         synchronized(slotLocks[slot]){
             synchronized(playersLock[player]){
             int index=-1;
             int counter=0;
+            // searching for the player token in the slot
             for(int playerId:tokens[slot]){
                 if(playerId==player){
                     index=counter;
@@ -207,14 +223,15 @@ public class Table {
                 counter++;
             }
             if(index==-1){
-                
+                // if we didnt found a token on the player we return false
                 return false;
             } 
+            // removing the token from the playerTokens list
             for(int i=0;i<playersTokens[player].size();i++){
                 if(playersTokens[player].get(i)==slot) playersTokens[player].remove(i);
             }
             tokens[slot].remove(index);
-            
+            // updating in the ui
             env.ui.removeToken(player, slotForUi(slot));
            
         
@@ -229,7 +246,13 @@ public class Table {
         int col = gridSlot % env.config.columns;
         return row*env.config.columns+col;
     }
-
+    // a function for the dealer to check a set from a certain player
+    /**
+     * 
+     * @param player
+     * @pre playersToken[player].length = env.config.featuresize
+     * 
+     */
     public int [] getSetCards(int player){
         int [] cards = new int[env.config.featureSize];
         int counter=0;
@@ -243,13 +266,16 @@ public class Table {
         }
         return cards;
     }
-
+    // this function get all the players that has put thier token on a certain slot for use in remove cards in dealer class
     public LinkedList<Integer> getAllPlayersThatPlacedTokenOnSlot(int slot){
         LinkedList<Integer> players= new LinkedList<>();
+        // sync on the slot
         synchronized(slotLocks[slot]){
+            // adding all the players id that put thier token on the slot
             for(int player:tokens[slot]){
                 players.add(player);
             }
+            
             System.out.println("getAllPlayersThatPlacedTokenOnSlot: " + players);
         }
         return players;
