@@ -35,7 +35,11 @@ public class Table {
      */
     protected LinkedList<Integer>[] tokens;
 
+    public LinkedList<Integer>[] playersTokens;
+
     Object [] slotTokensLocks;
+
+    Object [] playersLock;
 
 
     
@@ -56,9 +60,18 @@ public class Table {
         for (int i = 0; i < env.config.tableSize; i++) {
             tokens[i] = new LinkedList<Integer>();
         }
+        this.playersTokens=new LinkedList[env.config.players];
+        for(int i=0;i<env.config.players;i++){
+            playersTokens[i] = new LinkedList<Integer>();
+        }
         this.slotTokensLocks = new Object[env.config.tableSize];
         for(int i=0;i<env.config.tableSize;i++){
             slotTokensLocks[i] = new Object();
+        }
+
+        this.playersLock = new Object[env.config.players];
+        for(int i=0; i<env.config.players;i++){
+            playersLock[i] = new Object();
         }
     }
 
@@ -77,6 +90,10 @@ public class Table {
         this.slotTokensLocks = new Object[env.config.tableSize];
         for(int i=0;i<env.config.tableSize;i++){
             slotTokensLocks[i] = new Object();
+        }
+        this.playersTokens=new LinkedList[env.config.players];
+        for(int i=0;i<env.config.players;i++){
+            playersTokens[i] = new LinkedList<Integer>();
         }
     }
 
@@ -138,6 +155,16 @@ public class Table {
             cardToSlot[card] = null;
             slotToCard[slot] = null;
             tokens[slot] = new LinkedList<Integer>();
+            for(LinkedList<Integer> playerTokens:playersTokens){
+                for(int i=0;i<playerTokens.size();i++){
+                    synchronized(playersLock[i]){
+                    if(playerTokens.get(i)==slot){
+                        playerTokens.remove(i);
+                        break;
+                    }
+                 }
+                }
+            }
             env.ui.removeTokens(slotForUi(slot));
             env.ui.removeCard(slotForUi(slot));
         } 
@@ -151,9 +178,11 @@ public class Table {
      */
     public void placeToken(int player, int slot){
         synchronized(slotTokensLocks[slot]) {
+            synchronized(playersLock[player]){
                 tokens[slot].add(player);
                 env.ui.placeToken(player, slotForUi(slot));
             }
+         }
         }
     
 
@@ -165,6 +194,7 @@ public class Table {
      */
     public boolean removeToken(int player, int slot) {
         synchronized(slotTokensLocks[slot]){
+            synchronized(playersLock[player]){
             int index=-1;
             int counter=0;
             for(int playerId:tokens[slot]){
@@ -185,6 +215,7 @@ public class Table {
        
         return true;
         }
+    }
     }
     // function to convert slot for Ui placement
     private int slotForUi(int gridSlot){

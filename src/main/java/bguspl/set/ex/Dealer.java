@@ -1,6 +1,8 @@
 package bguspl.set.ex;
 
 import bguspl.set.Env;
+
+import java.time.Year;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -46,6 +48,8 @@ public class Dealer implements Runnable {
      */
     public Semaphore setSempahore;
 
+    public Thread dealerThread;
+
     /*
     Hash map to find all the threds that locks the semaphore
     */ 
@@ -54,8 +58,6 @@ public class Dealer implements Runnable {
     public int playerWhoClaimedSet;
 
     public int [] setCards;
-
-    public CountDownLatch latch;
 
 
 
@@ -73,9 +75,8 @@ public class Dealer implements Runnable {
         timerValue = env.config.turnTimeoutMillis;
         setSempahore = new Semaphore(1,true);
         reshuffleTime = env.config.turnTimeoutMillis;
-        latch = new CountDownLatch(1);
         playerWhoClaimedSet=-1;
-        setCards=new int[3];
+        setCards=new int[env.config.featureSize];
     }
 
     /**
@@ -83,6 +84,7 @@ public class Dealer implements Runnable {
      */
     @Override
     public void run() {
+        dealerThread=Thread.currentThread();
         env.logger.info("thread " + Thread.currentThread().getName() + " starting.");
         shuffleDeck();
         placeCardsOnTable();
@@ -142,18 +144,17 @@ public class Dealer implements Runnable {
      * Checks cards should be removed from the table and removes them.
      */
     private void removeCardsFromTable() {
-        for(int i=0;i<2;i++){
-            System.out.println(setCards[i]);
-            table.removeCard(table.cardToSlot[setCards[i]]);
-            for(Player player:players){
-                for(int j=0;j<2;j++){
-                    if(player.getToken()[j]==setCards[i]){
-                        player.counterTokens--;
-                        player.getToken()[j]=-1;
-                    }
-                }
-            }
-        }
+        // for(int i=0;i<3;i++){
+        //     table.removeCard(table.cardToSlot[setCards[i]]);
+        //     for(Player player:players){
+        //         for(int j=0;j<3;j++){
+        //             if(player.getToken()[j]==setCards[i]){
+        //                 player.counterTokens--;
+        //                 player.getToken()[j]=-1;
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     /**
@@ -172,59 +173,65 @@ public class Dealer implements Runnable {
     /**
      * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
      */
-    // private void sleepUntilWokenOrTimeout() {
+    private void sleepUntilWokenOrTimeout() {
         
-    //     long start = System.currentTimeMillis();
-    //     long remainingTime=1000;
-    //     while(remainingTime>0){
+        long start = System.currentTimeMillis();
+        long remainingTime=1000;
+        while(remainingTime>0){
            
-    //         try{
-
-    //             Thread.sleep(remainingTime);
-    //             remainingTime=0;
-    //         } catch(InterruptedException i){
-    //             //do some action
+            try{
+                Thread.sleep(remainingTime);
+                remainingTime=0;
+            } catch(InterruptedException i){
+                if(terminate) return;
+                if(env.util.testSet(setCards)) {
+                    players[playerWhoClaimedSet].point();
+                    removeCardsFromTable();
+                }
+                else{
+                    players[playerWhoClaimedSet].penalty();
+                }
     
     
-    //             remainingTime=start+1000-System.currentTimeMillis();
-    //         }
-    //     }
-    //     timerValue-=1000;
+                remainingTime=start+1000-System.currentTimeMillis();
+            }
+        }
+        timerValue-=1000;
         
-    // }
+    }
     /**
      * Sleep for a fixed amount of time or until the thread is awakened for some purpose.
      */
-    private void sleepUntilWokenOrTimeout() {
-        long start = System.currentTimeMillis();
-        long remainingTime = 1000;
-        while (remainingTime > 0) {
-            try {
-                // Wait for players to latch or timeout
-                boolean latched = latch.await(remainingTime, TimeUnit.MILLISECONDS);
-                if (latched) {
-                   if(env.util.testSet(setCards)) {
-                    players[playerWhoClaimedSet].point();
-                    removeCardsFromTable();
-                    latch = new CountDownLatch(1);
-                   }
-                   else{
-                    players[playerWhoClaimedSet].penalty();
-                   }
-                }
-            } catch (InterruptedException e) {
-                // Handle interruption if necessary
-                Thread.currentThread().interrupt();
-            }
+    // private void sleepUntilWokenOrTimeout() {
+    //     long start = System.currentTimeMillis();
+    //     long remainingTime = 1000;
+    //     while (remainingTime > 0) {
+    //         try {
+    //             // Wait for players to latch or timeout
+    //             boolean latched = latch.await(remainingTime, TimeUnit.MILLISECONDS);
+    //             if (latched) {
+    //                if(env.util.testSet(setCards)) {
+    //                 players[playerWhoClaimedSet].point();
+    //                 removeCardsFromTable();
+    //                 latch = new CountDownLatch(1);
+    //                }
+    //                else{
+    //                 players[playerWhoClaimedSet].penalty();
+    //                }
+    //             }
+    //         } catch (InterruptedException e) {
+    //             // Handle interruption if necessary
+    //             Thread.currentThread().interrupt();
+    //         }
     
-            // Calculate remaining time after waiting for the semaphore
-            long elapsed = System.currentTimeMillis() - start;
-            remainingTime = 1000 - elapsed;
-        }
+    //         // Calculate remaining time after waiting for the semaphore
+    //         long elapsed = System.currentTimeMillis() - start;
+    //         remainingTime = 1000 - elapsed;
+    //     }
         
-        // Decrease the timer value after waiting
-        timerValue -= 1000;
-    }
+    //     // Decrease the timer value after waiting
+    //     timerValue -= 1000;
+    // }
 
     /**
      * Reset and/or update the countdown and the countdown display.
@@ -257,18 +264,19 @@ public class Dealer implements Runnable {
     }
 
     public void claimSet(int player){
-        try{
-            setSempahore.acquire();
-            if(!players[player].hasSameCardsThatFormsSet()){
-                setSempahore.release();
-                return;
-            }
-            setCards=players[player].getCards();
-            playerWhoClaimedSet=player;
-            latch.countDown();
-        } catch(InterruptedException e){
+    //     try{
+    //         setSempahore.acquire();
+    //         if(!players[player].hasSameCardsThatFormsSet()){
+    //             setSempahore.release();
+    //             return;
+    //         }
+    //         setCards=players[player].getCards();
+    //         playerWhoClaimedSet=player;
+    //         dealerThread.interrupt();
+            
+    //     } catch(InterruptedException e){
 
-        }
-        setSempahore.release();
+    //     }
+    //     setSempahore.release();
     }
 }

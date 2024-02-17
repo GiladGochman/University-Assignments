@@ -70,7 +70,6 @@ public class Player implements Runnable {
     /**
      * an array to store the tokens that are placed or not placed
      */
-    private int [] tokens;
 
     /**
      * The class constructor.
@@ -88,10 +87,6 @@ public class Player implements Runnable {
         this.human = human;
         this.dealer=dealer;
         this.queueActions=new ConcurrentLinkedQueue<>();
-        this.tokens= new int[3];
-        for(int i=0;i<3;i++){
-            tokens[i]=-1;
-        }
         counterTokens=0;
        
             
@@ -113,24 +108,15 @@ public class Player implements Runnable {
             if(queueActions.size()>0){
                 int slot=queueActions.remove();
                 if(!table.removeToken(id,slot )){
+                    if(counterTokens< env.config.featureSize){
                     table.placeToken(id, slot);
-                    for(int i=0;i<3;i++){
-                        if(tokens[i]==-1) {
-                            tokens[i]= slot;
-                            counterTokens++;
-                            break;
-                        }
+                        counterTokens++;
+                    if(counterTokens==env.config.featureSize) dealer.claimSet(id);
                     }
-                    if(counterTokens==3) dealer.claimSet(id);
                 }
                 else{
-                    counterTokens--;
-                    for(int i=0;i<3;i++){
-                        if(tokens[i]==slot) {
-                            tokens[i]= -1;
-                            break;
-                        }
-                    }
+                    --counterTokens;
+                    
                 }
             }
            
@@ -171,7 +157,7 @@ public class Player implements Runnable {
      * @param slot - the slot corresponding to the key pressed.
      */
     public void keyPressed(int slot) {
-       if(queueActions.size()<=3) queueActions.add(slot);
+       if(queueActions.size()<=env.config.featureSize) queueActions.add(slot);
     }
 
     /**
@@ -182,9 +168,11 @@ public class Player implements Runnable {
      */
     public void point() {
         try{
-            playerThread.sleep(env.config.pointFreezeMillis);
+            queueActions.clear();
+            counterTokens=0;
             int ignored = table.countCards(); // this part is just for demonstration in the unit tests
             env.ui.setScore(id, ++score);
+            Thread.sleep(env.config.pointFreezeMillis);
         }catch(InterruptedException e){};
         
 
@@ -196,7 +184,8 @@ public class Player implements Runnable {
      */
     public void penalty() {
         try{
-            playerThread.sleep(env.config.penaltyFreezeMillis);
+            queueActions.clear();
+            Thread.sleep(env.config.penaltyFreezeMillis);
         } catch(InterruptedException e){};
         
     }
@@ -210,22 +199,10 @@ public class Player implements Runnable {
     }
 
     public boolean hasSameCardsThatFormsSet(){
-       return counterTokens == 3;
+       return counterTokens == env.config.featureSize;
     }
 
-    public int[] getCards(){
-        int[] cards= new int[3];
-        int i=0;
-        for(int slot:tokens){
-            cards[i]=table.slotToCard[slot];
-            i++;
-           
-        }
-        
-        return cards;
-    }
-    public int[] getToken(){
-        return tokens;
-    }
+    
+   
 }
 
