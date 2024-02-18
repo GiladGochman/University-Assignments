@@ -1,0 +1,9 @@
+{
+  "[java]": {
+    "editor.defaultFormatter": "mwpb.java-prettier-formatter",
+    "editor.formatOnSave": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "notebook.formatOnSave.enabled": true
+}

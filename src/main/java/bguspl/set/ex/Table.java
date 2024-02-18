@@ -172,8 +172,6 @@ public class Table {
                     synchronized(playersLock[playerId]){
                     if(playerTokens.get(i)==slot){
                         playerTokens.remove(i);
-                        // Decrease token counter
-                        // players[playerId].tokensCounter--;
                         break; //breaks out of the player search loop, continues removing tokens from other players.
                     }
                  }
