@@ -152,7 +152,7 @@ public class Table {
      * Removes a card from a grid slot on the table.
      * @param slot - the slot from which to remove the card.
      */
-    public void removeCard(Player[] players, int slot) {
+    public void removeCard(int slot) {
         try {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
@@ -173,7 +173,7 @@ public class Table {
                     if(playerTokens.get(i)==slot){
                         playerTokens.remove(i);
                         // Decrease token counter
-                        players[playerId].tokensCounter--;
+                        // players[playerId].tokensCounter--;
                         break; //breaks out of the player search loop, continues removing tokens from other players.
                     }
                  }

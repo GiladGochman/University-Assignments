@@ -114,8 +114,8 @@ public class Player implements Runnable {
         while (!terminate) {
             // checking if the queue is empty
             if(queueActions.size()>0){
-                System.out.println(tokensCounter);
-                //enqueing
+                // System.out.println(tokensCounter);
+                //enqueing action
                 int slot=queueActions.remove();
                 //trying to remove the token
                 if(!table.removeToken(id,slot)){
@@ -259,14 +259,13 @@ public class Player implements Runnable {
             this.foundSet = false;
             //accuire the semaphore
             dealer.setSempahore.acquire();
-            // in case the dealer found someone else's set and my tokens were removed ill check again 
+            // check that no cards from the set were removed (by other player completing a set just before)
             if (!allTokensPlaced())
              {
-                // if my tokens are removed ill realse the semaphore
+                // if my tokens are removed i'll release the semaphore and notify all players that want to claim set
                 dealer.setSempahore.release();
                 return;
             }
-            // claiming my self as the player who want his set to be checked
             dealer.playerWhoClaimedSet = id;
             // inturrpt the delaer
             dealer.dealerThread.interrupt();
@@ -288,26 +287,7 @@ public class Player implements Runnable {
        
     }
 }
-//     public void claimSet(){
-//         try{
-//             this.foundSet=false;
-//             dealer.setSempahore.acquire();
-//             if(!hasSameCardsThatFormsSet()){
-//                 dealer.setSempahore.release();
-//                 return;
-//             }
-//             dealer.playerWhoClaimedSet=id;
-//             dealer.dealerThread.interrupt();
 
-//             dealer.setSempahore.wait();
-//         } catch(InterruptedException e){
-//             System.out.println("got inturpted");
-//             if(foundSet=false) penalty();
-//             else point();
-//         }
-//         dealer.setSempahore.release();
-//     }
-// }
 
    
 

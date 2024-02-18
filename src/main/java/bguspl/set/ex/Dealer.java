@@ -58,7 +58,7 @@ public class Dealer implements Runnable {
 
     public int playerWhoClaimedSet;
 
-    public int [] setCards;
+    public int [] cardsSet;
 
 
 
@@ -77,7 +77,7 @@ public class Dealer implements Runnable {
         setSempahore = new Semaphore(1,true);
         // reshuffleTime = env.config.turnTimeoutMillis;
         playerWhoClaimedSet=-1;
-        setCards=new int[env.config.featureSize];
+        cardsSet=new int[env.config.featureSize];
     }
 
     /**
@@ -147,8 +147,12 @@ public class Dealer implements Runnable {
      */
     private void removeCardsFromTable() {
         if(playerWhoClaimedSet!=-1){
-            for(int card:setCards){
-                table.removeCard(players,table.cardToSlot[card]);
+            for(int card:cardsSet){
+                LinkedList<Integer> playersWhoPlacedTokens= table.getAllPlayersThatPlacedTokenOnSlot(table.cardToSlot[card]);
+                for(int playerId: playersWhoPlacedTokens){
+                    players[playerId].tokensCounter--;
+                }
+                table.removeCard(table.cardToSlot[card]);
             }
         }
         
@@ -187,9 +191,9 @@ public class Dealer implements Runnable {
                     
                         synchronized (players[playerWhoClaimedSet]) {
                             //get the cards from the table, each player has a list of tokens on the table data structure
-                            setCards=table.getSetCards(playerWhoClaimedSet);
+                            cardsSet=table.getSetCards(playerWhoClaimedSet);
                             //if there is a set
-                            if (env.util.testSet(setCards)) {
+                            if (env.util.testSet(cardsSet)) {
                                 //update the field in the player whos waiting for set
                                 players[playerWhoClaimedSet].foundSet = true;
                                 //removing the cards and will update in the function the token counters for players
