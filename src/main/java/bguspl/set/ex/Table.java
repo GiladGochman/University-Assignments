@@ -152,7 +152,7 @@ public class Table {
      * Removes a card from a grid slot on the table.
      * @param slot - the slot from which to remove the card.
      */
-    public void removeCard(int slot) {
+    public void removeCard(Player[] players, int slot) {
         try {
             Thread.sleep(env.config.tableDelayMillis);
         } catch (InterruptedException ignored) {}
@@ -163,12 +163,17 @@ public class Table {
             slotToCard[slot] = null;
             // clear all tokens
             tokens[slot] = new LinkedList<Integer>();
-            // checking if players had thier token on that slot
-            for(LinkedList<Integer> playerTokens:playersTokens){
+            // Iterating all players to find which hold tokens on the removed card
+            for(int playerId = 0 ; playerId < playersTokens.length ; playerId++) {
+                LinkedList<Integer> playerTokens = playersTokens[playerId];
+            // for(LinkedList<Integer> playerTokens:playersTokens){
+                    // Iterating a certain player's tokens to find one that represents the slot
                 for(int i=0;i<playerTokens.size();i++){
                     synchronized(playersLock[i]){
                     if(playerTokens.get(i)==slot){
                         playerTokens.remove(i);
+                        // Decrease token counter
+                        players[playerId].tokensCounter--;
                         break; //breaks out of the player search loop, continues removing tokens from other players.
                     }
                  }

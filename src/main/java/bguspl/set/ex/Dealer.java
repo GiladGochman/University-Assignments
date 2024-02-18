@@ -148,7 +148,7 @@ public class Dealer implements Runnable {
     private void removeCardsFromTable() {
         if(playerWhoClaimedSet!=-1){
             for(int card:setCards){
-                table.removeCard(table.cardToSlot[card]);
+                table.removeCard(players,table.cardToSlot[card]);
             }
         }
         
@@ -184,28 +184,31 @@ public class Dealer implements Runnable {
                 if (terminate) return;
                 //if someone tries to claim a set
                 if (playerWhoClaimedSet != -1) {
-                    //sync on the player who claim the set
-                    synchronized (players[playerWhoClaimedSet]) {
-                        //get the cards from the table, each player has a list of tokens on the table data structure
-                        setCards=table.getSetCards(playerWhoClaimedSet);
-                        //if there is a set
-                        if (env.util.testSet(setCards)) {
-                            //update the field in the player whos waiting for set
-                            players[playerWhoClaimedSet].foundSet = true;
-                            //removing the cards and will update in the function the token counters for players
-                            removeCardsFromTable();
-                            // interrupt the player to update his state
+                    for (Player player : players) {
+                        synchronized (players[player.id]) {
+                            //get the cards from the table, each player has a list of tokens on the table data structure
+                            setCards=table.getSetCards(playerWhoClaimedSet);
+                            //if there is a set
+                            if (env.util.testSet(setCards)) {
+                                //update the field in the player whos waiting for set
+                                players[playerWhoClaimedSet].foundSet = true;
+                                //removing the cards and will update in the function the token counters for players
+                                removeCardsFromTable();
+                                // interrupt the player to update his state
+                                players[playerWhoClaimedSet].getPlayerThread().interrupt();
+                                playerWhoClaimedSet=-1;
+                                // update the time of reshuffeling
+                                reshuffleTime=System.currentTimeMillis() + env.config.turnTimeoutMillis;
+                                //need to add a flag to change the time to reset
+                                return;
+                            }
                             players[playerWhoClaimedSet].getPlayerThread().interrupt();
                             playerWhoClaimedSet=-1;
-                            // update the time of reshuffeling
-                            reshuffleTime=System.currentTimeMillis() + env.config.turnTimeoutMillis;
-                            //need to add a flag to change the time to reset
-                            return;
+                            
                         }
-                        players[playerWhoClaimedSet].getPlayerThread().interrupt();
-                        playerWhoClaimedSet=-1;
-                        
                     }
+                    //sync on the player who claim the set
+              
                 }
                 remainingTime = start + 1000 - System.currentTimeMillis();
             }
@@ -323,5 +326,9 @@ public class Dealer implements Runnable {
     private void shuffleDeck(){
         Collections.shuffle(deck);
     }
+    // Useless because the dealer is not approachable from table:
+    // public void decreasePlayerTokenCounter(int player){
+    //     players[player].tokensCounter--;
+    // } 
 
 }
