@@ -169,7 +169,7 @@ public class Table {
             // for(LinkedList<Integer> playerTokens:playersTokens){
                     // Iterating a certain player's tokens to find one that represents the slot
                 for(int i=0;i<playerTokens.size();i++){
-                    synchronized(playersLock[i]){
+                    synchronized(playersLock[playerId]){
                     if(playerTokens.get(i)==slot){
                         playerTokens.remove(i);
                         // Decrease token counter

@@ -184,8 +184,8 @@ public class Dealer implements Runnable {
                 if (terminate) return;
                 //if someone tries to claim a set
                 if (playerWhoClaimedSet != -1) {
-                    for (Player player : players) {
-                        synchronized (players[player.id]) {
+                    
+                        synchronized (players[playerWhoClaimedSet]) {
                             //get the cards from the table, each player has a list of tokens on the table data structure
                             setCards=table.getSetCards(playerWhoClaimedSet);
                             //if there is a set
@@ -205,7 +205,7 @@ public class Dealer implements Runnable {
                             players[playerWhoClaimedSet].getPlayerThread().interrupt();
                             playerWhoClaimedSet=-1;
                             
-                        }
+                        
                     }
                     //sync on the player who claim the set
               

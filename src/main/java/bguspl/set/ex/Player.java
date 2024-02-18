@@ -114,6 +114,7 @@ public class Player implements Runnable {
         while (!terminate) {
             // checking if the queue is empty
             if(queueActions.size()>0){
+                System.out.println(tokensCounter);
                 //enqueing
                 int slot=queueActions.remove();
                 //trying to remove the token
@@ -277,13 +278,14 @@ public class Player implements Runnable {
             }
         } catch (InterruptedException e) {
             // the dealer stopped checking my set now ill check if my foundset flag has changed
+            dealer.setSempahore.release();
             if (foundSet) 
                 point();
             else 
                 penalty();
         }
         // realase the semaphore
-        dealer.setSempahore.release();
+       
     }
 }
 //     public void claimSet(){
