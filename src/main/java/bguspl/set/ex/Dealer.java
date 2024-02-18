@@ -122,8 +122,6 @@ public class Dealer implements Runnable {
       sleepUntilWokenOrTimeout();
       updateTimerDisplay(reset);
       placeCardsOnTable();
-      // System.out.println("finnished loop, " + timerValue );
-
     }
   }
 
@@ -222,7 +220,6 @@ public class Dealer implements Runnable {
         remainingTime = start + 1000 - System.currentTimeMillis();
       }
     }
-
     timerValue -= 1000;
   }
 
@@ -231,7 +228,7 @@ public class Dealer implements Runnable {
    */
   private void updateTimerDisplay(boolean reset) {
     if (reset) {
-      reset = false;
+      this.reset = false;
       env.ui.setCountdown(env.config.turnTimeoutMillis, false);
       timerValue = env.config.turnTimeoutMillis;
     } else {
@@ -240,8 +237,6 @@ public class Dealer implements Runnable {
         timerValue <= env.config.turnTimeoutWarningMillis / 1000
       );
     }
-    System.out.println("reset: " + reset);
-    // System.out.println("updated timer display, " + timerValue );
   }
 
   /**
