@@ -121,7 +121,7 @@ public class Dealer implements Runnable {
     while (!terminate && System.currentTimeMillis() < reshuffleTime) { // Normally runs every second
       sleepUntilWokenOrTimeout();
       updateTimerDisplay(reset);
-      placeCardsOnTable();
+    //   placeCardsOnTable();
     }
   }
 
@@ -151,6 +151,7 @@ public class Dealer implements Runnable {
    */
   private void removeCardsFromTable() {
     if (playerWhoClaimedSet != -1) {
+      table.lock.writeLock().lock();
       for (int card : cardsSet) {
         LinkedList<Integer> playersWhoPlacedTokens = table.getAllPlayersThatPlacedTokenOnSlot(
           table.cardToSlot[card]
@@ -160,6 +161,8 @@ public class Dealer implements Runnable {
         }
         table.removeCard(table.cardToSlot[card]);
       }
+      placeCardsOnTable();
+      table.lock.writeLock().unlock();
     }
   }
 
@@ -188,7 +191,8 @@ public class Dealer implements Runnable {
         // dealer thread trying to sleep for 1 sec
         Thread.sleep(remainingTime);
         remainingTime = 0;
-      } catch (InterruptedException ignored) {
+      } catch (InterruptedException e) {
+        
         //the case some player tries to claim a set or the game is terminated
         if (terminate) return;
         //if someone tries to claim a set
@@ -243,6 +247,8 @@ public class Dealer implements Runnable {
    * Returns all the cards from the table to the deck.
    */
   private void removeAllCardsFromTable() {
+    table.lock.writeLock().lock();
+    
     for (Integer card : table.slotToCard) {
       if (card != null) {
         deck.add(card);
@@ -253,6 +259,8 @@ public class Dealer implements Runnable {
       //TODO syncronize tokensCounter
       player.tokensCounter = 0;
     }
+    placeCardsOnTable();
+    table.lock.writeLock().unlock();
   }
 
   /**

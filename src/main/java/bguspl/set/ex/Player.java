@@ -271,6 +271,7 @@ public class Player implements Runnable {
             dealer.dealerThread.interrupt();
             
             
+            
             // waiting for the dealer to check my set
             synchronized (dealer.setSempahore) {
                 dealer.setSempahore.wait();

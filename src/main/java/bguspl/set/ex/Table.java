@@ -1,5 +1,6 @@
 package bguspl.set.ex;
-
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import bguspl.set.Env;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -47,6 +48,8 @@ public class Table {
 
     public Object [] playersLock;
 
+    public ReadWriteLock lock; // for purpuse to make sure when the dealer replaces cards no one will enter the table
+
 
     
 
@@ -79,6 +82,7 @@ public class Table {
         for(int i=0; i<env.config.players;i++){
             playersLock[i] = new Object();
         }
+        this.lock = new  ReentrantReadWriteLock();
     }
 
     /**
@@ -101,6 +105,7 @@ public class Table {
         for(int i=0;i<env.config.players;i++){
             playersTokens[i] = new LinkedList<Integer>();
         }
+        this.lock = new ReentrantReadWriteLock();
     }
 
     /**
@@ -189,7 +194,9 @@ public class Table {
      * @param slot   - the slot on which to place the token.
      */
     public void placeToken(int player, int slot){
+        this.lock.readLock().lock();
         // sync the slot and the player
+        System.out.println("placed");
         synchronized(slotLocks[slot]) {
             synchronized(playersLock[player]){
                 //checking if the player put already 3 tokens
@@ -202,6 +209,7 @@ public class Table {
                 }
             }
          }
+         this.lock.readLock().unlock();
         }
     
 
@@ -212,6 +220,7 @@ public class Table {
      * @return       - true iff a token was successfully removed.
      */
     public boolean removeToken(int player, int slot) {
+        this.lock.readLock().lock();
         // sync on the slot and on the player lock so only 1 action per player and per slot
         synchronized(slotLocks[slot]){
             synchronized(playersLock[player]){
@@ -227,6 +236,7 @@ public class Table {
             }
             if(index==-1){
                 // if we didnt found a token on the player we return false
+                this.lock.readLock().unlock();
                 return false;
             } 
             // removing the token from the playerTokens list
@@ -238,7 +248,8 @@ public class Table {
             env.ui.removeToken(player, slotForUi(slot));
            
         
-       
+        this.lock.readLock().unlock();
+      
         return true;
         }
     }
@@ -279,7 +290,7 @@ public class Table {
                 players.add(player);
             }
             
-            System.out.println("getAllPlayersThatPlacedTokenOnSlot: " + players);
+           
         }
         return players;
     }
