@@ -242,7 +242,18 @@ public class Dealer implements Runnable {
   /**
    * Returns all the cards from the table to the deck.
    */
-  private void removeAllCardsFromTable() {}
+  private void removeAllCardsFromTable() {
+    for (Integer card : table.slotToCard) {
+      if (card != null) {
+        deck.add(card);
+        table.removeCard(table.cardToSlot[card]);
+      }
+    }
+    for (Player player : players) {
+      //TODO syncronize tokensCounter
+      player.tokensCounter = 0;
+    }
+  }
 
   /**
    * Check who is/are the winner/s and displays them.
