@@ -3,6 +3,7 @@ package bguspl.set.ex;
 import bguspl.set.Env;
 import java.time.Year;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
 
@@ -147,6 +148,7 @@ public class Player implements Runnable {
    *  key presses is full, the thread waits until it is not full.
    */
   private void createArtificialIntelligence() {
+    Random rand = new Random();
     // note: this is a very, very smart AI (!)
     aiThread =
       new Thread(
@@ -155,10 +157,11 @@ public class Player implements Runnable {
             "thread " + Thread.currentThread().getName() + " starting."
           );
           while (!terminate) {
-            // TODO implement player key press simulator
+            
             try {
               synchronized (this) {
-                wait();
+                Thread.sleep(100);
+                keyPressed(rand.nextInt(env.config.tableSize));
               }
             } catch (InterruptedException ignored) {}
           }
