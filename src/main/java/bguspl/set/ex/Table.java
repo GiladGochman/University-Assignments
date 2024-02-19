@@ -206,7 +206,6 @@ public class Table {
     public void placeToken(int player, int slot){
         this.lock.readLock().lock();
         // sync the slot and the player
-        System.out.println("placed");
         synchronized(slotLocks[slot]) {
             synchronized(playersLock[player]){
                 //checking if the player put already 3 tokens
