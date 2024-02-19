@@ -291,8 +291,9 @@ public class Dealer implements Runnable {
   }
 
   private void removeAllCardsAtTheEndOfTheGame(){
-    for(Integer slot: table.slotToCard){
-      env.ui.removeCard(slot);
+    for(int i=0;i<table.slotToCard.length;i++){
+      if(table.slotToCard[i]!=null)
+      table.removeCard(i);
     }
   }
 
