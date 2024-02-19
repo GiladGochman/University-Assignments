@@ -184,11 +184,12 @@ public class Dealer implements Runnable {
    */
   private void sleepUntilWokenOrTimeout() {
     long start = System.currentTimeMillis();
-    long remainingTime = 1000;
+    int refreshRate = 20;
+    long remainingTime = refreshRate;
 
     while (remainingTime > 0) {
       try {
-        // dealer thread trying to sleep for 1 sec
+        // dealer thread trying to sleep for 10 miliseconds
         Thread.sleep(remainingTime);
         remainingTime = 0;
       } catch (InterruptedException e) {
@@ -221,10 +222,10 @@ public class Dealer implements Runnable {
           //sync on the player who claim the set
 
         }
-        remainingTime = start + 1000 - System.currentTimeMillis();
+        remainingTime = start + refreshRate - System.currentTimeMillis();
       }
     }
-    timerValue -= 1000;
+    timerValue -= refreshRate;
   }
 
   /**
@@ -236,9 +237,9 @@ public class Dealer implements Runnable {
       env.ui.setCountdown(env.config.turnTimeoutMillis, false);
       timerValue = env.config.turnTimeoutMillis;
     } else {
-      env.ui.setCountdown(
+      env.ui.setCountdown( // also changes timer color if warn is true
         timerValue,
-        timerValue <= env.config.turnTimeoutWarningMillis / 1000
+        timerValue <= (env.config.turnTimeoutWarningMillis)
       );
     }
   }
