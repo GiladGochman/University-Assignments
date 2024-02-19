@@ -107,7 +107,7 @@ public class Dealer implements Runnable {
       removeAllCardsFromTable();
       shuffleDeck();
     }
-    removeAllCardsFromTable();
+    removeAllCardsAtTheEndOfTheGame();
     announceWinners();
     env.logger.info(
       "thread " + Thread.currentThread().getName() + " terminated."
@@ -171,7 +171,7 @@ public class Dealer implements Runnable {
    * Check if any cards can be removed from the deck and placed on the table.
    */
   private void placeCardsOnTable() {
-    for (int i = 0; i < table.slotToCard.length; i++) {
+    for (int i = 0; i < table.slotToCard.length && deck.size()>0; i++) {
       if (table.slotToCard[i] == null) {
         //pulling a card from the deck and adding it to the table
         int cardToPlace = deck.remove(0);
@@ -288,6 +288,12 @@ public class Dealer implements Runnable {
     }
     //display the winner
     env.ui.announceWinner(winnerPlayers);
+  }
+
+  private void removeAllCardsAtTheEndOfTheGame(){
+    for(Integer slot: table.slotToCard){
+      env.ui.removeCard(slot);
+    }
   }
 
   private void shuffleDeck() {
