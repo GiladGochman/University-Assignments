@@ -107,6 +107,7 @@ public class Dealer implements Runnable {
       removeAllCardsFromTable();
       shuffleDeck();
     }
+    removeAllCardsFromTable();
     announceWinners();
     env.logger.info(
       "thread " + Thread.currentThread().getName() + " terminated."
@@ -121,7 +122,7 @@ public class Dealer implements Runnable {
     while (!terminate && System.currentTimeMillis() < reshuffleTime) { // Normally runs every second
       sleepUntilWokenOrTimeout();
       updateTimerDisplay(reset);
-    //   placeCardsOnTable();
+      //   placeCardsOnTable();
     }
   }
 
@@ -129,12 +130,10 @@ public class Dealer implements Runnable {
    * Called when the game should be terminated.
    */
   public void terminate() {
-    
-      for (Player player : players) {
-        player.terminate();
-      }
-      terminate=true;
-    
+    for (Player player : players) {
+      player.terminate();
+    }
+    terminate = true;
     //   Thread.currentThread().join();
     // } catch (InterruptedException e) {}
   }
@@ -195,7 +194,6 @@ public class Dealer implements Runnable {
         Thread.sleep(remainingTime);
         remainingTime = 0;
       } catch (InterruptedException e) {
-        
         //the case some player tries to claim a set or the game is terminated
         if (terminate) return;
         //if someone tries to claim a set
@@ -251,7 +249,7 @@ public class Dealer implements Runnable {
    */
   private void removeAllCardsFromTable() {
     table.lock.writeLock().lock();
-    
+
     for (Integer card : table.slotToCard) {
       if (card != null) {
         deck.add(card);
