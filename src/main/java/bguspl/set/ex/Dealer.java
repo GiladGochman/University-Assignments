@@ -129,12 +129,14 @@ public class Dealer implements Runnable {
    * Called when the game should be terminated.
    */
   public void terminate() {
-    try {
+    
       for (Player player : players) {
         player.terminate();
       }
-      Thread.currentThread().join();
-    } catch (InterruptedException e) {}
+      terminate=true;
+    
+    //   Thread.currentThread().join();
+    // } catch (InterruptedException e) {}
   }
 
   /**
