@@ -1,11 +1,12 @@
 package bguspl.set.ex;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 import bguspl.set.Env;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 // import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
 
@@ -46,12 +47,9 @@ public class Table {
 
   // objects to sync for playerToken usage
 
-    public Object [] playersLock;
+  public Object[] playersLock;
 
-    public ReadWriteLock lock; // for purpuse to make sure when the dealer replaces cards no one will enter the table
-
-
-    
+  public ReadWriteLock lock; // for purpuse to make sure when the dealer replaces cards no one will enter the table
 
   /**
    * Constructor for testing.
@@ -77,35 +75,38 @@ public class Table {
       slotLocks[i] = new Object();
     }
 
-        this.playersLock = new Object[env.config.players];
-        for(int i=0; i<env.config.players;i++){
-            playersLock[i] = new Object();
-        }
-        this.lock = new  ReentrantReadWriteLock();
+    this.playersLock = new Object[env.config.players];
+    for (int i = 0; i < env.config.players; i++) {
+      playersLock[i] = new Object();
     }
+    this.lock = new ReentrantReadWriteLock();
+  }
 
-    /**
-     * Constructor for actual usage.
-     *
-     * @param env - the game environment objects.
-     */
-    public Table(Env env) {
-
-        this(env, new Integer[env.config.tableSize], new Integer[env.config.deckSize]);
-        this.tokens = new LinkedList[env.config.tableSize];
-        for (int i = 0; i < env.config.tableSize; i++) {
-            tokens[i] = new LinkedList<Integer>();
-        }
-        this.slotLocks = new Object[env.config.tableSize];
-        for(int i=0;i<env.config.tableSize;i++){
-            slotLocks[i] = new Object();
-        }
-        this.playersTokens=new LinkedList[env.config.players];
-        for(int i=0;i<env.config.players;i++){
-            playersTokens[i] = new LinkedList<Integer>();
-        }
-        this.lock = new ReentrantReadWriteLock();
+  /**
+   * Constructor for actual usage.
+   *
+   * @param env - the game environment objects.
+   */
+  public Table(Env env) {
+    this(
+      env,
+      new Integer[env.config.tableSize],
+      new Integer[env.config.deckSize]
+    );
+    this.tokens = new LinkedList[env.config.tableSize];
+    for (int i = 0; i < env.config.tableSize; i++) {
+      tokens[i] = new LinkedList<Integer>();
     }
+    this.slotLocks = new Object[env.config.tableSize];
+    for (int i = 0; i < env.config.tableSize; i++) {
+      slotLocks[i] = new Object();
+    }
+    this.playersTokens = new LinkedList[env.config.players];
+    for (int i = 0; i < env.config.players; i++) {
+      playersTokens[i] = new LinkedList<Integer>();
+    }
+    this.lock = new ReentrantReadWriteLock();
+  }
 
   /**
    * This method prints all possible legal sets of cards that are currently on the table.
@@ -198,67 +199,70 @@ public class Table {
     }
   }
 
-    /**
-     * Places a player token on a grid slot.
-     * @param player - the player the token belongs to.
-     * @param slot   - the slot on which to place the token.
-     */
-    public void placeToken(int player, int slot){
-        this.lock.readLock().lock();
-        // sync the slot and the player
-        synchronized(slotLocks[slot]) {
-            synchronized(playersLock[player]){
-                //checking if the player put already 3 tokens
-                if(playersTokens[player].size()<env.config.featureSize){
-                // adding the token to the playersToken array and to the table tokens
-                tokens[slot].add(player);
-                playersTokens[player].add(slot);
-                //displaying in the ui
-                env.ui.placeToken(player, slotForUi(slot));
-                }
-            }
-         }
-         this.lock.readLock().unlock();
+  /**
+   * Places a player token on a grid slot.
+   * @param player - the player the token belongs to.
+   * @param slot   - the slot on which to place the token.
+   */
+  public void placeToken(int player, int slot) {
+    this.lock.readLock().lock();
+    // sync the slot and the player
+    synchronized (slotLocks[slot]) {
+      synchronized (playersLock[player]) {
+        //checking if the player put already 3 tokens
+        if (
+          slotToCard[slot] != null &&
+          playersTokens[player].size() < env.config.featureSize
+        ) {
+          // adding the token to the playersToken array and to the table tokens
+          tokens[slot].add(player);
+          playersTokens[player].add(slot);
+          //displaying in the ui
+          env.ui.placeToken(player, slotForUi(slot));
         }
-    
+      }
+    }
+    this.lock.readLock().unlock();
+  }
 
-    /**
-     * Removes a token of a player from a grid slot.
-     * @param player - the player the token belongs to.
-     * @param slot   - the slot from which to remove the token.
-     * @return       - true iff a token was successfully removed.
-     */
-    public boolean removeToken(int player, int slot) {
-        this.lock.readLock().lock();
-        // sync on the slot and on the player lock so only 1 action per player and per slot
-        synchronized(slotLocks[slot]){
-            synchronized(playersLock[player]){
-            int index=-1;
-            int counter=0;
-            // searching for the player token in the slot
-            for(int playerId:tokens[slot]){
-                if(playerId==player){
-                    index=counter;
-                    break;
-                } 
-                counter++;
-            }
-            if(index==-1){
-                // if we didnt found a token on the player we return false
-                this.lock.readLock().unlock();
-                return false;
-            } 
-            // removing the token from the playerTokens list
-            for(int i=0;i<playersTokens[player].size();i++){
-                if(playersTokens[player].get(i)==slot) playersTokens[player].remove(i);
-            }
-            tokens[slot].remove(index);
-            // updating in the ui
-            env.ui.removeToken(player, slotForUi(slot));
-           
-        
+  /**
+   * Removes a token of a player from a grid slot.
+   * @param player - the player the token belongs to.
+   * @param slot   - the slot from which to remove the token.
+   * @return       - true iff a token was successfully removed.
+   */
+  public boolean removeToken(int player, int slot) {
+    this.lock.readLock().lock();
+    // sync on the slot and on the player lock so only 1 action per player and per slot
+    synchronized (slotLocks[slot]) {
+      synchronized (playersLock[player]) {
+        int index = -1;
+        int counter = 0;
+        // searching for the player token in the slot
+        for (int playerId : tokens[slot]) {
+          if (playerId == player) {
+            index = counter;
+            break;
+          }
+          counter++;
+        }
+        if (index == -1) {
+          // if we didnt found a token on the player we return false
+          this.lock.readLock().unlock();
+          return false;
+        }
+        // removing the token from the playerTokens list
+        for (int i = 0; i < playersTokens[player].size(); i++) {
+          if (
+            playersTokens[player].get(i) == slot
+          ) playersTokens[player].remove(i);
+        }
+        tokens[slot].remove(index);
+        // updating in the ui
+        env.ui.removeToken(player, slotForUi(slot));
+
         this.lock.readLock().unlock();
-      
+
         return true;
       }
     }
@@ -303,6 +307,18 @@ public class Table {
       }
     }
     return players;
+  }
+
+  public Integer slotToCard(int slotVal) {
+    synchronized (slotLocks[slotVal]) {
+      return slotToCard[slotVal];
+    }
+  }
+
+  public int cardToSlot(int cardVal) {
+    synchronized (slotLocks[cardVal]) {
+      return cardToSlot[cardVal];
+    }
   }
   // public void removeAllCards(){
   //     try{

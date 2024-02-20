@@ -171,7 +171,7 @@ public class Dealer implements Runnable {
    * Check if any cards can be removed from the deck and placed on the table.
    */
   private void placeCardsOnTable() {
-    for (int i = 0; i < table.slotToCard.length && deck.size()>0; i++) {
+    for (int i = 0; i < table.slotToCard.length && deck.size() > 0; i++) {
       if (table.slotToCard[i] == null) {
         //pulling a card from the deck and adding it to the table
         int cardToPlace = deck.remove(0);
@@ -185,7 +185,7 @@ public class Dealer implements Runnable {
    */
   private void sleepUntilWokenOrTimeout() {
     long start = System.currentTimeMillis();
-    int refreshRate = 20;
+    int refreshRate = 50;
     long remainingTime = refreshRate;
 
     while (remainingTime > 0) {
@@ -198,27 +198,27 @@ public class Dealer implements Runnable {
         if (terminate) return;
         //if someone tries to claim a set
         if (playerWhoClaimedSet != -1) {
-          synchronized (players[playerWhoClaimedSet]) {
-            //get the cards from the table, each player has a list of tokens on the table data structure
-            cardsSet = table.getSetCards(playerWhoClaimedSet);
-            //if there is a set
-            if (env.util.testSet(cardsSet)) {
-              //update the field in the player whos waiting for set
-              players[playerWhoClaimedSet].foundSet = true;
-              //removing the cards and will update in the function the token counters for players
-              removeCardsFromTable();
-              // interrupt the player to update his state
-              players[playerWhoClaimedSet].getPlayerThread().interrupt();
-              playerWhoClaimedSet = -1;
-              // update the time of reshuffeling
-              reshuffleTime =
-                System.currentTimeMillis() + env.config.turnTimeoutMillis;
-              reset = true;
-              return;
-            }
+          // synchronized (players[playerWhoClaimedSet]) {
+          //get the cards from the table, each player has a list of tokens on the table data structure
+          cardsSet = table.getSetCards(playerWhoClaimedSet);
+          //if there is a set
+          if (env.util.testSet(cardsSet)) {
+            //update the field in the player whos waiting for set
+            players[playerWhoClaimedSet].foundSet = true;
+            //removing the cards and will update in the function the token counters for players
+            removeCardsFromTable();
+            // interrupt the player to update his state
             players[playerWhoClaimedSet].getPlayerThread().interrupt();
             playerWhoClaimedSet = -1;
+            // update the time of reshuffeling
+            reshuffleTime =
+              System.currentTimeMillis() + env.config.turnTimeoutMillis;
+            reset = true;
+            return;
           }
+          players[playerWhoClaimedSet].getPlayerThread().interrupt();
+          playerWhoClaimedSet = -1;
+          // }
           //sync on the player who claim the set
 
         }
@@ -290,10 +290,9 @@ public class Dealer implements Runnable {
     env.ui.announceWinner(winnerPlayers);
   }
 
-  private void removeAllCardsAtTheEndOfTheGame(){
-    for(int i=0;i<table.slotToCard.length;i++){
-      if(table.slotToCard[i]!=null)
-      table.removeCard(i);
+  private void removeAllCardsAtTheEndOfTheGame() {
+    for (int i = 0; i < table.slotToCard.length; i++) {
+      if (table.slotToCard[i] != null) table.removeCard(i);
     }
   }
 

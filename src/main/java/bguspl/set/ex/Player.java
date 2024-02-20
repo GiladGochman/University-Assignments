@@ -112,20 +112,23 @@ public class Player implements Runnable {
       if (queueActions.size() > 0) {
         //enqueing action
         int slot = queueActions.remove();
-        //trying to remove the token
-        if (!table.removeToken(id, slot)) {
-          // the token isnt removed
-          // checking whther we already have 3 tokens on the table
-          if (tokensCounter < env.config.featureSize) {
-            //placing the token
-            table.placeToken(id, slot);
-            tokensCounter++;
-            //checking if we put right now 3 tokens and then claim a set
-            if (tokensCounter == env.config.featureSize) claimSet();
+        if (table.slotToCard[slot] != null) {
+          //trying to remove the token
+          if (!table.removeToken(id, slot)) {
+            // the token isnt removed
+            // checking whether we already have 3 tokens on the table
+            if (tokensCounter < env.config.featureSize) {
+              //placing the token
+              table.placeToken(id, slot);
+              if (table.slotToCard(slot) != null) tokensCounter++;
+              //checking if we put right now 3 tokens and then claim a set
+              if (tokensCounter == env.config.featureSize) claimSet();
+            }
+          } else {
+            //decrease the counter because we successfully removed a token
+            --tokensCounter;
           }
-        } else {
-          //decrease the counter because we successfully removed a token
-          --tokensCounter;
+          //release readwritelock
         }
       }
     }
@@ -157,10 +160,9 @@ public class Player implements Runnable {
             "thread " + Thread.currentThread().getName() + " starting."
           );
           while (!terminate) {
-            
             try {
               synchronized (this) {
-                Thread.sleep(100);
+                Thread.sleep(10);
                 keyPressed(rand.nextInt(env.config.tableSize));
               }
             } catch (InterruptedException ignored) {}
