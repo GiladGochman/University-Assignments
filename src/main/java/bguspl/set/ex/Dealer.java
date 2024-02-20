@@ -281,7 +281,8 @@ public class Dealer implements Runnable {
       //TODO syncronize tokensCounter
       player.tokensCounter = 0;
     }
-    placeCardsOnTable();
+    if(!shouldFinish())  placeCardsOnTable();
+   
     table.lock.writeLock().unlock();
   }
 
