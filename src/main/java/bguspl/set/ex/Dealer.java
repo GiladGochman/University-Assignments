@@ -187,7 +187,28 @@ public class Dealer implements Runnable {
     long start = System.currentTimeMillis();
     int refreshRate = 50;
     long remainingTime = refreshRate;
-
+    if(playerWhoClaimedSet!=-1){
+      cardsSet = table.getSetCards(playerWhoClaimedSet);
+      //if there is a set
+      if (env.util.testSet(cardsSet)) {
+        //update the field in the player whos waiting for set
+        players[playerWhoClaimedSet].foundSet = true;
+        //removing the cards and will update in the function the token counters for players
+        removeCardsFromTable();
+        // interrupt the player to update his state
+        players[playerWhoClaimedSet].getPlayerThread().interrupt();
+        playerWhoClaimedSet = -1;
+        // update the time of reshuffeling
+        reshuffleTime =
+          System.currentTimeMillis() + env.config.turnTimeoutMillis;
+        reset = true;
+        return;
+      }
+      players[playerWhoClaimedSet].getPlayerThread().interrupt();
+      playerWhoClaimedSet = -1;
+      // }
+      //sync on the player who claim the set
+    }
     while (remainingTime > 0) {
       try {
         // dealer thread trying to sleep for 10 miliseconds
