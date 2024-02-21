@@ -101,13 +101,11 @@ public class Dealer implements Runnable {
     }
     env.ui.setCountdown(timerValue, false);
     while (!shouldFinish()) {
-      placeCardsOnTable();
       timerLoop(); // Runs until timer reaches 0.
       updateTimerDisplay(true);
       removeAllCardsFromTable();
       shuffleDeck();
     }
-    removeAllCardsAtTheEndOfTheGame();
     announceWinners();
     env.logger.info(
       "thread " + Thread.currentThread().getName() + " terminated."
@@ -278,7 +276,7 @@ public class Dealer implements Runnable {
       }
     }
     for (Player player : players) {
-      //TODO syncronize tokensCounter
+     
       player.tokensCounter = 0;
     }
     if(playerWhoClaimedSet!=-1){
@@ -316,12 +314,6 @@ public class Dealer implements Runnable {
     }
     //display the winner
     env.ui.announceWinner(winnerPlayers);
-  }
-
-  private void removeAllCardsAtTheEndOfTheGame() {
-    for (int i = 0; i < table.slotToCard.length; i++) {
-      if (table.slotToCard[i] != null) table.removeCard(i);
-    }
   }
 
   private void shuffleDeck() {
