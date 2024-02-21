@@ -185,7 +185,9 @@ public class Dealer implements Runnable {
     long start = System.currentTimeMillis();
     int refreshRate = 50;
     long remainingTime = refreshRate;
+    System.out.println(playerWhoClaimedSet);
     if(playerWhoClaimedSet!=-1){
+      System.out.println(1);
       cardsSet = table.getSetCards(playerWhoClaimedSet);
       //if there is a set
       if (env.util.testSet(cardsSet)) {
@@ -204,7 +206,7 @@ public class Dealer implements Runnable {
         return;
       }
       players[playerWhoClaimedSet].getPlayerThread().interrupt();
-      playerWhoClaimedSet = -1;
+      updatePlayerWhoClaimedSet(-1); 
       // }
       //sync on the player who claim the set
     }
@@ -229,7 +231,7 @@ public class Dealer implements Runnable {
             removeCardsFromTable();
             // interrupt the player to update his state
             players[playerWhoClaimedSet].getPlayerThread().interrupt();
-            playerWhoClaimedSet = -1;
+            updatePlayerWhoClaimedSet(-1);
             // update the time of reshuffeling
             reshuffleTime =
               System.currentTimeMillis() + env.config.turnTimeoutMillis;
@@ -283,7 +285,7 @@ public class Dealer implements Runnable {
     if(playerWhoClaimedSet!=-1){
     players[playerWhoClaimedSet].foundSet=false;
     players[playerWhoClaimedSet].getPlayerThread().interrupt();
-    playerWhoClaimedSet=-1;
+    updatePlayerWhoClaimedSet(-1);
     }
     if(!shouldFinish())  placeCardsOnTable();
     
@@ -319,6 +321,10 @@ public class Dealer implements Runnable {
 
   private void shuffleDeck() {
     Collections.shuffle(deck);
+  }
+
+  public synchronized void updatePlayerWhoClaimedSet(int player){
+    playerWhoClaimedSet=player;
   }
   // Useless because the dealer is not approachable from table:
   // public void decreasePlayerTokenCounter(int player){

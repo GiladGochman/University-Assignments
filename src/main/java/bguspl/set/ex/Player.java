@@ -162,7 +162,7 @@ public class Player implements Runnable {
           while (!terminate) {
             try {
               synchronized (this) {
-                Thread.sleep(10);
+                Thread.sleep(0);
                 keyPressed(rand.nextInt(env.config.tableSize));
               }
             } catch (InterruptedException ignored) {}
@@ -267,16 +267,20 @@ public class Player implements Runnable {
         dealer.setSempahore.release();
         return;
       }
-      dealer.playerWhoClaimedSet = id;
+      dealer.updatePlayerWhoClaimedSet(id); 
       
-
       // waiting for the dealer to check my set
       synchronized (dealer.setSempahore) {
         dealer.dealerThread.interrupt();
-        dealer.setSempahore.wait();
+        while(true){
+          dealer.setSempahore.wait(10);
+          dealer.dealerThread.interrupt();
+        }
+        
       }
     } catch (InterruptedException e) {
       // the dealer stopped checking my set now ill check if my foundset flag has changed
+      System.out.println("R");
       dealer.setSempahore.release();
       if (foundSet) point(); else penalty();
     }
