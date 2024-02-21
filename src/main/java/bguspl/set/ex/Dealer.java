@@ -281,9 +281,11 @@ public class Dealer implements Runnable {
       //TODO syncronize tokensCounter
       player.tokensCounter = 0;
     }
+    if(playerWhoClaimedSet!=-1){
     players[playerWhoClaimedSet].foundSet=false;
     players[playerWhoClaimedSet].getPlayerThread().interrupt();
     playerWhoClaimedSet=-1;
+    }
     if(!shouldFinish())  placeCardsOnTable();
     
    
