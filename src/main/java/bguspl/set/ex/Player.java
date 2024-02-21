@@ -268,19 +268,20 @@ public class Player implements Runnable {
         return;
       }
       dealer.updatePlayerWhoClaimedSet(id); 
-      
       // waiting for the dealer to check my set
       synchronized (dealer.setSempahore) {
         dealer.dealerThread.interrupt();
         while(true){
-          dealer.setSempahore.wait(10);
+          // trying to wait for the dealer and if we didnt successed of catching him we notify him again after 3 ms
+          dealer.setSempahore.wait(3);
+          dealer.updatePlayerWhoClaimedSet(id);
           dealer.dealerThread.interrupt();
         }
         
       }
     } catch (InterruptedException e) {
       // the dealer stopped checking my set now ill check if my foundset flag has changed
-      System.out.println("R");
+      
       dealer.setSempahore.release();
       if (foundSet) point(); else penalty();
     }

@@ -185,9 +185,8 @@ public class Dealer implements Runnable {
     long start = System.currentTimeMillis();
     int refreshRate = 50;
     long remainingTime = refreshRate;
-    System.out.println(playerWhoClaimedSet);
     if(playerWhoClaimedSet!=-1){
-      System.out.println(1);
+     
       cardsSet = table.getSetCards(playerWhoClaimedSet);
       //if there is a set
       if (env.util.testSet(cardsSet)) {
@@ -198,7 +197,7 @@ public class Dealer implements Runnable {
         // System.out.println("1");
         // interrupt the player to update his state
         players[playerWhoClaimedSet].getPlayerThread().interrupt();
-        playerWhoClaimedSet = -1;
+        updatePlayerWhoClaimedSet(-1);
         // update the time of reshuffeling
         reshuffleTime =
           System.currentTimeMillis() + env.config.turnTimeoutMillis;
@@ -230,8 +229,10 @@ public class Dealer implements Runnable {
             //removing the cards and will update in the function the token counters for players
             removeCardsFromTable();
             // interrupt the player to update his state
-            players[playerWhoClaimedSet].getPlayerThread().interrupt();
+            int p = playerWhoClaimedSet;
             updatePlayerWhoClaimedSet(-1);
+            players[p].getPlayerThread().interrupt();
+            
             // update the time of reshuffeling
             reshuffleTime =
               System.currentTimeMillis() + env.config.turnTimeoutMillis;
@@ -239,9 +240,9 @@ public class Dealer implements Runnable {
             return;
           }
           players[playerWhoClaimedSet].getPlayerThread().interrupt();
-          playerWhoClaimedSet = -1;
+          updatePlayerWhoClaimedSet(-1);
           // }
-          //sync on the player who claim the set
+          //sync on the player who claimthe set
 
         }
         remainingTime = start + refreshRate - System.currentTimeMillis();
