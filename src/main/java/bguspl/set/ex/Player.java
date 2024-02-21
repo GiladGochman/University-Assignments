@@ -268,11 +268,11 @@ public class Player implements Runnable {
         return;
       }
       dealer.playerWhoClaimedSet = id;
-      // inturrpt the delaer
-      dealer.dealerThread.interrupt();
+      
 
       // waiting for the dealer to check my set
       synchronized (dealer.setSempahore) {
+        dealer.dealerThread.interrupt();
         dealer.setSempahore.wait();
       }
     } catch (InterruptedException e) {

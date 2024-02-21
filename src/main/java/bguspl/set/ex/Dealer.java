@@ -193,6 +193,7 @@ public class Dealer implements Runnable {
         players[playerWhoClaimedSet].foundSet = true;
         //removing the cards and will update in the function the token counters for players
         removeCardsFromTable();
+        // System.out.println("1");
         // interrupt the player to update his state
         players[playerWhoClaimedSet].getPlayerThread().interrupt();
         playerWhoClaimedSet = -1;
