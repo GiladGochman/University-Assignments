@@ -132,13 +132,6 @@ public class Player implements Runnable {
         }
       }
     }
-    try {
-      // at the end of the game we join the main thread
-      Thread.currentThread().join();
-    } catch (InterruptedException e) {}
-    if (!human) try {
-      aiThread.join();
-    } catch (InterruptedException ignored) {}
 
     env.logger.info(
       "thread " + Thread.currentThread().getName() + " terminated."
@@ -160,12 +153,9 @@ public class Player implements Runnable {
             "thread " + Thread.currentThread().getName() + " starting."
           );
           while (!terminate) {
-            try {
-              synchronized (this) {
-                Thread.sleep(0);
-                keyPressed(rand.nextInt(env.config.tableSize));
-              }
-            } catch (InterruptedException ignored) {}
+            synchronized (this) {
+              keyPressed(rand.nextInt(env.config.tableSize));
+            }
           }
           env.logger.info(
             "thread " + Thread.currentThread().getName() + " terminated."
@@ -215,8 +205,7 @@ public class Player implements Runnable {
       //clearing the queue actions.
       queueActions.clear();
     } catch (InterruptedException e) {
-      if (terminate) terminate();
-      Thread.currentThread().interrupt();
+      if (terminate) return;
     }
   }
 
@@ -237,8 +226,7 @@ public class Player implements Runnable {
         env.ui.setFreeze(id, 0);
         queueActions.clear();
       } catch (InterruptedException e) {
-        if (terminate) terminate();
-        Thread.currentThread().interrupt();
+        if (terminate) return;
       }
     }
   }
@@ -267,21 +255,20 @@ public class Player implements Runnable {
         dealer.setSempahore.release();
         return;
       }
-      dealer.updatePlayerWhoClaimedSet(id); 
+      dealer.updatePlayerWhoClaimedSet(id);
       // waiting for the dealer to check my set
       synchronized (dealer.setSempahore) {
         dealer.dealerThread.interrupt();
-        while(true){
+        while (true) {
           // trying to wait for the dealer and if we didnt successed of catching him we notify him again after 3 ms
           dealer.setSempahore.wait(3);
           dealer.updatePlayerWhoClaimedSet(id);
           dealer.dealerThread.interrupt();
         }
-        
       }
     } catch (InterruptedException e) {
       // the dealer stopped checking my set now ill check if my foundset flag has changed
-      
+      if (terminate) return;
       dealer.setSempahore.release();
       if (foundSet) point(); else penalty();
     }
