@@ -261,7 +261,7 @@ public class Player implements Runnable {
         dealer.dealerThread.interrupt();
         while (true) {
           // trying to wait for the dealer and if we didnt successed of catching him we notify him again after 3 ms
-          dealer.setSempahore.wait(3);
+          dealer.setSempahore.wait(15);
           dealer.updatePlayerWhoClaimedSet(id);
           dealer.dealerThread.interrupt();
         }
