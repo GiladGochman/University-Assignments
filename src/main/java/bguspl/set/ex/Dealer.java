@@ -43,6 +43,8 @@ public class Dealer implements Runnable {
    */
   private long timerValue;
 
+  private boolean isThereAnySets;
+
   /*
    * semaphore for checking sets
    */
@@ -81,6 +83,7 @@ public class Dealer implements Runnable {
     // reshuffleTime = env.config.turnTimeoutMillis;
     playerWhoClaimedSet = -1;
     cardsSet = new int[env.config.featureSize];
+    isThereAnySets = true;
   }
 
   /**
@@ -110,6 +113,7 @@ public class Dealer implements Runnable {
       player.terminate();
       player.getPlayerThread().interrupt();
     }
+    removeAllCardsFromTable();
     announceWinners();
 
     env.logger.info(
@@ -122,7 +126,7 @@ public class Dealer implements Runnable {
    */
   private void timerLoop() {
     reshuffleTime = System.currentTimeMillis() + env.config.turnTimeoutMillis;
-    while (!terminate && System.currentTimeMillis() < reshuffleTime) { // Normally runs every second
+    while (!terminate && timerValue >= 0) { // Normally runs every second
       sleepUntilWokenOrTimeout();
       updateTimerDisplay(reset);
     }
@@ -141,7 +145,7 @@ public class Dealer implements Runnable {
    * @return true iff the game should be finished.
    */
   private boolean shouldFinish() {
-    return terminate || env.util.findSets(deck, 1).size() == 0;
+    return terminate || !isThereAnySets;
   }
 
   /**
@@ -182,7 +186,7 @@ public class Dealer implements Runnable {
    */
   private void sleepUntilWokenOrTimeout() {
     long start = System.currentTimeMillis();
-    int refreshRate = 50;
+    int refreshRate = 10;
     long remainingTime = refreshRate;
     if (playerWhoClaimedSet != -1) {
       cardsSet = table.getSetCards(playerWhoClaimedSet);
@@ -192,7 +196,6 @@ public class Dealer implements Runnable {
         players[playerWhoClaimedSet].foundSet = true;
         //removing the cards and will update in the function the token counters for players
         removeCardsFromTable();
-        // System.out.println("1");
         // interrupt the player to update his state
         players[playerWhoClaimedSet].getPlayerThread().interrupt();
         updatePlayerWhoClaimedSet(-1);
@@ -231,9 +234,7 @@ public class Dealer implements Runnable {
             updatePlayerWhoClaimedSet(-1);
             players[p].getPlayerThread().interrupt();
 
-            // update the time of reshuffeling
-            reshuffleTime =
-              System.currentTimeMillis() + env.config.turnTimeoutMillis;
+            // update the time
             reset = true;
             return;
           }
@@ -285,6 +286,7 @@ public class Dealer implements Runnable {
       players[playerWhoClaimedSet].getPlayerThread().interrupt();
       updatePlayerWhoClaimedSet(-1);
     }
+    isThereAnySets = env.util.findSets(deck, 1).size() > 0;
     if (!shouldFinish()) {
       placeCardsOnTable();
     }
@@ -298,6 +300,7 @@ public class Dealer implements Runnable {
   private void announceWinners() {
     LinkedList<Integer> winners = new LinkedList<>();
     int highscore = 0;
+
     // iterating through all players
     for (Player player : players) {
       // if we found some player with the same highscore we add him
@@ -312,8 +315,9 @@ public class Dealer implements Runnable {
     // make an array from the linked list
     int[] winnerPlayers = new int[winners.size()];
     for (int i = 0; i < winners.size(); i++) {
-      winnerPlayers[i] = winners.removeFirst();
+      winnerPlayers[i] = winners.get(i);
     }
+
     //display the winner
     env.ui.announceWinner(winnerPlayers);
   }
@@ -325,9 +329,4 @@ public class Dealer implements Runnable {
   public synchronized void updatePlayerWhoClaimedSet(int player) {
     playerWhoClaimedSet = player;
   }
-  // Useless because the dealer is not approachable from table:
-  // public void decreasePlayerTokenCounter(int player){
-  //     players[player].tokensCounter--;
-  // }
-
 }

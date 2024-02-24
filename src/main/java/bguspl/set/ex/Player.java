@@ -154,7 +154,10 @@ public class Player implements Runnable {
           );
           while (!terminate) {
             synchronized (this) {
-              keyPressed(rand.nextInt(env.config.tableSize));
+              try {
+                Thread.sleep(0);
+                keyPressed(rand.nextInt(env.config.tableSize));
+              } catch (InterruptedException e) {}
             }
           }
           env.logger.info(
@@ -261,7 +264,7 @@ public class Player implements Runnable {
         dealer.dealerThread.interrupt();
         while (true) {
           // trying to wait for the dealer and if we didnt successed of catching him we notify him again after 3 ms
-          dealer.setSempahore.wait(15);
+          dealer.setSempahore.wait(100);
           dealer.updatePlayerWhoClaimedSet(id);
           dealer.dealerThread.interrupt();
         }
