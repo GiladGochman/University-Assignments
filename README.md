@@ -6,14 +6,12 @@ Testing:
     ```
 mvn compile
 
-    ```
 mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.tftp.TftpServer" -Dexec.args="<port>"  
     ```  
 ○ Client: from client folder  
     ```
  mvn compile
 
-    ``` 
  mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.stomp.tftp.TftpClient" -Dexec.args="<ip> <port>"
     ```
 
