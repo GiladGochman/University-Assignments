@@ -1,15 +1,15 @@
 # File-Transfer-Server
 SPL Assignment 3 by Gilad Gochman and Clil Argas
 
-Testing: /n
-○ Server: from server folder/n
+Testing:  
+○ Server: from server folder  
     ```
-mvn compile
-mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.tftp.TftpServer" -Dexec.args="<port>"
+mvn compile  
+mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.tftp.TftpServer" -Dexec.args="<port>"  
     ```
-○ Client: from client folder/n
+○ Client: from client folder  
     ```
- mvn compile
+ mvn compile  
  mvn exec:java -Dexec.mainClass="bgu.spl.net.impl.stomp.tftp.TftpClient" -Dexec.args="<ip> <port>"
     ```
 
