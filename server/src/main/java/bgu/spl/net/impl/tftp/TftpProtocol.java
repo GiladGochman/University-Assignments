@@ -3,26 +3,28 @@ package bgu.spl.net.impl.tftp;
 import bgu.spl.net.api.BidiMessagingProtocol;
 import bgu.spl.net.srv.Connections;
 
-public class TftpProtocol implements BidiMessagingProtocol<byte[]>  {
+public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
-    @Override
-    public void start(int connectionId, Connections<byte[]> connections) {
-        // TODO implement this
-        throw new UnsupportedOperationException("Unimplemented method 'start'");
-    }
+  private int connectionId;
+  private Connections<byte[]> connections;
 
-    @Override
-    public void process(byte[] message) {
-        // TODO implement this
-        throw new UnsupportedOperationException("Unimplemented method 'process'");
-    }
+  @Override
+  public void start(int connectionIdVal, Connections<byte[]> connectionsVal) {
+    this.connectionId = connectionIdVal;
+    this.connections = connectionsVal;
+  }
 
-    @Override
-    public boolean shouldTerminate() {
-        // TODO implement this
-        throw new UnsupportedOperationException("Unimplemented method 'shouldTerminate'");
-    } 
+  @Override
+  public void process(byte[] message) {
+    // TODO implement this
+    throw new UnsupportedOperationException("Unimplemented method 'process'");
+  }
 
-
-    
+  @Override
+  public boolean shouldTerminate() {
+    // TODO implement this
+    throw new UnsupportedOperationException(
+      "Unimplemented method 'shouldTerminate'"
+    );
+  }
 }
