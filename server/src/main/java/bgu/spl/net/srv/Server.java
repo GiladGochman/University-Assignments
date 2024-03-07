@@ -24,7 +24,7 @@ public interface Server<T> extends Closeable {
     int port,
     Supplier<BidiMessagingProtocol<T>> protocolFactory,
     Supplier<MessageEncoderDecoder<T>> encoderDecoderFactory,
-    Connections<T> connections
+    ConnectionsImpl<T> connections
   ) {
     return new BaseServer<T>(
       port,

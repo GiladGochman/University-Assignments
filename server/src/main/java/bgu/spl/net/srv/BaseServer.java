@@ -21,7 +21,7 @@ public abstract class BaseServer<T> implements Server<T> {
     int port,
     Supplier<BidiMessagingProtocol<T>> protocolFactory,
     Supplier<MessageEncoderDecoder<T>> encdecFactory,
-    Connections<T> connections
+    ConnectionsImpl<T> connections
   ) {
     this.port = port;
     this.protocolFactory = protocolFactory;
@@ -46,7 +46,8 @@ public abstract class BaseServer<T> implements Server<T> {
           protocolFactory.get(),
           counter
         );
-
+        connections.connect(counter, handler);
+        handler.start(counter, connections);
         execute(handler);
       }
     } catch (IOException ex) {}

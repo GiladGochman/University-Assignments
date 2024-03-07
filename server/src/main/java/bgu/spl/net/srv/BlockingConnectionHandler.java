@@ -65,4 +65,8 @@ public class BlockingConnectionHandler<T>
       out.flush();
     } catch (IOException e) {}
   }
+
+  public void start(int connectionIdVal, Connections<T> connectionsVal) {
+    protocol.start(connectionIdVal, connectionsVal);
+  }
 }
