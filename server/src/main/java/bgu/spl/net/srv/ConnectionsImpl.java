@@ -40,4 +40,8 @@ public class ConnectionsImpl<T> implements Connections<T> {
   public void logIn(String userName, int connectionId) {
     loggedInList.put(userName, connectionId);
   }
+
+  public BlockingConnectionHandler<T> getConnectionHandler(int connectionId) {
+    return map.get(connectionId);
+  }
 }
