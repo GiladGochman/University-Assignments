@@ -5,9 +5,11 @@ import bgu.spl.net.srv.BlockingConnectionHandler;
 import bgu.spl.net.srv.ConnectionsImpl;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Arrays;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
@@ -23,6 +25,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
   short readCounter = 1;
   short writeCounter = 1;
   ConcurrentLinkedQueue<byte[]> fileReadQueue;
+  FileOutputStream fos;
 
   @Override
   public void start(
@@ -41,34 +44,32 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     short opCode = (short) (
       ((short) message[0] & 0xFF) << 8 | (short) (message[1] & 0xFF)
     );
-    if (opCode == 7) {
+    if (opCode == 7) { // client wants to logIn
       if (loggedIn) {
         sendError((short) 7, "User is logged in already");
       } else {
-        String userName = new String(message, 2, message.length - 1);
+        String userName = new String(message, 2, message.length - 1); // getting the string from the message
         if (connections.checkIfLoggedin(userName) != null) {
           sendError((short) 0, "The username u gave is already loggedIn");
         } else {
           connections.logIn(userName, connectionId);
-          BlockingConnectionHandler<byte[]> myConnectionHandler = connections.getConnectionHandler(
-            connectionId
-          );
+
           byte[] ack = { 0, 4, 0, 0 };
-          myConnectionHandler.send(ack);
+          connections.send(connectionId, ack);
         }
       }
     }
-    if (opCode == 1) {
+    if (opCode == 1) { // RRQ client wants to read a file
       if (!loggedIn) {
         sendError((short) 6, "User isn't logged in");
       }
       String fileName = new String(message, 2, message.length - 1);
-      connections.lock.readLock();
+      connections.lock.readLock().lock();
       File file = new File(filesPath, fileName);
       if (!file.exists()) {
-        // sends error
+        sendError((short) 1, "File not found");
       } else {
-        String filePath = filesPath + fileName;
+        String filePath = filesPath + "/" + fileName;
         try {
           FileInputStream fis = new FileInputStream(filePath);
           FileChannel channel = fis.getChannel();
@@ -84,6 +85,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
             byte[] chunk = new byte[bytesRead];
             byteBuffer.get(chunk);
             int[] blockNum = { readCounter / 256, readCounter % 256 };
+
             byte[] start = { 0, 3, (byte) blockNum[0], (byte) blockNum[1] };
             readCounter++;
             // Process the chunk as needed (e.g., print or save to another file)
@@ -99,15 +101,11 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
           //Error reading file
           sendError((short) 0, "Problem reading the file");
         }
-        BlockingConnectionHandler<byte[]> myConnectionHandler = connections.getConnectionHandler(
-          connectionId
-        );
-        recentOpCode = opCode;
-        myConnectionHandler.send(fileReadQueue.remove());
+        connections.send(connectionId, fileReadQueue.remove());
       }
     }
 
-    if (opCode == 2) {
+    if (opCode == 2) { // WRQ request client wants to upload a file
       if (!loggedIn) {
         sendError((short) 6, "User isn't logged in");
       }
@@ -134,15 +132,44 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
           connections.lock.writeLock().unlock();
           sendError((short) 0, "problems with creating the file");
         }
-        BlockingConnectionHandler<byte[]> myConnectionHandler = connections.getConnectionHandler(
-          connectionId
-        );
+
         byte[] ack = { 0, 4, 0, 0 };
+        try {
+          fos = new FileOutputStream(file);
+        } catch (IOException e) {}
         recentOpCode = 2;
-        myConnectionHandler.send(ack);
+        connections.send(connectionId, ack);
       }
     }
-    if (opCode == 3) {}
+    if (opCode == 3) { // Sending data from client
+      short blockNum = (short) (
+        ((short) message[4] & 0xFF) << 8 | (short) (message[5] & 0xFF)
+      );
+      short blockLength = (short) (
+        ((short) message[2] & 0xFF) << 8 | (short) (message[3] & 0xFF)
+      );
+      if (blockNum != readCounter) {
+        connections.lock.writeLock().unlock();
+        sendError((short) 0, "Got the wrong block");
+      } else {
+        byte[] data = Arrays.copyOfRange(message, 6, message.length);
+        try {
+          fos.write(data);
+        } catch (IOException e) {
+          connections.lock.writeLock().unlock();
+          sendError((short) 0, "problem with writing to the file");
+        }
+
+        byte[] ack = { 0, 4, message[2], message[3] };
+        readCounter++;
+        connections.send(connectionId, ack);
+        if (blockLength < 512) {
+          connections.lock.writeLock().unlock();
+          readCounter = 1;
+          //send BCAST
+        }
+      }
+    }
   }
 
   @Override
@@ -168,9 +195,6 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
   // functions that sends Errors to users
   public void sendError(short opCode, String message) {
-    BlockingConnectionHandler<byte[]> myConnectionHandler = connections.getConnectionHandler(
-      connectionId
-    );
     byte[] opCodeByteArray = new byte[] {
       (byte) (opCode >> 8),
       (byte) (opCode & 0xff),
@@ -178,6 +202,6 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     byte[] errorStart = concatenateArrays(errorCode, opCodeByteArray);
     byte[] errorMsg = new String(message + new String(new byte[] { 0 }))
       .getBytes();
-    myConnectionHandler.send(concatenateArrays(errorStart, errorMsg));
+    connections.send(connectionId, concatenateArrays(errorStart, errorMsg));
   }
 }
