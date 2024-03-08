@@ -7,7 +7,7 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
   ConcurrentHashMap<Integer, BlockingConnectionHandler<T>> map;
   ConcurrentHashMap<String, Integer> loggedInList;
-  ReentrantReadWriteLock lock;
+  public ReentrantReadWriteLock lock;
 
   public ConnectionsImpl() {
     map = new ConcurrentHashMap<>();

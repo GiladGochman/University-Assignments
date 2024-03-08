@@ -7,6 +7,7 @@ import java.nio.ByteBuffer;
 
 public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
+  String filesPath = "./Files";
   private int connectionId;
   private ConnectionsImpl<byte[]> connections;
   boolean shouldTerminate = false;
@@ -47,6 +48,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         // send error pack with user isnt logged in
       }
       String fileName = new String(message, 2, message.length - 1);
+      connections.lock.readLock();
       // check if filename is in the Files directory if not send error pack else start sending data pack with the file content
       // save opCode for acks
       // read the file frrom the file system and create a queue with all data separated to 512bytes
