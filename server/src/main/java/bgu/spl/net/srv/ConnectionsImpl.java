@@ -12,6 +12,7 @@ public class ConnectionsImpl<T> implements Connections<T> {
   public ConnectionsImpl() {
     map = new ConcurrentHashMap<>();
     loggedInList = new ConcurrentHashMap<>();
+
     lock = new ReentrantReadWriteLock();
   }
 
@@ -39,6 +40,10 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
   public void logIn(String userName, int connectionId) {
     loggedInList.put(userName, connectionId);
+  }
+
+  public void logOut(String userName) {
+    loggedInList.remove(userName);
   }
 
   public BlockingConnectionHandler<T> getConnectionHandler(int connectionId) {

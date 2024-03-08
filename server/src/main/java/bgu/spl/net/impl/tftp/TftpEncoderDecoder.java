@@ -15,7 +15,7 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
       len++;
       if (len == 2) { // Save the opcode as short:
         opCode =
-          (short) (((short) bytes[0] & 0xFF) << 8 | (short) (bytes[1] & 0xFF));
+          (short) (((short) bytes[0] & 0xff) << 8 | (short) (bytes[1] & 0xff));
       }
     } else { // finnished reading opcode
       if (
@@ -46,7 +46,7 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
 
         if (len >= 6) {
           short packetSize = (short) (
-            ((short) bytes[2]) << 8 | (short) (bytes[3])
+            ((short) bytes[2]) << 8 | (short) (bytes[3] & 0xff)
           );
           if (len == 6 + packetSize) {
             len = 0;
