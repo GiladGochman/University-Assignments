@@ -52,7 +52,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) 6, "User isn't logged in");
         return;
       }
-      String fileName = new String(message, 2, message.length - 2);
+      String fileName = new String(message, 2, message.length - 3);
       connections.lock.readLock().lock();
       File file = new File(filesPath, fileName);
       if (!file.exists()) {
@@ -113,7 +113,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) 6, "User isn't logged in");
         return;
       }
-      String fileName = new String(message, 2, message.length - 2);
+      String fileName = new String(message, 2, message.length - 3);
       connections.lock.readLock().lock();
       File file = new File(filesPath, fileName);
       if (file.exists()) {
@@ -203,7 +203,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) 6, "User isn't logged in");
         return;
       }
-      String errorMsg = new String(message, 4, message.length - 4);
+      String errorMsg = new String(message, 4, message.length - 5);
       System.err.println("Error: " + errorMsg);
     }
     if (opCode == 6) {
@@ -250,7 +250,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       if (loggedIn) {
         sendError((short) 7, "User is logged in already");
       } else {
-        String userName = new String(message, 2, message.length - 2); // getting the string from the message
+        String userName = new String(message, 2, message.length - 3); // getting the string from the message
         if (connections.checkIfLoggedin(userName) != null) {
           sendError((short) 0, "The username u gave is already loggedIn");
         } else {
