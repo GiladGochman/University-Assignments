@@ -13,7 +13,7 @@ public class TftpServer {
 
     Server
       .threadPerClient(
-        7777, //port
+        Integer.valueOf(args[0]), //port
         () -> new TftpProtocol(), //protocol factory
         () -> new TftpEncoderDecoder(), //message encoder decoder factory
         new ConnectionsImpl<byte[]>()

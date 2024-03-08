@@ -13,7 +13,7 @@ public abstract class BaseServer<T> implements Server<T> {
   private final int port;
   private final Supplier<BidiMessagingProtocol<T>> protocolFactory;
   private final Supplier<MessageEncoderDecoder<T>> encdecFactory;
-  private Connections<T> connections;
+  private ConnectionsImpl<T> connections;
   int counter = 0;
   private ServerSocket sock;
 
@@ -48,11 +48,15 @@ public abstract class BaseServer<T> implements Server<T> {
         );
         connections.connect(counter, handler);
         handler.start(counter, connections);
+        counter++;
         execute(handler);
       }
     } catch (IOException ex) {}
 
     System.out.println("server closed!!!");
+    try {
+      close();
+    } catch (IOException e) {}
   }
 
   @Override

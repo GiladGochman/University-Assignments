@@ -23,8 +23,7 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
         opCode == 2 || //Write request
         opCode == 5 || //Error
         opCode == 7 || //Login request
-        opCode == 8 || //Delete file request
-        opCode == 9 //Brodcast file added/deleted
+        opCode == 8 //Delete file request
       ) {
         if (nextByte == 0) {
           len = 0;
@@ -41,7 +40,7 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
           return bytes;
         }
       }
-      if (opCode == 3) {
+      if (opCode == 3) { // Data
         bytes[len] = nextByte;
         len++;
 
@@ -55,11 +54,20 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
           }
         }
       }
-      if (opCode == 10 || opCode == 6) {
+      if (opCode == 10 || opCode == 6) { //Disc or Ack
         len = 0;
         return bytes;
       }
+      if (opCode == 9) { // BCAST
+        if (nextByte == 0 && len != 2) {
+          len = 0;
+          return bytes;
+        }
+        bytes[len] = nextByte;
+        len++;
+      }
     }
+
     return null;
   }
 
