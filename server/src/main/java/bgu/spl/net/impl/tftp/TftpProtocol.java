@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
-  String filesPath = "./Files";
+  String filesPath = System.getProperty("user.dir") + File.separator + "Files";
   String connectionName = "None";
   private int connectionId;
   private ConnectionsImpl<byte[]> connections;
@@ -59,7 +59,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         connections.lock.readLock().unlock();
         sendError((short) 1, "File not found");
       } else {
-        String filePath = filesPath + "/" + fileName;
+        String filePath = filesPath + File.separator + fileName;
         try {
           FileInputStream fis = new FileInputStream(filePath);
           FileChannel channel = fis.getChannel();
@@ -249,7 +249,6 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     if (opCode == 7) { // client wants to logIn
       if (loggedIn) {
         sendError((short) 7, "User is logged in already");
-        System.out.println("hey");
         return;
       } else {
         String userName = new String(message, 2, message.length - 3); // getting the string from the message
