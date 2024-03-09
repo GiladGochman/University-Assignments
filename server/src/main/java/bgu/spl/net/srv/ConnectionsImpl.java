@@ -1,5 +1,6 @@
 package bgu.spl.net.srv;
 
+import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -7,6 +8,7 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
   ConcurrentHashMap<Integer, BlockingConnectionHandler<T>> map;
   ConcurrentHashMap<String, Integer> loggedInList;
+
   public ReentrantReadWriteLock lock;
 
   public ConnectionsImpl() {
@@ -48,5 +50,15 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
   public BlockingConnectionHandler<T> getConnectionHandler(int connectionId) {
     return map.get(connectionId);
+  }
+
+  public void bCast(int connectionId, T msg) {
+    Iterator<Integer> connectionsIt = loggedInList.values().iterator();
+    while (connectionsIt.hasNext()) {
+      int conId = connectionsIt.next();
+      if (conId != connectionId) {
+        map.get(conId).send(msg);
+      }
+    }
   }
 }

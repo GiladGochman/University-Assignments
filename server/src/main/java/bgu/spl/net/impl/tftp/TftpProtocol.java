@@ -23,7 +23,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
   boolean shouldTerminate = false;
   boolean loggedIn;
   byte[] errorCode = { 0, 5 };
-  short recentOpCode = 0;
+  String recentFileName = "";
   ByteBuffer data;
   short readCounter = 1;
   short writeCounter = 1;
@@ -38,7 +38,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     this.connectionId = connectionIdVal;
     this.connections = connectionsVal;
     loggedIn = false;
-    recentOpCode = 0;
+
     readQueue = new ConcurrentLinkedQueue<>();
   }
 
@@ -74,14 +74,17 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
             // Read bytes from the buffer
             byte[] chunk = new byte[bytesRead];
             byteBuffer.get(chunk);
+            // Calculating the BlockNumber to bytes
             byte[] blockNum = new byte[] {
               ((byte) (readCounter >> 8)),
               ((byte) (readCounter & 0xff)),
             };
+            // Calculating the packetSize to bytes
             byte[] packetSize = new byte[] {
               ((byte) (bytesRead >> 8)),
               (byte) (bytesRead & 0xff),
             };
+            //creating the start of the DATA Packet
             byte[] start = {
               0,
               3,
@@ -90,12 +93,14 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
               blockNum[0],
               blockNum[1],
             };
+            //increasing the block counter
             readCounter++;
             // Process the chunk as needed (e.g., print or save to another file)
             readQueue.add(concatenateArrays(start, chunk));
             // Clear the buffer for the next iteration
             byteBuffer.clear();
           }
+          //reseting the readCounter for comparing blocks
           readCounter = 1;
           // Close the FileInputStream
           fis.close();
@@ -103,7 +108,9 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
           e.printStackTrace();
           //Error reading file
           sendError((short) 0, "Problem reading the file");
+          return;
         }
+        // send the client first package
         connections.send(connectionId, readQueue.remove());
       }
     }
@@ -114,15 +121,14 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         return;
       }
       String fileName = new String(message, 2, message.length - 3);
-      connections.lock.readLock().lock();
+      connections.lock.writeLock().lock();
       File file = new File(filesPath, fileName);
       if (file.exists()) {
-        connections.lock.readLock().unlock();
+        connections.lock.writeLock().unlock();
         sendError((short) (5), "File is already Exsists");
       } else {
         try {
-          connections.lock.readLock().unlock();
-          connections.lock.writeLock().lock();
+          recentFileName = fileName;
           // Create the file
           boolean created = file.createNewFile();
 
@@ -131,17 +137,19 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
           } else {
             connections.lock.writeLock().unlock();
             sendError((short) 0, "problems with creating the file");
+            return;
           }
         } catch (IOException e) {
           connections.lock.writeLock().unlock();
           sendError((short) 0, "problems with creating the file");
+          return;
         }
 
         byte[] ack = { 0, 4, 0, 0 };
         try {
           fos = new FileOutputStream(file);
         } catch (IOException e) {}
-        recentOpCode = 2;
+
         connections.send(connectionId, ack);
       }
     }
@@ -172,9 +180,14 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         writeCounter++;
         connections.send(connectionId, ack);
         if (blockLength < 512) {
-          connections.lock.writeLock().unlock();
           writeCounter = 1;
-          //send BCAST
+          byte[] bCASTStart = { 0, 9, 1 };
+          String fileNameWithNullByte = recentFileName + "\0";
+          connections.bCast(
+            connectionId,
+            concatenateArrays(bCASTStart, fileNameWithNullByte.getBytes())
+          );
+          connections.lock.writeLock().unlock();
         }
       }
     }
@@ -186,10 +199,11 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       short blockNum = (short) (
         ((short) message[2] & 0x00ff) << 8 | (short) (message[3] & 0x00ff)
       );
-      if (blockNum != readCounter) sendError(
-        (short) (0),
-        "Got the wrong block"
-      );
+      if (blockNum != readCounter) {
+        sendError((short) (0), "Got the wrong block");
+        return;
+      }
+
       if (readQueue.isEmpty()) {
         readCounter = 1;
         connections.lock.readLock().unlock();
@@ -275,15 +289,22 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       if (!file.exists()) {
         connections.lock.writeLock().unlock();
         sendError((short) 1, "File not found");
+        return;
       } else {
         if (!file.delete()) {
           connections.lock.writeLock().unlock();
           sendError((short) (0), "Error deleting the file");
           return;
         }
+        byte[] bCastStart = { 0, 9, 0 };
+        String fileNameWithNullByte = fileName + "\0";
         byte[] ack = { 0, 4, 0, 0 };
         connections.send(connectionId, ack);
-        //BCAST file has been deleted
+        connections.bCast(
+          connectionId,
+          concatenateArrays(bCastStart, fileNameWithNullByte.getBytes())
+        );
+        connections.lock.writeLock().unlock();
       }
     }
     if (opCode == 10) {
@@ -332,9 +353,9 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     connections.send(connectionId, concatenateArrays(errorStart, errorMsg));
   }
 
-  public static List<String> getFileNames() {
+  public List<String> getFileNames() {
     List<String> fileNamesList = new ArrayList<>();
-    File folder = new File("./Files");
+    File folder = new File(filesPath);
 
     // Check if the folder exists and is a directory
     if (folder.exists() && folder.isDirectory()) {
