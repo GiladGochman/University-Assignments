@@ -254,6 +254,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         if (connections.checkIfLoggedin(userName) != null) {
           sendError((short) 0, "The username u gave is already loggedIn");
         } else {
+          loggedIn = true;
           connections.logIn(userName, connectionId);
           connectionName = userName;
           byte[] ack = { 0, 4, 0, 0 };
@@ -288,6 +289,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) (6), "User isn't logged in");
         return;
       }
+      loggedIn = false;
       connections.logOut(connectionName);
       connectionName = "None";
       byte[] ack = { 0, 4, 0, 0 };
