@@ -249,10 +249,13 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     if (opCode == 7) { // client wants to logIn
       if (loggedIn) {
         sendError((short) 7, "User is logged in already");
+        System.out.println("hey");
+        return;
       } else {
         String userName = new String(message, 2, message.length - 3); // getting the string from the message
         if (connections.checkIfLoggedin(userName) != null) {
           sendError((short) 0, "The username u gave is already loggedIn");
+          return;
         } else {
           loggedIn = true;
           connections.logIn(userName, connectionId);
