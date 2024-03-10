@@ -1,5 +1,7 @@
 package bgu.spl.net.impl.tftp;
 
+import java.util.Arrays;
+
 import bgu.spl.net.api.MessageEncoderDecoder;
 
 public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
@@ -17,11 +19,10 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
       if (len == 2) { // Save the opcode as short:
         opCode =
           (short) (((short) bytes[0] & 0xff) << 8 | (short) (bytes[1] & 0xff));
-          System.out.println(opCode);
         if(opCode==6 || opCode == 10){
-          len=0;
-          bytesToReturn=bytes;
+          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
           bytes=new byte[1 << 10];
+          len=0;
           return bytesToReturn;
         }
       }
@@ -34,9 +35,9 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
         opCode == 8 //Delete file request
       ) {
         if (nextByte == 0) {
-          len = 0;
-          bytesToReturn=bytes;
+          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
           bytes=new byte[1 << 10];
+          len=0;
           return bytesToReturn;
         }
         bytes[len] = nextByte;
@@ -46,9 +47,9 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
         bytes[len] = nextByte;
         len++;
         if (len == 4) {
-          len = 0;
-          bytesToReturn=bytes;
+          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
           bytes=new byte[1 << 10];
+          len=0;
           return bytesToReturn;
         }
       }
@@ -61,18 +62,18 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
             ((short) bytes[2]) << 8 | (short) (bytes[3] & 0xff)
           );
           if (len == 6 + packetSize) {
-            len = 0;
-            bytesToReturn=bytes;
-          bytes=new byte[1 << 10];
-          return bytesToReturn;
+            bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
+            bytes=new byte[1 << 10];
+            len=0;
+            return bytesToReturn;
           }
         }
       }
       if (opCode == 9) { // BCAST
         if (nextByte == 0 && len != 2) {
-          len = 0;
-          bytesToReturn=bytes;
+          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
           bytes=new byte[1 << 10];
+          len=0;
           return bytesToReturn;
         }
         bytes[len] = nextByte;

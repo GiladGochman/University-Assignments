@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
-  String filesPath = System.getProperty("user.dir")+ File.separator + "Files";
+  String filesPath = System.getProperty("user.dir")+"/" + "Files";
   String connectionName = "None";
   private int connectionId;
   private ConnectionsImpl<byte[]> connections;
@@ -47,23 +47,24 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     short opCode = (short) (
       ((short) message[0] & 0xff) << 8 | (short) (message[1] & 0xff)
     );
-    System.out.println(opCode);
     if (opCode == 1) { // RRQ client wants to read a file
       if (!loggedIn) {
         sendError((short) 6, "User isn't logged in");
         return;
       }
-      String fileName = new String(message, 2, message.length - 3); 
+      String fileName = new String(message, 2, message.length - 2); 
       connections.lock.readLock().lock();
       String filePath = filesPath + File.separator + fileName;
+      System.out.println((filePath).equals("/workspaces/File-Transfer-Server/server/Files/lemon.jpg"));
       System.out.println(filePath);
-      File file = new File("/workspaces/File-Transfer-Server/server/Files/A.txt");
+      System.out.println("/workspaces/File-Transfer-Server/server/Files/lemon.jpg");
+      File file = new File(filePath);
       if (!file.exists()) {
         connections.lock.readLock().unlock();
         sendError((short) 1, "File not found");
       } else {
         try {
-          FileInputStream fis = new FileInputStream("/workspaces/File-Transfer-Server/server/Files/A.txt");
+          FileInputStream fis = new FileInputStream(filePath);
           FileChannel channel = fis.getChannel();
           ByteBuffer byteBuffer = ByteBuffer.allocate(512);
 
@@ -122,7 +123,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) 6, "User isn't logged in");
         return;
       }
-      String fileName = new String(message, 2, message.length - 3);
+      String fileName = new String(message, 2, message.length - 2);
       connections.lock.writeLock().lock();
       File file = new File(filesPath, fileName);
       if (file.exists()) {
@@ -150,7 +151,9 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         byte[] ack = { 0, 4, 0, 0 };
         try {
           fos = new FileOutputStream(file);
-        } catch (IOException e) {}
+        } catch (IOException e) {
+          
+        }
 
         connections.send(connectionId, ack);
       }
@@ -167,6 +170,8 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         ((short) message[2] & 0xff) << 8 | (short) (message[3] & 0xff)
       );
       if (blockNum != writeCounter) {
+        File file = new File(filesPath, recentFileName);
+        file.delete();
         connections.lock.writeLock().unlock();
         sendError((short) 0, "Got the wrong block");
       } else {
@@ -175,6 +180,8 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         try {
           fos.write(data);
         } catch (IOException e) {
+          File file = new File(filesPath, recentFileName);
+          file.delete();
           connections.lock.writeLock().unlock();
           sendError((short) 0, "problem with writing to the file");
         }
@@ -204,7 +211,10 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         ((short) message[2] & 0x00ff) << 8 | (short) (message[3] & 0x00ff)
       );
       if (blockNum != readCounter) {
+        readQueue.clear();
+        readCounter=1;
         sendError((short) (0), "Got the wrong block");
+        connections.lock.readLock().unlock();
         return;
       }
 
@@ -221,7 +231,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) 6, "User isn't logged in");
         return;
       }
-      String errorMsg = new String(message, 4, message.length - 5);
+      String errorMsg = new String(message, 4, message.length - 4);
       System.err.println("Error: " + errorMsg);
     }
     if (opCode == 6) {
@@ -270,7 +280,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) 7, "User is logged in already");
         return;
       } else {
-        String userName = new String(message, 2, message.length - 3); // getting the string from the message
+        String userName = new String(message, 2, message.length - 2); // getting the string from the message
         if (connections.checkIfLoggedin(userName) != null) {
           sendError((short) 0, "The username u gave is already loggedIn");
           return;
@@ -362,7 +372,6 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
   public List<String> getFileNames() {
     List<String> fileNamesList = new ArrayList<>();
     File folder = new File(filesPath);
-    System.out.println(filesPath);
 
     // Check if the folder exists and is a directory
     if (folder.exists() && folder.isDirectory()) {
