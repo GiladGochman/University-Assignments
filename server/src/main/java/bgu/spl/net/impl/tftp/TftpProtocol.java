@@ -332,7 +332,6 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       connectionName = "None";
       byte[] ack = { 0, 4, 0, 0 };
       connections.send(connectionId, ack);
-      System.out.println(connectionName);
     }
   }
 
