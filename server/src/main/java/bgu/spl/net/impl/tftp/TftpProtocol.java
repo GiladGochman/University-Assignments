@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
-  String filesPath = System.getProperty("user.dir") + File.separator + "Files";
+  String filesPath = System.getProperty("user.dir")+File.separator + "Files";
   String connectionName = "None";
   private int connectionId;
   private ConnectionsImpl<byte[]> connections;
@@ -47,19 +47,20 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     short opCode = (short) (
       ((short) message[0] & 0xff) << 8 | (short) (message[1] & 0xff)
     );
+    System.out.println(opCode);
     if (opCode == 1) { // RRQ client wants to read a file
       if (!loggedIn) {
         sendError((short) 6, "User isn't logged in");
         return;
       }
-      String fileName = new String(message, 2, message.length - 3);
+      String fileName = new String(message, 2, message.length - 3); 
       connections.lock.readLock().lock();
-      File file = new File(filesPath, fileName);
+      String filePath = filesPath + "/" + fileName;
+      File file = new File(filePath);
       if (!file.exists()) {
         connections.lock.readLock().unlock();
         sendError((short) 1, "File not found");
       } else {
-        String filePath = filesPath + File.separator + fileName;
         try {
           FileInputStream fis = new FileInputStream(filePath);
           FileChannel channel = fis.getChannel();
@@ -258,6 +259,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         byte[] msg = concatenateArrays(start, splitIntoChunks.get(i));
         readQueue.add(msg);
       }
+      System.out.println(readQueue.peek());
       connections.send(connectionId, readQueue.remove());
     }
     if (opCode == 7) { // client wants to logIn
@@ -317,6 +319,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       connectionName = "None";
       byte[] ack = { 0, 4, 0, 0 };
       connections.send(connectionId, ack);
+      System.out.println(connectionName);
     }
   }
 
@@ -356,6 +359,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
   public List<String> getFileNames() {
     List<String> fileNamesList = new ArrayList<>();
     File folder = new File(filesPath);
+    System.out.println(filesPath);
 
     // Check if the folder exists and is a directory
     if (folder.exists() && folder.isDirectory()) {
