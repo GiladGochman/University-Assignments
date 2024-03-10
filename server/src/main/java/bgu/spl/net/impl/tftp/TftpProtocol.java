@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
-  String filesPath = System.getProperty("user.dir")+File.separator + "Files";
+  String filesPath = System.getProperty("user.dir")+ File.separator + "Files";
   String connectionName = "None";
   private int connectionId;
   private ConnectionsImpl<byte[]> connections;
@@ -55,14 +55,15 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       }
       String fileName = new String(message, 2, message.length - 3); 
       connections.lock.readLock().lock();
-      String filePath = filesPath + "/" + fileName;
-      File file = new File(filePath);
+      String filePath = filesPath + File.separator + fileName;
+      System.out.println(filePath);
+      File file = new File("/workspaces/File-Transfer-Server/server/Files/A.txt");
       if (!file.exists()) {
         connections.lock.readLock().unlock();
         sendError((short) 1, "File not found");
       } else {
         try {
-          FileInputStream fis = new FileInputStream(filePath);
+          FileInputStream fis = new FileInputStream("/workspaces/File-Transfer-Server/server/Files/A.txt");
           FileChannel channel = fis.getChannel();
           ByteBuffer byteBuffer = ByteBuffer.allocate(512);
 
@@ -169,6 +170,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         connections.lock.writeLock().unlock();
         sendError((short) 0, "Got the wrong block");
       } else {
+        if(blockLength>0){
         byte[] data = Arrays.copyOfRange(message, 6, message.length);
         try {
           fos.write(data);
@@ -176,6 +178,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
           connections.lock.writeLock().unlock();
           sendError((short) 0, "problem with writing to the file");
         }
+       }
 
         byte[] ack = { 0, 4, message[4], message[5] };
         writeCounter++;
