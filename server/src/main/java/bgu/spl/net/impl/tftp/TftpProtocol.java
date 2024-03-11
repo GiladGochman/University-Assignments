@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
-  String filesPath = System.getProperty("user.dir")+"/" + "Files";
+  String filesPath = System.getProperty("user.dir") + "/" + "Files";
   String connectionName = "None";
   private int connectionId;
   private ConnectionsImpl<byte[]> connections;
@@ -52,12 +52,9 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) 6, "User isn't logged in");
         return;
       }
-      String fileName = new String(message, 2, message.length - 2); 
+      String fileName = new String(message, 2, message.length - 2);
       connections.lock.readLock().lock();
       String filePath = filesPath + File.separator + fileName;
-      System.out.println((filePath).equals("/workspaces/File-Transfer-Server/server/Files/lemon.jpg"));
-      System.out.println(filePath);
-      System.out.println("/workspaces/File-Transfer-Server/server/Files/lemon.jpg");
       File file = new File(filePath);
       if (!file.exists()) {
         connections.lock.readLock().unlock();
@@ -151,9 +148,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         byte[] ack = { 0, 4, 0, 0 };
         try {
           fos = new FileOutputStream(file);
-        } catch (IOException e) {
-          
-        }
+        } catch (IOException e) {}
 
         connections.send(connectionId, ack);
       }
@@ -175,17 +170,17 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         connections.lock.writeLock().unlock();
         sendError((short) 0, "Got the wrong block");
       } else {
-        if(blockLength>0){
-        byte[] data = Arrays.copyOfRange(message, 6, message.length);
-        try {
-          fos.write(data);
-        } catch (IOException e) {
-          File file = new File(filesPath, recentFileName);
-          file.delete();
-          connections.lock.writeLock().unlock();
-          sendError((short) 0, "problem with writing to the file");
+        if (blockLength > 0) {
+          byte[] data = Arrays.copyOfRange(message, 6, message.length);
+          try {
+            fos.write(data);
+          } catch (IOException e) {
+            File file = new File(filesPath, recentFileName);
+            file.delete();
+            connections.lock.writeLock().unlock();
+            sendError((short) 0, "problem with writing to the file");
+          }
         }
-       }
 
         byte[] ack = { 0, 4, message[4], message[5] };
         writeCounter++;
@@ -212,7 +207,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       );
       if (blockNum != readCounter) {
         readQueue.clear();
-        readCounter=1;
+        readCounter = 1;
         sendError((short) (0), "Got the wrong block");
         connections.lock.readLock().unlock();
         return;
@@ -333,7 +328,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       byte[] ack = { 0, 4, 0, 0 };
       connections.send(connectionId, ack);
       connections.disconnect(connectionId);
-      shouldTerminate=true;
+      shouldTerminate = true;
     }
   }
 
