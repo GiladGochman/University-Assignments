@@ -47,6 +47,7 @@ public class BlockingConnectionHandler<T>
           protocol.process(nextMessage);
         }
       }
+      close();
     } catch (IOException ex) {
       ex.printStackTrace();
     }

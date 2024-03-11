@@ -227,7 +227,12 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         return;
       }
       String errorMsg = new String(message, 4, message.length - 4);
-      System.err.println("Error: " + errorMsg);
+      short errorCode = (short) (
+        ((short) message[2] & 0xff) << 8 | (short) (message[3] & 0xff)
+      );
+      System.err.println("Error " + errorCode + ": " + errorMsg);
+      readQueue.clear();
+      readCounter = 1;
     }
     if (opCode == 6) {
       if (!loggedIn) {
@@ -267,7 +272,6 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         byte[] msg = concatenateArrays(start, splitIntoChunks.get(i));
         readQueue.add(msg);
       }
-      System.out.println(readQueue.peek());
       connections.send(connectionId, readQueue.remove());
     }
     if (opCode == 7) { // client wants to logIn
