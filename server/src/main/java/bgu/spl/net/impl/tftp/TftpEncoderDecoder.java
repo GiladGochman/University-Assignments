@@ -12,8 +12,6 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
 
   @Override
   public byte[] decodeNextByte(byte nextByte) {
-    
-    System.out.println("rec");
     byte[] bytesToReturn;
     if (len < 2) { // Reading the opcode:
       bytes[len] = nextByte;

@@ -50,7 +50,6 @@ public abstract class BaseServer<T> implements Server<T> {
         handler.start(counter, connections);
         counter++;
         execute(handler);
-        System.out.println("connected");
       }
     } catch (IOException ex) {}
 

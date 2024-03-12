@@ -84,7 +84,6 @@ public class TftpClient {
                 cmd[0] = message.substring(0, indexOfSpace);
                 cmd[1] = message.substring(indexOfSpace + 1, message.length());
               }
-              System.out.println(cmd[0]);
               handleCommand(cmd, clientConnection);
             }
           }
@@ -111,9 +110,8 @@ public class TftpClient {
       short blockLength = (short) (
         ((short) ans[2] & 0xff) << 8 | (short) (ans[3] & 0xff)
       );
-      if (blockNum != clientC.ansQueue.size() - 1) {
+      if (blockNum != clientC.ansQueue.size() +   1) {
         byte[] error = sendError((short) 0, "got the wrong block");
-        System.out.println(error.length);
         try {
           clientC.out.write(error);
           clientC.out.flush();
@@ -152,6 +150,7 @@ public class TftpClient {
             clientC.waitingForResponse = false;
           }
         } else if (clientC.recentRequestOpCode == 6) {
+          System.out.println(clientC.ansQueue.size());
           List<String> fileNames = getAllFileNames(clientC.ansQueue);
           for (String fileName : fileNames) {
             System.out.println(fileName);
@@ -314,51 +313,48 @@ public class TftpClient {
     return result;
   }
 
-  public static List<String> getAllFileNames(
-    ConcurrentLinkedQueue<byte[]> bytesQueue
-  ) {
+  public static List<String> getAllFileNames(ConcurrentLinkedQueue<byte[]> bytesQueue) {
     List<String> fileNames = new ArrayList<>();
-
-    // Iterate over each byte array in the queue
-    while (!bytesQueue.isEmpty()) {
-      byte[] byteArray = bytesQueue.poll();
-      if (byteArray == null || byteArray.length < 6) {
-        // Invalid byte array, continue to the next one
-        continue;
-      }
-
-      // Extract data length number from the byte array
-
-      int dataLength = (byteArray[2] << 8) | (byteArray[3] & 0xFF);
-
-      // Check if data length is valid
-      if (dataLength == 0) {
-        // If data length is 0, skip processing this byte array
-        continue;
-      }
-
-      // Check if data length is valid
-      if (byteArray.length < 6 + dataLength) {
-        // Invalid data length, continue to the next byte array
-        continue;
-      }
-
-      // Extract data from the byte array
-      String data = new String(byteArray, 6, dataLength);
-
-      // Split data into file names using nullByte ("\0")
-      String[] fileNamesInData = data.split("\0");
-
-      // Add each file name to the list
-      for (String fileName : fileNamesInData) {
-        if (!fileName.isEmpty()) {
-          fileNames.add(fileName);
+    
+    // Concatenate all byte arrays into one array
+    int totalLength = 0;
+    for (byte[] byteArray : bytesQueue) {
+        if (byteArray != null) {
+            totalLength += byteArray.length;
         }
-      }
+    }
+    
+    byte[] combinedArray = new byte[totalLength];
+    int currentIndex = 0;
+    for (byte[] byteArray : bytesQueue) {
+        if (byteArray != null) {
+            System.arraycopy(byteArray, 0, combinedArray, currentIndex, byteArray.length);
+            currentIndex += byteArray.length;
+        }
+    }
+
+    // Create strings from the combined array, each separated by null byte "\0"
+    StringBuilder currentFileName = new StringBuilder();
+    for (byte b : combinedArray) {
+        if (b == 0) {
+            // Found null byte, add current file name to the list and reset
+            if (currentFileName.length() > 0) {
+                fileNames.add(currentFileName.toString());
+                currentFileName = new StringBuilder();
+            }
+        } else {
+            // Append byte to current file name
+            currentFileName.append((char) b);
+        }
+    }
+    
+    // Add the last file name if not added already
+    if (currentFileName.length() > 0) {
+        fileNames.add(currentFileName.toString());
     }
 
     return fileNames;
-  }
+}
 
   public static boolean isCommandValid(String cmd) {
     int indexOfSpace = cmd.indexOf(' ', 0);
@@ -391,7 +387,6 @@ public class TftpClient {
     ClientConnectionHandler clientC
   ) {
     if (cmd[0].equals("LOGRQ")) {
-      System.out.println("imhere");
       byte[] start = { 0, 7 };
       if (checkIfContainsNullByte(cmd[1].getBytes())) {
         System.out.println("name contains null byte");
@@ -405,7 +400,6 @@ public class TftpClient {
           clientC.encdec.encode(concatenateArrays(start, userName))
         );
         clientC.out.flush();
-        System.out.println("sent");
       } catch (IOException e) {
         clientC.recentRequestOpCode = 0;
         clientC.waitingForResponse = false;
@@ -487,6 +481,8 @@ public class TftpClient {
       try {
         clientC.out.write(clientC.encdec.encode(code));
         clientC.out.flush();
+        clientC.recentRequestOpCode=6;
+        clientC.waitingForResponse=true;
       } catch (IOException e) {}
     }
     if (cmd[0].equals("DISC")) {
