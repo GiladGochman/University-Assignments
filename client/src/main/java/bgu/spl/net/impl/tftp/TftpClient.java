@@ -127,6 +127,7 @@ public class TftpClient {
       }
       if (blockLength < 512) {
         if (clientC.recentRequestOpCode == 1) {
+          System.out.println("im here");
           File newFile = new File(
             System.getProperty("user.dir"),
             clientC.workingFileName
