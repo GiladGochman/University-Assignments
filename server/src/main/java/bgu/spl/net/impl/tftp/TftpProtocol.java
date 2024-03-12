@@ -44,6 +44,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
   @Override
   public void process(byte[] message) {
+    System.out.println("got message");
     short opCode = (short) (
       ((short) message[0] & 0xff) << 8 | (short) (message[1] & 0xff)
     );
@@ -226,6 +227,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
         sendError((short) 6, "User isn't logged in");
         return;
       }
+      System.out.println(message.length);
       String errorMsg = new String(message, 4, message.length - 4);
       short errorCode = (short) (
         ((short) message[2] & 0xff) << 8 | (short) (message[3] & 0xff)
@@ -235,6 +237,7 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
       readCounter = 1;
     }
     if (opCode == 6) {
+      System.out.println("im here");
       if (!loggedIn) {
         sendError((short) 6, "User isn't logged in");
         return;

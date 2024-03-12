@@ -1,0 +1,8 @@
+/workspaces/File-Transfer-Server/client/src/main/java/bgu/spl/net/impl/echo/LineMessageEncoderDecoder.java
+/workspaces/File-Transfer-Server/client/src/main/java/bgu/spl/net/impl/echo/EchoProtocol.java
+/workspaces/File-Transfer-Server/client/src/main/java/bgu/spl/net/impl/tftp/TftpClient.java
+/workspaces/File-Transfer-Server/client/src/main/java/bgu/spl/net/impl/tftp/TftpEncoderDecoder.java
+/workspaces/File-Transfer-Server/client/src/main/java/bgu/spl/net/api/MessagingProtocol.java
+/workspaces/File-Transfer-Server/client/src/main/java/bgu/spl/net/api/MessageEncoderDecoder.java
+/workspaces/File-Transfer-Server/client/src/main/java/bgu/spl/net/impl/echo/EchoClient.java
+/workspaces/File-Transfer-Server/client/src/main/java/bgu/spl/net/impl/tftp/ClientConnectionHandler.java

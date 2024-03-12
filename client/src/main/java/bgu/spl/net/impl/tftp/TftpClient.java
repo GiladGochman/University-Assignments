@@ -5,12 +5,14 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +44,7 @@ public class TftpClient {
       );
 
       Thread listenerThread = new Thread(() -> {
+        System.out.println("start listening");
         int bytes;
         try {
           while (
@@ -58,6 +61,7 @@ public class TftpClient {
       });
       listenerThread.start();
       Thread keyBoardThread = new Thread(() -> {
+        System.out.println("keyBoard started");
         BufferedReader keyBoardInput = new BufferedReader(
           new InputStreamReader(System.in)
         );
@@ -76,10 +80,11 @@ public class TftpClient {
             } else {
               String[] cmd = { message, "" };
               int indexOfSpace = message.indexOf(' ', 0);
-              if (indexOfSpace == -1) {
+              if (indexOfSpace != -1) {
                 cmd[0] = message.substring(0, indexOfSpace);
                 cmd[1] = message.substring(indexOfSpace + 1, message.length());
               }
+              System.out.println(cmd[0]);
               handleCommand(cmd, clientConnection);
             }
           }
@@ -108,8 +113,10 @@ public class TftpClient {
       );
       if (blockNum != clientC.ansQueue.size() - 1) {
         byte[] error = sendError((short) 0, "got the wrong block");
+        System.out.println(error.length);
         try {
           clientC.out.write(error);
+          clientC.out.flush();
         } catch (IOException e) {
           e.printStackTrace();
         }
@@ -154,6 +161,7 @@ public class TftpClient {
       byte[] ack = { 0, 4, ans[4], ans[5] };
       try {
         clientC.out.write((clientC.encdec.encode(ack)));
+        clientC.out.flush();
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -176,21 +184,88 @@ public class TftpClient {
           clientC.waitingForResponse = false;
           return;
         }
-        if (!clientC.sendQueue.isEmpty()) {
+        if (blockNum == 0) {
+          String filePath =
+            System.getProperty("user.dir") + "/" + clientC.workingFileName;
           try {
+            FileInputStream fis = new FileInputStream(filePath);
+            FileChannel channel = fis.getChannel();
+            ByteBuffer byteBuffer = ByteBuffer.allocate(512);
+
+            // Read the file in chunks
+            int bytesRead;
+            while ((bytesRead = channel.read(byteBuffer)) != -1) {
+              // Rewind the buffer before reading
+              byteBuffer.rewind();
+
+              // Read bytes from the buffer
+              byte[] chunk = new byte[bytesRead];
+              byteBuffer.get(chunk);
+              // Calculating the BlockNumber to bytes
+              byte[] blockNumForSend = new byte[] {
+                ((byte) (clientC.writeCounter >> 8)),
+                ((byte) (clientC.writeCounter & 0xff)),
+              };
+              // Calculating the packetSize to bytes
+              byte[] packetSize = new byte[] {
+                ((byte) (bytesRead >> 8)),
+                (byte) (bytesRead & 0xff),
+              };
+              //creating the start of the DATA Packet
+              byte[] start = {
+                0,
+                3,
+                packetSize[0],
+                packetSize[1],
+                blockNumForSend[0],
+                blockNumForSend[1],
+              };
+              //increasing the block counter
+              clientC.writeCounter++;
+              // Process the chunk as needed (e.g., print or save to another file)
+              clientC.sendQueue.add(concatenateArrays(start, chunk));
+              // Clear the buffer for the next iteration
+              byteBuffer.clear();
+            }
+            //reseting the readCounter for comparing blocks
+            clientC.writeCounter = 1;
+            // Close the FileInputStream
+            fis.close();
             clientC.out.write(clientC.encdec.encode(clientC.sendQueue.poll()));
+            clientC.out.flush();
           } catch (IOException e) {
-            e.printStackTrace();
-          }
-          if (clientC.sendQueue.isEmpty()) {
+            sendError((short) 0, "error reading the file");
             clientC.waitingForResponse = false;
+            clientC.workingFileName = "";
             clientC.recentRequestOpCode = 0;
           }
+        } else {
+          if (!clientC.sendQueue.isEmpty()) {
+            try {
+              clientC.out.write(
+                clientC.encdec.encode(clientC.sendQueue.poll())
+              );
+              clientC.out.flush();
+              clientC.writeCounter++;
+            } catch (IOException e) {
+              System.out.println("Error writing the file");
+              sendError((short) 0, "Error writing the file");
+              clientC.sendQueue.clear();
+              clientC.recentRequestOpCode = 0;
+              clientC.waitingForResponse = false;
+
+              e.printStackTrace();
+            }
+            if (clientC.sendQueue.isEmpty()) {
+              clientC.waitingForResponse = false;
+              clientC.recentRequestOpCode = 0;
+            }
+          }
         }
-      }
-      if (clientC.recentRequestOpCode == 10) {
-        clientC.shouldTerminate = true;
-        clientC.waitingForResponse = false;
+        if (clientC.recentRequestOpCode == 10) {
+          clientC.shouldTerminate = true;
+          clientC.waitingForResponse = false;
+        }
       }
     }
     if (opCode == 5) {
@@ -316,27 +391,111 @@ public class TftpClient {
     ClientConnectionHandler clientC
   ) {
     if (cmd[0].equals("LOGRQ")) {
+      System.out.println("imhere");
       byte[] start = { 0, 7 };
       if (checkIfContainsNullByte(cmd[1].getBytes())) {
         System.out.println("name contains null byte");
         return;
       }
-      byte[] fileName = (cmd[1] + "\0").getBytes();
+      byte[] userName = (cmd[1] + "\0").getBytes();
       try {
         clientC.recentRequestOpCode = 7;
         clientC.waitingForResponse = true;
-        clientC.out.write(concatenateArrays(start, fileName));
+        clientC.out.write(
+          clientC.encdec.encode(concatenateArrays(start, userName))
+        );
+        clientC.out.flush();
+        System.out.println("sent");
       } catch (IOException e) {
         clientC.recentRequestOpCode = 0;
         clientC.waitingForResponse = false;
         e.printStackTrace();
       }
     }
-    if (cmd[0].equals("RRQ")) {}
-    if (cmd[0].equals("WRQ")) {}
-    if (cmd[0].equals("DELRQ")) {}
-    if (cmd[0].equals("DIRQ")) {}
-    if (cmd[0].equals("DISC")) {}
+    if (cmd[0].equals("RRQ")) {
+      byte[] start = { 0, 1 };
+      if (checkIfContainsNullByte(cmd[1].getBytes())) {
+        System.out.println("name contains null byte");
+        return;
+      }
+
+      byte[] fileName = (cmd[1] + "\0").getBytes();
+      try {
+        clientC.recentRequestOpCode = 1;
+        clientC.workingFileName = cmd[1];
+        clientC.waitingForResponse = true;
+        clientC.out.write(
+          clientC.encdec.encode(concatenateArrays(start, fileName))
+        );
+        clientC.out.flush();
+      } catch (IOException e) {
+        clientC.recentRequestOpCode = 0;
+        clientC.workingFileName = "";
+        clientC.waitingForResponse = false;
+        clientC.writeCounter = 0;
+        e.printStackTrace();
+      }
+    }
+    if (cmd[0].equals("WRQ")) {
+      byte[] start = { 0, 2 };
+      if (checkIfContainsNullByte(cmd[1].getBytes())) {
+        System.out.println("name contains null byte");
+        return;
+      }
+      List<String> files = getFileInDir();
+      if (!files.contains(cmd[1])) {
+        System.out.println("File doesnt exsists in folder");
+      }
+      byte[] fileName = (cmd[1] + "\0").getBytes();
+      try {
+        clientC.recentRequestOpCode = 2;
+        clientC.waitingForResponse = true;
+        clientC.workingFileName = cmd[1];
+        clientC.out.write(
+          clientC.encdec.encode(concatenateArrays(start, fileName))
+        );
+        clientC.out.flush();
+      } catch (IOException e) {
+        clientC.recentRequestOpCode = 0;
+        clientC.workingFileName = "";
+        clientC.waitingForResponse = false;
+        e.printStackTrace();
+      }
+    }
+    if (cmd[0].equals("DELRQ")) {
+      byte[] start = { 0, 8 };
+      if (checkIfContainsNullByte(cmd[1].getBytes())) {
+        System.out.println("name contains null byte");
+        return;
+      }
+      byte[] fileName = (cmd[1] + "\0").getBytes();
+      try {
+        clientC.recentRequestOpCode = 8;
+        clientC.waitingForResponse = true;
+        clientC.out.write(
+          clientC.encdec.encode(concatenateArrays(start, fileName))
+        );
+        clientC.out.flush();
+      } catch (IOException e) {
+        clientC.recentRequestOpCode = 0;
+        clientC.waitingForResponse = false;
+        e.printStackTrace();
+      }
+    }
+    if (cmd[0].equals("DIRQ")) {
+      byte[] code = { 0, 6 };
+      try {
+        clientC.out.write(clientC.encdec.encode(code));
+        clientC.out.flush();
+      } catch (IOException e) {}
+    }
+    if (cmd[0].equals("DISC")) {
+      byte[] code = { 0, 10 };
+      try {
+        clientC.out.write(clientC.encdec.encode(code));
+        clientC.out.flush();
+      } catch (IOException e) {}
+    }
   }
 
   public static boolean checkIfContainsNullByte(byte[] bytes) {
@@ -344,5 +503,25 @@ public class TftpClient {
       if (b == 0) return true;
     }
     return false;
+  }
+
+  public static List<String> getFileInDir() {
+    List<String> fileNamesList = new ArrayList<>();
+    File folder = new File(System.getProperty("user.dir"));
+    // Check if the folder exists and is a directory
+    if (folder.exists() && folder.isDirectory()) {
+      // Get all files in the folder
+      File[] files = folder.listFiles();
+      if (files != null) {
+        for (File file : files) {
+          // Add file names to the list
+          fileNamesList.add(file.getName());
+        }
+      }
+    } else {
+      System.out.println("Folder does not exist or is not a directory.");
+    }
+
+    return fileNamesList;
   }
 }

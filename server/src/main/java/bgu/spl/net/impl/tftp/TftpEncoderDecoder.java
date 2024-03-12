@@ -12,6 +12,8 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
 
   @Override
   public byte[] decodeNextByte(byte nextByte) {
+    
+    System.out.println("rec");
     byte[] bytesToReturn;
     if (len < 2) { // Reading the opcode:
       bytes[len] = nextByte;
@@ -30,7 +32,6 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
       if (
         opCode == 1 || //Read request
         opCode == 2 || //Write request
-        opCode == 5 || //Error
         opCode == 7 || //Login request
         opCode == 8 //Delete file request
       ) {
@@ -78,6 +79,22 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
         }
         bytes[len] = nextByte;
         len++;
+      }
+      if(opCode ==5){
+        if(len<4){
+          bytes[len]=nextByte;
+          len++;
+        }else{
+          if(nextByte == 0){
+          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
+          bytes=new byte[1 << 10];
+          len=0;
+          return bytesToReturn;
+          }
+          bytes[len] = nextByte;
+           len++;
+        }
+
       }
     }
 

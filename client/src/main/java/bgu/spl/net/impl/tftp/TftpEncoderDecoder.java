@@ -19,6 +19,7 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
       if (len == 2) { // Save the opcode as short:
         opCode =
           (short) (((short) bytes[0] & 0xff) << 8 | (short) (bytes[1] & 0xff));
+        System.out.println(opCode);
         if(opCode==6 || opCode == 10){
           bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
           bytes=new byte[1 << 10];
@@ -30,7 +31,6 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
       if (
         opCode == 1 || //Read request
         opCode == 2 || //Write request
-        opCode == 5 || //Error
         opCode == 7 || //Login request
         opCode == 8 //Delete file request
       ) {
@@ -78,6 +78,22 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
         }
         bytes[len] = nextByte;
         len++;
+      }
+      if(opCode ==5){
+        if(len<4){
+          bytes[len]=nextByte;
+          len++;
+        }else{
+          if(nextByte == 0){
+          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
+          bytes=new byte[1 << 10];
+          len=0;
+          return bytesToReturn;
+          }
+          bytes[len] = nextByte;
+           len++;
+        }
+
       }
     }
 
