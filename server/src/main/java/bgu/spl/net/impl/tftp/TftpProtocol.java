@@ -44,9 +44,11 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
 
   @Override
   public void process(byte[] message) {
+    System.out.println(connectionId);
     short opCode = (short) (
       ((short) message[0] & 0xff) << 8 | (short) (message[1] & 0xff)
     );
+    System.out.println(opCode);
     if (opCode == 1) { // RRQ client wants to read a file
       if (!loggedIn) {
         sendError((short) 6, "User isn't logged in");
@@ -271,9 +273,6 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
           indexByte[1],
         };
         byte[] msg = concatenateArrays(start, splitIntoChunks.get(i));
-        for(byte b :msg){
-          System.out.println(b);
-        }
         readQueue.add(msg);
       }
       connections.send(connectionId, readQueue.remove());

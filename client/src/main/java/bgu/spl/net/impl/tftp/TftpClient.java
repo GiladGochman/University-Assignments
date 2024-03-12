@@ -156,6 +156,9 @@ public class TftpClient {
           for (String fileName : fileNames) {
             System.out.println(fileName);
           }
+          clientC.waitingForResponse=false;
+          clientC.recentRequestOpCode=0;
+          clientC.ansQueue.clear();
         }
       }
       byte[] ack = { 0, 4, ans[4], ans[5] };
@@ -167,12 +170,14 @@ public class TftpClient {
       }
     }
     if (opCode == 4) {
+      System.out.println(clientC.recentRequestOpCode);
       if (
-        clientC.recentRequestOpCode != 2 | clientC.recentRequestOpCode != 10
+        clientC.recentRequestOpCode != 2 & clientC.recentRequestOpCode != 10
       ) {
         System.out.println("< ACK  0");
         clientC.recentRequestOpCode = 0;
         clientC.waitingForResponse = false;
+        return;
       }
       if (clientC.recentRequestOpCode == 2) {
         short blockNum = (short) (
@@ -185,9 +190,11 @@ public class TftpClient {
           return;
         }
         if (blockNum == 0) {
+          System.out.println("imhere");
           String filePath =
             System.getProperty("user.dir") + "/" + clientC.workingFileName;
           try {
+            System.out.println(filePath);
             FileInputStream fis = new FileInputStream(filePath);
             FileChannel channel = fis.getChannel();
             ByteBuffer byteBuffer = ByteBuffer.allocate(512);
@@ -197,10 +204,12 @@ public class TftpClient {
             while ((bytesRead = channel.read(byteBuffer)) != -1) {
               // Rewind the buffer before reading
               byteBuffer.rewind();
-
+              //increasing the block counter
+              clientC.writeCounter++;
               // Read bytes from the buffer
               byte[] chunk = new byte[bytesRead];
               byteBuffer.get(chunk);
+              System.out.println(chunk.length);
               // Calculating the BlockNumber to bytes
               byte[] blockNumForSend = new byte[] {
                 ((byte) (clientC.writeCounter >> 8)),
@@ -220,8 +229,8 @@ public class TftpClient {
                 blockNumForSend[0],
                 blockNumForSend[1],
               };
-              //increasing the block counter
-              clientC.writeCounter++;
+              
+              
               // Process the chunk as needed (e.g., print or save to another file)
               clientC.sendQueue.add(concatenateArrays(start, chunk));
               // Clear the buffer for the next iteration
@@ -256,10 +265,11 @@ public class TftpClient {
 
               e.printStackTrace();
             }
-            if (clientC.sendQueue.isEmpty()) {
-              clientC.waitingForResponse = false;
-              clientC.recentRequestOpCode = 0;
-            }
+            
+          }
+          if (clientC.sendQueue.isEmpty()) {
+            clientC.waitingForResponse = false;
+            clientC.recentRequestOpCode = 0;
           }
         }
         if (clientC.recentRequestOpCode == 10) {
