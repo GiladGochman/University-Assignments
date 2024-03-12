@@ -19,7 +19,6 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
       if (len == 2) { // Save the opcode as short:
         opCode =
           (short) (((short) bytes[0] & 0xff) << 8 | (short) (bytes[1] & 0xff));
-        System.out.println(opCode);
         if(opCode==6 || opCode == 10){
           bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
           bytes=new byte[1 << 10];
