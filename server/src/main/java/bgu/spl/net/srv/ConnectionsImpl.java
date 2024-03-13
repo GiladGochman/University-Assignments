@@ -37,20 +37,20 @@ public class ConnectionsImpl<T> implements Connections<T> {
   }
 
   public Integer checkIfLoggedin(String userName) {
-    synchronized(loggedInList){
-    return loggedInList.get(userName);
+    synchronized (loggedInList) {
+      return loggedInList.get(userName);
     }
   }
 
   public void logIn(String userName, int connectionId) {
-    synchronized(loggedInList){
-    loggedInList.put(userName, connectionId);
+    synchronized (loggedInList) {
+      loggedInList.put(userName, connectionId);
     }
   }
 
   public void logOut(String userName) {
-    synchronized(loggedInList){
-    loggedInList.remove(userName);
+    synchronized (loggedInList) {
+      loggedInList.remove(userName);
     }
   }
 
@@ -59,14 +59,14 @@ public class ConnectionsImpl<T> implements Connections<T> {
   }
 
   public void bCast(int connectionId, T msg) {
-    synchronized(loggedInList){
-    Iterator<Integer> connectionsIt = loggedInList.values().iterator();
-    while (connectionsIt.hasNext()) {
-      int conId = connectionsIt.next();
-      if (conId != connectionId) {
-        map.get(conId).send(msg);
+    synchronized (loggedInList) {
+      Iterator<Integer> connectionsIt = loggedInList.values().iterator();
+      while (connectionsIt.hasNext()) {
+        int conId = connectionsIt.next();
+        if (conId != connectionId) {
+          map.get(conId).send(msg);
+        }
       }
     }
-  }
   }
 }
