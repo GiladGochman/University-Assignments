@@ -110,6 +110,10 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
           sendError((short) 0, "Problem reading the file");
           return;
         }
+        if(readQueue.isEmpty()){
+          byte[] start = {0, 3, 0, 0, 0, 1};
+          readQueue.add(start);
+        }
         // send the client first package
         connections.send(connectionId, readQueue.remove());
       }
@@ -387,7 +391,9 @@ public class TftpProtocol implements BidiMessagingProtocol<byte[]> {
     } else {
       System.out.println("Folder does not exist or is not a directory.");
     }
-
+    if(fileNamesList.size() == 0){
+      fileNamesList.add("No files in the server");
+    }
     return fileNamesList;
   }
 

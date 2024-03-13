@@ -73,6 +73,7 @@ public class TftpClient {
             (message = keyBoardInput.readLine()) != null
           ) {
             if (clientConnection.waitingForResponse) {
+              System.out.println("imhere");
               continue;
             }
             if (!isCommandValid(message)) {
@@ -171,6 +172,8 @@ public class TftpClient {
       }
     }
     if (opCode == 4) {
+      System.out.println("got something");
+      System.out.println(clientC.recentRequestOpCode);
       if (
         clientC.recentRequestOpCode != 2 & clientC.recentRequestOpCode != 10
       ) {
@@ -183,6 +186,7 @@ public class TftpClient {
         short blockNum = (short) (
           ((short) ans[2] & 0xff) << 8 | (short) (ans[3] & 0xff)
         );
+        System.out.println(blockNum);
         if (clientC.writeCounter != blockNum) {
           clientC.sendQueue.clear();
           clientC.recentRequestOpCode = 0;
@@ -190,9 +194,11 @@ public class TftpClient {
           return;
         }
         if (blockNum == 0) {
+          System.out.println("here");
           String filePath =
             System.getProperty("user.dir") + "/" + clientC.workingFileName;
           try {
+            System.out.println(filePath);
             FileInputStream fis = new FileInputStream(filePath);
             FileChannel channel = fis.getChannel();
             ByteBuffer byteBuffer = ByteBuffer.allocate(512);
@@ -236,6 +242,10 @@ public class TftpClient {
             clientC.writeCounter = 1;
             // Close the FileInputStream
             fis.close();
+            if(clientC.sendQueue.isEmpty()){
+              byte[] toSend = {0, 3, 0, 0, 0, 1};
+              clientC.sendQueue.add(toSend);
+            }
             clientC.out.write(clientC.encdec.encode(clientC.sendQueue.poll()));
             clientC.out.flush();
           } catch (IOException e) {
@@ -262,9 +272,10 @@ public class TftpClient {
               e.printStackTrace();
             }
           }
-          if (clientC.sendQueue.isEmpty()) {
+          else if (clientC.sendQueue.isEmpty()) {
             clientC.waitingForResponse = false;
             clientC.recentRequestOpCode = 0;
+            clientC.writeCounter =0;
             System.out.println("file Sent");
           }
         }
@@ -464,12 +475,14 @@ public class TftpClient {
         clientC.out.write(
           clientC.encdec.encode(concatenateArrays(start, fileName))
         );
+        System.out.println("sent write request");
         clientC.out.flush();
       } catch (IOException e) {
         clientC.recentRequestOpCode = 0;
         clientC.workingFileName = "";
         clientC.waitingForResponse = false;
         e.printStackTrace();
+        
       }
     }
     if (cmd[0].equals("DELRQ")) {
