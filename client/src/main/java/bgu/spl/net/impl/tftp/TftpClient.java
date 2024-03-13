@@ -142,6 +142,7 @@ public class TftpClient {
             }
             clientC.recentRequestOpCode = 0;
             clientC.waitingForResponse = false;
+            System.out.println("file has been written");
             fos.close();
           } catch (IOException e) {
             e.printStackTrace();
@@ -263,12 +264,15 @@ public class TftpClient {
           if (clientC.sendQueue.isEmpty()) {
             clientC.waitingForResponse = false;
             clientC.recentRequestOpCode = 0;
+            System.out.println("file Sent");
           }
         }
-        if (clientC.recentRequestOpCode == 10) {
-          clientC.shouldTerminate = true;
-          clientC.waitingForResponse = false;
-        }
+        
+      }
+      if (clientC.recentRequestOpCode == 10) {
+        clientC.shouldTerminate = true;
+        clientC.waitingForResponse = false;
+        System.out.println("< ACK 0");
       }
     }
     if (opCode == 5) {
