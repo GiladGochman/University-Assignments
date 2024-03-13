@@ -498,14 +498,20 @@ public class TftpClient {
         clientC.out.flush();
         clientC.recentRequestOpCode = 6;
         clientC.waitingForResponse = true;
-      } catch (IOException e) {}
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
     if (cmd[0].equals("DISC")) {
       byte[] code = { 0, 10 };
       try {
         clientC.out.write(clientC.encdec.encode(code));
         clientC.out.flush();
-      } catch (IOException e) {}
+        clientC.recentRequestOpCode = 10;
+        clientC.waitingForResponse = true;
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
   }
 
