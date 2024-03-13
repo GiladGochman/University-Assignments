@@ -55,6 +55,7 @@ public class TftpClient {
               handleAns(ans, clientConnection);
             }
           }
+          System.out.println("done listening");
         } catch (IOException e) {
           e.printStackTrace();
         }
@@ -266,7 +267,6 @@ public class TftpClient {
             System.out.println("file Sent");
           }
         }
-        
       }
       if (clientC.recentRequestOpCode == 10) {
         clientC.shouldTerminate = true;

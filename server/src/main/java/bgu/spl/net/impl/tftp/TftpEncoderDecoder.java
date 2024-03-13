@@ -1,8 +1,7 @@
 package bgu.spl.net.impl.tftp;
 
-import java.util.Arrays;
-
 import bgu.spl.net.api.MessageEncoderDecoder;
+import java.util.Arrays;
 
 public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
 
@@ -19,10 +18,10 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
       if (len == 2) { // Save the opcode as short:
         opCode =
           (short) (((short) bytes[0] & 0xff) << 8 | (short) (bytes[1] & 0xff));
-        if(opCode==6 || opCode == 10){
-          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
-          bytes=new byte[1 << 10];
-          len=0;
+        if (opCode == 6 || opCode == 10) {
+          bytesToReturn = Arrays.copyOfRange(bytes, 0, len);
+          bytes = new byte[1 << 10];
+          len = 0;
           return bytesToReturn;
         }
       }
@@ -34,9 +33,9 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
         opCode == 8 //Delete file request
       ) {
         if (nextByte == 0) {
-          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
-          bytes=new byte[1 << 10];
-          len=0;
+          bytesToReturn = Arrays.copyOfRange(bytes, 0, len);
+          bytes = new byte[1 << 10];
+          len = 0;
           return bytesToReturn;
         }
         bytes[len] = nextByte;
@@ -46,9 +45,9 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
         bytes[len] = nextByte;
         len++;
         if (len == 4) {
-          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
-          bytes=new byte[1 << 10];
-          len=0;
+          bytesToReturn = Arrays.copyOfRange(bytes, 0, len);
+          bytes = new byte[1 << 10];
+          len = 0;
           return bytesToReturn;
         }
       }
@@ -61,38 +60,37 @@ public class TftpEncoderDecoder implements MessageEncoderDecoder<byte[]> {
             ((short) bytes[2]) << 8 | (short) (bytes[3] & 0xff)
           );
           if (len == 6 + packetSize) {
-            bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
-            bytes=new byte[1 << 10];
-            len=0;
+            bytesToReturn = Arrays.copyOfRange(bytes, 0, len);
+            bytes = new byte[1 << 10];
+            len = 0;
             return bytesToReturn;
           }
         }
       }
       if (opCode == 9) { // BCAST
         if (nextByte == 0 && len != 2) {
-          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
-          bytes=new byte[1 << 10];
-          len=0;
+          bytesToReturn = Arrays.copyOfRange(bytes, 0, len);
+          bytes = new byte[1 << 10];
+          len = 0;
           return bytesToReturn;
         }
         bytes[len] = nextByte;
         len++;
       }
-      if(opCode ==5){
-        if(len<4){
-          bytes[len]=nextByte;
+      if (opCode == 5) {
+        if (len < 4) {
+          bytes[len] = nextByte;
           len++;
-        }else{
-          if(nextByte == 0){
-          bytesToReturn=Arrays.copyOfRange(bytes, 0, len);
-          bytes=new byte[1 << 10];
-          len=0;
-          return bytesToReturn;
+        } else {
+          if (nextByte == 0) {
+            bytesToReturn = Arrays.copyOfRange(bytes, 0, len);
+            bytes = new byte[1 << 10];
+            len = 0;
+            return bytesToReturn;
           }
           bytes[len] = nextByte;
-           len++;
+          len++;
         }
-
       }
     }
 
