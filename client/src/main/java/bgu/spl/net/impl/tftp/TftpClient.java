@@ -48,7 +48,7 @@ public class TftpClient {
         int bytes;
         try {
           while (
-            (bytes = in.read()) >= 0 && !clientConnection.shouldTerminate
+            !clientConnection.shouldTerminate && (bytes = in.read()) >= 0
           ) {
             byte[] ans = clientConnection.encdec.decodeNextByte((byte) bytes);
             if (ans != null) {
