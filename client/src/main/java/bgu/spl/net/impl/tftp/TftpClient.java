@@ -73,7 +73,7 @@ public class TftpClient {
             (message = keyBoardInput.readLine()) != null
           ) {
             if (clientConnection.waitingForResponse) {
-              System.out.println("imhere");
+              System.out.println("waiting for response");
               continue;
             }
             if (!isCommandValid(message)) {
@@ -172,8 +172,6 @@ public class TftpClient {
       }
     }
     if (opCode == 4) {
-      System.out.println("got something");
-      System.out.println(clientC.recentRequestOpCode);
       if (
         clientC.recentRequestOpCode != 2 & clientC.recentRequestOpCode != 10
       ) {
@@ -194,11 +192,11 @@ public class TftpClient {
           return;
         }
         if (blockNum == 0) {
-          System.out.println("here");
+         
           String filePath =
             System.getProperty("user.dir") + "/" + clientC.workingFileName;
           try {
-            System.out.println(filePath);
+           
             FileInputStream fis = new FileInputStream(filePath);
             FileChannel channel = fis.getChannel();
             ByteBuffer byteBuffer = ByteBuffer.allocate(512);
@@ -475,7 +473,7 @@ public class TftpClient {
         clientC.out.write(
           clientC.encdec.encode(concatenateArrays(start, fileName))
         );
-        System.out.println("sent write request");
+       
         clientC.out.flush();
       } catch (IOException e) {
         clientC.recentRequestOpCode = 0;
