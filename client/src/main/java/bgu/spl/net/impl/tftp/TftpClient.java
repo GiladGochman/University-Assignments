@@ -68,8 +68,8 @@ public class TftpClient {
         String message;
         try {
           while (
-            (message = keyBoardInput.readLine()) != null &
-            !clientConnection.shouldTerminate
+            !clientConnection.shouldTerminate &&
+            (message = keyBoardInput.readLine()) != null
           ) {
             if (clientConnection.waitingForResponse) {
               continue;
@@ -110,7 +110,7 @@ public class TftpClient {
       short blockLength = (short) (
         ((short) ans[2] & 0xff) << 8 | (short) (ans[3] & 0xff)
       );
-      if (blockNum != clientC.ansQueue.size() +   1) {
+      if (blockNum != clientC.ansQueue.size() + 1) {
         byte[] error = sendError((short) 0, "got the wrong block");
         try {
           clientC.out.write(error);
@@ -156,8 +156,8 @@ public class TftpClient {
           for (String fileName : fileNames) {
             System.out.println(fileName);
           }
-          clientC.waitingForResponse=false;
-          clientC.recentRequestOpCode=0;
+          clientC.waitingForResponse = false;
+          clientC.recentRequestOpCode = 0;
           clientC.ansQueue.clear();
         }
       }
@@ -226,8 +226,7 @@ public class TftpClient {
                 blockNumForSend[0],
                 blockNumForSend[1],
               };
-              
-              
+
               // Process the chunk as needed (e.g., print or save to another file)
               clientC.sendQueue.add(concatenateArrays(start, chunk));
               // Clear the buffer for the next iteration
@@ -262,7 +261,6 @@ public class TftpClient {
 
               e.printStackTrace();
             }
-            
           }
           if (clientC.sendQueue.isEmpty()) {
             clientC.waitingForResponse = false;
@@ -321,48 +319,56 @@ public class TftpClient {
     return result;
   }
 
-  public static List<String> getAllFileNames(ConcurrentLinkedQueue<byte[]> bytesQueue) {
+  public static List<String> getAllFileNames(
+    ConcurrentLinkedQueue<byte[]> bytesQueue
+  ) {
     List<String> fileNames = new ArrayList<>();
-    
+
     // Concatenate all byte arrays into one array
     int totalLength = 0;
     for (byte[] byteArray : bytesQueue) {
-        if (byteArray != null) {
-            totalLength += byteArray.length;
-        }
+      if (byteArray != null) {
+        totalLength += byteArray.length;
+      }
     }
-    
+
     byte[] combinedArray = new byte[totalLength];
     int currentIndex = 0;
     for (byte[] byteArray : bytesQueue) {
-        if (byteArray != null) {
-            System.arraycopy(byteArray, 0, combinedArray, currentIndex, byteArray.length);
-            currentIndex += byteArray.length;
-        }
+      if (byteArray != null) {
+        System.arraycopy(
+          byteArray,
+          0,
+          combinedArray,
+          currentIndex,
+          byteArray.length
+        );
+        currentIndex += byteArray.length;
+      }
     }
 
     // Create strings from the combined array, each separated by null byte "\0"
     StringBuilder currentFileName = new StringBuilder();
     for (byte b : combinedArray) {
-        if (b == 0) {
-            // Found null byte, add current file name to the list and reset
-            if (currentFileName.length() > 0) {
-                fileNames.add(currentFileName.toString());
-                currentFileName = new StringBuilder();
-            }
-        } else {
-            // Append byte to current file name
-            currentFileName.append((char) b);
+      if (b == 0) {
+        // Found null byte, add current file name to the list and reset
+        if (currentFileName.length() > 0) {
+          fileNames.add(currentFileName.toString());
+          currentFileName = new StringBuilder();
         }
+      } else {
+        // Append byte to current file name
+        currentFileName.append((char) b);
+      }
     }
-    
+
     // Add the last file name if not added already
     if (currentFileName.length() > 0) {
-        fileNames.add(currentFileName.toString());
+      fileNames.add(currentFileName.toString());
     }
 
     return fileNames;
-}
+  }
 
   public static boolean isCommandValid(String cmd) {
     int indexOfSpace = cmd.indexOf(' ', 0);
@@ -489,8 +495,8 @@ public class TftpClient {
       try {
         clientC.out.write(clientC.encdec.encode(code));
         clientC.out.flush();
-        clientC.recentRequestOpCode=6;
-        clientC.waitingForResponse=true;
+        clientC.recentRequestOpCode = 6;
+        clientC.waitingForResponse = true;
       } catch (IOException e) {}
     }
     if (cmd[0].equals("DISC")) {
