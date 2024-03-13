@@ -93,7 +93,8 @@ public class TftpClient {
         }
       });
       keyBoardThread.start();
-      keyBoardThread.join();
+      listenerThread.join();
+      System.out.println("Socket closing");
       sock.close();
     } catch (IOException | InterruptedException e) {
       e.printStackTrace();
@@ -509,6 +510,7 @@ public class TftpClient {
         clientC.out.flush();
         clientC.recentRequestOpCode = 10;
         clientC.waitingForResponse = true;
+        clientC.shouldTerminate = true;
       } catch (IOException e) {
         e.printStackTrace();
       }
