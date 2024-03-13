@@ -151,7 +151,6 @@ public class TftpClient {
             clientC.waitingForResponse = false;
           }
         } else if (clientC.recentRequestOpCode == 6) {
-          System.out.println(clientC.ansQueue.size());
           List<String> fileNames = getAllFileNames(clientC.ansQueue);
           for (String fileName : fileNames) {
             System.out.println(fileName);
