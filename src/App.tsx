@@ -8,49 +8,36 @@ function App() {
   interface Note {
     id: number;
     title: string;
-    author: string;
+    author: {
+      name: string;
+      email: string;
+    };
     content: string;
   }
 
   const [count, setCount] = useState(0);
+  const [activePage, setActivePage] = useState(1); // Track active page with useState
+  const [notes, setNotes] = useState<Note[]>([]);
 
   const NOTES_URL = "http://localhost:3001/notes";
   const POSTS_PER_PAGE = 10;
-  let activePage = 0;
 
-  const NotesList: React.FC = () => {
-    const [notes, setNotes] = useState<Note[]>([]);
-
-    useEffect(() => {
-      const promise = axios.get(NOTES_URL, {
+  // Fetch the notes when activePage changes
+  useEffect(() => {
+    axios
+      .get(NOTES_URL, {
         params: {
           _page: activePage,
-          _per_page: POSTS_PER_PAGE,
+          _limit: POSTS_PER_PAGE, // Update _per_page to _limit as per json-server
         },
+      })
+      .then((response) => {
+        setNotes(response.data); // Fill the notes
+      })
+      .catch((error) => {
+        console.log("Encountered an error:", error);
       });
-      promise
-        .then((response) => {
-          // fill
-          setNotes(response.data);
-        })
-        .catch((error) => {
-          console.log("Encountered an error:" + error);
-        });
-    }, []);
-
-    return (
-      <div>
-        {notes.map((note) => (
-          <div key={note.id} className="note" id={note.id.toString()}>
-            <h2>{note.title}</h2>
-            <small>By {note.author}</small>
-            <br />
-            {note.content}
-          </div>
-        ))}
-      </div>
-    );
-  };
+  }, [activePage]); // Dependency on activePage so it re-runs when page changes
 
   return (
     <>
@@ -71,9 +58,30 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      {/* Render the notes */}
+      <div>
+        {notes.map((note) => (
+          <div key={note.id} className="note" id={note.id.toString()}>
+            <h2>{note.title}</h2>
+            <small>By {note.author.name}</small>
+            <br />
+            {note.content}
+          </div>
+        ))}
+      </div>
+
+      {/* Add Pagination Controls */}
+      <div>
+        <button
+          onClick={() => setActivePage((prevPage) => Math.max(prevPage - 1, 1))}
+        >
+          Prev
+        </button>
+        <button onClick={() => setActivePage((prevPage) => prevPage + 1)}>
+          Next
+        </button>
+      </div>
     </>
   );
 }
