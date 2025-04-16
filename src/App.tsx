@@ -66,6 +66,10 @@ function App() {
       </div>
 
       {/* Add Pagination Controls */}
+      <span>
+        page: {activePage} / {totalPages}
+      </span>
+
       <div>
         <button onClick={() => setActivePage(() => 1)}>first</button>
         <button
@@ -73,8 +77,14 @@ function App() {
         >
           Prev
         </button>
-        <span>current page: {activePage}</span>
-        <button onClick={() => setActivePage((prevPage) => prevPage + 1)}>
+        <button className="active">{activePage}</button>
+        <button
+          onClick={() =>
+            activePage < totalPages
+              ? setActivePage((prevPage) => prevPage + 1)
+              : {}
+          }
+        >
           Next
         </button>
         <button onClick={() => setActivePage(() => totalPages)}>last</button>
