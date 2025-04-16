@@ -48,5 +48,8 @@ span {
   margin: 5px;
 }
 .active {
-  font-weight: bold;
+  font-weight: 900;
+}
+.not-active {
+  font-weight: 200;
 }

@@ -19,7 +19,7 @@ function App() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const NOTES_URL = "http://localhost:3001/notes";
-  const POSTS_PER_PAGE = 9;
+  const POSTS_PER_PAGE = 10;
 
   // Fetch the notes when activePage changes
   useEffect(() => {
@@ -27,11 +27,11 @@ function App() {
       .get(NOTES_URL, {
         params: {
           _page: activePage,
-          _limit: POSTS_PER_PAGE, // Update _per_page to _limit as per json-server
+          _limit: POSTS_PER_PAGE,
         },
       })
       .then((response) => {
-        setNotes(response.data); // Fill the notes
+        setNotes(response.data);
         const total = response.headers["x-total-count"];
         console.log("Total pages calculated:", total);
         setTotalPages(() => Math.ceil(Number(total) / POSTS_PER_PAGE));
@@ -40,7 +40,29 @@ function App() {
       .catch((error) => {
         console.log("Encountered an error:", error);
       });
-  }, [activePage]); // Dependency on activePage so it re-runs when page changes
+  }, [activePage]);
+
+  function getPageRange(activePage: number, totalPages: number): number[] {
+    if (totalPages <= 5) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    if (activePage <= 3) {
+      return [1, 2, 3, 4, 5];
+    }
+
+    if (activePage >= totalPages - 2) {
+      return Array.from({ length: 5 }, (_, i) => totalPages - 4 + i); //i starts at 0 and grows up to 4
+    }
+
+    return [
+      activePage - 2,
+      activePage - 1,
+      activePage,
+      activePage + 1,
+      activePage + 2,
+    ];
+  }
 
   return (
     <>
@@ -53,7 +75,7 @@ function App() {
         </a>
       </div>
 
-      {/* Render the notes */}
+      {}
       <div>
         {notes.map((note) => (
           <div key={note.id} className="note" id={note.id.toString()}>
@@ -65,7 +87,7 @@ function App() {
         ))}
       </div>
 
-      {/* Add Pagination Controls */}
+      {}
       <span>
         page: {activePage} / {totalPages}
       </span>
@@ -77,7 +99,14 @@ function App() {
         >
           Prev
         </button>
-        <button className="active">{activePage}</button>
+        {getPageRange(activePage, totalPages).map((page) => (
+          <button
+            className={`${page === activePage ? "active" : "not-active"}`}
+            onClick={() => setActivePage(page)}
+          >
+            {page}
+          </button>
+        ))}
         <button
           onClick={() =>
             activePage < totalPages
