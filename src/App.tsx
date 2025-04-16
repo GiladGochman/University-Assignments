@@ -15,12 +15,11 @@ function App() {
     content: string;
   }
 
-  const [count, setCount] = useState(0);
   const [activePage, setActivePage] = useState(1); // Track active page with useState
   const [notes, setNotes] = useState<Note[]>([]);
-
+  const [totalPages, setTotalPages] = useState(1);
   const NOTES_URL = "http://localhost:3001/notes";
-  const POSTS_PER_PAGE = 10;
+  const POSTS_PER_PAGE = 9;
 
   // Fetch the notes when activePage changes
   useEffect(() => {
@@ -33,7 +32,11 @@ function App() {
       })
       .then((response) => {
         setNotes(response.data); // Fill the notes
+        const total = response.headers["x-total-count"];
+        console.log("Total pages calculated:", total);
+        setTotalPages(() => Math.ceil(Number(total) / POSTS_PER_PAGE));
       })
+      .then()
       .catch((error) => {
         console.log("Encountered an error:", error);
       });
@@ -48,15 +51,6 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
 
       {/* Render the notes */}
@@ -73,14 +67,17 @@ function App() {
 
       {/* Add Pagination Controls */}
       <div>
+        <button onClick={() => setActivePage(() => 1)}>first</button>
         <button
           onClick={() => setActivePage((prevPage) => Math.max(prevPage - 1, 1))}
         >
           Prev
         </button>
+        <span>current page: {activePage}</span>
         <button onClick={() => setActivePage((prevPage) => prevPage + 1)}>
           Next
         </button>
+        <button onClick={() => setActivePage(() => totalPages)}>last</button>
       </div>
     </>
   );
