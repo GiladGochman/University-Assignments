@@ -8,10 +8,7 @@ function App() {
   interface Note {
     id: number;
     title: string;
-    author: {
-      name: string;
-      email: string;
-    };
+    author: string;
     content: string;
   }
 
@@ -80,7 +77,7 @@ function App() {
         {notes.map((note) => (
           <div key={note.id} className="note" id={note.id.toString()}>
             <h2>{note.title}</h2>
-            <small>By {note.author.name}</small>
+            <small>By {note.author}</small>
             <br />
             {note.content}
           </div>
