@@ -93,8 +93,8 @@ function App() {
       </span>
 
       <div>
-        <button onClick={() => setActivePage(() => 1)}>first</button>
-        <button
+        <button  name="first" onClick={() => setActivePage(() => 1)}>first</button>
+        <button name="prev"
           onClick={() => setActivePage((prevPage) => Math.max(prevPage - 1, 1))}
         >
           Prev
@@ -107,7 +107,7 @@ function App() {
             {page}
           </button>
         ))}
-        <button
+        <button name="next"
           onClick={() =>
             activePage < totalPages
               ? setActivePage((prevPage) => prevPage + 1)
@@ -116,7 +116,7 @@ function App() {
         >
           Next
         </button>
-        <button onClick={() => setActivePage(() => totalPages)}>last</button>
+        <button name="last" onClick={() => setActivePage(() => totalPages)}>last</button>
       </div>
     </>
   );
