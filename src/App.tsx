@@ -111,6 +111,7 @@ function App() {
           <button
             key={page}
             name={`page-${page}`}
+            disabled={activePage === page} 
             className={`${page === activePage ? "active" : "not-active"}`}
             onClick={() => setActivePage(page)}
           >
