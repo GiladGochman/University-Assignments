@@ -93,27 +93,22 @@ function App() {
       </span>
 
       <div>
-        <button  name="first" onClick={() => setActivePage(() => 1)}>first</button>
-        <button name="prev"
-          onClick={() => setActivePage((prevPage) => Math.max(prevPage - 1, 1))}
-        >
-          Prev
+        <button name="first" onClick={() => setActivePage(() => 1)}>first</button>
+        <button name="previous"
+          onClick={() => setActivePage((prevPage) => Math.max(prevPage - 1, 1))}>
+          previous
         </button>
         {getPageRange(activePage, totalPages).map((page) => (
           <button
+            key={page}
+            name={`page-${page}`}
             className={`${page === activePage ? "active" : "not-active"}`}
             onClick={() => setActivePage(page)}
           >
             {page}
           </button>
         ))}
-        <button name="next"
-          onClick={() =>
-            activePage < totalPages
-              ? setActivePage((prevPage) => prevPage + 1)
-              : {}
-          }
-        >
+        <button name="next" onClick={() => activePage < totalPages ? setActivePage((prevPage) => prevPage + 1): {}}>
           Next
         </button>
         <button name="last" onClick={() => setActivePage(() => totalPages)}>last</button>
