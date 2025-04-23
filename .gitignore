@@ -25,4 +25,5 @@ dist-ssr
 
 # Don't track lock files or local JSON data
 package-lock.json
-data/*.json
+node_modules/
+tmp_submission_check/
