@@ -1,0 +1,7 @@
+[2025-05-11T10:18:21.263Z] GET /notes {}
+[2025-05-11T10:19:02.184Z] POST /notes {"title":"פתק בדיקה","author":{"name":"רותם","email":"rotem@example.com"},"content":"זה פתק ראשון לדוגמה"}
+[2025-05-11T10:19:14.227Z] GET /notes {}
+[2025-05-11T10:46:15.236Z] POST /notes {"title":"Test Note","author":{"name":"Alice","email":"alice@example.com"},"content":"This is a test"}
+[2025-05-11T10:46:15.289Z] GET /notes/68207ff754ff76b70a7441b3 {}
+[2025-05-11T10:46:15.302Z] PUT /notes/68207ff754ff76b70a7441b8 {"title":"Updated Title","content":"Updated content"}
+[2025-05-11T10:46:15.320Z] DELETE /notes/68207ff754ff76b70a7441bc {}
