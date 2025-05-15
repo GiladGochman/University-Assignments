@@ -8,7 +8,7 @@ function App() {
   interface Note {
     id: number;
     title: string;
-    author: {
+    author:{
       name: string;
       email: string;
     };
@@ -93,30 +93,45 @@ function App() {
       </span>
 
       <div>
-        <button onClick={() => setActivePage(() => 1)}>first</button>
-        <button
+        <button 
+          name="first" 
+          disabled={activePage === 1}
+          onClick={() => setActivePage(() => 1)}
+        >
+          first
+        </button>
+        <button 
+          name="previous"
+          disabled={activePage === 1}
           onClick={() => setActivePage((prevPage) => Math.max(prevPage - 1, 1))}
         >
-          Prev
+          previous
         </button>
         {getPageRange(activePage, totalPages).map((page) => (
           <button
+            key={page}
+            name={`page-${page}`}
+            disabled={activePage === page} 
             className={`${page === activePage ? "active" : "not-active"}`}
             onClick={() => setActivePage(page)}
           >
             {page}
           </button>
         ))}
-        <button
-          onClick={() =>
-            activePage < totalPages
-              ? setActivePage((prevPage) => prevPage + 1)
-              : {}
-          }
+        <button 
+          name="next" 
+          disabled={activePage === totalPages}
+          onClick={() => activePage < totalPages ? setActivePage((prevPage) => prevPage + 1): {}}
         >
           Next
         </button>
-        <button onClick={() => setActivePage(() => totalPages)}>last</button>
+        <button 
+          name="last" 
+          disabled={activePage === totalPages}
+          onClick={() => setActivePage(() => totalPages)}
+        >
+          last
+        </button>
       </div>
     </>
   );

@@ -1,4 +1,22 @@
 {
+  "name": "submission_hw1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "playwright": "^1.43.1",
+    "@playwright/test": "^1.43.1",
+    "axios": "^1.8.4",
+    "json-server": "^0.17.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "devDependencies": {
     "@types/cors": "^2.8.18"
   }
