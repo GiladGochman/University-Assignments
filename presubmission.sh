@@ -1,16 +1,15 @@
 #!/bin/bash
-
+# Kill ports if busy
 if [ -z "$1" ]; then
-  echo "Usage: $0 <git_repo_url>"
+  echo "Usage: $0 <git_repo_url> <path_to_env_file>" 
   exit 1
 fi
 
 REPO_URL="$1"
-TMP_DIR="tmp_submission_check"
-TEST_DIR="playwright-tests"
-
-rm -rf "$TMP_DIR"
-mkdir "$TMP_DIR"
+TIMESTAMP=$(date +"%m_%d_%y__%H_%M_%S")
+TMP_DIR="./presubmission_tests/$TIMESTAMP"
+echo "Using temp dir: $TMP_DIR"
+mkdir -p "$TMP_DIR"
 cd "$TMP_DIR" || exit 1
 
 git clone "$REPO_URL" repo
@@ -20,80 +19,96 @@ if [ $? -ne 0 ]; then
 fi
 
 cd repo || exit 1
-git checkout submission_hw1
-# Install dependencies
-npm install || { echo "npm install failed"; exit 1; }
+git checkout submission_hw2
+cp "$2" ./backend/.env || { echo "Failed to copy .env file"; exit 1; }
+
+# Define the expected structure
+expected_paths=(
+  "./frontend"
+  "./frontend/playwright-tests/test.spec.ts"
+  "./frontend/playwright.config.ts"
+  "./frontend/package.json"
+  "./frontend/src/components"
+  "./frontend/src/contexts"
+  "./backend"
+  "./backend/config"
+  "./backend/controllers"
+  "./backend/services"
+  "./backend/routes"
+  "./backend/middlewares"
+  "./backend/models"
+  "./backend/tests/crud.test.ts"
+  "./backend/package.json"
+)
+
+echo "Checking folder structure..."
+all_exist=true
+
+for path in "${expected_paths[@]}"; do
+  if [ ! -e "$path" ]; then
+    echo "Missing: $path"
+    all_exist=false
+  else
+    echo "Found: $path"
+  fi
+done
+
+if [ "$all_exist" = false ]; then
+  echo "Some files or folders are missing."
+  exit 1
+fi
+
+# Install frontend dependencies
+cd frontend || exit 1
+npm install || { echo "frontend: npm install failed"; exit 1; }
 npx playwright install || { echo "Playwright install failed"; exit 1; }
 
-# Ports to free
-PORTS=(3000 3001)
+# Install backend dependencies
+cd ../backend || exit 1
+npm install || { echo "backend: npm install failed"; exit 1; }
 
+PORTS=(3000 3001)
 for PORT in "${PORTS[@]}"; do
   echo "Checking port $PORT..."
-
-  PID=$(lsof -ti tcp:$PORT)
-
-  if [ -n "$PID" ]; then
-    echo "Killing process $PID on port $PORT"
-    kill -9 "$PID" || echo "Failed to kill process $PID"
+  PIDS=$(lsof -ti tcp:$PORT)
+  if [ -n "$PIDS" ]; then
+    echo "Found processes on port $PORT: $PIDS"
+    for PID in $PIDS; do
+      echo "Killing process $PID on port $PORT"
+      kill -9 "$PID" || echo "Failed to kill process $PID"
+    done
   else
     echo "No process found on port $PORT"
   fi
 done
 
-# Start JSON server
-npx json-server --port 3001 --watch ./data/notes.json > backend.log 2>&1 &
+
+
+# Run backend tests
+cd ../backend || exit 1
+echo "Running backend tests..."
+npm run test || echo "Backend tests failed."
+
+# Start backend
+npm run dev > ../backend.log 2>&1 &
 BACK_PID=$!
+echo "Started backend (PID $BACK_PID)"
 sleep 1
 
 # Start frontend
-npm run dev > frontend.log 2>&1 &
+cd ../frontend || exit 1
+npm run dev > ../frontend.log 2>&1 &
 FRONT_PID=$!
+echo "Started frontend (PID $FRONT_PID)"
 sleep 1
 
-# a basic Playwright test
-mkdir "$TEST_DIR"
-cat > "$TEST_DIR/test.spec.js" <<EOF
-import { test, expect } from '@playwright/test';
+# Run frontend tests
+cd ../frontend || exit 1
+echo "Running frontend (Playwright) tests..."
+npm run test || echo "Frontend tests failed."
 
-test('check note and pagination button', async ({ page }) => {
-  await page.goto('http://localhost:3000');
-  const notes = page.locator('.note');
-  await expect(notes).toHaveCount(10); // for example
-  await expect(page.locator('button[name="first"]')).toBeVisible();
-});
-EOF
+# Cleanup
+echo "Killing servers..."
+kill -9 $BACK_PID $FRONT_PID 2>/dev/null || echo "Failed to kill one or more servers"
 
-# Playwright config
-cat > playwright.config.js <<EOF
-import { test, expect, defineConfig } from '@playwright/test';
-export default defineConfig({
-  testDir: './$TEST_DIR',
-  timeout: 10000,
-  use: {
-    headless: true,
-  },
-});
-EOF
-
-cat > vite.config.ts <<EOF
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-  },
-});
-EOF
-
-npx playwright test || {
-  echo "Test failed."
-  kill $BACK_PID $FRONT_PID
-  exit 1
-}
-
-kill $BACK_PID $FRONT_PID
-exit 0
+echo "Presubmission check completed."
