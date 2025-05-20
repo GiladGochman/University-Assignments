@@ -8,6 +8,8 @@ function App() {
 
   const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
   const [editedContent, setEditedContent] = useState("");
+  const [adding, setAdding] = useState(false);
+  const [newContent, setNewContent] = useState("");
 
   const handleDelete = async (id: string) => {
     await fetch(`${import.meta.env.VITE_BACKEND_URL}/notes/${id}`, {
@@ -27,6 +29,18 @@ function App() {
     setEditingNoteId(null);
   };
 
+  const handleAddNote = async () => {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/notes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: newContent }),
+    });
+    const created = await res.json();
+    dispatch({ type: "ADD_NOTE", payload: created });
+    setNewContent("");
+    setAdding(false);
+  };
+
   const handlePageChange = (page: number) => {
     dispatch({ type: "SET_PAGE", payload: page });
   };
@@ -43,6 +57,31 @@ function App() {
     <>
       <div className="notification">{notification}</div>
 
+      {/* Add New Note */}
+      <div>
+        {adding ? (
+          <div>
+            <input
+              type="text"
+              value={newContent}
+              name="text_input_new_note"
+              onChange={(e) => setNewContent(e.target.value)}
+            />
+            <button name="text_input_save_new_note" onClick={handleAddNote}>
+              Save
+            </button>
+            <button name="text_input_cancel_new_note" onClick={() => setAdding(false)}>
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <button name="add_new_note" onClick={() => setAdding(true)}>
+            Add New Note
+          </button>
+        )}
+      </div>
+
+      {/* List Notes */}
       <div>
         {notes.map((note) => (
           <div key={note._id} className="note" data-testid={note._id}>
@@ -85,16 +124,14 @@ function App() {
               </>
             )}
 
-            <button
-              name={`delete-${note._id}`}
-              onClick={() => handleDelete(note._id)}
-            >
+            <button name={`delete-${note._id}`} onClick={() => handleDelete(note._id)}>
               Delete
             </button>
           </div>
         ))}
       </div>
 
+      {/* Pagination */}
       <span>page: {currentPage} / {totalPages}</span>
 
       <div>
