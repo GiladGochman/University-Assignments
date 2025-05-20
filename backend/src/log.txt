@@ -54,3 +54,6 @@
 [2025-05-20T12:31:30.387Z] GET /notes?_page=1&_per_page=10 {}
 [2025-05-20T12:34:57.131Z] GET /notes?_page=1&_per_page=10 {}
 [2025-05-20T12:34:57.406Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-20T13:38:27.984Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-20T13:38:28.282Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-20T14:19:12.465Z] GET /notes {}
