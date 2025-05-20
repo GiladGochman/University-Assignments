@@ -9,7 +9,7 @@ import testRouter from './routes/testRouter';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ exposedHeaders: ['X-Total-Count'] }));
 app.use(express.json());
 app.use(requestLogger);
 app.use('/notes', noteRoutes); //connect all notes routes 
