@@ -17,7 +17,7 @@ test.beforeEach(async ({ page }) => {
 // 1. Read notes
 test('should display a list of notes', async ({ page }) => {
   const notes = page.locator('.note');
-  await expect(notes).toHaveCount(1); // את יודעת בדיוק מה יצרת לפני הטסט
+  await expect(notes).toHaveCount(1);
 });
 
 // 2. Create note
@@ -41,13 +41,16 @@ test('should edit a note', async ({ page }) => {
 });
 
 test('should delete a note', async ({ page }) => {
-  const firstNote = page.locator('.note').first();
-  const noteId = await firstNote.getAttribute('data-testid');
-  // מוחקים את הפתק
-  await page.click(`button[data-testid="delete-${noteId}"]`);
-  // מוודאים שה-notification הופיע
+  const notes = page.locator('.note');
+
+  await expect(notes).toHaveCount(1);
+
+  const noteId = await notes.first().getAttribute('data-testid');
+
+  await page.click(`button[name="delete-${noteId}"]`);
+
   await expect(page.locator('.notification')).toHaveText('Note deleted');
-  // מוודאים שהוא לא במסך יותר
-  await expect(page.locator(`.note[data-testid="${noteId}"]`)).toHaveCount(0);
+
+  await expect(notes).toHaveCount(0);
 });
 
