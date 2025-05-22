@@ -68,18 +68,19 @@ export const NotesProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    async function fetchNotes() {
-      const res = await axios.get(`http://localhost:3001/notes`, {
-        params: { _page: state.currentPage, _per_page: 10 },
-      });
-      const total = parseInt(res.headers['x-total-count'], 10);
-      dispatch({
-        type: 'SET_NOTES',
-        payload: { notes: res.data, totalPages: Math.ceil(total / 10) },
-      });
-    }
-    fetchNotes();
-  }, [state.currentPage]);
+  async function fetchNotes() {
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/notes`, {
+      params: { _page: state.currentPage, _per_page: 10 },
+    });
+    const total = parseInt(res.headers['x-total-count'], 10);
+    dispatch({
+      type: 'SET_NOTES',
+      payload: { notes: res.data, totalPages: Math.ceil(total / 10) },
+    });
+  }
+
+  fetchNotes();
+}, [state.currentPage]);
 
   return <NotesContext.Provider value={{ state, dispatch }}>{children}</NotesContext.Provider>;
 };
