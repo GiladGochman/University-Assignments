@@ -15,7 +15,7 @@ app.use(requestLogger);
 app.use('/notes', noteRoutes); //connect all notes routes 
 app.get('/health', (req: Request, res: Response) => res.send('OK')); //check server run 
 
-if (process.env.NODE_ENV === 'dev') {
+if (process.env.NODE_ENV !== 'production') {
   app.use('/test', testRouter);
 }
 

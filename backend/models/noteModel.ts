@@ -7,8 +7,8 @@ const noteSchema = new mongoose.Schema({
   },
   author: {
     type: {
-      name: String,
-      email: String,
+      name: { type: String, required: true },
+      email: { type: String, required: true }
     },
     required: false,
     default: null,
@@ -19,5 +19,5 @@ const noteSchema = new mongoose.Schema({
   },
 });
 
-const Note = mongoose.model('Note', noteSchema);
+const Note = mongoose.model('Note', noteSchema, 'notes');
 export default Note;

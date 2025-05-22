@@ -1,0 +1,370 @@
+[2025-05-22T10:40:50.707Z] GET / {}
+[2025-05-22T10:41:40.367Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T10:41:40.653Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T10:52:23.752Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T10:52:24.002Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:01:50.702Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:01:52.376Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:01:52.628Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:01:56.416Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:01:56.666Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:02:00.832Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:02:01.079Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:09:53.290Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:09:54.464Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:09:54.708Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:09:58.429Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:09:58.676Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:10:02.409Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:10:02.654Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:10:34.454Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:10:34.800Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:20:41.802Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:20:43.055Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:20:43.305Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:20:47.072Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:20:47.315Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:20:51.154Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:20:51.396Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:23:26.229Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:23:27.363Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:23:27.608Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:23:31.261Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:23:31.875Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:23:35.184Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:23:35.495Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:24:09.448Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:24:09.693Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:40.776Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:41.022Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:44.768Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:45.010Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:46.783Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:47.031Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:48.760Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:49.005Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:50.785Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:51.035Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:51.751Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:51.997Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:53.757Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:54.001Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:54.751Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:28:54.993Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:06.768Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:07.008Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:08.761Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:09.006Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:13.762Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:14.008Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:17.768Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:18.006Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:20.773Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:21.018Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:27.760Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:28.002Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:28.752Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:29:28.993Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:30:28.781Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:30:29.030Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:30:29.767Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:30:30.007Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:31:21.778Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:31:22.030Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:31:36.767Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:31:37.009Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:33:37.707Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:33:38.819Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:33:39.064Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:33:42.671Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:33:42.924Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:33:46.585Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:33:46.845Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:38:44.382Z] GET /notes?_page=2&_per_page=10 {}
+[2025-05-22T11:38:46.136Z] GET /notes?_page=3&_per_page=10 {}
+[2025-05-22T11:38:46.930Z] GET /notes?_page=0&_per_page=10 {}
+[2025-05-22T11:38:50.165Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:38:52.509Z] GET /notes?_page=0&_per_page=10 {}
+[2025-05-22T11:40:32.575Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:40:33.704Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:40:33.947Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:40:37.666Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:40:37.915Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:40:41.622Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:40:41.875Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:50:06.193Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:50:06.519Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:50:54.193Z] DELETE /test/reset {}
+[2025-05-22T11:51:28.675Z] DELETE /test/reset {}
+[2025-05-22T11:51:28.930Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:51:30.001Z] DELETE /test/reset {}
+[2025-05-22T11:51:30.244Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:51:30.490Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:51:33.940Z] DELETE /test/reset {}
+[2025-05-22T11:51:34.159Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:51:34.401Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:51:37.880Z] DELETE /test/reset {}
+[2025-05-22T11:51:38.111Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T11:51:38.357Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T12:38:00.851Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:44:10.491Z] DELETE /test/reset {}
+[2025-05-22T13:44:11.493Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:44:11.741Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:44:14.288Z] DELETE /test/reset {}
+[2025-05-22T13:44:14.556Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:44:14.800Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:44:18.232Z] DELETE /test/reset {}
+[2025-05-22T13:44:18.459Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:44:18.700Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:46:34.855Z] POST /notes {"title":"Test Note","content":"This is a test note.","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-05-22T13:47:13.149Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:47:13.400Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:47:15.065Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:47:15.334Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:47:25.889Z] DELETE /test/reset {}
+[2025-05-22T13:47:26.146Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:47:26.397Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:47:29.759Z] DELETE /test/reset {}
+[2025-05-22T13:47:29.981Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:47:30.225Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:58:26.968Z] GET /notes {}
+[2025-05-22T13:58:27.289Z] GET /favicon.ico {}
+[2025-05-22T13:59:25.100Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:59:25.342Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:59:26.803Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:59:27.051Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:59:27.732Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T13:59:27.982Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:01:18.163Z] POST /notes {"title":"Test Note","content":"This is a test note.","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-05-22T14:01:23.665Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:01:23.912Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:01:26.384Z] GET /notes {}
+[2025-05-22T14:04:08.961Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:04:09.207Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:18:19.326Z] DELETE /test/reset {}
+[2025-05-22T14:18:19.578Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:18:19.821Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:18:23.360Z] DELETE /test/reset {}
+[2025-05-22T14:18:23.591Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:18:23.836Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:01.543Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:02.696Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:02.937Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:06.829Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:07.078Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:10.872Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:11.111Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:15.092Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:15.335Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:30.898Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:32.104Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:32.350Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:36.183Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:36.426Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:36.933Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:37.180Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:38.293Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:38.536Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:40.283Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:19:40.524Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:09.464Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:09.708Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:11.774Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:12.017Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:12.799Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:13.043Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:17.630Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:17.875Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:20:20.402Z] GET /notes {}
+[2025-05-22T14:22:32.764Z] POST /notes {"title":"Test Note","content":"This is a test note.","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-05-22T14:22:36.617Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:36.866Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:42.948Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:44.031Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:44.275Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:47.929Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:48.174Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:50.849Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:51.089Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:51.946Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:52.192Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:56.723Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:22:56.970Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:07.109Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:07.351Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:09.382Z] GET /notes {}
+[2025-05-22T14:23:20.440Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:21.558Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:21.800Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:25.490Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:25.733Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:29.515Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:23:29.757Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:51:41.413Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T14:51:41.678Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:01:44.997Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:01:46.064Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:01:46.309Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:01:49.937Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:01:50.189Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:01:53.851Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:01:54.097Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:04:13.881Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:04:53.753Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:04:53.998Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:05:45.924Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:05:46.167Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:06:19.279Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:06:20.357Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:06:20.602Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:06:24.246Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:06:24.505Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:06:28.385Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:06:28.627Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:10:35.375Z] POST /notes {"title":"Test Note","author":{"name":"Alice","email":"alice@example.com"},"content":"This is a test"}
+[2025-05-22T15:10:35.452Z] GET /notes/682f3e6b5dafc453e5eec51e {}
+[2025-05-22T15:10:35.471Z] PUT /notes/682f3e6b5dafc453e5eec523 {"title":"Updated Title","content":"Updated content"}
+[2025-05-22T15:10:35.488Z] DELETE /notes/682f3e6b5dafc453e5eec527 {}
+[2025-05-22T15:12:13.619Z] POST /notes {"title":"Test Note","author":{"name":"Alice","email":"alice@example.com"},"content":"This is a test"}
+[2025-05-22T15:12:13.671Z] GET /notes/682f3ecd0c94c47ca49f651d {}
+[2025-05-22T15:12:13.692Z] PUT /notes/682f3ecd0c94c47ca49f6522 {"title":"Updated Title","content":"Updated content"}
+[2025-05-22T15:12:13.704Z] DELETE /notes/682f3ecd0c94c47ca49f6526 {}
+[2025-05-22T15:14:38.827Z] DELETE /test/reset {}
+[2025-05-22T15:14:38.972Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:14:39.224Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:14:40.213Z] DELETE /test/reset {}
+[2025-05-22T15:14:40.349Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:14:40.588Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:14:40.830Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:14:44.112Z] DELETE /test/reset {}
+[2025-05-22T15:14:44.252Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:14:44.475Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:14:44.723Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:14:48.053Z] DELETE /test/reset {}
+[2025-05-22T15:14:48.195Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:14:48.450Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:14:48.702Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:22:47.910Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:22:48.155Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:19.615Z] DELETE /test/reset {}
+[2025-05-22T15:23:19.746Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:23:19.984Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:20.977Z] DELETE /test/reset {}
+[2025-05-22T15:23:21.118Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:23:21.372Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:21.613Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:24.875Z] DELETE /test/reset {}
+[2025-05-22T15:23:25.014Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:23:25.252Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:25.498Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:28.867Z] DELETE /test/reset {}
+[2025-05-22T15:23:29.013Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:23:29.257Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:29.501Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:49.209Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:49.455Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:50.143Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:23:50.388Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:25:39.068Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:25:39.317Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:29:04.043Z] DELETE /test/reset {}
+[2025-05-22T15:29:04.182Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:29:04.423Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:29:05.420Z] DELETE /test/reset {}
+[2025-05-22T15:29:05.561Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:29:05.796Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:29:06.039Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:29:09.299Z] DELETE /test/reset {}
+[2025-05-22T15:29:09.440Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:29:09.686Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:29:09.936Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:29:13.236Z] DELETE /test/reset {}
+[2025-05-22T15:29:13.371Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:29:13.607Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:29:13.853Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:33:39.555Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:33:39.801Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:33:56.307Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:33:56.547Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:33:59.354Z] DELETE /test/reset {}
+[2025-05-22T15:33:59.495Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:33:59.724Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:00.811Z] DELETE /test/reset {}
+[2025-05-22T15:34:00.950Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:34:01.176Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:01.310Z] POST /notes {"title":"Untitled","content":"Playwright test note","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-05-22T15:34:01.419Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:03.300Z] DELETE /test/reset {}
+[2025-05-22T15:34:03.433Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:34:03.671Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:03.917Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:04.069Z] PUT /notes/682f43eb3c0a5e579dfd2a07 {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com","_id":"682f43eb3c0a5e579dfd2a08"},"content":"Updated content"}
+[2025-05-22T15:34:04.505Z] DELETE /test/reset {}
+[2025-05-22T15:34:04.635Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:34:04.867Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:05.111Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:05.239Z] DELETE /notes/682f43ec3c0a5e579dfd2a11 {}
+[2025-05-22T15:34:28.765Z] PUT /notes/682f42c93c0a5e579dfd29e6 {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com","_id":"682f42c93c0a5e579dfd29e7"},"content":"Initial content!"}
+[2025-05-22T15:34:33.541Z] PUT /notes/682f42c93c0a5e579dfd29e6 {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com","_id":"682f42c93c0a5e579dfd29e7"},"content":"Initial content!!"}
+[2025-05-22T15:34:36.791Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:37.032Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:34:49.488Z] POST /notes {"title":"Untitled","content":"rotem","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-05-22T15:34:55.542Z] PUT /notes/682f44193c0a5e579dfd2a21 {"title":"Untitled","author":{"name":"Rotem","email":"rotem@example.com","_id":"682f44193c0a5e579dfd2a22"},"content":"rotem!"}
+[2025-05-22T15:37:06.699Z] DELETE /test/reset {}
+[2025-05-22T15:37:06.834Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:37:07.082Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:37:07.325Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:37:07.549Z] DELETE /test/reset {}
+[2025-05-22T15:37:07.676Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:37:07.919Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:37:08.021Z] POST /notes {"title":"Untitled","content":"Playwright test note","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-05-22T15:37:08.161Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:37:08.487Z] DELETE /test/reset {}
+[2025-05-22T15:37:08.617Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:37:08.852Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:37:09.099Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:37:09.235Z] PUT /notes/682f44a43c0a5e579dfd2a3a {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com","_id":"682f44a43c0a5e579dfd2a3b"},"content":"Updated content"}
+[2025-05-22T15:37:12.506Z] DELETE /test/reset {}
+[2025-05-22T15:37:12.647Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:37:12.889Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:37:13.136Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:37:13.259Z] DELETE /notes/682f44a83c0a5e579dfd2a44 {}
+[2025-05-22T15:38:13.470Z] DELETE /test/reset {}
+[2025-05-22T15:38:13.603Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:38:13.879Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:38:14.121Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:38:14.365Z] DELETE /test/reset {}
+[2025-05-22T15:38:14.498Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:38:14.718Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:38:14.843Z] POST /notes {"title":"Untitled","content":"Playwright test note","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-05-22T15:38:14.966Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:38:15.293Z] DELETE /test/reset {}
+[2025-05-22T15:38:15.423Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:38:15.660Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:38:15.907Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:38:16.059Z] PUT /notes/682f44e73c0a5e579dfd2a60 {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com","_id":"682f44e73c0a5e579dfd2a61"},"content":"Updated content"}
+[2025-05-22T15:38:16.520Z] DELETE /test/reset {}
+[2025-05-22T15:38:16.653Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:38:16.888Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:38:17.140Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:38:17.242Z] DELETE /notes/682f44e83c0a5e579dfd2a6a {}
+[2025-05-22T15:38:34.649Z] PUT /notes/682f44193c0a5e579dfd2a21 {"title":"Untitled","author":{"name":"Rotem","email":"rotem@example.com","_id":"682f44193c0a5e579dfd2a22"},"content":"rotem!hello"}
+[2025-05-22T15:39:54.929Z] DELETE /test/reset {}
+[2025-05-22T15:39:55.068Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:39:55.312Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:39:55.560Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:39:55.792Z] DELETE /test/reset {}
+[2025-05-22T15:39:55.927Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:39:56.169Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:39:56.272Z] POST /notes {"title":"Untitled","content":"Playwright test note","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-05-22T15:39:56.409Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:39:56.729Z] DELETE /test/reset {}
+[2025-05-22T15:39:56.860Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:39:57.083Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:39:57.327Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:39:57.487Z] PUT /notes/682f454c3c0a5e579dfd2a88 {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com","_id":"682f454c3c0a5e579dfd2a89"},"content":"Updated content"}
+[2025-05-22T15:39:57.943Z] DELETE /test/reset {}
+[2025-05-22T15:39:58.074Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-05-22T15:39:58.301Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:39:58.551Z] GET /notes?_page=1&_per_page=10 {}
+[2025-05-22T15:39:58.673Z] DELETE /notes/682f454e3c0a5e579dfd2a92 {}

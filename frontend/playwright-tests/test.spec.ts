@@ -3,13 +3,21 @@ import { test, expect } from '@playwright/test';
 const BASE_URL = 'http://localhost:3000';
 
 test.beforeEach(async ({ page }) => {
+  await page.request.delete('http://localhost:3001/test/reset');
+  await page.request.post('http://localhost:3001/notes', {
+    data: {
+      title: 'Test Note',
+      author: { name: 'Rotem', email: 'rotem@example.com' },
+      content: 'Initial content',
+    },
+  });
   await page.goto(BASE_URL);
 });
 
 // 1. Read notes
 test('should display a list of notes', async ({ page }) => {
   const notes = page.locator('.note');
-  await expect(await notes.count()).toBeGreaterThan(0);
+  await expect(notes).toHaveCount(1); // את יודעת בדיוק מה יצרת לפני הטסט
 });
 
 // 2. Create note
@@ -25,18 +33,21 @@ test('should add a new note', async ({ page }) => {
 test('should edit a note', async ({ page }) => {
   const firstNote = page.locator('.note').first();
   const noteId = await firstNote.getAttribute('data-testid');
-  await page.click('button[data-testid="edit-${noteId}"]');
-  await page.fill('textarea[data-testid="text_input-${noteId}"]', 'Updated content');
-  await page.click('button[data-testid="text_input_save-${noteId}"]');
+  await page.click(`button[data-testid="edit-${noteId}"]`);
+  await page.fill(`textarea[data-testid="text_input-${noteId}"]`, 'Updated content');
+  await page.click(`button[data-testid="text_input_save-${noteId}"]`);
   await expect(page.locator('.notification')).toHaveText('Note updated');
-  await expect(firstNote).toContainText('Updated content');
+  await expect(page.locator(`.note[data-testid="${noteId}"]`)).toContainText('Updated content');
 });
 
-// 4. Delete note
 test('should delete a note', async ({ page }) => {
   const firstNote = page.locator('.note').first();
   const noteId = await firstNote.getAttribute('data-testid');
-  await page.click('button[data-testid="delete-${noteId}"]');
+  // מוחקים את הפתק
+  await page.click(`button[data-testid="delete-${noteId}"]`);
+  // מוודאים שה-notification הופיע
   await expect(page.locator('.notification')).toHaveText('Note deleted');
-  await expect(page.locator('.note[data-testid="${noteId}"]')).toHaveCount(0);
+  // מוודאים שהוא לא במסך יותר
+  await expect(page.locator(`.note[data-testid="${noteId}"]`)).toHaveCount(0);
 });
+
