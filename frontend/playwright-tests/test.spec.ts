@@ -16,12 +16,14 @@ test.beforeEach(async ({ page }) => {
 
 // 1. Read notes
 test('should display a list of notes', async ({ page }) => {
+  test.setTimeout(10 * 1000);
   const notes = page.locator('.note');
   await expect(notes).toHaveCount(1);
 });
 
 // 2. Create note
 test('should add a new note', async ({ page }) => {
+  test.setTimeout(10 * 1000);
   await page.click('button[name="add_new_note"]');
   await page.fill('input[name="text_input_new_note"]', 'Playwright test note');
   await page.click('button[name="text_input_save_new_note"]');
@@ -31,6 +33,7 @@ test('should add a new note', async ({ page }) => {
 
 // 3. Update note
 test('should edit a note', async ({ page }) => {
+  test.setTimeout(10 * 1000);
   const firstNote = page.locator('.note').first();
   const noteId = await firstNote.getAttribute('data-testid');
   await page.click(`button[data-testid="edit-${noteId}"]`);
@@ -41,6 +44,7 @@ test('should edit a note', async ({ page }) => {
 });
 
 test('should delete a note', async ({ page }) => {
+  test.setTimeout(10 * 1000);
   const notes = page.locator('.note');
 
   await expect(notes).toHaveCount(1);
