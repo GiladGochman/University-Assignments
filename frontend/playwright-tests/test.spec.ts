@@ -55,6 +55,8 @@ test('should delete a note', async ({ page }) => {
 
   await expect(page.locator('.notification')).toHaveText('Note deleted');
 
+  await page.waitForTimeout(6000);
+
   await expect(notes).toHaveCount(0);
 });
 
