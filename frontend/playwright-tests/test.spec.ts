@@ -4,7 +4,7 @@ const BASE_URL = 'http://localhost:3000';
 
 test.beforeEach(async ({ page }) => {
   await page.request.delete('http://localhost:3001/test/reset');
-  await page.request.post('http://localhost:3001/test/seed', {
+  await page.request.post('http://localhost:3001/notes', {
     data: {
       title: 'Test Note',
       author: { name: 'Rotem', email: 'rotem@example.com' },
