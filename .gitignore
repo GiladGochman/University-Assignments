@@ -26,4 +26,6 @@ dist-ssr
 # Don't track lock files or local JSON data
 package-lock.json
 node_modules/
+.env
+presubmission.sh
 tmp_submission_check/
