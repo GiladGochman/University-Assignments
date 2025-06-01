@@ -1,5 +1,5 @@
 {
-  "name": "submission_hw1",
+  "name": "submission_hw2",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -17,11 +17,15 @@
     "mongoose": "^8.15.1",
     "playwright": "^1.43.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.2",
     "@types/mongoose": "^5.11.97",
+    "@types/node": "^22.15.24",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
