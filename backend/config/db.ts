@@ -5,8 +5,18 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    console.log(dotenv.config());
-    const mongoURI = process.env.DB_URL;
+    // concat the mongo url:
+    const mongoURI =
+      "mongodb+srv://" +
+      process.env.DB_USER +
+      ":" +
+      process.env.DB_PASS +
+      "@" +
+      process.env.DB_URL +
+      process.env.DB_NAME +
+      "?" +
+      process.env.DB_OPTIONS;
+
     if (!mongoURI) {
       throw new Error(
         "Database connection string (DB_URL) is not defined in environment variables"

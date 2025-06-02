@@ -3,31 +3,44 @@ import Note from "../models/note";
 
 const router = express.Router();
 
-router.get("/test", async (req, res) => {
-  // use: localhost:3000/api/notes/test
+// router.get("/test", async (req, res) => {
+//   // use: localhost:3000/api/notes/test
 
-  const note = new Note({
-    title: "Test Note",
-    content: "This is a test note.",
-  });
+//   const note = new Note({
+//     title: "Test Note",
+//     content: "This is a test note.",
+//   });
 
-  await note.save();
-  console.log("Test note created:", note);
-  const notes = await Note.find();
-  //   res.json(notes);
-});
+//   await note.save();
+//   console.log("Test note created:", note);
+//   const notes = await Note.find();
+//   //   res.json(notes);
+// });
 
 // GET all notes with pagination
 router.get("/", async (req, res) => {
-  // use: localhost:3000/api/notes
-  const page = parseInt(req.query._page as string) || 1;
-  const limit = parseInt(req.query._limit as string) || 10;
-  const skip = (page - 1) * limit;
-
+  // use: localhost:3001/api/notes
+  // find the number of notes in the database
   try {
-    const notes = await Note.find().skip(skip).limit(limit);
+    const notes = await Note.find().skip(0).limit(Number.MAX_SAFE_INTEGER);
     const totalNotes = await Note.countDocuments();
     res.set("X-Total-Count", totalNotes.toString());
+    res.json(notes);
+  } catch (error) {
+    console.error("Error fetching notes:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// GET a single page of 10 notes
+router.get("/page/:page", async (req, res) => {
+  // use: localhost:3001/api/notes/page/1
+  const page = parseInt(req.params.page) || 1;
+  const limit = 10; // Fixed limit of 10 notes per page
+  const skip = (page - 1) * limit;
+  console.log("Fetching page:", page, "with limit:", limit);
+  try {
+    const notes = await Note.find().skip(skip).limit(limit);
     res.json(notes);
   } catch (error) {
     console.error("Error fetching notes:", error);
