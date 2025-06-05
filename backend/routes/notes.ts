@@ -1,7 +1,13 @@
 import express from "express";
 import { Note } from "../models/note";
-import * as notesController from "../controllers/notesController";
-
+import {
+  getAll,
+  getById,
+  getByIndex,
+  create,
+  update,
+  remove,
+} from "../controllers/notesController";
 const router = express.Router();
 
 // router.get("/test", async (req, res) => {
@@ -48,12 +54,11 @@ router.get("/page/:page", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
-
-router.get("/", notesController.getAll);
-router.get("/:id", notesController.getById);
-router.get("/by-index/:i", notesController.getByIndex);
-router.post("/", notesController.create);
-router.put("/:id", notesController.update);
-router.delete("/:id", notesController.remove);
+router.get("/", getAll);
+router.get("/:id", getById);
+router.get("/by-index/:i", getByIndex);
+router.post("/", create);
+router.put("/:id", update);
+router.delete("/:id", remove);
 
 export default router;

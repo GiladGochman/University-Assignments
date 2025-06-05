@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node backend/server.ts",
-    "dev": "NODE_ENV=dev nodemon --exec ts-node backend/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only server.ts",
     "test": "jest"
   },
   "dependencies": {

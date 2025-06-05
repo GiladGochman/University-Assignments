@@ -11,6 +11,6 @@ app.use(logRequests);
 
 connectDB();
 
-app.use("/routes/notes", notesRouter);
+app.use("/api/notes", notesRouter);
 
 export default app;
