@@ -1,3 +1,22 @@
+## 1. Run backend server locally:
+
+```bash
+ cd <vite_project_path>/backend
+ npm run dev
+```
+
+(can be accessed with: http://localhost:3000)
+
+## 2. Run frontend locally:
+
+```bash
+ cd <vite_project_path>/frontend
+ npm run dev
+```
+
+(can be accessed with: http://localhost:3001/api/notes/ for all notes)
+( http://localhost:3001/api/notes/page/1 for first page)
+
 ## Optional: Run local server with an input JSON file:
 
 ```bash
@@ -5,19 +24,3 @@
 ```
 
 (can be accessed with: http://localhost:3001/notes?\_page=1&\_limit=10 for example)
-
-## 1.Run your code:
-
-```bash
- cd <vite_project_path>
- npm run dev
-```
-
-## 2. Run api router to backend server:
-
-```bash
- cd ./backend
- npx ts-node server.ts
-```
-
-(can be accessed with: http://localhost:3001/api/notes/)
