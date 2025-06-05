@@ -1,5 +1,6 @@
 import express from "express";
-import Note from "../models/note";
+import { Note } from "../models/note";
+import * as notesController from "../controllers/notesController";
 
 const router = express.Router();
 
@@ -47,5 +48,12 @@ router.get("/page/:page", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
+router.get("/", notesController.getAll);
+router.get("/:id", notesController.getById);
+router.get("/by-index/:i", notesController.getByIndex);
+router.post("/", notesController.create);
+router.put("/:id", notesController.update);
+router.delete("/:id", notesController.remove);
 
 export default router;
