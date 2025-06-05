@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import viteLogo from "./assets/vite.svg";
 import "./App.css";
 import axios from "axios";
 
@@ -8,7 +8,7 @@ function App() {
   interface Note {
     id: number;
     title: string;
-    author:{
+    author: {
       name: string;
       email: string;
     };
@@ -93,14 +93,14 @@ function App() {
       </span>
 
       <div>
-        <button 
-          name="first" 
+        <button
+          name="first"
           disabled={activePage === 1}
           onClick={() => setActivePage(() => 1)}
         >
           first
         </button>
-        <button 
+        <button
           name="previous"
           disabled={activePage === 1}
           onClick={() => setActivePage((prevPage) => Math.max(prevPage - 1, 1))}
@@ -111,22 +111,26 @@ function App() {
           <button
             key={page}
             name={`page-${page}`}
-            disabled={activePage === page} 
+            disabled={activePage === page}
             className={`${page === activePage ? "active" : "not-active"}`}
             onClick={() => setActivePage(page)}
           >
             {page}
           </button>
         ))}
-        <button 
-          name="next" 
+        <button
+          name="next"
           disabled={activePage === totalPages}
-          onClick={() => activePage < totalPages ? setActivePage((prevPage) => prevPage + 1): {}}
+          onClick={() =>
+            activePage < totalPages
+              ? setActivePage((prevPage) => prevPage + 1)
+              : {}
+          }
         >
           Next
         </button>
-        <button 
-          name="last" 
+        <button
+          name="last"
           disabled={activePage === totalPages}
           onClick={() => setActivePage(() => totalPages)}
         >
