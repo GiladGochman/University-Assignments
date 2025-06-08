@@ -9,7 +9,10 @@ const app = express();
 app.use(express.json());
 app.use(logRequests);
 
-connectDB();
+if (process.env.NODE_ENV !== "test") {
+  // כי הייתה לי בעיה בהרצת טסטים
+  connectDB();
+}
 
 app.use("/api/notes", notesRouter);
 

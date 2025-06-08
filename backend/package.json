@@ -4,7 +4,7 @@
   "scripts": {
     "start": "ts-node backend/server.ts",
     "dev": "ts-node-dev --respawn --transpile-only server.ts",
-    "test": "jest"
+    "test": "cross-env NODE_ENV=test jest"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
@@ -13,8 +13,12 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.14",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.11.30",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "~5.7.2"
