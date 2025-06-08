@@ -19,7 +19,11 @@ export const getNoteByIndex = async (index: number) => {
   return notes[0] || null;
 };
 
-export const createNote = async (data: { title: string; content: string }) => {
+export const createNote = async (data: {
+  title: string;
+  content: string;
+  author: { name: string; email: string };
+}) => {
   const note = new Note(data);
   return await note.save();
 };

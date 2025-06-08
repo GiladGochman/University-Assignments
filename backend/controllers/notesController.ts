@@ -26,7 +26,11 @@ export const create = async (req: Request, res: Response) => {
   if (!title || !content)
     return res.status(400).json({ error: "Missing fields" });
 
-  const note = await notesService.createNote({ title, content });
+  const note = await notesService.createNote({
+    title,
+    content,
+    author: req.body.author || null,
+  });
   res.status(201).json(note);
 };
 
