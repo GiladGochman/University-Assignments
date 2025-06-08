@@ -14,8 +14,8 @@
  npm run dev
 ```
 
-(can be accessed with: http://localhost:3001/api/notes/ for all notes)
-( http://localhost:3001/api/notes/page/1 for first page)
+(can be accessed with: http://localhost:3001/notes/ for all notes)
+( http://localhost:3001/notes/page/1 for first page)
 
 ## Optional: Run local server with an input JSON file:
 

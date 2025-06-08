@@ -14,6 +14,6 @@ if (process.env.NODE_ENV !== "test") {
   connectDB();
 }
 
-app.use("/api/notes", notesRouter);
+app.use("/notes", notesRouter);
 
 export default app;
