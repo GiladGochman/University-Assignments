@@ -26,19 +26,19 @@ const router = express.Router();
 // });
 
 // GET all notes with pagination
-router.get("/", async (req, res) => {
-  // use: localhost:3001/api/notes
-  // find the number of notes in the database
-  try {
-    const notes = await Note.find().skip(0).limit(Number.MAX_SAFE_INTEGER);
-    const totalNotes = await Note.countDocuments();
-    res.set("X-Total-Count", totalNotes.toString());
-    res.json(notes);
-  } catch (error) {
-    console.error("Error fetching notes:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
+// router.get("/", async (req, res) => {
+//   // use: localhost:3001/api/notes
+//   // find the number of notes in the database
+//   try {
+//     const notes = await Note.find().skip(0).limit(Number.MAX_SAFE_INTEGER);
+//     const totalNotes = await Note.countDocuments();
+//     res.set("X-Total-Count", totalNotes.toString());
+//     res.json(notes);
+//   } catch (error) {
+//     console.error("Error fetching notes:", error);
+//     res.status(500).json({ message: "Internal server error" });
+//   }
+// });
 
 // GET a single page of 10 notes
 router.get("/page/:page", async (req, res) => {
@@ -61,6 +61,5 @@ router.get("/by-index/:i", getByIndex);
 router.post("/", create);
 router.put("/:id", update);
 router.delete("/:id", remove);
-// router.get("/page/:i", getNotesByIndex);
 
 export default router;

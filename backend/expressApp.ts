@@ -3,9 +3,12 @@ import dotenv from "dotenv";
 import connectDB from "./config/db";
 import notesRouter from "./routes/notes";
 import { logRequests } from "./middlewares/logRequests";
+import cors from "cors";
+
 dotenv.config();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(logRequests);
 
