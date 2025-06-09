@@ -22,7 +22,6 @@ function App() {
       .get(`${NOTES_URL}/page/${activePage}`)
       .then((response) => {
         setNotes(response.data);
-        // כאן תוכל לעדכן לפי כמות כוללת, אם תתמוך בזה בצד שרת
         // setTotalPages(...);
       })
       .catch((err) => console.error("Error fetching notes:", err));

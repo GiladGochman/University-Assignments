@@ -12,7 +12,7 @@ import {
 const router = express.Router();
 
 // router.get("/test", async (req, res) => {
-//   // use: localhost:3000/api/notes/test
+//   // use: localhost:3000/notes/test
 
 //   const note = new Note({
 //     title: "Test Note",
@@ -27,7 +27,7 @@ const router = express.Router();
 
 // GET all notes with pagination
 // router.get("/", async (req, res) => {
-//   // use: localhost:3001/api/notes
+//   // use: localhost:3001/notes
 //   // find the number of notes in the database
 //   try {
 //     const notes = await Note.find().skip(0).limit(Number.MAX_SAFE_INTEGER);
@@ -42,7 +42,7 @@ const router = express.Router();
 
 // GET a single page of 10 notes
 router.get("/page/:page", async (req, res) => {
-  // use: localhost:3001/api/notes/page/1
+  // use: localhost:3001/notes/page/1
   const page = parseInt(req.params.page) || 1;
   const limit = 10; // Fixed limit of 10 notes per page
   const skip = (page - 1) * limit;

@@ -4,6 +4,7 @@ import connectDB from "./config/db";
 import notesRouter from "./routes/notes";
 import { logRequests } from "./middlewares/logRequests";
 import cors from "cors";
+import testRouter from "./routes/testRouter";
 
 dotenv.config();
 
@@ -18,5 +19,8 @@ if (process.env.NODE_ENV !== "test") {
 }
 
 app.use("/notes", notesRouter);
+if (process.env.NODE_ENV === "dev") {
+  app.use("/test", testRouter);
+}
 
 export default app;

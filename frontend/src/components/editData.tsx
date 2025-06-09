@@ -13,7 +13,7 @@ const EditData = () => {
   const [adding, setAdding] = useState(false);
 
   useEffect(() => {
-    axios.get("/api/notes?page=1").then((res) => {
+    axios.get("http://localhost:3001/notes?page=1").then((res) => {
       if (Array.isArray(res.data)) {
         dispatch({ type: "SET_NOTES", payload: res.data });
       } else {
@@ -24,7 +24,7 @@ const EditData = () => {
   }, [dispatch]);
 
   const handleDelete = async (id: string) => {
-    await axios.delete(`/api/notes/${id}`);
+    await axios.delete(`http://localhost:3001/notes/${id}`);
     dispatch({ type: "DELETE_NOTE", payload: id });
     setNotification("Note deleted");
   };
@@ -36,14 +36,17 @@ const EditData = () => {
 
   const handleSaveEdit = async (id: string) => {
     const updatedNote = { content: editingText };
-    const res = await axios.put(`/api/notes/${id}`, updatedNote);
+    const res = await axios.put(
+      `http://localhost:3001/notes/${id}`,
+      updatedNote
+    );
     dispatch({ type: "UPDATE_NOTE", payload: res.data });
     setEditingNoteId(null);
     setNotification("Note updated");
   };
 
   const handleAddNote = async () => {
-    const res = await axios.post("/api/notes", {
+    const res = await axios.post("http://localhost:3001/notes", {
       content: newNoteText,
     });
     dispatch({ type: "ADD_NOTE", payload: res.data });

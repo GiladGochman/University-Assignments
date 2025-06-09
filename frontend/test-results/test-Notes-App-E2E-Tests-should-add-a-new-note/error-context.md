@@ -6,11 +6,49 @@
 # Error details
 
 ```
-Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/
-Call log:
-  - navigating to "http://localhost:3000/", waiting until "load"
+Error: Timed out 5000ms waiting for expect(locator).toHaveText(expected)
 
-    at C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:15:16
+Locator: locator('.notification')
+Expected string: "Added a new note"
+Received: <element(s) not found>
+Call log:
+  - expect.toHaveText with timeout 5000ms
+  - waiting for locator('.notification')
+
+    at C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:32:49
+```
+
+# Page snapshot
+
+```yaml
+- textbox: Playwright test note
+- button "Save"
+- button "Cancel"
+- heading "Note 1" [level=2]
+- text: By Author 1 Content for note 1
+- heading "Note 2" [level=2]
+- text: By Author 2 Content for note 2
+- heading "Note 3" [level=2]
+- text: By Author 3 Content for note 3
+- heading "Note 4" [level=2]
+- text: By Author 4 Content for note 4
+- heading "Note 5" [level=2]
+- text: By Author 5 Content for note 5
+- heading "Note 6" [level=2]
+- text: By Author 6 Content for note 6
+- heading "Note 7" [level=2]
+- text: By Author 7 Content for note 7
+- heading "Note 8" [level=2]
+- text: By Author 8 Content for note 8
+- heading "Note 9" [level=2]
+- text: By Author 9 Content for note 9
+- heading "Note 10" [level=2]
+- text: "By Author 10 Content for note 10 page: 1 / 1"
+- button "first" [disabled]
+- button "previous" [disabled]
+- button "1" [disabled]
+- button "next" [disabled]
+- button "last" [disabled]
 ```
 
 # Test source
@@ -30,8 +68,7 @@ Call log:
   12 |         content: "Initial content",
   13 |       },
   14 |     });
-> 15 |     await page.goto(BASE_URL);
-     |                ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/
+  15 |     await page.goto(BASE_URL);
   16 |   });
   17 |
   18 |   // 1. Read notes
@@ -48,7 +85,8 @@ Call log:
   29 |       "Playwright test note"
   30 |     );
   31 |     await page.click('button[name="text_input_save_new_note"]');
-  32 |     await expect(page.locator(".notification")).toHaveText("Added a new note");
+> 32 |     await expect(page.locator(".notification")).toHaveText("Added a new note");
+     |                                                 ^ Error: Timed out 5000ms waiting for expect(locator).toHaveText(expected)
   33 |     await expect(page.locator(".note").first()).toContainText(
   34 |       "Playwright test note"
   35 |     );
