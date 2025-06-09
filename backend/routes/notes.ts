@@ -7,6 +7,7 @@ import {
   create,
   update,
   remove,
+  getNotesByIndex,
 } from "../controllers/notesController";
 const router = express.Router();
 
@@ -60,5 +61,6 @@ router.get("/by-index/:i", getByIndex);
 router.post("/", create);
 router.put("/:id", update);
 router.delete("/:id", remove);
+// router.get("/page/:i", getNotesByIndex);
 
 export default router;

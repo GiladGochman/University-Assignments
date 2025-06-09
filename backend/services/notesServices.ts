@@ -10,6 +10,10 @@ export const getNoteById = async (id: string) => {
   return await Note.findById(id).exec();
 };
 
+export async function getNotesByIndex(startIndex: number) {
+  return Note.find().sort({ createdAt: -1 }).skip(startIndex).limit(10);
+}
+
 export const getNoteByIndex = async (index: number) => {
   const notes = await Note.find()
     .sort({ createdAt: 1 })

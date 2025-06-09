@@ -6,6 +6,16 @@ export const getAll = async (_req: Request, res: Response) => {
   res.json(notes);
 };
 
+export async function getNotesByIndex(req: Request, res: Response) {
+  const index = parseInt(req.params.i);
+  if (isNaN(index) || index < 0) {
+    return res.status(400).json({ error: "Invalid index" });
+  }
+
+  const notes = await notesService.getNotesByIndex(index);
+  res.json(notes);
+}
+
 export const getById = async (req: Request, res: Response) => {
   const note = await notesService.getNoteById(req.params.id);
   if (!note) return res.status(404).json({ error: "Note not found" });
