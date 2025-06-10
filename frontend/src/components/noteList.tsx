@@ -1,10 +1,10 @@
 import { Note } from "../types/Note";
+import { useNotesContext } from "../contexts/NotesContext";
 
-interface NoteListProps {
-  notes: Note[];
-}
+export default function NoteList() {
+  const { state } = useNotesContext();
+  const { notes } = state;
 
-export default function NoteList({ notes }: NoteListProps) {
   return (
     <div>
       {notes.map((note) => (

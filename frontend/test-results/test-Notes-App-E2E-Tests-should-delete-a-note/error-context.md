@@ -1,27 +1,22 @@
 # Test info
 
-- Name: Notes App E2E Tests >> should add a new note
-- Location: C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:25:7
+- Name: Notes App E2E Tests >> should delete a note
+- Location: C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:55:7
 
 # Error details
 
 ```
-Error: page.fill: Test timeout of 10000ms exceeded.
+Error: page.click: Test timeout of 10000ms exceeded.
 Call log:
-  - waiting for locator('input[name="text_input_new_note"]')
+  - waiting for locator('button[name="delete-null"]')
 
-    at C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:27:16
+    at C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:60:16
 ```
 
 # Page snapshot
 
 ```yaml
-- textbox "Title"
-- textbox "Author Name"
-- textbox "Author Email"
-- textbox "Note Content"
-- button "Save"
-- button "Cancel"
+- button "Add Note"
 - heading "Test Note" [level=2]
 - text: "By gilad Initial content page: 1 / 1"
 - button "first" [disabled]
@@ -60,8 +55,7 @@ Call log:
   24 |   // 2. Create note
   25 |   test("should add a new note", async ({ page }) => {
   26 |     await page.click('button[name="add_new_note"]');
-> 27 |     await page.fill(
-     |                ^ Error: page.fill: Test timeout of 10000ms exceeded.
+  27 |     await page.fill(
   28 |       'input[name="text_input_new_note"]',
   29 |       "Playwright test note"
   30 |     );
@@ -94,7 +88,8 @@ Call log:
   57 |     await expect(notes).toHaveCount(1);
   58 |
   59 |     const noteId = await notes.first().getAttribute("data-testid");
-  60 |     await page.click(`button[name="delete-${noteId}"]`);
+> 60 |     await page.click(`button[name="delete-${noteId}"]`);
+     |                ^ Error: page.click: Test timeout of 10000ms exceeded.
   61 |     await expect(page.locator(".notification")).toHaveText("Note deleted");
   62 |
   63 |     await expect(page.locator(".note")).toHaveCount(0);

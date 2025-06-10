@@ -33,7 +33,7 @@ function App() {
         <img src={viteLogo} className="logo" alt="Vite logo" />
       </a> */}
       <EditData />
-      <NoteList notes={notes} />
+      <NoteList />
       <Pagination
         activePage={activePage}
         totalPages={totalPages}

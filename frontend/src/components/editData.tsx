@@ -9,6 +9,11 @@ const EditData = () => {
 
   const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
   const [editingText, setEditingText] = useState("");
+
+  // שדות לפתק חדש
+  const [newNoteTitle, setNewNoteTitle] = useState("");
+  const [newNoteAuthorName, setNewNoteAuthorName] = useState("");
+  const [newNoteAuthorEmail, setNewNoteAuthorEmail] = useState("");
   const [newNoteText, setNewNoteText] = useState("");
   const [adding, setAdding] = useState(false);
 
@@ -46,13 +51,26 @@ const EditData = () => {
   };
 
   const handleAddNote = async () => {
-    const res = await axios.post("http://localhost:3001/notes", {
-      content: newNoteText,
-    });
-    dispatch({ type: "ADD_NOTE", payload: res.data });
-    setNewNoteText("");
-    setAdding(false);
-    setNotification("Added a new note");
+    try {
+      const res = await axios.post("http://localhost:3001/notes", {
+        title: newNoteTitle,
+        author: {
+          name: newNoteAuthorName,
+          email: newNoteAuthorEmail,
+        },
+        content: newNoteText,
+      });
+      dispatch({ type: "ADD_NOTE", payload: res.data });
+      setNewNoteTitle("");
+      setNewNoteAuthorName("");
+      setNewNoteAuthorEmail("");
+      setNewNoteText("");
+      setAdding(false);
+      setNotification("Added a new note");
+    } catch (err) {
+      console.error("Error adding note:", err);
+      setNotification("Failed to add note");
+    }
   };
 
   return (
@@ -63,8 +81,32 @@ const EditData = () => {
         <div>
           <input
             type="text"
+            value={newNoteTitle}
+            onChange={(e) => setNewNoteTitle(e.target.value)}
+            placeholder="Title"
+            name="text_input_title"
+            data-testid="text_input_title"
+          />
+          <input
+            type="text"
+            value={newNoteAuthorName}
+            onChange={(e) => setNewNoteAuthorName(e.target.value)}
+            placeholder="Author Name"
+            name="text_input_author_name"
+            data-testid="text_input_author_name"
+          />
+          <input
+            type="email"
+            value={newNoteAuthorEmail}
+            onChange={(e) => setNewNoteAuthorEmail(e.target.value)}
+            placeholder="Author Email"
+            name="text_input_author_email"
+            data-testid="text_input_author_email"
+          />
+          <textarea
             value={newNoteText}
             onChange={(e) => setNewNoteText(e.target.value)}
+            placeholder="Note Content"
             name="text_input_new_note"
             data-testid="text_input_new_note"
           />
@@ -75,6 +117,9 @@ const EditData = () => {
             name="text_input_cancel_new_note"
             onClick={() => {
               setAdding(false);
+              setNewNoteTitle("");
+              setNewNoteAuthorName("");
+              setNewNoteAuthorEmail("");
               setNewNoteText("");
             }}
           >
@@ -87,11 +132,10 @@ const EditData = () => {
         </button>
       )}
 
-      {/* רשימת פתקים - רק אם notes הוא מערך */}
-      {Array.isArray(notes) &&
+      {/* {Array.isArray(notes) &&
         notes.map((note) => (
           <div key={note._id} className="note" data-testid={note._id}>
-            <h2>new note</h2>
+            <h2>{note.title}</h2>
             <small>By {note.author?.name ?? "Unknown"}</small>
 
             {editingNoteId === note._id ? (
@@ -117,7 +161,7 @@ const EditData = () => {
               </>
             ) : (
               <>
-                {note.content}
+                <p>{note.content}</p>
                 <button
                   data-testid={`delete-${note._id}`}
                   name={`delete-${note._id}`}
@@ -134,7 +178,7 @@ const EditData = () => {
               </>
             )}
           </div>
-        ))}
+        ))} */}
     </div>
   );
 };

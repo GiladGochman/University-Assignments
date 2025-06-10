@@ -76,7 +76,6 @@ export const NotesProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// --- Hook to use the context ---
 export const useNotesContext = () => {
   const context = useContext(NotesContext);
   if (!context) {

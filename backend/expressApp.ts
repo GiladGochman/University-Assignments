@@ -2,9 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
 import notesRouter from "./routes/notes";
+import testRouter from "./routes/testRouter";
 import { logRequests } from "./middlewares/logRequests";
 import cors from "cors";
-import testRouter from "./routes/testRouter";
 
 dotenv.config();
 

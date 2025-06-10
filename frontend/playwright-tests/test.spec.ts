@@ -8,7 +8,7 @@ test.describe("Notes App E2E Tests", () => {
     await page.request.post("http://localhost:3001/notes", {
       data: {
         title: "Test Note",
-        author: { name: "Rotem", email: "rotem@example.com" },
+        author: { name: "gilad", email: "gochman@post.ac.il" },
         content: "Initial content",
       },
     });

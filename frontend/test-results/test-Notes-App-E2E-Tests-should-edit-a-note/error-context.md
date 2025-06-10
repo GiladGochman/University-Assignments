@@ -1,51 +1,24 @@
 # Test info
 
-- Name: Notes App E2E Tests >> should display a list of notes
-- Location: C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:19:7
+- Name: Notes App E2E Tests >> should edit a note
+- Location: C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:39:7
 
 # Error details
 
 ```
-Error: Timed out 5000ms waiting for expect(locator).toHaveCount(expected)
-
-Locator: locator('.note')
-Expected: 1
-Received: 10
+Error: page.click: Test timeout of 10000ms exceeded.
 Call log:
-  - expect.toHaveCount with timeout 5000ms
-  - waiting for locator('.note')
-    3 × locator resolved to 0 elements
-      - unexpected value "0"
-    5 × locator resolved to 10 elements
-      - unexpected value "10"
+  - waiting for locator('button[data-testid="edit-null"]')
 
-    at C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:21:25
+    at C:\Users\Study\Desktop\semester F\תכנות קצה\submission_hw2\frontend\playwright-tests\test.spec.ts:42:16
 ```
 
 # Page snapshot
 
 ```yaml
 - button "Add Note"
-- heading "Note 1" [level=2]
-- text: By Author 1 Content for note 1
-- heading "Note 2" [level=2]
-- text: By Author 2 Content for note 2
-- heading "Note 3" [level=2]
-- text: By Author 3 Content for note 3
-- heading "Note 4" [level=2]
-- text: By Author 4 Content for note 4
-- heading "Note 5" [level=2]
-- text: By Author 5 Content for note 5
-- heading "Note 6" [level=2]
-- text: By Author 6 Content for note 6
-- heading "Note 7" [level=2]
-- text: By Author 7 Content for note 7
-- heading "Note 8" [level=2]
-- text: By Author 8 Content for note 8
-- heading "Note 9" [level=2]
-- text: By Author 9 Content for note 9
-- heading "Note 10" [level=2]
-- text: "By Author 10 Content for note 10 page: 1 / 1"
+- heading "Test Note" [level=2]
+- text: "By gilad Initial content page: 1 / 1"
 - button "first" [disabled]
 - button "previous" [disabled]
 - button "1" [disabled]
@@ -66,7 +39,7 @@ Call log:
    8 |     await page.request.post("http://localhost:3001/notes", {
    9 |       data: {
   10 |         title: "Test Note",
-  11 |         author: { name: "Rotem", email: "rotem@example.com" },
+  11 |         author: { name: "gilad", email: "gochman@post.ac.il" },
   12 |         content: "Initial content",
   13 |       },
   14 |     });
@@ -76,8 +49,7 @@ Call log:
   18 |   // 1. Read notes
   19 |   test("should display a list of notes", async ({ page }) => {
   20 |     const notes = page.locator(".note");
-> 21 |     await expect(notes).toHaveCount(1);
-     |                         ^ Error: Timed out 5000ms waiting for expect(locator).toHaveCount(expected)
+  21 |     await expect(notes).toHaveCount(1);
   22 |   });
   23 |
   24 |   // 2. Create note
@@ -98,7 +70,8 @@ Call log:
   39 |   test("should edit a note", async ({ page }) => {
   40 |     const firstNote = page.locator(".note").first();
   41 |     const noteId = await firstNote.getAttribute("data-testid");
-  42 |     await page.click(`button[data-testid="edit-${noteId}"]`);
+> 42 |     await page.click(`button[data-testid="edit-${noteId}"]`);
+     |                ^ Error: page.click: Test timeout of 10000ms exceeded.
   43 |     await page.fill(
   44 |       `textarea[data-testid="text_input-${noteId}"]`,
   45 |       "Updated content"
