@@ -18,7 +18,11 @@ Call log:
 ```yaml
 - button "Add Note"
 - heading "Test Note" [level=2]
-- text: "By gilad Initial content page: 1 / 1"
+- text: By gilad Initial content
+- paragraph: Initial content
+- button "Delete"
+- button "Edit"
+- text: "page: 1 / 1"
 - button "first" [disabled]
 - button "previous" [disabled]
 - button "1" [disabled]

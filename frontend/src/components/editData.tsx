@@ -28,28 +28,6 @@ const EditData = () => {
     });
   }, [dispatch]);
 
-  const handleDelete = async (id: string) => {
-    await axios.delete(`http://localhost:3001/notes/${id}`);
-    dispatch({ type: "DELETE_NOTE", payload: id });
-    setNotification("Note deleted");
-  };
-
-  const handleEdit = (note: { _id: string; content: string }) => {
-    setEditingNoteId(note._id);
-    setEditingText(note.content);
-  };
-
-  const handleSaveEdit = async (id: string) => {
-    const updatedNote = { content: editingText };
-    const res = await axios.put(
-      `http://localhost:3001/notes/${id}`,
-      updatedNote
-    );
-    dispatch({ type: "UPDATE_NOTE", payload: res.data });
-    setEditingNoteId(null);
-    setNotification("Note updated");
-  };
-
   const handleAddNote = async () => {
     try {
       const res = await axios.post("http://localhost:3001/notes", {
@@ -138,45 +116,7 @@ const EditData = () => {
             <h2>{note.title}</h2>
             <small>By {note.author?.name ?? "Unknown"}</small>
 
-            {editingNoteId === note._id ? (
-              <>
-                <textarea
-                  value={editingText}
-                  onChange={(e) => setEditingText(e.target.value)}
-                  data-testid={`text_input-${note._id}`}
-                  name={`text_input-${note._id}`}
-                />
-                <button
-                  data-testid={`text_input_save-${note._id}`}
-                  onClick={() => handleSaveEdit(note._id)}
-                >
-                  Save
-                </button>
-                <button
-                  data-testid={`text_input_cancel-${note._id}`}
-                  onClick={() => setEditingNoteId(null)}
-                >
-                  Cancel
-                </button>
-              </>
-            ) : (
-              <>
-                <p>{note.content}</p>
-                <button
-                  data-testid={`delete-${note._id}`}
-                  name={`delete-${note._id}`}
-                  onClick={() => handleDelete(note._id)}
-                >
-                  Delete
-                </button>
-                <button
-                  data-testid={`edit-${note._id}`}
-                  onClick={() => handleEdit(note)}
-                >
-                  Edit
-                </button>
-              </>
-            )}
+            
           </div>
         ))} */}
     </div>
