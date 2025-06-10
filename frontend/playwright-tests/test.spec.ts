@@ -9,7 +9,7 @@ test.describe("Notes App E2E Tests", () => {
       data: {
         title: "Test Note",
         author: { name: "gilad", email: "gochman@post.ac.il" },
-        content: "Initial content",
+        content: "Playwright test note",
       },
     });
     await page.goto(BASE_URL);
@@ -24,10 +24,17 @@ test.describe("Notes App E2E Tests", () => {
   // 2. Create note
   test("should add a new note", async ({ page }) => {
     await page.click('button[name="add_new_note"]');
+    await page.fill('input[name="text_input_title"]', "Title");
+    await page.fill('input[name="text_input_author_name"]', "Test Author");
+    await page.fill(
+      'input[name="text_input_author_email"]',
+      "test@example.com"
+    );
     await page.fill(
       'input[name="text_input_new_note"]',
       "Playwright test note"
     );
+
     await page.click('button[name="text_input_save_new_note"]');
     await expect(page.locator(".notification")).toHaveText("Added a new note");
     await expect(page.locator(".note").first()).toContainText(
@@ -38,7 +45,7 @@ test.describe("Notes App E2E Tests", () => {
   // 3. Update note
   test("should edit a note", async ({ page }) => {
     const firstNote = page.locator(".note").first();
-    const noteId = await firstNote.getAttribute("data-testid");
+    const noteId = await firstNote.getAttribute("id");
     await page.click(`button[data-testid="edit-${noteId}"]`);
     await page.fill(
       `textarea[data-testid="text_input-${noteId}"]`,

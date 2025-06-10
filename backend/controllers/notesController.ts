@@ -33,7 +33,8 @@ export const getByIndex = async (req: Request, res: Response) => {
 
 export const create = async (req: Request, res: Response) => {
   const { title, content } = req.body;
-  if (!title || !content)
+  if (!content)
+    // only content is required
     return res.status(400).json({ error: "Missing fields" });
 
   const note = await notesService.createNote({

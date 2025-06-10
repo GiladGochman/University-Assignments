@@ -43,6 +43,9 @@
 .note {
   display: inline-block;
   margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1em;
 }
 span {
   margin: 5px;
@@ -52,4 +55,16 @@ span {
 }
 .not-active {
   font-weight: 200;
+}
+.edit-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* children inside note will be in display block */
+/* also centered and with margins to the top and bottom */
+.note > * {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
 }

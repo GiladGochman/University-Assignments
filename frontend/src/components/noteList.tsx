@@ -36,11 +36,15 @@ export default function NoteList() {
   return (
     <div>
       {notes.map((note) => (
-        <div key={note._id} className="note" id={note._id.toString()}>
+        <div
+          key={note._id}
+          className="note"
+          data-testid={note._id.toString()}
+          id={note._id.toString()}
+        >
           <h2>{note.title}</h2>
           <small>By {note.author.name}</small>
           <br />
-          {note.content}
           {editingNoteId === note._id ? (
             <>
               <textarea

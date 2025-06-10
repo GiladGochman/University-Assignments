@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
 const authorSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
+  name: { type: String, default: "Anonymous" },
+  email: { type: String, default: "" },
 });
 
 const noteSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
+    title: { type: String, default: "" },
     content: { type: String, required: true },
     author: authorSchema,
   },

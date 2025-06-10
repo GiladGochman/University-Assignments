@@ -7,38 +7,8 @@ import {
   create,
   update,
   remove,
-  getNotesByIndex,
 } from "../controllers/notesController";
 const router = express.Router();
-
-// router.get("/test", async (req, res) => {
-//   // use: localhost:3000/notes/test
-
-//   const note = new Note({
-//     title: "Test Note",
-//     content: "This is a test note.",
-//   });
-
-//   await note.save();
-//   console.log("Test note created:", note);
-//   const notes = await Note.find();
-//   //   res.json(notes);
-// });
-
-// GET all notes with pagination
-// router.get("/", async (req, res) => {
-//   // use: localhost:3001/notes
-//   // find the number of notes in the database
-//   try {
-//     const notes = await Note.find().skip(0).limit(Number.MAX_SAFE_INTEGER);
-//     const totalNotes = await Note.countDocuments();
-//     res.set("X-Total-Count", totalNotes.toString());
-//     res.json(notes);
-//   } catch (error) {
-//     console.error("Error fetching notes:", error);
-//     res.status(500).json({ message: "Internal server error" });
-//   }
-// });
 
 // GET a single page of 10 notes
 router.get("/page/:page", async (req, res) => {

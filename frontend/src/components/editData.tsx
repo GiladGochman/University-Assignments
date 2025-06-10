@@ -56,7 +56,7 @@ const EditData = () => {
       {notification && <div className="notification">{notification}</div>}
 
       {adding ? (
-        <div>
+        <div className="edit-data">
           <input
             type="text"
             value={newNoteTitle}
@@ -81,7 +81,8 @@ const EditData = () => {
             name="text_input_author_email"
             data-testid="text_input_author_email"
           />
-          <textarea
+          <input
+            type="text"
             value={newNoteText}
             onChange={(e) => setNewNoteText(e.target.value)}
             placeholder="Note Content"
