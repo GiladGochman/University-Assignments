@@ -1,54 +1,46 @@
-import { Request, Response } from 'express';
-import * as noteService from '../services/noteService';
+import { Request, Response, NextFunction } from 'express';
+import { Note } from '../models/noteModel';
+import { AuthReq } from '../middlewares/auth';
 
-export const getAllNotes = async (req: Request, res: Response) => {
-  const page = parseInt(req.query._page as string) || 1;
-  const perPage = parseInt(req.query._per_page as string) || 10;
-  const { notes, count } = await noteService.getAllNotes(page, perPage);
-  res.set('X-Total-Count', count.toString());
-  res.status(200).json(notes);
+export const getNotes = async (_: Request, res: Response, next: NextFunction) => {
+  try {
+    const page = Number(_.query.page) || 1;
+    const limit = 10, skip = (page-1)*limit;
+    const notes = await Note.find().skip(skip).limit(limit).sort('-createdAt');
+    const total = await Note.countDocuments();
+    res.json({ notes, total, page, pages: Math.ceil(total/limit) });
+  } catch (err) { next(err); }
 };
 
-export const getNoteById = async (req: Request, res: Response) => {
-  const note = await noteService.getNoteById(req.params.id);
-  if (!note) return res.status(404).json({ message: 'Note not found' });
-  res.json(note);
+export const createNote = async (req: AuthReq, res: Response, next: NextFunction) => {
+  try {
+    const { title, content } = req.body;
+    const note = new Note({ title, content,
+      author: { name: req.user.name, email: req.user.email },
+      user: req.user._id
+    });
+    res.status(201).json(await note.save());
+  } catch (err) { next(err); }
 };
 
-export const createNote = async (req: Request, res: Response) => {
-  const note = await noteService.createNote(req.body);
-  res.status(201).json(note);
+export const updateNote = async (req: AuthReq, res: Response, next: NextFunction) => {
+  try {
+    const note = await Note.findById(req.params.id);
+    if (!note) return res.status(404).end();
+    if (note.user.toString() !== req.user._id.toString())
+      return res.status(403).json({ error: 'forbidden' });
+    note.title = req.body.title; note.content = req.body.content;
+    res.json(await note.save());
+  } catch (err) { next(err); }
 };
 
-export const updateNoteById = async (req: Request, res: Response) => {
-  const note = await noteService.updateNoteById(req.params.id, req.body);
-  if (!note) return res.status(404).json({ message: 'Note not found' });
-  res.json(note);
-};
-
-export const deleteNoteById = async (req: Request, res: Response) => {
-  const deleted = await noteService.deleteNoteById(req.params.id);
-  if (!deleted) return res.status(404).json({ message: 'Note not found' });
-  res.status(204).end();
-};
-
-export const getNoteByIndex = async (req: Request, res: Response) => {
-  const index = parseInt(req.params.i);
-  const note = await noteService.getNoteByIndex(index);
-  if (!note) return res.status(404).json({ message: 'Note not found' });
-  res.json(note);
-};
-
-export const updateNoteByIndex = async (req: Request, res: Response) => {
-  const index = parseInt(req.params.i);
-  const note = await noteService.updateNoteByIndex(index, req.body);
-  if (!note) return res.status(404).json({ message: 'Note not found' });
-  res.json(note);
-};
-
-export const deleteNoteByIndex = async (req: Request, res: Response) => {
-  const index = parseInt(req.params.i);
-  const deleted = await noteService.deleteNoteByIndex(index);
-  if (!deleted) return res.status(404).json({ message: 'Note not found' });
-  res.status(204).end();
+export const deleteNote = async (req: AuthReq, res: Response, next: NextFunction) => {
+  try {
+    const note = await Note.findById(req.params.id);
+    if (!note) return res.status(404).end();
+    if (note.user.toString() !== req.user._id.toString())
+      return res.status(403).json({ error: 'forbidden' });
+    await Note.findByIdAndDelete(note._id);
+    res.status(204).end();
+  } catch (err) { next(err); }
 };

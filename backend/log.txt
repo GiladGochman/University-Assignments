@@ -368,3 +368,73 @@
 [2025-05-22T15:39:58.301Z] GET /notes?_page=1&_per_page=10 {}
 [2025-05-22T15:39:58.551Z] GET /notes?_page=1&_per_page=10 {}
 [2025-05-22T15:39:58.673Z] DELETE /notes/682f454e3c0a5e579dfd2a92 {}
+[2025-06-11T11:15:49.979Z] POST /users {"name":"Note User","email":"note@x.com","username":"noteuser","password":"pass123"}
+[2025-06-11T11:15:50.064Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"s3cret"}
+[2025-06-11T11:15:50.091Z] POST /api/users {"name":"A","email":"a@x.com","username":"a","password":"pass"}
+[2025-06-11T11:15:50.249Z] POST /login {"username":"noteuser","password":"pass123"}
+[2025-06-11T11:15:50.303Z] POST /api/login {"username":"testuser","password":"s3cret"}
+[2025-06-11T11:15:50.310Z] POST /api/login {"username":"testuser","password":"wrongpass"}
+[2025-06-11T11:15:50.312Z] POST /api/login {"username":"nouser","password":"whatever"}
+[2025-06-11T11:15:50.495Z] GET /notes?page=1 {}
+[2025-06-11T11:15:50.832Z] POST /notes {"title":"First Note","content":"Hello World"}
+[2025-06-11T11:15:51.180Z] PUT /notes/68496566134a7c39cfae896b {"title":"Updated","content":"Content"}
+[2025-06-11T11:15:51.696Z] DELETE /notes/68496566134a7c39cfae896b {}
+[2025-06-11T11:15:52.194Z] GET /notes?page=1 {}
+[2025-06-11T11:15:52.543Z] POST /notes {"title":"No Auth","content":"fail"}
+[2025-06-11T11:16:31.593Z] POST /users {"name":"Note User","email":"note@x.com","username":"noteuser","password":"pass123"}
+[2025-06-11T11:16:31.645Z] POST /api/users {"name":"A","email":"a@x.com","username":"a","password":"pass"}
+[2025-06-11T11:16:31.699Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"s3cret"}
+[2025-06-11T11:16:31.851Z] POST /login {"username":"noteuser","password":"pass123"}
+[2025-06-11T11:16:31.942Z] POST /api/login {"username":"testuser","password":"s3cret"}
+[2025-06-11T11:16:31.946Z] POST /api/login {"username":"testuser","password":"wrongpass"}
+[2025-06-11T11:16:31.948Z] POST /api/login {"username":"nouser","password":"whatever"}
+[2025-06-11T11:16:32.105Z] GET /notes?page=1 {}
+[2025-06-11T11:16:32.441Z] POST /notes {"title":"First Note","content":"Hello World"}
+[2025-06-11T11:16:32.791Z] PUT /notes/6849659000a887c65533b823 {"title":"Updated","content":"Content"}
+[2025-06-11T11:16:33.300Z] DELETE /notes/6849659000a887c65533b823 {}
+[2025-06-11T11:16:33.857Z] GET /notes?page=1 {}
+[2025-06-11T11:16:34.189Z] POST /notes {"title":"No Auth","content":"fail"}
+[2025-06-11T11:19:40.182Z] POST /users {"name":"A","email":"a@x.com","username":"a","password":"pass"}
+[2025-06-11T11:19:40.229Z] POST /users {"name":"Note User","email":"note@x.com","username":"noteuser","password":"pass123"}
+[2025-06-11T11:19:40.298Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"s3cret"}
+[2025-06-11T11:19:40.454Z] POST /users {"name":"B","email":"b@x.com","username":"b","password":"pass2"}
+[2025-06-11T11:19:40.470Z] POST /login {"username":"noteuser","password":"pass123"}
+[2025-06-11T11:19:40.535Z] POST /login {"username":"testuser","password":"s3cret"}
+[2025-06-11T11:19:40.688Z] POST /users {"username":"c"}
+[2025-06-11T11:19:40.725Z] GET /notes?page=1 {}
+[2025-06-11T11:19:40.766Z] POST /login {"username":"testuser","password":"wrongpass"}
+[2025-06-11T11:19:40.996Z] POST /login {"username":"nouser","password":"whatever"}
+[2025-06-11T11:19:41.052Z] POST /notes {"title":"First Note","content":"Hello World"}
+[2025-06-11T11:19:41.383Z] PUT /notes/6849664dad03cd5bcf7ab868 {"title":"Updated","content":"Content"}
+[2025-06-11T11:19:41.912Z] DELETE /notes/6849664dad03cd5bcf7ab868 {}
+[2025-06-11T11:19:42.416Z] GET /notes?page=1 {}
+[2025-06-11T11:19:42.766Z] POST /notes {"title":"No Auth","content":"fail"}
+[2025-06-11T11:23:02.959Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"s3cret"}
+[2025-06-11T11:23:03.015Z] POST /users {"name":"A","email":"a@x.com","username":"a","password":"pass"}
+[2025-06-11T11:23:03.039Z] POST /users {"name":"Note User","email":"note@x.com","username":"noteuser","password":"pass123"}
+[2025-06-11T11:23:03.228Z] POST /login {"username":"testuser","password":"s3cret"}
+[2025-06-11T11:23:03.259Z] POST /users {"name":"B","email":"b@x.com","username":"b","password":"pass2"}
+[2025-06-11T11:23:03.283Z] POST /login {"username":"noteuser","password":"pass123"}
+[2025-06-11T11:23:03.471Z] POST /login {"username":"testuser","password":"wrongpass"}
+[2025-06-11T11:23:03.516Z] GET /notes?page=1 {}
+[2025-06-11T11:23:03.517Z] POST /users {"username":"c"}
+[2025-06-11T11:23:03.721Z] POST /login {"username":"nouser","password":"whatever"}
+[2025-06-11T11:23:03.842Z] POST /notes {"title":"First Note","content":"Hello World"}
+[2025-06-11T11:23:04.177Z] PUT /notes/6849671817f4299d933d8db3 {"title":"Updated","content":"Content"}
+[2025-06-11T11:23:04.676Z] DELETE /notes/6849671817f4299d933d8db3 {}
+[2025-06-11T11:23:05.179Z] GET /notes?page=1 {}
+[2025-06-11T11:23:05.505Z] POST /notes {"title":"No Auth","content":"fail"}
+[2025-06-11T11:29:18.219Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"s3cret"}
+[2025-06-11T11:29:18.219Z] POST /users {"name":"Note User","email":"note@x.com","username":"noteuser","password":"pass123"}
+[2025-06-11T11:29:18.594Z] POST /login {"username":"testuser","password":"s3cret"}
+[2025-06-11T11:29:18.599Z] POST /login {"username":"noteuser","password":"pass123"}
+[2025-06-11T11:29:18.611Z] POST /users {"name":"B","email":"b@x.com","username":"b","password":"pass2"}
+[2025-06-11T11:29:19.031Z] POST /login {"username":"testuser","password":"wrongpass"}
+[2025-06-11T11:29:19.032Z] GET /notes?page=1 {}
+[2025-06-11T11:29:19.080Z] POST /users {"username":"c"}
+[2025-06-11T11:29:19.271Z] POST /login {"username":"nouser","password":"whatever"}
+[2025-06-11T11:29:19.451Z] POST /notes {"title":"First Note","content":"Hello World"}
+[2025-06-11T11:29:19.981Z] PUT /notes/6849688f086b78bdac8a1d8d {"title":"Updated","content":"Content"}
+[2025-06-11T11:29:20.659Z] DELETE /notes/6849688f086b78bdac8a1d8d {}
+[2025-06-11T11:29:21.371Z] GET /notes?page=1 {}
+[2025-06-11T11:29:21.778Z] POST /notes {"title":"No Auth","content":"fail"}

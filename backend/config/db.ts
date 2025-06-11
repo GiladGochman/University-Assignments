@@ -1,16 +1,13 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import { MONGODB_URI } from './env';
 
-dotenv.config({ path: './backend/.env' });
-
+// Connect to MongoDB Atlas
 export const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_CONNECTION_URL || '');
+    await mongoose.connect(MONGODB_URI!);
     console.log('Connected to MongoDB Atlas');
   } catch (error) {
     console.error('MongoDB connection failed:', error);
     process.exit(1);
   }
 };
-
-
