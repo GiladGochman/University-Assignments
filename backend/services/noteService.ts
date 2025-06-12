@@ -1,4 +1,4 @@
-import  Note from '../models/noteModel';
+import  {Note} from '../models/noteModel';
 
 export const getAllNotes = async (page = 1, perPage = 10) => {
   const skip = (page - 1) * perPage;

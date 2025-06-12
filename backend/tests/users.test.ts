@@ -1,4 +1,3 @@
-// tests/users.test.ts
 import request from 'supertest';
 import mongoose from 'mongoose';
 import app from '../expressApp';
