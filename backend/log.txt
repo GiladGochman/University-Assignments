@@ -452,3 +452,1229 @@
 [2025-06-12T07:43:01.484Z] DELETE /notes/684a8504248ca645d3ed8d0f {}
 [2025-06-12T07:43:01.986Z] GET /notes?page=1 {}
 [2025-06-12T07:43:02.323Z] POST /notes {"title":"No Auth","content":"fail"}
+[2025-06-14T11:23:52.774Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:23:52.799Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:23:53.123Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:23:53.129Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:23:53.135Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:23:53.443Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:23:53.785Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:23:54.789Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:23:54.804Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:23:55.273Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:24:03.307Z] GET /notes?page=4&perPage=10 {}
+[2025-06-14T11:24:03.316Z] GET /notes?_page=2&_per_page=10 {}
+[2025-06-14T11:24:04.053Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:24:25.123Z] POST /users {"name":"Rotem Aftabi","email":"rotemaftabi9@gmail.com","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T11:24:25.432Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:24:25.766Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:24:25.770Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:24:26.085Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:24:26.091Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:24:26.715Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:24:32.407Z] POST /auth/login {"username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T11:24:50.383Z] POST /auth/login {"username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T11:25:16.299Z] DELETE /test/reset {}
+[2025-06-14T11:25:16.477Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-06-14T11:25:16.964Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:16.966Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:17.282Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:17.287Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:17.296Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:17.607Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:17.615Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:17.618Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:17.917Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:17.931Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:23.971Z] DELETE /test/reset {}
+[2025-06-14T11:25:24.143Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-06-14T11:25:24.396Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:24.398Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:24.712Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:24.714Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:24.715Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:25.039Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:25.037Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:25.040Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:25.364Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:25.367Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:35.917Z] DELETE /test/reset {}
+[2025-06-14T11:25:36.090Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-06-14T11:25:36.330Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:36.336Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:36.651Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:36.655Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:36.663Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:36.963Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:37.008Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:37.006Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:37.286Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:37.333Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:47.906Z] DELETE /test/reset {}
+[2025-06-14T11:25:48.076Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-06-14T11:25:48.328Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:48.330Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:48.643Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:48.689Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:48.690Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:48.951Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:49.003Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:49.011Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:49.259Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:49.333Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:55.438Z] DELETE /test/reset {}
+[2025-06-14T11:25:55.610Z] POST /notes {"title":"Test Note","author":{"name":"Rotem","email":"rotem@example.com"},"content":"Initial content"}
+[2025-06-14T11:25:55.826Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.834Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.845Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.858Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:55.861Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.868Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:55.876Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.892Z] POST /notes {"title":"Note 6","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.898Z] POST /notes {"title":"Note 7","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.908Z] POST /notes {"title":"Note 8","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.915Z] POST /notes {"title":"Note 9","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.926Z] POST /notes {"title":"Note 10","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:55.932Z] POST /notes {"title":"Note 11","content":"Some content","author":{"name":"Rotem","email":"rotem@example.com"}}
+[2025-06-14T11:25:56.081Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:56.101Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:56.395Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:25:56.400Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:56.739Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:25:56.740Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:57.065Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:25:57.390Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:57.709Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:25:58.023Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:26:08.701Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:26:09.057Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:26:09.390Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:26:09.734Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:27:19.080Z] GET /notes {}
+[2025-06-14T11:27:19.510Z] GET /favicon.ico {}
+[2025-06-14T11:34:59.264Z] DELETE /test/reset {}
+[2025-06-14T11:34:59.285Z] GET /notes {}
+[2025-06-14T11:34:59.640Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T11:34:59.984Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T11:35:00.245Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:00.816Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:00.820Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:01.144Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:01.148Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:01.155Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:01.500Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:01.820Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:04.359Z] DELETE /test/reset {}
+[2025-06-14T11:35:04.693Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T11:35:04.951Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T11:35:05.138Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:05.276Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:05.472Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:05.476Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:05.811Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:05.816Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:05.822Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:05.824Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:06.133Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:06.135Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:06.146Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:06.464Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:06.503Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:06.608Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:06.622Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:06.850Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:06.926Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:06.931Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:07.023Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:07.244Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:07.248Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:07.561Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:07.796Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:08.111Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:08.431Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:09.305Z] DELETE /test/reset {}
+[2025-06-14T11:35:09.652Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T11:35:09.950Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T11:35:10.216Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:10.794Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:10.798Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:11.114Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:11.116Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:11.127Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:11.443Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:11.451Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:11.460Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:11.771Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:11.788Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:13.999Z] GET /notes {}
+[2025-06-14T11:35:14.519Z] DELETE /test/reset {}
+[2025-06-14T11:35:14.893Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T11:35:15.171Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T11:35:15.455Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:15.994Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:15.996Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:16.316Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:16.324Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:16.336Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:16.660Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:16.664Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:16.667Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:16.980Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:16.984Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:19.570Z] DELETE /test/reset {}
+[2025-06-14T11:35:19.900Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T11:35:20.158Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T11:35:20.410Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:20.966Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:20.990Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:20.993Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:21.296Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:21.302Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:21.304Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:21.311Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:21.627Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:21.646Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:21.643Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:21.640Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:21.810Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:21.819Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:21.953Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:21.965Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:21.978Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:22.138Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:35:22.144Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:22.279Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T11:35:22.457Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:22.465Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:35:22.796Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:35:22.998Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:23.333Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:23.654Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:35:25.130Z] GET /notes?page=4&perPage=10 {}
+[2025-06-14T11:35:25.132Z] GET /notes?_page=2&_per_page=10 {}
+[2025-06-14T11:35:26.288Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:36:04.725Z] GET /notes {}
+[2025-06-14T11:44:35.281Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:44:35.289Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:44:35.635Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T11:44:35.642Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:44:35.657Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:44:35.987Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:44:36.002Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T11:44:36.017Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T11:44:36.331Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T11:44:36.359Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:14:23.581Z] DELETE /test/reset {}
+[2025-06-14T13:14:24.927Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:14:25.179Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:14:25.425Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:25.979Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:25.981Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:28.018Z] DELETE /test/reset {}
+[2025-06-14T13:14:28.349Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:14:28.597Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:14:28.864Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:29.405Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:29.407Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:29.717Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:29.719Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:14:29.725Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:30.043Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:30.363Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:32.915Z] DELETE /test/reset {}
+[2025-06-14T13:14:33.267Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:14:33.549Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:14:33.808Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:34.001Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:34.003Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:34.321Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:34.325Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:14:34.327Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:34.380Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:34.384Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:34.650Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:14:34.653Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:14:34.662Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:34.969Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:14:34.988Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:35.529Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:35.531Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:14:35.538Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:37.883Z] DELETE /test/reset {}
+[2025-06-14T13:14:38.252Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:14:38.496Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:14:38.741Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:39.261Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:39.264Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:39.575Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:39.577Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:14:39.584Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:39.668Z] GET /notes {}
+[2025-06-14T13:14:39.894Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:14:39.896Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:14:39.911Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:40.231Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:14:40.235Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:42.544Z] DELETE /test/reset {}
+[2025-06-14T13:14:42.936Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:14:43.176Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:14:43.422Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:43.902Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:43.948Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:43.950Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:44.236Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:44.261Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:44.265Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:14:44.272Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:14:44.568Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:44.573Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:44.589Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:14:44.591Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:14:44.885Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:14:44.896Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:14:44.905Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:14:45.226Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T13:15:21.625Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:15:21.630Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:15:21.949Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:15:21.959Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:15:21.963Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:15:22.278Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:15:22.281Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:15:22.289Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:15:22.597Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:15:22.617Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:15:28.526Z] POST /auth/login {"username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:15:31.442Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:15:31.774Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:15:31.778Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:15:32.100Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:15:32.103Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:15:32.421Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:15:34.922Z] POST /users {"name":"","email":"","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:15:36.514Z] POST /users {"name":"","email":"","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:15:42.385Z] POST /users {"name":"Rotem Aftabi","email":"rotemaftabi9@gmail.com","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:15:42.643Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:15:42.965Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:15:42.971Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:15:43.294Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:15:43.317Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:15:43.639Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:15:47.018Z] POST /auth/login {"username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:15:49.877Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:15:50.210Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:15:50.217Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:15:50.537Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:15:50.542Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:15:50.860Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:15:58.460Z] POST /users {"name":"Rotem Aftabi","email":"rotemaftabi9@gmail.com","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:15:59.765Z] POST /users {"name":"Rotem Aftabi","email":"rotemaftabi9@gmail.com","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:15:59.958Z] POST /users {"name":"Rotem Aftabi","email":"rotemaftabi9@gmail.com","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:16:00.180Z] POST /users {"name":"Rotem Aftabi","email":"rotemaftabi9@gmail.com","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:16:05.697Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:16:06.034Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:16:06.359Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:16:06.683Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:16:08.884Z] POST /users {"name":"","email":"","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:16:14.164Z] GET /users {}
+[2025-06-14T13:18:09.668Z] POST /users {"name":"Rotem Aftabi","email":"rotemaft@post.bgu.ac.il","username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:19:25.999Z] POST /users {"name":"Ron Neve","email":"ronave3@gmail.com","username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:19:26.537Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:19:26.861Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:19:26.870Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:19:27.210Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:19:27.212Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:19:27.534Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:19:31.800Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:25:24.824Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:25:25.894Z] DELETE /test/reset {}
+[2025-06-14T13:25:26.358Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:25:26.644Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:25:28.737Z] DELETE /test/reset {}
+[2025-06-14T13:25:29.077Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:25:29.342Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:25:31.491Z] DELETE /test/reset {}
+[2025-06-14T13:25:31.836Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:25:32.103Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:25:34.463Z] DELETE /test/reset {}
+[2025-06-14T13:25:34.802Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:25:35.059Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:25:37.005Z] DELETE /test/reset {}
+[2025-06-14T13:25:37.345Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:25:37.599Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:25:41.963Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:25:42.304Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:25:42.651Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:25:42.984Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:25:58.243Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:29:05.246Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:29:05.604Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:29:05.609Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:29:05.937Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:29:05.942Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:29:06.276Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:29:07.091Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:29:07.097Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:29:07.413Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:29:07.425Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:29:07.430Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:29:07.731Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:29:08.042Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:29:08.554Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:29:08.558Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:29:08.870Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:29:11.738Z] GET /notes {}
+[2025-06-14T13:29:17.308Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:29:30.116Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:29:40.424Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:29:40.749Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:29:40.755Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:29:41.068Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:29:41.070Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:29:41.385Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:34:12.672Z] POST /auth/login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:35:54.841Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:36:02.541Z] POST /auth/login {"username":"Ron Neve","password":"ron123"}
+[2025-06-14T13:36:03.711Z] POST /auth/login {"username":"Ron Neve","password":"ron123"}
+[2025-06-14T13:36:09.878Z] POST /auth/login {"username":"Ron Neve","password":"Ron"}
+[2025-06-14T13:36:26.154Z] POST /auth/login {"username":"Rotem Aftabi","password":"Rotem123"}
+[2025-06-14T13:36:32.494Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:36:32.846Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:36:33.177Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:36:33.501Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:36:54.794Z] POST /users {"name":"Ron Neve","email":"ronave3@gmail.com","username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:36:55.098Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:36:55.414Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:36:55.421Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:36:55.738Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:36:55.746Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:36:56.069Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:37:22.994Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:37:57.073Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:38:04.485Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:38:04.770Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:38:05.093Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:38:05.098Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:38:05.450Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:38:05.453Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:38:05.792Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:38:27.694Z] DELETE /test/reset {}
+[2025-06-14T13:38:28.035Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:38:28.297Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:38:30.192Z] DELETE /test/reset {}
+[2025-06-14T13:38:30.528Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:38:30.780Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:38:32.863Z] DELETE /test/reset {}
+[2025-06-14T13:38:33.198Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:38:33.452Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:38:35.464Z] DELETE /test/reset {}
+[2025-06-14T13:38:35.801Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:38:36.050Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:38:38.197Z] DELETE /test/reset {}
+[2025-06-14T13:38:38.547Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:38:38.830Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:38:39.512Z] GET /notes {}
+[2025-06-14T13:38:41.189Z] GET /notes {}
+[2025-06-14T13:38:45.893Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:38:45.904Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:38:46.227Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:38:46.244Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:38:46.263Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:38:46.547Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:38:46.862Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:38:47.399Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:38:47.405Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:38:47.720Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:38:59.473Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:39:15.892Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:39:19.601Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:43:28.655Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:43:29.385Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:43:30.584Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:43:36.273Z] POST /login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:43:37.632Z] POST /login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:44:22.192Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:44:48.842Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:44:49.233Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:44:49.568Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:44:49.897Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:45:19.572Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:45:30.206Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:45:30.563Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:45:30.568Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:45:30.894Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:45:30.901Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:45:31.256Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:46:11.550Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:48:49.800Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:48:56.379Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T13:52:32.849Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:52:33.253Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:52:33.565Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:52:33.876Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:52:56.549Z] POST /users {"name":"Ron Neve","email":"ronave3@gmail.com","username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:52:56.867Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:52:57.193Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:52:57.198Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:52:57.516Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:52:57.519Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:52:57.840Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:53:06.770Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:56:00.079Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T13:56:15.339Z] POST /auth/login {"username":"Ron Neve","password":"Ron123"}
+[2025-06-14T13:56:23.366Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:56:23.694Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:56:23.898Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:56:24.056Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:56:24.210Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:56:24.217Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:56:24.371Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T13:56:25.518Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:56:25.523Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:56:25.851Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:56:49.264Z] POST /users {"name":"Rotem Aftabi","email":"rotemaftabi9@gmail.com","username":"Rotem","password":"Rotem17335"}
+[2025-06-14T13:56:49.580Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:56:49.906Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T13:56:49.911Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:56:50.254Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:56:50.259Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T13:56:50.579Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T13:56:53.675Z] POST /auth/login {"username":"Rotem","password":"Rotem17335"}
+[2025-06-14T14:00:35.953Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:00:36.310Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:00:36.635Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:00:36.956Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:00:45.740Z] POST /login {"username":"Rotem","password":"Rotem17335"}
+[2025-06-14T14:00:46.058Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:00:46.379Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:00:46.387Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:00:46.732Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:00:46.735Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:00:47.058Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:00:58.671Z] DELETE /test/reset {}
+[2025-06-14T14:00:59.077Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T14:00:59.334Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T14:00:59.586Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:00.157Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:00.159Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:00.477Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:00.479Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:00.480Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:00.791Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:00.792Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:00.797Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:01.111Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:01.117Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:03.507Z] DELETE /test/reset {}
+[2025-06-14T14:01:03.839Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T14:01:04.089Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T14:01:04.338Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:04.859Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:04.861Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:05.182Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:05.186Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:05.193Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:05.498Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:05.501Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:05.508Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:05.805Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:05.836Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:08.171Z] DELETE /test/reset {}
+[2025-06-14T14:01:08.508Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T14:01:08.757Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T14:01:09.015Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:09.574Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:09.577Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:09.887Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:09.894Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:09.899Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:10.194Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:10.217Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:10.218Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:10.527Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:10.536Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:13.086Z] DELETE /test/reset {}
+[2025-06-14T14:01:13.422Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T14:01:13.674Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T14:01:13.959Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:14.792Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:14.794Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:14.812Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:14.818Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:15.106Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:15.115Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:15.119Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:15.129Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:15.144Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:15.442Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:15.603Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:15.613Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:15.771Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:15.954Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:16.159Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:16.478Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:16.793Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:18.055Z] DELETE /test/reset {}
+[2025-06-14T14:01:18.386Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T14:01:18.643Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T14:01:18.912Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:19.396Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:19.443Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:19.445Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:19.721Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:19.725Z] GET /notes {}
+[2025-06-14T14:01:19.754Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:19.761Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:19.767Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:20.066Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:20.091Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:20.093Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:20.102Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:20.427Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:20.432Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:20.436Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:20.752Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T14:01:22.715Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:22.719Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:23.040Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:23.042Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:23.094Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:23.357Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:23.359Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:23.420Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:23.680Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:23.742Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:24.948Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:24.946Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:25.331Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:01:25.269Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:25.337Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:25.677Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:25.681Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:01:25.679Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:01:25.990Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:01:26.017Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:41:32.556Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:41:32.568Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:41:34.015Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:41:34.229Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:41:34.306Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:41:34.583Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:41:34.920Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:41:35.510Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:41:35.525Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:41:36.463Z] GET /notes {}
+[2025-06-14T14:41:36.909Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:41:49.964Z] POST /login {"username":"Rotem","password":"Rotem17335"}
+[2025-06-14T14:42:47.168Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T14:42:47.554Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:42:48.413Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:42:48.418Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:42:48.931Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:42:48.932Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:42:49.313Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:44:22.033Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:44:22.055Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:44:22.423Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T14:44:22.425Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:44:22.479Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:44:23.041Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:44:23.053Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T14:44:23.062Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T14:44:23.498Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T14:44:23.512Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:00:10.052Z] DELETE /test/reset {}
+[2025-06-14T15:00:10.868Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:00:11.140Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:00:11.405Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:00:13.819Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:13.892Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:14.156Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:14.174Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:14.218Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:14.555Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:14.902Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:15.786Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:15.792Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:00:16.194Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:00:16.509Z] DELETE /test/reset {}
+[2025-06-14T15:00:17.001Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:00:17.262Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:00:17.610Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:00:18.199Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:18.204Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:18.609Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:18.611Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:18.613Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:18.942Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:00:18.940Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:18.946Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:21.521Z] DELETE /test/reset {}
+[2025-06-14T15:00:22.179Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:00:22.442Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:00:22.706Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:00:23.130Z] GET /notes {}
+[2025-06-14T15:00:23.281Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:23.283Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:23.602Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:23.607Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:23.616Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:24.056Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:26.462Z] DELETE /test/reset {}
+[2025-06-14T15:00:26.967Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:00:27.314Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:27.318Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:27.459Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:00:27.641Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:27.646Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:27.661Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:27.758Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:00:28.070Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:28.068Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:28.073Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:00:28.417Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:28.428Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:00:28.519Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:28.521Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:28.840Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:28.843Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:28.853Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:29.173Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:29.175Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:00:29.181Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:31.638Z] DELETE /test/reset {}
+[2025-06-14T15:00:32.049Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:00:32.341Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:00:32.609Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:00:33.594Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:00:33.624Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:33.628Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:33.987Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:00:33.988Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:00:33.992Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:00:33.994Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:10.048Z] DELETE /test/reset {}
+[2025-06-14T15:06:10.405Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:06:10.667Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:06:10.938Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:11.546Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:11.548Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:11.907Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:11.909Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:11.912Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:12.312Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:12.315Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:12.317Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:12.726Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:12.728Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:13.629Z] DELETE /test/reset {}
+[2025-06-14T15:06:13.981Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:06:14.255Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:06:14.570Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:15.158Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:15.160Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:15.555Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:15.557Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:15.562Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:15.884Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:15.888Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:15.891Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:16.270Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:16.272Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:25.903Z] DELETE /test/reset {}
+[2025-06-14T15:06:26.288Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:06:26.559Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:06:26.955Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:27.606Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:27.608Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:28.080Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:28.082Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:28.083Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:28.491Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:28.494Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:28.493Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:28.855Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:28.860Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:29.115Z] PUT /notes/684d8ff332702106835f673d {"title":"Test Note","content":"Updated content"}
+[2025-06-14T15:06:36.291Z] DELETE /test/reset {}
+[2025-06-14T15:06:36.694Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:06:37.000Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:06:37.290Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:37.960Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:37.964Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:38.424Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:38.427Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:38.428Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:38.790Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:38.792Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:38.794Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:39.653Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:39.655Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:39.933Z] DELETE /notes/684d8ffd32702106835f675c {}
+[2025-06-14T15:06:47.274Z] DELETE /test/reset {}
+[2025-06-14T15:06:47.750Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:06:48.009Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:06:48.302Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:48.850Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:48.908Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:48.910Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:49.281Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:49.283Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:49.285Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:49.289Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:49.689Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:49.696Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:49.692Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:49.700Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:50.100Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:50.102Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:50.108Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:50.436Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:50.790Z] POST /notes {"title":"Note 6","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:51.118Z] POST /notes {"title":"Note 7","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:51.808Z] POST /notes {"title":"Note 8","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:52.136Z] POST /notes {"title":"Note 9","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:52.556Z] POST /notes {"title":"Note 10","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:52.887Z] POST /notes {"title":"Note 11","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:06:53.315Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:53.317Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:53.635Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:06:53.637Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:53.645Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:53.964Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:06:53.967Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:53.972Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:06:54.289Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:06:54.301Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:16.681Z] DELETE /test/reset {}
+[2025-06-14T15:08:17.146Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:08:17.858Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:08:18.152Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:19.209Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:19.212Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:19.594Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:19.595Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:19.597Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:20.003Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:20.006Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:20.008Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:20.329Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:20.331Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:21.358Z] DELETE /test/reset {}
+[2025-06-14T15:08:21.705Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:08:21.962Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:08:22.243Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:23.148Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:23.150Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:23.535Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:23.536Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:23.546Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:23.862Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:23.867Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:23.870Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:24.193Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:24.195Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:30.179Z] DELETE /test/reset {}
+[2025-06-14T15:08:30.524Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:08:30.783Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:08:31.052Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:31.700Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:31.702Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:32.085Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:32.087Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:32.089Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:32.452Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:32.454Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:32.455Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:32.809Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:32.823Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:33.201Z] PUT /notes/684d906f32702106835f6804 {"title":"Test Note","content":"Updated content"}
+[2025-06-14T15:08:40.574Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:40.583Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:40.992Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:41.004Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:40.994Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:41.082Z] DELETE /test/reset {}
+[2025-06-14T15:08:41.315Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:41.330Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:41.423Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:08:41.707Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:41.710Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:08:41.960Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:41.996Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:42.038Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:42.676Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:42.679Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:42.996Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:42.999Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:43.007Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:43.347Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:43.350Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:43.351Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:43.775Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:44.024Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:44.685Z] DELETE /notes/684d907a32702106835f6836 {}
+[2025-06-14T15:08:51.841Z] DELETE /test/reset {}
+[2025-06-14T15:08:52.204Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:08:52.571Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:08:52.889Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:53.475Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:53.500Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:53.503Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:53.811Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:53.822Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:53.830Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:08:53.836Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:54.170Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:54.174Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:08:54.177Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:54.180Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:54.535Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:08:54.537Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:08:54.551Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:55.199Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:55.600Z] POST /notes {"title":"Note 6","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:55.933Z] POST /notes {"title":"Note 7","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:56.359Z] POST /notes {"title":"Note 8","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:56.713Z] POST /notes {"title":"Note 9","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:08:57.585Z] POST /notes {"title":"Note 10","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:19.192Z] DELETE /test/reset {}
+[2025-06-14T15:09:19.608Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:09:19.911Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:09:20.245Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:20.836Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:20.838Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:21.482Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:21.522Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:21.523Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:21.821Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:21.840Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:21.846Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:22.146Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:22.167Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:22.885Z] DELETE /test/reset {}
+[2025-06-14T15:09:23.221Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:09:23.489Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:09:24.050Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:24.611Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:24.613Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:25.338Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:25.598Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:25.601Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:25.695Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:25.923Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:25.929Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:26.015Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:26.566Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:31.556Z] DELETE /test/reset {}
+[2025-06-14T15:09:32.000Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:09:32.267Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:09:32.549Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:33.171Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:33.169Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:33.494Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:33.499Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:33.509Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:33.835Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:33.838Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:33.843Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:34.206Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:34.213Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:34.672Z] PUT /notes/684d90ac32702106835f68c8 {"title":"Test Note","content":"Updated content"}
+[2025-06-14T15:09:41.743Z] DELETE /test/reset {}
+[2025-06-14T15:09:42.137Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:09:42.439Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:09:42.734Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:43.363Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:43.366Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:43.732Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:43.734Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:43.736Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:44.061Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:44.064Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:44.069Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:44.435Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:44.449Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:45.362Z] DELETE /notes/684d90b632702106835f68e7 {}
+[2025-06-14T15:09:52.507Z] DELETE /test/reset {}
+[2025-06-14T15:09:52.954Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:09:53.218Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:09:53.599Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:54.225Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:54.288Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:54.293Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:54.622Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:09:54.627Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:54.632Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:54.634Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:54.944Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:54.958Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:09:54.960Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:54.965Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:55.263Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:09:55.286Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:09:55.299Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:55.630Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:56.031Z] POST /notes {"title":"Note 6","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:56.464Z] POST /notes {"title":"Note 7","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:58.107Z] POST /notes {"title":"Note 8","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:58.825Z] POST /notes {"title":"Note 9","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:59.194Z] POST /notes {"title":"Note 10","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:09:59.535Z] POST /notes {"title":"Note 11","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:10:00.334Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:10:00.336Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:10:00.768Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:10:00.769Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:10:01.176Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:10:01.183Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:10:01.185Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:10:01.499Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:10:01.509Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:10:01.843Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:00.053Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:00.072Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:00.382Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:00.387Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:00.402Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:00.722Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:00.729Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:00.734Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:01.157Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:01.176Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:08.887Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:08.912Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:09.267Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:09.276Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:09.318Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:09.710Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:09.730Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:09.944Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:10.058Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:10.274Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:16.688Z] DELETE /test/reset {}
+[2025-06-14T15:14:17.182Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:14:17.482Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:14:17.789Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:18.481Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:18.483Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:18.910Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:18.913Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:19.322Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:19.325Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:19.337Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:19.722Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:19.733Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:20.097Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:20.575Z] DELETE /test/reset {}
+[2025-06-14T15:14:20.928Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:14:21.241Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:14:21.502Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:22.156Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:22.168Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:22.505Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:22.513Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:22.517Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:22.863Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:22.872Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:23.217Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:23.490Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:23.828Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:32.535Z] DELETE /test/reset {}
+[2025-06-14T15:14:32.881Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:14:33.168Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:14:33.434Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:34.050Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:34.047Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:34.380Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:34.382Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:34.395Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:34.740Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:34.744Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:35.070Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:35.074Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:35.392Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:35.518Z] PUT /notes/684d91d932702106835f69b7 {"title":"Test Note","content":"Updated content"}
+[2025-06-14T15:14:42.677Z] DELETE /test/reset {}
+[2025-06-14T15:14:43.025Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:14:43.283Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:14:43.584Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:44.192Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:44.194Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:44.521Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:44.519Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:44.531Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:44.849Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:44.852Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:45.458Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:45.498Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:45.779Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:46.195Z] DELETE /notes/684d91e332702106835f69d6 {}
+[2025-06-14T15:14:53.087Z] DELETE /test/reset {}
+[2025-06-14T15:14:53.420Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:14:53.692Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:14:53.951Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:54.471Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:54.497Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:54.500Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:54.859Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:54.861Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:54.867Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:54.864Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:55.186Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:55.198Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:55.200Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:55.205Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:55.515Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:55.528Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:55.533Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:55.863Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:56.290Z] POST /notes {"title":"Note 6","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:57.109Z] POST /notes {"title":"Note 7","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:57.517Z] POST /notes {"title":"Note 8","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:57.886Z] POST /notes {"title":"Note 9","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:58.306Z] POST /notes {"title":"Note 10","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:58.648Z] POST /notes {"title":"Note 11","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:14:59.130Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:59.132Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:59.561Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:14:59.567Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:14:59.563Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:59.974Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:14:59.978Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:14:59.979Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:15:00.338Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:15:00.339Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:15:57.817Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:15:57.851Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:15:58.211Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:15:58.219Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:15:58.228Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:15:58.545Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:15:58.553Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:15:58.565Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:15:58.913Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:15:58.919Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:03.731Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:03.749Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:04.080Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:04.078Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:04.098Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:16:04.468Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:04.478Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:16:04.489Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:04.807Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:04.830Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:25.966Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:25.978Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:26.298Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:26.309Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:26.317Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:16:26.643Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:26.671Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:16:26.686Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:26.980Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:27.014Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:40.180Z] DELETE /test/reset {}
+[2025-06-14T15:16:40.612Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:16:40.872Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:16:41.142Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:16:42.431Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:42.433Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:43.198Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:43.200Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:43.202Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:16:43.524Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:43.528Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:16:43.532Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:43.849Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:43.862Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:44.489Z] DELETE /test/reset {}
+[2025-06-14T15:16:44.874Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:16:45.130Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:16:45.405Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:16:45.977Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:45.979Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:46.362Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:46.372Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:46.374Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:16:46.678Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:46.698Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:16:46.702Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:47.070Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:16:47.073Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:16:56.490Z] DELETE /test/reset {}
+[2025-06-14T15:16:56.921Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:16:57.568Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:16:57.828Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:16:59.309Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:16:59.311Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:00.136Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:00.171Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:00.173Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:00.459Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:00.489Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:00.499Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:00.841Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:01.213Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:01.760Z] PUT /notes/684d926a32702106835f6aba {"title":"Test Note","content":"Updated content"}
+[2025-06-14T15:17:08.396Z] DELETE /test/reset {}
+[2025-06-14T15:17:08.735Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:17:08.992Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:17:09.295Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:09.915Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:09.919Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:10.329Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:10.330Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:10.332Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:11.019Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:11.047Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:11.415Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:11.417Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:11.754Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:11.920Z] DELETE /notes/684d927532702106835f6ad9 {}
+[2025-06-14T15:17:18.946Z] DELETE /test/reset {}
+[2025-06-14T15:17:19.313Z] POST /users {"name":"Test User","email":"test@example.com","username":"testuser","password":"testpass"}
+[2025-06-14T15:17:19.959Z] POST /login {"username":"testuser","password":"testpass"}
+[2025-06-14T15:17:20.242Z] POST /notes {"title":"Test Note","content":"Initial content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:20.839Z] POST /notes {"title":"Note 1","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:20.867Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:20.869Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:21.175Z] POST /notes {"title":"Note 2","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:21.187Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:21.189Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:21.599Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:21.602Z] POST /notes {"title":"Note 3","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:21.612Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:21.613Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:22.003Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:22.006Z] POST /notes {"title":"Note 4","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:22.010Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:22.367Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:22.377Z] POST /notes {"title":"Note 5","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:22.809Z] POST /notes {"title":"Note 6","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:23.231Z] POST /notes {"title":"Note 7","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:23.607Z] POST /notes {"title":"Note 8","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:24.050Z] POST /notes {"title":"Note 9","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:25.156Z] POST /notes {"title":"Note 10","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:25.587Z] POST /notes {"title":"Note 11","content":"Some content","author":{"name":"Test User","email":"test@example.com"}}
+[2025-06-14T15:17:26.351Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:26.354Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:26.721Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:26.723Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:26.728Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:27.079Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:27.089Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:27.087Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:27.841Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:27.839Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:45.015Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:45.020Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:45.337Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:45.338Z] GET /notes?page=1&perPage=10 {}
+[2025-06-14T15:17:45.376Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:45.665Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:45.691Z] GET /notes?page=2&perPage=10 {}
+[2025-06-14T15:17:45.701Z] GET /notes?page=3&perPage=10 {}
+[2025-06-14T15:17:45.985Z] GET /notes?_page=1&_per_page=10 {}
+[2025-06-14T15:17:46.020Z] GET /notes?page=3&perPage=10 {}

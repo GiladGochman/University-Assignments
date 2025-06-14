@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNotes } from '../contexts/NotesContext';
+import { deleteNote, updateNote } from '../services/notes';
 
 type NoteProps = {
   _id: string;
@@ -13,24 +14,27 @@ export default function Note({ _id, title, content, author }: NoteProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(content);
 
+  const token = localStorage.getItem('user-token'); // או מתוך context אם את שומרת שם
+
   const handleDelete = async () => {
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/notes/${_id}`, {
-      method: 'DELETE',
-    });
-    dispatch({ type: 'DELETE_NOTE', payload: _id });
-    dispatch({ type: "SET_NOTIFICATION", payload: 'Note deleted' });
+    try {
+      await deleteNote(_id, token!);
+      dispatch({ type: 'DELETE_NOTE', payload: _id });
+      dispatch({ type: "SET_NOTIFICATION", payload: 'Note deleted' });
+    } catch (error) {
+      dispatch({ type: "SET_NOTIFICATION", payload: 'Failed to delete note' });
+    }
   };
 
   const handleSave = async () => {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/notes/${_id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, author, content: editedContent }),
-    });
-    const updated = await res.json();
-    dispatch({ type: 'UPDATE_NOTE', payload: updated });
-    dispatch({ type: "SET_NOTIFICATION" , payload: 'Note updated' });
-    setIsEditing(false);
+    try {
+      const updated = await updateNote(_id, { title, content: editedContent }, token!);
+      dispatch({ type: 'UPDATE_NOTE', payload: updated });
+      dispatch({ type: "SET_NOTIFICATION", payload: 'Note updated' });
+      setIsEditing(false);
+    } catch (error) {
+      dispatch({ type: "SET_NOTIFICATION", payload: 'Failed to update note' });
+    }
   };
 
   return (

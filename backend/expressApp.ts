@@ -19,14 +19,11 @@ app.use(requestLogger);
 app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
 app.use('/notes', noteRoutes);
-app.use(errorHandler);
-
-app.use('/notes', noteRoutes); //connect all notes routes 
-app.get('/health', (req: Request, res: Response) => res.send('OK')); //check server run 
 
 if (process.env.NODE_ENV !== 'production') {
   app.use('/test', testRouter);
 }
+app.get('/health', (req: Request, res: Response) => res.send('OK')); //check server run 
 
 app.use(errorHandler);
 
