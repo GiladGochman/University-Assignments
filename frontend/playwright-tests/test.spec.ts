@@ -5,7 +5,7 @@ const API_URL = 'http://localhost:3001';
 
 let token: string;
 
-test.setTimeout(10000); // זמן ריצה מרבי של 10 שניות לטסט
+test.setTimeout(10000); 
 
 test.beforeEach(async ({ page }) => {
   // איפוס השרת

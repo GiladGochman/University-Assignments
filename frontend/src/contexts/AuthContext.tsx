@@ -18,7 +18,7 @@ export interface User {
 interface AuthContextValue {
   user: User | null;
   token: string | null;
-  login: (username: string, password: string) => Promise<void>;
+  login: (username: string, password: string) => Promise<boolean>;
   register: (
     user: Omit<User, "username"> & { username: string; password: string }
   ) => Promise<void>;
@@ -48,13 +48,13 @@ export const AuthProvider = ({ children }: Props): JSX.Element => {
     (async () => {
       try {
         const profile = await authService.me(token);
-        setUser(profile);
+        setUser (profile);
       } catch {
         // Token is invalid, wipe it out.
         logout();
       }
     })();
-  }, []);
+  }, [token]);
 
   /**
    * Whenever the token changes, automatically attach/detach the
@@ -71,14 +71,16 @@ export const AuthProvider = ({ children }: Props): JSX.Element => {
     }
   }, [token]);
 
-  const login = async (username: string, password: string) => {
-    const {
-      token: newToken,
-      name,
-      email,
-    } = await authService.login(username, password);
+  const login = async (username: string, password: string): Promise<boolean> => {
+  try {
+    const { token: newToken, name, email } = await authService.login(username, password);
     setToken(newToken);
     setUser({ name, email, username });
+    return true;
+  } catch (err) {
+    console.error("Login failed", err);
+    return false;
+  }
   };
 
   const register = async (

@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useNotes } from '../contexts/NotesContext';
 import { addNote } from '../services/notes';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function AddNote() {
+  const { token } = useAuth();
   const { dispatch } = useNotes();
   const [adding, setAdding] = useState(false);
   const [newContent, setNewContent] = useState('');
   const [newTitle, setNewTitle] = useState('');
 
-  const token = localStorage.getItem('user-token'); // אפשר גם מ־state
 
   const handleAddNote = async () => {
     if (!token) {

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useNotes } from "../contexts/NotesContext";
+import { useAuth } from "../contexts/AuthContext"; 
 
 export default function Login() {
-  const { login } = useNotes(); 
+  const { login } = useAuth(); 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

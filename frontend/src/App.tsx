@@ -12,7 +12,6 @@ import { NotesProvider } from "./contexts/NotesContext";
 
 function App() {
   return (
-    <NotesProvider>
       <Router>
         <Notification />
         <Routes>
@@ -22,7 +21,6 @@ function App() {
           <Route path="/me" element={<Me />} /> {/* הוסף את זה */}
         </Routes>
       </Router>
-    </NotesProvider>
   );
 }
 
