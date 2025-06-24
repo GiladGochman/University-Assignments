@@ -1,19 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useNotes } from "../contexts/NotesContext";
-import { useAuth } from "../contexts/AuthContext";
 import AddNote from "../components/AddNote";
 import NoteList from "../components/NoteList";
 import Pagination from "../components/Pagination";
 
 export default function Home() {
-  const { dispatch } = useNotes();
-  const { user, logout } = useAuth();
+  const { state, dispatch } = useNotes();
+  const { user } = state;
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    dispatch({ type: "SET_NOTIFICATION", payload: "Logged out" });
-  };
 
   return (
     <div>
@@ -21,7 +15,7 @@ export default function Home() {
 
       {user ? (
         <>
-          <button data-testid="logout" onClick={handleLogout}>
+          <button data-testid="logout" onClick={() => dispatch({ type: "LOGOUT" })}>
             Logout
           </button>
           <AddNote />
