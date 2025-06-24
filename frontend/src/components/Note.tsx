@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
 import { useNotes } from '../contexts/NotesContext';
 import { deleteNote, updateNote } from '../services/notes';
@@ -14,7 +15,7 @@ export default function Note({ _id, title, content, author }: NoteProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(content);
 
-  const token = localStorage.getItem('user-token'); // או מתוך context אם את שומרת שם
+  const token = localStorage.getItem('user-token');
 
   const handleDelete = async () => {
     try {

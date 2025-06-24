@@ -6,7 +6,6 @@ export default function NoteList() {
   const { state } = useNotes();
   const currentPage = state.currentPage;
 
-  // קבלת הפתקים מה־cache לפי העמוד הנוכחי
   const notes = useNoteCache(currentPage);
 
   return (

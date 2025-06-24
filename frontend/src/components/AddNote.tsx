@@ -8,7 +8,7 @@ export default function AddNote() {
   const [newContent, setNewContent] = useState('');
   const [newTitle, setNewTitle] = useState('');
 
-  const token = localStorage.getItem('user-token'); // אפשר גם מ־state
+  const token = localStorage.getItem('user-token');
 
   const handleAddNote = async () => {
     if (!token) {
@@ -26,6 +26,7 @@ export default function AddNote() {
       setNewTitle('');
       setNewContent('');
       setAdding(false);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       dispatch({ type: 'SET_NOTIFICATION', payload: 'Failed to add note' });
     }

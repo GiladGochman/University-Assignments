@@ -26,7 +26,7 @@ export function useNoteCache(currentPage: number): Note[] {
       for (const page of pagesToCache) {
         if (!newCache[page]) {
           try {
-            const notes = await getNotesPage(page); // מביא מהשרת לפי עמוד
+            const notes = await getNotesPage(page);
             newCache[page] = notes;
           } catch (err) {
             console.error("Error fetching page", page, err);

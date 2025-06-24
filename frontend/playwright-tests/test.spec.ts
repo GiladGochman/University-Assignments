@@ -5,13 +5,10 @@ const API_URL = 'http://localhost:3001';
 
 let token: string;
 
-test.setTimeout(10000); // זמן ריצה מרבי של 10 שניות לטסט
-
+test.setTimeout(10000);
 test.beforeEach(async ({ page }) => {
-  // איפוס השרת
   await page.request.delete(`${API_URL}/test/reset`);
 
-  // יצירת משתמש חדש
   await page.request.post(`${API_URL}/users`, {
     data: {
       name: 'Test User',
@@ -21,7 +18,6 @@ test.beforeEach(async ({ page }) => {
     },
   });
 
-  // התחברות וקבלת טוקן
   const loginResponse = await page.request.post(`${API_URL}/login`, {
     data: {
       username: 'testuser',
@@ -31,12 +27,10 @@ test.beforeEach(async ({ page }) => {
   const loginData = await loginResponse.json();
   token = loginData.token;
 
-  // הזרקת הטוקן ל-localStorage עוד לפני עליית האפליקציה
   await page.addInitScript((value) => {
     window.localStorage.setItem('user-token', value);
   }, token);
 
-  // יצירת פתק לדוגמה
   await page.request.post(`${API_URL}/notes`, {
     data: {
       title: 'Test Note',
@@ -46,7 +40,6 @@ test.beforeEach(async ({ page }) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  // ניווט לדף הבית
   await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 10000 });
 });
 

@@ -113,6 +113,7 @@ export const NotesProvider = ({ children }: { children: ReactNode }) => {
           type: 'SET_NOTES',
           payload: { notes: res.data, totalPages: Math.ceil(total / 10) },
         });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         dispatch({ type: 'SET_NOTIFICATION', payload: 'Failed to fetch notes' });
       }
@@ -148,6 +149,7 @@ export const NotesProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useNotes = () => {
   const context = useContext(NotesContext);
   if (!context) throw new Error('useNotes must be used within NotesProvider');

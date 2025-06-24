@@ -14,7 +14,7 @@ export default function Login() {
     const success = await login(username, password);
 
     if (success) {
-      navigate("/"); // חזרה לדף הבית אם ההתחברות הצליחה
+      navigate("/");
     } else {
       alert("Login failed. Please check your credentials.");
     }

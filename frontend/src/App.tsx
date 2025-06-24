@@ -1,8 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import AddNote from './components/AddNote';
-import NoteList from './components/NoteList';
-import Pagination from './components/Pagination';
 import Notification from './components/Notification';
 import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
