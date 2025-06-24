@@ -25,9 +25,7 @@ interface AuthContextValue {
   logout: () => void;
 }
 
-export const AuthContext = createContext<AuthContextValue | undefined>(
-  undefined
-);
+const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 interface Props {
   children: ReactNode;

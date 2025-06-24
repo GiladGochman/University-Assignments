@@ -11,16 +11,8 @@ export default function CreateUser() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      console.log("Creating user with:", { name, email, username, password });
-
-      await createUser({ name, email, username, password });
-      console.log("User created successfully");
-
-      navigate("/");
-    } catch (err) {
-      console.error("Failed to create user:", err);
-    }
+    await createUser({ name, email, username, password });
+    navigate("/");
   };
 
   return (
