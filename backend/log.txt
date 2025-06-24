@@ -1706,6 +1706,3 @@
 [2025-06-16T13:00:14.851Z] GET /notes?_page=1&_per_page=10 {}
 [2025-06-16T13:00:15.191Z] GET /notes?page=3&perPage=10 {}
 [2025-06-16T13:00:16.236Z] GET /notes?_page=1&_per_page=10 {}
-[2025-06-16T13:51:41.620Z] GET / {}
-[2025-06-16T13:51:46.829Z] GET /notes {}
-[2025-06-16T13:51:47.207Z] GET /favicon.ico {}
