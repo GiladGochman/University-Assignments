@@ -2,7 +2,8 @@ import { useNotes } from '../contexts/NotesContext';
 
 export default function Pagination() {
   const { state, dispatch } = useNotes();
-  const { currentPage, totalPages } = state;
+  const { currentPage, total } = state;
+  const totalPages = Math.ceil(total / 10);
 
   const handlePageChange = (page: number) => {
     dispatch({ type: 'SET_PAGE', payload: page });
@@ -20,14 +21,20 @@ export default function Pagination() {
 
   return (
     <>
-      <span>
+      <span data-testid="page-info">
         page: {currentPage} / {totalPages}
       </span>
       <div>
-        <button name="first" onClick={() => handlePageChange(1)} disabled={currentPage === 1}>
+        <button
+          data-testid="first"
+          name="first"
+          onClick={() => handlePageChange(1)}
+          disabled={currentPage === 1}
+        >
           first
         </button>
         <button
+          data-testid="previous"
           name="previous"
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
@@ -38,6 +45,7 @@ export default function Pagination() {
         {pageRange.map((page) => (
           <button
             key={page}
+            data-testid={`page-${page}`}
             name={`page-${page}`}
             className={page === currentPage ? 'active' : 'not-active'}
             onClick={() => handlePageChange(page)}
@@ -48,6 +56,7 @@ export default function Pagination() {
         ))}
 
         <button
+          data-testid="next"
           name="next"
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
@@ -55,6 +64,7 @@ export default function Pagination() {
           next
         </button>
         <button
+          data-testid="last"
           name="last"
           onClick={() => handlePageChange(totalPages)}
           disabled={currentPage === totalPages}

@@ -1,7 +1,7 @@
 # Test info
 
 - Name: should navigate between pages with pagination
-- Location: /Users/roei/Documents/ProgramingProjects/Edge/submission_hw1/frontend/playwright-tests/test.spec.ts:78:1
+- Location: C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:78:1
 
 # Error details
 
@@ -10,84 +10,14 @@ Error: Timed out 5000ms waiting for expect(locator).toHaveCount(expected)
 
 Locator: locator('.note')
 Expected: 5
-Received: 10
+Received: 0
 Call log:
   - expect.toHaveCount with timeout 5000ms
   - waiting for locator('.note')
-    4 × locator resolved to 0 elements
+    9 × locator resolved to 0 elements
       - unexpected value "0"
-    5 × locator resolved to 10 elements
-      - unexpected value "10"
 
-    at /Users/roei/Documents/ProgramingProjects/Edge/submission_hw1/frontend/playwright-tests/test.spec.ts:92:39
-```
-
-# Page snapshot
-
-```yaml
-- heading "Notes" [level=1]
-- button "Go to Login"
-- button "Create New User"
-- heading "Note 11" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 10" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 9" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 8" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 7" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 6" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 5" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 4" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 3" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- heading "Note 2" [level=2]
-- text: By Test User
-- paragraph: Some content
-- button "Edit"
-- button "Delete"
-- text: "page: 1 / NaN"
-- button "first" [disabled]
-- button "previous" [disabled]
-- button "1" [disabled]
-- button "2"
-- button "3"
-- button "4"
-- button "5"
-- button "next"
-- button "last"
+    at C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:92:39
 ```
 
 # Test source

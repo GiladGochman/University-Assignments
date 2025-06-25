@@ -1,33 +1,32 @@
-import { useNavigate } from "react-router-dom";
-import { useNotes } from "../contexts/NotesContext";
-import AddNote from "../components/AddNote";
-import NoteList from "../components/NoteList";
-import Pagination from "../components/Pagination";
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import AuthContext from '../contexts/AuthContext';
+import LogoutButton from '../components/Logout';
+import NoteList from '../components/NoteList';
+import AddNote from '../components/AddNote';  // תוקן כאן: הוסר הרווח בין 'compon' ל'ents'
+import Pagination from '../components/Pagination';
 
-export default function Home() {
-  const { state, dispatch } = useNotes();
-  const { user } = state;
-  const navigate = useNavigate();
+const Home = () => {
+  const { state } = useContext(AuthContext);
+  const user = state.user;
 
   return (
     <div>
-      <h1>Notes</h1>
+      <h1>Homepage</h1>
 
-      {user ? (
+      {!user ? (
         <>
-          <button data-testid="logout" onClick={() => dispatch({ type: "LOGOUT" })}>
-            Logout
-          </button>
-          <AddNote />
+          <Link to="/login">
+            <button data-testid="go_to_login_button">Go to Login</button>
+          </Link>
+          <Link to="/create-user">
+            <button data-testid="go_to_create_user_button">Create New User</button>
+          </Link>
         </>
       ) : (
         <>
-          <button data-testid="go_to_login_button" onClick={() => navigate("/login")}>
-            Go to Login
-          </button>
-          <button data-testid="go_to_create_user_button" onClick={() => navigate("/create-user")}>
-            Create New User
-          </button>
+          <LogoutButton />
+          <AddNote />
         </>
       )}
 
@@ -35,4 +34,6 @@ export default function Home() {
       <Pagination />
     </div>
   );
-}
+};
+
+export default Home;

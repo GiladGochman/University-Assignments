@@ -1,35 +1,70 @@
-import React, { createContext, useReducer, useContext, ReactNode } from 'react';
-import axios from '../axiosConfig';
+import React, { createContext, useReducer, useEffect, ReactNode, useContext } from 'react';
+import axios from 'axios';
 
-interface User { name:string; email:string; username:string }
-interface State { user: User|null; token: string|null }
-type Action =
-  | { type:'LOGIN'; payload:{user:User;token:string} }
-  | { type:'LOGOUT' };
-
-const ctx = createContext<{ state:State; dispatch:React.Dispatch<Action> }>({
-  state:{user:null,token:null}, dispatch:()=>{}
-});
-
-const reducer = (s:State,a:Action):State => {
-  switch(a.type){
-    case 'LOGIN':
-      axios.defaults.headers.common['Authorization'] = `Bearer ${a.payload.token}`;
-      return { user:a.payload.user, token:a.payload.token };
-    case 'LOGOUT':
-      delete axios.defaults.headers.common['Authorization'];
-      return { user:null, token:null };
-    default: return s;
-  }
+interface User {
+  name: string;
+  email: string;
+  username: string;
 }
 
-export const AuthProvider = ({children}:{children:ReactNode}) => {
-  const [state,dispatch] = useReducer(reducer,{user:null,token:null});
-  return <ctx.Provider value={{state,dispatch}}>{children}</ctx.Provider>;
+interface AuthState {
+  user: User | null;
+  token: string | null;
+}
+
+type AuthAction =
+  | { type: 'LOGIN'; payload: { user: User; token: string } }
+  | { type: 'LOGOUT' };
+
+const AuthContext = createContext<{
+  state: AuthState;
+  dispatch: React.Dispatch<AuthAction>;
+}>({
+  state: { user: null, token: null },
+  dispatch: () => {},
+});
+
+const authReducer = (state: AuthState, action: AuthAction): AuthState => {
+  switch (action.type) {
+    case 'LOGIN':
+      axios.defaults.headers.common['Authorization'] = `Bearer ${action.payload.token}`;
+      localStorage.setItem('user-token', JSON.stringify(action.payload));
+      return {
+        user: action.payload.user,
+        token: action.payload.token,
+      };
+    case 'LOGOUT':
+      delete axios.defaults.headers.common['Authorization'];
+      localStorage.removeItem('user-token');
+      return { user: null, token: null };
+    default:
+      return state;
+  }
 };
-// eslint-disable-next-line react-refresh/only-export-components
-export const useAuth = () => {
-  const c = useContext(ctx);
-  if(!c) throw new Error('useAuth outside AuthProvider');
-  return c;
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [state, dispatch] = useReducer(authReducer, {
+    user: null,
+    token: null,
+  });
+
+  // Load user from localStorage on first load
+  useEffect(() => {
+    const saved = localStorage.getItem('user-token');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${parsed.token}`;
+      dispatch({ type: 'LOGIN', payload: parsed });
+    }
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
+
+export const useAuth = () => useContext(AuthContext);
+
+export default AuthContext;

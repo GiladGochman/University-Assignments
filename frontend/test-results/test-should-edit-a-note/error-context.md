@@ -1,23 +1,16 @@
 # Test info
 
 - Name: should edit a note
-- Location: /Users/roei/Documents/ProgramingProjects/Edge/submission_hw1/frontend/playwright-tests/test.spec.ts:59:1
+- Location: C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:59:1
 
 # Error details
 
 ```
-Error: Timed out 5000ms waiting for expect(locator).toHaveText(expected)
-
-Locator: locator('.notification')
-Expected string: "Note updated"
-Received: <element(s) not found>
+Error: locator.getAttribute: Test timeout of 10000ms exceeded.
 Call log:
-  - expect.toHaveText with timeout 5000ms
-  - waiting for locator('.notification')
-    4 × locator resolved to <div class="notification"></div>
-      - unexpected value ""
+  - waiting for locator('.note').first()
 
-    at /Users/roei/Documents/ProgramingProjects/Edge/submission_hw1/frontend/playwright-tests/test.spec.ts:65:47
+    at C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:61:34
 ```
 
 # Test source
@@ -83,12 +76,12 @@ Call log:
   58 |
   59 | test('should edit a note', async ({ page }) => {
   60 |   const firstNote = page.locator('.note').first();
-  61 |   const noteId = await firstNote.getAttribute('data-testid');
+> 61 |   const noteId = await firstNote.getAttribute('data-testid');
+     |                                  ^ Error: locator.getAttribute: Test timeout of 10000ms exceeded.
   62 |   await page.click(`button[data-testid="edit-${noteId}"]`);
   63 |   await page.fill(`textarea[data-testid="text_input-${noteId}"]`, 'Updated content');
   64 |   await page.click(`button[data-testid="text_input_save-${noteId}"]`);
-> 65 |   await expect(page.locator('.notification')).toHaveText('Note updated');
-     |                                               ^ Error: Timed out 5000ms waiting for expect(locator).toHaveText(expected)
+  65 |   await expect(page.locator('.notification')).toHaveText('Note updated');
   66 |   await expect(page.locator(`.note[data-testid="${noteId}"]`)).toContainText('Updated content');
   67 | });
   68 |

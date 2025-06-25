@@ -1,43 +1,58 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useNotes } from "../contexts/NotesContext";
+import React, { useState, useContext } from 'react';
+import axios from '../axiosConfig';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../contexts/AuthContext';
 
-export default function Login() {
-  const { login } = useNotes(); 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const { dispatch } = useContext(AuthContext);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const success = await login(username, password);
+    try {
+      const response = await axios.post('/login', { username, password });
+      const { token, name, email } = response.data;
+      console.log('login response:', response.data);
 
-    if (success) {
-      navigate("/");
-    } else {
-      alert("Login failed. Please check your credentials.");
+      dispatch({
+        type: 'LOGIN',
+        payload: {
+          user: { name, email, username },
+          token,
+        },
+      });
+
+      navigate('/');
+    } catch (err) {
+      setError('Invalid credentials. Please try again.');
     }
   };
 
   return (
-    <form data-testid="login_form" onSubmit={handleSubmit}>
+    <form onSubmit={handleLogin}>
       <input
         data-testid="login_form_username"
-        placeholder="Username"
+        type="text"
         value={username}
+        placeholder="Username"
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
         data-testid="login_form_password"
         type="password"
-        placeholder="Password"
         value={password}
+        placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button data-testid="login_form_login" type="submit">
-        Login
-      </button>
+      <button data-testid="login_form_login" type="submit">Login</button>
+      {error && <p>{error}</p>}
     </form>
   );
-}
+};
+
+export default Login;

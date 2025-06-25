@@ -1,7 +1,7 @@
 # Test info
 
-- Name: should delete a note
-- Location: C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:69:1
+- Name: should display a list of notes
+- Location: C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:46:1
 
 # Error details
 
@@ -17,7 +17,7 @@ Call log:
     9 × locator resolved to 0 elements
       - unexpected value "0"
 
-    at C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:71:23
+    at C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:48:23
 ```
 
 # Test source
@@ -70,7 +70,8 @@ Call log:
   45 |
   46 | test('should display a list of notes', async ({ page }) => {
   47 |   const notes = page.locator('.note');
-  48 |   await expect(notes).toHaveCount(1);
+> 48 |   await expect(notes).toHaveCount(1);
+     |                       ^ Error: Timed out 5000ms waiting for expect(locator).toHaveCount(expected)
   49 | });
   50 |
   51 | test('should add a new note', async ({ page }) => {
@@ -93,8 +94,7 @@ Call log:
   68 |
   69 | test('should delete a note', async ({ page }) => {
   70 |   const notes = page.locator('.note');
-> 71 |   await expect(notes).toHaveCount(1);
-     |                       ^ Error: Timed out 5000ms waiting for expect(locator).toHaveCount(expected)
+  71 |   await expect(notes).toHaveCount(1);
   72 |   const noteId = await notes.first().getAttribute('data-testid');
   73 |   await page.click(`button[name="delete-${noteId}"]`);
   74 |   await expect(page.locator('.notification')).toHaveText('Note deleted');

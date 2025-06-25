@@ -1,157 +1,159 @@
-import React, { createContext, useReducer, useContext, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useReducer,
+  useEffect,
+  ReactNode,
+  useContext,
+} from 'react';
 import axios from 'axios';
+import { getPageNumbers } from '../components/getPageNumbers';
+import AuthContext from './AuthContext';
 
 export interface Note {
-  _id: string;
+  id: string;
   title: string;
+  author: { name: string; email: string } | null;
   content: string;
-  author: {
-    name: string;
-    email: string;
-  };
 }
 
-interface User {
-  name: string;
-  email: string;
-  username: string;
-  token: string;
-}
-
-interface State {
-  notes: Note[];
-  totalPages: number;
+interface NotesState {
+  cache: { [page: number]: Note[] };
   currentPage: number;
+  total: number;
   notification: string;
-  user: User | null;
 }
 
 type Action =
-  | { type: 'SET_NOTES'; payload: { notes: Note[]; totalPages: number } }
-  | { type: 'ADD_NOTE'; payload: Note }
-  | { type: 'UPDATE_NOTE'; payload: Note }
-  | { type: 'DELETE_NOTE'; payload: string }
   | { type: 'SET_PAGE'; payload: number }
+  | { type: 'SET_NOTES_FOR_PAGE'; page: number; notes: Note[] }
   | { type: 'SET_NOTIFICATION'; payload: string }
-  | { type: 'SET_USER'; payload: { user: User; token: string } }
-  | { type: 'LOGOUT' };
+  | { type: 'UPDATE_NOTE'; payload: Note }
+  | { type: 'DELETE_NOTE'; payload: { notes: Note[]; total: number } }
+  | { type: 'ADD_NOTE'; payload: { notes: Note[]; total: number } }
+  | { type: 'TRIM_CACHE'; allowedPages: number[] }
+  | { type: 'SET_TOTAL'; total: number };
 
-const initialState: State = {
-  notes: [],
-  totalPages: 1,
+const initialState: NotesState = {
+  cache: {},
   currentPage: 1,
-  notification: '',
-  user: null,
+  total: 0,
+  notification: 'Notification area',
 };
 
-function reducer(state: State, action: Action): State {
+const NotesContext = createContext<{
+  state: NotesState;
+  dispatch: React.Dispatch<Action>;
+}>({
+  state: initialState,
+  dispatch: () => {},
+});
+
+const notesReducer = (state: NotesState, action: Action): NotesState => {
   switch (action.type) {
-    case 'SET_NOTES': {
-      const { notes, totalPages } = action.payload;
-      return { ...state, notes, totalPages };
-    }
-    case 'ADD_NOTE':
-      return { ...state, notes: [action.payload, ...state.notes], notification: 'Added a new note' };
-    case 'UPDATE_NOTE':
+    case 'SET_PAGE':
+      return { ...state, currentPage: action.payload };
+    case 'SET_NOTES_FOR_PAGE':
       return {
         ...state,
-        notes: state.notes.map(n => (n._id === action.payload._id ? action.payload : n)),
+        cache: { ...state.cache, [action.page]: action.notes },
+      };
+    case 'SET_NOTIFICATION':
+      return { ...state, notification: action.payload };
+    case 'UPDATE_NOTE': {
+      const updated = state.cache[state.currentPage]?.map((n) =>
+        n.id === action.payload.id ? action.payload : n
+      );
+      return {
+        ...state,
+        cache: { ...state.cache, [state.currentPage]: updated },
         notification: 'Note updated',
       };
+    }
     case 'DELETE_NOTE':
       return {
         ...state,
-        notes: state.notes.filter(n => n._id !== action.payload),
+        cache: { ...state.cache, [state.currentPage]: action.payload.notes },
+        total: action.payload.total,
         notification: 'Note deleted',
       };
-    case 'SET_PAGE':
-      return { ...state, currentPage: action.payload };
-    case 'SET_NOTIFICATION':
-      return { ...state, notification: action.payload };
-    case 'SET_USER':
-      return { ...state, user: action.payload.user };
-    case 'LOGOUT':
-      return { ...state, user: null };
+    case 'ADD_NOTE':
+      return {
+        ...state,
+        cache: { ...state.cache, [state.currentPage]: action.payload.notes },
+        total: action.payload.total,
+        notification: 'Added a new note',
+      };
+    case 'TRIM_CACHE': {
+      const newCache: typeof state.cache = {};
+      for (const page of action.allowedPages) {
+        if (state.cache[page]) {
+          newCache[page] = state.cache[page];
+        }
+      }
+      return { ...state, cache: newCache };
+    }
+    case 'SET_TOTAL':
+      return { ...state, total: action.total };
     default:
       return state;
   }
-}
-
-const NotesContext = createContext<
-  | {
-      state: State;
-      dispatch: React.Dispatch<Action>;
-      login: (username: string, password: string) => Promise<boolean>;
-      logout: () => void;
-    }
-  | undefined
->(undefined);
+};
 
 export const NotesProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(notesReducer, initialState);
+  const { state: authState } = useContext(AuthContext);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('user-token');
-    if (savedUser) {
+    const updateCache = async () => {
+      const totalPages = Math.ceil(state.total / 10);
+      const pagesToFetch = getPageNumbers(state.currentPage, totalPages);
+
+      const fetchedPages = await Promise.all(
+        pagesToFetch.map(async (p) => {
+          if (!state.cache[p]) {
+            const res = await axios.get(`/notes?_page=${p}&_limit=10`);
+            return { page: p, notes: res.data.notes };
+          }
+          return null;
+        })
+      );
+
+      fetchedPages.forEach((entry) => {
+        if (entry) {
+          dispatch({ type: 'SET_NOTES_FOR_PAGE', page: entry.page, notes: entry.notes });
+        }
+      });
+
+      dispatch({ type: 'TRIM_CACHE', allowedPages: pagesToFetch });
+    };
+
+    updateCache();
+  }, [state.currentPage, authState.token, state.total]);
+
+  useEffect(() => {
+    const fetchInitial = async () => {
       try {
-        const parsed = JSON.parse(savedUser);
-        dispatch({ type: 'SET_USER', payload: { user: parsed, token: parsed.token } });
-      } catch {
-        console.error('Failed to parse saved user');
+        const res = await axios.get(`/notes?_page=1&_limit=10`);
+        const totalCount = res.data.total;  
+        dispatch({ type: 'SET_TOTAL', total: totalCount });
+        dispatch({ type: 'SET_NOTES_FOR_PAGE', page: 1, notes: res.data.notes });
+      } catch (err) {
+        console.error('Error fetching notes:', err);
       }
+    };
+
+    if (state.total === 0) {
+      fetchInitial();
     }
   }, []);
 
-  useEffect(() => {
-    async function fetchNotes() {
-      try {
-        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/notes`, {
-          params: { _page: state.currentPage, _per_page: 10 },
-        });
-        const total = parseInt(res.headers['x-total-count'], 10);
-        dispatch({
-          type: 'SET_NOTES',
-          payload: { notes: res.data, totalPages: Math.ceil(total / 10) },
-        });
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (err) {
-        dispatch({ type: 'SET_NOTIFICATION', payload: 'Failed to fetch notes' });
-      }
-    }
-
-    fetchNotes();
-  }, [state.currentPage]);
-
-  const login = async (username: string, password: string): Promise<boolean> => {
-    try {
-      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
-        username,
-        password,
-      });
-      const user = res.data;
-      localStorage.setItem('user-token', JSON.stringify(user)); 
-      dispatch({ type: 'SET_USER', payload: { user, token: user.token } });
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
-  const logout = () => {
-    localStorage.removeItem('user-token');
-    dispatch({ type: 'LOGOUT' });
-  };
-
   return (
-    <NotesContext.Provider value={{ state, dispatch, login, logout }}>
+    <NotesContext.Provider value={{ state, dispatch }}>
       {children}
     </NotesContext.Provider>
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const useNotes = () => {
-  const context = useContext(NotesContext);
-  if (!context) throw new Error('useNotes must be used within NotesProvider');
-  return context;
-};
+export const useNotes = () => useContext(NotesContext);
+
+export default NotesContext;

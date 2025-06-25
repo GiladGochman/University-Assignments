@@ -1,7 +1,7 @@
 # Test info
 
 - Name: should add a new note
-- Location: /Users/roei/Documents/ProgramingProjects/Edge/submission_hw1/frontend/playwright-tests/test.spec.ts:51:1
+- Location: C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:51:1
 
 # Error details
 
@@ -10,30 +10,7 @@ Error: page.click: Test timeout of 10000ms exceeded.
 Call log:
   - waiting for locator('button[name="add_new_note"]')
 
-    at /Users/roei/Documents/ProgramingProjects/Edge/submission_hw1/frontend/playwright-tests/test.spec.ts:52:14
-```
-
-# Page snapshot
-
-```yaml
-- heading "Notes" [level=1]
-- button "Go to Login"
-- button "Create New User"
-- heading "Test Note" [level=2]
-- text: By Test User
-- paragraph: Initial content
-- button "Edit"
-- button "Delete"
-- text: "page: 1 / NaN"
-- button "first" [disabled]
-- button "previous" [disabled]
-- button "1" [disabled]
-- button "2"
-- button "3"
-- button "4"
-- button "5"
-- button "next"
-- button "last"
+    at C:\Users\Rotem Aftabi\submission_hw1\frontend\playwright-tests\test.spec.ts:52:14
 ```
 
 # Test source

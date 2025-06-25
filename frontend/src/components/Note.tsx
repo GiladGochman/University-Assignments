@@ -1,75 +1,121 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNotes } from '../contexts/NotesContext';
+import AuthContext from '../contexts/AuthContext';
 import { deleteNote, updateNote } from '../services/notes';
 
 type NoteProps = {
-  _id: string;
+  id: string;
   title: string;
   content: string;
   author: { name: string; email: string } | null;
 };
 
-export default function Note({ _id, title, content, author }: NoteProps) {
-  const { dispatch } = useNotes();
+export default function Note({ id, title, content, author }: NoteProps) {
+  const { state, dispatch } = useNotes();
+  const { state: authState } = useContext(AuthContext);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedContent, setEditedContent] = useState(content);
+  const [editTitle, setEditTitle] = useState(title);
+  const [editContent, setEditContent] = useState(content);
 
-  const token = localStorage.getItem('user-token');
+  const tokenObj = localStorage.getItem('user-token');
+  const token = tokenObj ? JSON.parse(tokenObj).token : null;
+
+  const loggedInUserEmail = authState.user?.email;
+  const isOwner = author?.email === loggedInUserEmail;
 
   const handleDelete = async () => {
+    if (!token) {
+      dispatch({ type: 'SET_NOTIFICATION', payload: 'User not authenticated' });
+      return;
+    }
     try {
-      await deleteNote(_id, token!);
-      dispatch({ type: 'DELETE_NOTE', payload: _id });
-      dispatch({ type: "SET_NOTIFICATION", payload: 'Note deleted' });
-    } catch (error) {
-      dispatch({ type: "SET_NOTIFICATION", payload: 'Failed to delete note' });
+      await deleteNote(id, token);
+      const updatedNotes = (state.cache[state.currentPage] || []).filter(n => n.id !== id);
+      dispatch({
+        type: 'DELETE_NOTE',
+        payload: {
+          notes: updatedNotes,
+          total: state.total - 1,
+        },
+      });
+      dispatch({ type: 'SET_NOTIFICATION', payload: 'Note deleted' });
+    } catch {
+      dispatch({ type: 'SET_NOTIFICATION', payload: 'Failed to delete note' });
     }
   };
 
   const handleSave = async () => {
+    if (!token) {
+      dispatch({ type: 'SET_NOTIFICATION', payload: 'User not authenticated' });
+      return;
+    }
     try {
-      const updated = await updateNote(_id, { title, content: editedContent }, token!);
-      dispatch({ type: 'UPDATE_NOTE', payload: updated });
-      dispatch({ type: "SET_NOTIFICATION", payload: 'Note updated' });
+      const updatedNote = await updateNote(id, { title: editTitle, content: editContent }, token);
+      const updatedNotes = (state.cache[state.currentPage] || []).map(n =>
+        n.id === id ? updatedNote : n
+      );
+      dispatch({
+        type: 'UPDATE_NOTE',
+        payload: updatedNote,
+      });
+      dispatch({ type: 'SET_NOTIFICATION', payload: 'Note updated' });
       setIsEditing(false);
-    } catch (error) {
-      dispatch({ type: "SET_NOTIFICATION", payload: 'Failed to update note' });
+    } catch {
+      dispatch({ type: 'SET_NOTIFICATION', payload: 'Failed to update note' });
     }
   };
 
   return (
-    <div className="note" data-testid={_id}>
-      <h2>{title}</h2>
-      {author && <small>By {author.name}</small>}
-
+    <div className="note" data-testid={id}>
       {isEditing ? (
         <>
-          <textarea
-            data-testid={`text_input-${_id}`}
-            name={`text_input-${_id}`}
-            value={editedContent}
-            onChange={(e) => setEditedContent(e.target.value)}
+          <input
+            type="text"
+            value={editTitle}
+            onChange={e => setEditTitle(e.target.value)}
+            placeholder="Title"
+            data-testid={`edit_title_input_${id}`}
           />
-          <button data-testid={`text_input_save-${_id}`} onClick={handleSave}>
+          <textarea
+            value={editContent}
+            onChange={e => setEditContent(e.target.value)}
+            placeholder="Content"
+            data-testid={`edit_content_input_${id}`}
+          />
+          <button onClick={handleSave} 
+          disabled={!editTitle.trim() || !editContent.trim()}
+          data-testid={`save_button_${id}`}
+          >
             Save
           </button>
-          <button data-testid={`text_input_cancel-${_id}`} onClick={() => setIsEditing(false)}>
+          <button 
+          onClick={() => setIsEditing(false)}
+          data-testid={`cancel_button_${id}`}
+          >
             Cancel
           </button>
         </>
       ) : (
         <>
-          <p>{content}</p>
-          <button data-testid={`edit-${_id}`} onClick={() => setIsEditing(true)}>
-            Edit
-          </button>
+          <h2 data-testid={`note_title_${id}`}>{title}</h2>
+          {author && (
+            <small data-testid={`note_author_${id}`}>
+              By {author.name} ({author.email})
+            </small>
+          )}
+          <p data-testid={`note_content_${id}`}>{content}</p>
+          {isOwner && (
+            <>
+              <button data-testid={`edit-${id}`} onClick={() => setIsEditing(true)}>
+                Edit
+              </button>
+              <button data-testid={`delete-${id}`} onClick={handleDelete}>
+                Delete
+              </button>
+            </>
+          )}
         </>
       )}
-
-      <button data-testid={`delete-${_id}`} name={`delete-${_id}`} onClick={handleDelete}>
-        Delete
-      </button>
     </div>
   );
 }
