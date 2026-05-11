@@ -1,0 +1,63 @@
+void Save_Into_File (state* s){
+ if (s->file_name == NULL) {
+        printf("Error: No file name set. Please set the file name using option 1.\n");
+        return;
+    }
+
+    uintptr_t source_address;
+    uintptr_t target_location;
+    size_t length;
+
+    // Prompting user for input
+    printf("Please enter <source-address> <target-location> <length>\n");
+    if (scanf("%x %x %zu", &source_address, &target_location, &length) != 3) {
+        printf("Error: Invalid input.\n");
+        return;
+    }
+
+    if (source_address == 0) {
+        source_address = (uintptr_t)s->mem_buf;
+    } else {
+        // Check if the source address is within the bounds of mem_buf
+        if (source_address < (uintptr_t)s->mem_buf || source_address >= (uintptr_t)(s->mem_buf + sizeof(s->mem_buf))) {
+            printf("Error: Source address is out of bounds.\n");
+            return;
+        }
+    }
+
+    // Calculate the end address and check bounds
+    uintptr_t end_address = source_address + (length * s->unit_size);
+    if (end_address > (uintptr_t)(s->mem_buf + sizeof(s->mem_buf))) {
+        printf("Error: Source address and length exceed memory buffer size.\n");
+        return;
+    }
+
+    FILE *file = fopen(s->file_name, "r+b");
+    if (file == NULL) {
+        printf("Error: Could not open file '%s'.\n", s->file_name);
+        return;
+    }
+
+    // Check file size
+    fseek(file, 0, SEEK_END);
+    long file_size = ftell(file);
+
+    if (target_location > file_size) {
+        printf("Error: Target location is beyond the end of the file.\n");
+        fclose(file);
+        return;
+    }
+
+    // Seek to target location and write data
+    fseek(file, target_location, SEEK_SET);
+    size_t bytes_to_write = length * s->unit_size;
+    size_t bytes_written = fwrite((void *)source_address, 1, bytes_to_write, file);
+
+    if (bytes_written != bytes_to_write) {
+        printf("Error: Could not write all bytes to the file. Written: %zu, Expected: %zu\n", bytes_written, bytes_to_write);
+    } else {
+        printf("Successfully wrote %zu units to '%s' at offset 0x%x\n", length, s->file_name, target_location);
+    }
+
+    fclose(file);
+}
