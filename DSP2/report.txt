@@ -1,0 +1,336 @@
+
+
+Link for results: 
+
+---------------------------- Results ----------------------------
+
+---------------- With local aggregation ------------------
+
+1. step 1: 	Map input records=44400490
+		Map output records=88105414
+		Map output bytes=856117481
+		Map output materialized bytes=7345317		
+
+	   	Combine input records=88105414
+		Combine output records=639853
+
+		Reduce input records=639853
+		Reduce output records=639825
+
+
+
+2. step 2:	Map input records=252069581
+		Map output records=200198280
+		Map output bytes=4194036401
+		Map output materialized bytes=57795049
+
+		Combine input records=200198280
+		Combine output records=4131526
+		
+		Reduce input records=4131526
+		Reduce output records=4131460
+
+
+3. step 3:	Map input records=163471963
+		Map output records=71119513
+		Map output bytes=1906277069
+		Map output materialized bytes=28095192
+		
+		Combine input records=71119513
+		Combine output records=1686129
+		
+		Reduce input records=1686129
+		Reduce output records=1686118
+
+4. step 4:	Job 1:	Map input records=4771285
+			Map output records=8902744
+			Map output bytes=279982730
+			Map output materialized bytes=125442289
+			
+			Combine input records=0
+			Combine output records=0
+
+			Reduce input records=8902744
+			Reduce output records=8262920
+
+		
+		Job 2:	Map input records=9949038
+			Map output records=11635156
+			Map output bytes=477218622
+			Map output materialized bytes=224746071
+			
+			Combine input records=0
+			Combine output records=0
+
+			Reduce input records=11635156
+			Reduce output records=6737064
+
+
+5. step 5:	Job 1:	Map input records=6737064
+			Map output records=6737064
+			Map output bytes=445215979
+			Map output materialized bytes=168357208
+		
+			Combine input records=0
+			Combine output records=0
+			
+			Reduce input records=6737064
+			Reduce output records=1683943
+
+		
+		Job 2:	Map input records=1683943
+			Map output records=1683943
+			Map output bytes=78389382
+			Map output materialized bytes=48445637
+			
+			Combine input records=0
+			Combine output records=0
+			
+			Reduce input records=1683943
+			Reduce output records=1683943
+
+
+
+--------------- Without local aggregation ------------------------
+
+1. step 1:	Map input records=44400490
+		Map output records=88105414
+		Map output bytes=856117481
+		Map output materialized bytes=235610990
+		
+		Combine input records=0
+		Combine output records=0
+
+		Reduce input records=88105414
+		Reduce output records=639825
+
+
+2. step 2:	Map input records=252069581
+		Map output records=200198280
+		Map output bytes=4194036401
+		Map output materialized bytes=627978157
+		
+		Combine input records=0
+		Combine output records=0
+		
+		Reduce input records=200198280
+		Reduce output records=4131460
+
+
+3. step 3:	Map input records=163471963
+		Map output records=71119513
+		Map output bytes=1906277069
+		Map output materialized bytes=235339075
+
+		Combine input records=0
+		Combine output records=0
+
+		Reduce input records=71119513
+		Reduce output records=1686118
+
+
+4. step 4:	Job 1:	Map input records=4771285
+			Map output records=8902744
+			Map output bytes=279982730
+			Map output materialized bytes=125442289
+		
+			Combine input records=0
+			Combine output records=0
+		
+			Reduce input records=8902744
+			Reduce output records=8262920
+	
+		
+		Job 2:	Map input records=9949038
+			Map output records=11635156
+			Map output bytes=477218622
+			Map output materialized bytes=224746071
+		
+			Combine input records=0
+			Combine output records=0
+		
+			Reduce input records=11635156
+			Reduce output records=6737064
+
+
+5. step 5:	Job 1:	Map input records=6737064
+			Map output records=6737064
+			Map output bytes=445215979
+			Map output materialized bytes=168357208
+			
+			Combine input records=0
+			Combine output records=0
+
+			Reduce input records=6737064
+			Reduce output records=1683943
+
+		
+		Job 2: 	Map input records=1683943
+			Map output records=1683943
+			Map output bytes=78389382
+			Map output materialized bytes=48445637
+			
+			Combine input records=0
+			Combine output records=0
+
+			Reduce input records=1683943
+			Reduce output records=1683943
+
+
+---------------- Time -----------------------
+
+
+------- With combiner ----------
+
+1. step 1: 2 minutes, 2 seconds
+
+2. step 2: 9 minutes, 6 seconds
+
+3. step 3: 4 minutes, 36 seconds
+
+4. step 4: 3 minutes, 16 seconds
+
+5. step 5: 2 minutes, 52 seconds
+
+
+Total: 
+ 
+------- Without combiner ----------
+
+1. step 1: 2 minutes, 56 seconds
+
+2. step 2: 10 seconds, 10 seconds
+
+3. step 3: 5 minutes, 4 seconds
+
+4. step 4: 3 minutes, 12 seconds
+
+5. step 5: 2 minutes, 42 seconds
+
+
+
+
+--------------- Interesting word pairs --------------
+
+
+
+------- Word pair #1: אב אחד ------------------
+
+1. לכולנו 0.12347569698326008
+
+2. לכלנו 0.061292667788186914
+
+3. אנחנו 0.042852173705627127
+
+4. ואם 0.017672701151307094
+
+5. הם 0.013223130555220688
+
+------- Word pair #2: אבל אני ------------------
+
+1. רוצה 0.030842647131469475
+
+2. יודע 0.024903535196913323
+
+3. חושב 0.020578900849327935
+
+4. אומר 0.018280839378782495
+
+5. רואה 0.014072973727995501
+	
+
+------- Word pair #3: מונחים על ------------------
+
+1. השולחן 0.07577661372614962
+
+2. ידי 0.03732630369237242
+
+3. גבי 0.027826041262317656
+
+4. שולחן 0.023632330087015832
+
+5. הארץ 0.023466526084731654
+
+------- Word pair #4: גם אני ------------------
+
+1. לא 0.05589693638222194
+
+2. הייתי 0.03679465239283269
+
+3. רוצה 0.018684825018381646
+
+4. את 0.012992911114445891
+
+5. יודע 0.007313231317750291
+
+------- Word pair #5: חברי המועצה ------------------
+
+1. המקומית 0.02426022020012196
+
+2. הלאומית 0.02065204948334632
+
+3. הדתית 0.016907314265715918
+
+4. של 0.016335049216186687
+
+5. היו 0.015741074204696018
+
+------- Word pair #6: חייב להיות ------------------
+
+1. בעל 0.022865059574083763
+
+2. גם 0.01147072262031823
+
+3. מוכן 0.010345644593183994
+
+4. חבר 0.006684725567097552
+
+5. מודע 0.0060861020748321625
+
+------- Word pair #7: יורד מן ------------------
+
+1. השמים 0.3687897701528652
+
+2. ההר 0.04751690302723685
+
+3. הבמה 0.020943210950758517
+
+4. הרקיע 0.015448098475421881
+
+5. הפרק 0.011674733847085035
+
+------- Word pair #8: כל דברי ------------------
+
+1. התורה 0.1388511956945969
+
+2. תורה 0.019613861971454875
+
+3. תלמוד 0.014986630044798908
+
+4. האגרת 0.013550843622493819
+
+5. ה 0.013154046986847013
+
+------- Word pair #9: לבוא אל ------------------
+
+1. בית 0.04956239620164477
+
+2. המלך 0.04308020497486634
+
+3. ביתו 0.02061371627189317
+
+4. הארץ 0.017766066824087854
+
+5. תוך 0.01532222409620577
+
+------- Word pair #10: מדוע אינך ------------------
+
+1. רוצה 0.04151671083891754
+
+2. עונה 0.029150405513736332
+
+3. יכול 0.027232372416450087
+
+4. כותב 0.023583505336107972
+
+5. אומר 0.018904654281491826
