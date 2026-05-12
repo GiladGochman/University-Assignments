@@ -1,0 +1,19 @@
+{
+  "description": "Blocked Path: Agent at V1, people at V2, edge flooded, no kit. Agent must TERMINATE immediately.",
+  "general_settings": {
+    "number_of_vertices": 2,
+    "unequip_time_unit": 1,
+    "equip_time_unit": 1,
+    "amphibian_penalty_factor": 2
+  },
+  "vertices": [
+    { "id": 1, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 2, "amphibian_kits": 0, "people_to_rescue": 10 }
+  ],
+  "edges": [
+    { "id": 1, "vertex_a": 1, "vertex_b": 2, "weight": 1, "is_flooded": true }
+  ],
+  "agents": [
+    { "type": "stupidgreedy", "vertex": 1 }
+  ]
+}

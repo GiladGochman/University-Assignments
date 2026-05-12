@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Path Simulator</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 30px;
+            max-width: 1400px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+        .canvas-container {
+            flex: 1;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: block;
+            background: white;
+        }
+        .controls {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .btn-back {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-back:hover:not(:disabled) {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        .btn-continue {
+            background: #27ae60;
+            color: white;
+        }
+        .btn-continue:hover:not(:disabled) {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+        .btn-play {
+            background: #3498db;
+            color: white;
+        }
+        .btn-play:hover:not(:disabled) {
+            background: #2980b9;
+        }
+        .btn-reset {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-reset:hover:not(:disabled) {
+            background: #7f8c8d;
+        }
+        .step-info {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+        }
+        .step-info h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .step-counter {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .sidebar {
+            width: 280px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .agent-info {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid;
+        }
+        .agent-info h4 {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .agent-info p {
+            margin: 4px 0;
+            font-size: 12px;
+            color: #666;
+        }
+        .legend {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .legend h4 {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .upload-section {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .file-input {
+            display: none;
+        }
+        .file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .file-label:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚁 Agent Path Simulator</h1>
+        <p class="description" id="simDescription">Loading Simulation Data...</p>
+
+        <div class="main-content">
+            <div class="canvas-container">
+                <canvas id="canvas" width="800" height="600"></canvas>
+            </div>
+            
+            <div class="sidebar">
+                <div class="step-info">
+                    <h3>Step Control</h3>
+                    <div class="step-counter">
+                        <span id="currentStep">0</span> / <span id="totalSteps">0</span>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <div class="button-group">
+                        <button class="btn-back" onclick="previousStep()" id="btnBack">⬅️ Previous Step</button>
+                        <button class="btn-continue" onclick="nextStep()" id="btnContinue">Next Step ➡️</button>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn-play" onclick="toggleAutoPlay()" id="btnPlay">▶️ Play</button>
+                        <button class="btn-reset" onclick="resetSimulation()" id="btnReset">🔄 Reset</button>
+                    </div>
+                </div>
+                
+                <div id="agentsList"></div>
+                
+                <div class="legend">
+                    <h4>Legend</h4>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #e74c3c; border: 3px solid #f1c40f; border-radius: 50%;"></div>
+                        <span>People to rescue (with thick gold border)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #27ae60; border-radius: 50%;"></div>
+                        <span>Amphibian kits</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #3498db;"></div>
+                        <span>Flooded edge</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #95a5a6;"></div>
+                        <span>Normal edge</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #f39c12; border-radius: 50%;"></div>
+                        <span>Agent Equipped</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const DATA_FILE = 'simulation_export.json';
+        
+        let simulationData = null;
+        let currentStep = 0;
+        let isPlaying = false;
+        let playInterval = null;
+        
+        const agentColors = ['#9b59b6', '#e67e22', '#8B4513', '#FF1493', '#00CED1'];
+
+        // --- Core Functions ---
+
+        async function loadSimulationData() {
+            try {
+                const response = await fetch(DATA_FILE);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status} (${response.statusText})`);
+                }
+                
+                const data = await response.json();
+                simulationData = data;
+                initSimulation(simulationData);
+            } catch (error) {
+                console.error(`Could not load simulation data from ${DATA_FILE}:`, error);
+                
+                const simDescEl = document.getElementById('simDescription');
+                if (simDescEl) {
+                    simDescEl.textContent = `ERROR: Could not load ${DATA_FILE}. Check console for details.`;
+                }
+                
+                disableControls(true);
+            }
+        }
+        
+        function initSimulation(data) {
+            if (!data) return;
+            
+            // 1. Validate structure
+            if (!data.vertices || !data.edges || !data.agents) {
+                alert('Invalid JSON structure: Missing vertices, edges, or agents');
+                return;
+            }
+            
+            if (!data.agents.every(a => a.path && Array.isArray(a.path))) {
+                alert('Invalid JSON structure: Each agent must have a "path" array');
+                return;
+            }
+            
+            // 2. Setup
+            currentStep = 0;
+            const simDescEl = document.getElementById('simDescription');
+            if (simDescEl) {
+                simDescEl.textContent = data.description || 'Simulation Loaded';
+            }
+            disableControls(false);
+            
+            // 3. Calculate total steps (max path length)
+            const maxSteps = Math.max(...data.agents.map(a => a.path.length));
+            const totalStepsEl = document.getElementById('totalSteps');
+            if (totalStepsEl) {
+                totalStepsEl.textContent = maxSteps > 0 ? maxSteps - 1 : 0;
+            }
+            
+            // 4. Calculate node positions
+            calculateNodePositions(data);
+            
+            // 5. Initial Draw
+            updateDisplay();
+        }
+
+        function getControlElement(id) {
+            return document.getElementById(id);
+        }
+
+        function disableControls(disabled) {
+            const ids = ['btnBack', 'btnContinue', 'btnPlay', 'btnReset'];
+            ids.forEach(id => {
+                const el = getControlElement(id);
+                if (el) {
+                    el.disabled = disabled;
+                }
+            });
+        }
+
+        function calculateNodePositions(data) {
+            const vertices = data.vertices;
+            const n = vertices.length;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(canvas.width, canvas.height) * 0.35;
+            
+            vertices.forEach((v, i) => {
+                const mapIndex = i; 
+                const angle = (2 * Math.PI * mapIndex) / n - Math.PI / 2;
+                v.x = centerX + radius * Math.cos(angle);
+                v.y = centerY + radius * Math.sin(angle);
+            });
+        }
+
+        function getVertexStateAtStep(vertex, step) {
+            // Use history arrays if available, otherwise fall back to static values
+            const peopleToRescue = vertex.people_history && vertex.people_history[step] !== undefined
+                ? vertex.people_history[step]
+                : vertex.people_to_rescue;
+            
+            const amphibianKits = vertex.kits_history && vertex.kits_history[step] !== undefined
+                ? vertex.kits_history[step]
+                : vertex.amphibian_kits;
+            
+            return { peopleToRescue, amphibianKits };
+        }
+
+        function drawGraph() {
+            if (!simulationData) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw edges
+            simulationData.edges.forEach(edge => {
+                const v1 = simulationData.vertices.find(v => v.id === edge.vertex_a);
+                const v2 = simulationData.vertices.find(v => v.id === edge.vertex_b);
+                
+                if (!v1 || !v2) return; 
+
+                ctx.beginPath();
+                ctx.moveTo(v1.x, v1.y);
+                ctx.lineTo(v2.x, v2.y);
+                ctx.strokeStyle = edge.is_flooded ? '#3498db' : '#95a5a6';
+                ctx.lineWidth = 3;
+                if (edge.is_flooded) {
+                    ctx.setLineDash([10, 5]);
+                } else {
+                    ctx.setLineDash([]);
+                }
+                ctx.stroke();
+                
+                // Draw weight
+                const midX = (v1.x + v2.x) / 2;
+                const midY = (v1.y + v2.y) / 2;
+                
+                const angle = Math.atan2(v2.y - v1.y, v2.x - v1.x);
+                const offsetX = -10 * Math.sin(angle);
+                const offsetY = 10 * Math.cos(angle);
+
+                ctx.fillStyle = '#666';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(edge.weight, midX + offsetX, midY + offsetY);
+            });
+            
+            ctx.setLineDash([]);
+            
+            // Draw nodes with current step state
+            simulationData.vertices.forEach(vertex => {
+                const state = getVertexStateAtStep(vertex, currentStep);
+                const hasPeople = state.peopleToRescue > 0;
+                
+                // 1. Draw the primary node circle
+                ctx.beginPath();
+                ctx.arc(vertex.x, vertex.y, 25, 0, 2 * Math.PI);
+                
+                // Determine fill color based on current state
+                if (hasPeople) {
+                    ctx.fillStyle = '#e74c3c'; // Red for people
+                } else if (state.amphibianKits > 0) {
+                    ctx.fillStyle = '#27ae60'; // Green for kits
+                } else {
+                    ctx.fillStyle = '#ecf0f1'; // Light grey for normal
+                }
+                ctx.fill();
+
+                // 2. Draw the border
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#34495e';
+                
+                if (hasPeople) {
+                    // Visual indication for people: thick gold border
+                    ctx.strokeStyle = '#f1c40f'; // Gold/Yellow
+                    ctx.lineWidth = 5; 
+                }
+                
+                ctx.stroke();
+                
+                // Node ID
+                ctx.fillStyle = '#34495e';
+                ctx.font = 'bold 16px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(vertex.id, vertex.x, vertex.y);
+                
+                // Show resources at current step
+                let textY = vertex.y + 35;
+                ctx.font = '10px Arial';
+                ctx.fillStyle = '#666';
+
+                if (state.peopleToRescue > 0) {
+                    ctx.fillText(`👥${state.peopleToRescue}`, vertex.x, textY);
+                    textY += 12;
+                }
+                if (state.amphibianKits > 0) {
+                    ctx.fillText(`🔧${state.amphibianKits}`, vertex.x, textY);
+                }
+            });
+        }
+
+        function drawAgents() {
+            if (!simulationData) return;
+
+            const agentRadius = 12;
+            const agentOffsetFactor = 15;
+
+            simulationData.agents.forEach((agent, agentIdx) => {
+                if (currentStep < agent.path.length) {
+                    const vertexId = agent.path[currentStep];
+                    const vertex = simulationData.vertices.find(v => v.id === vertexId);
+                    
+                    if (vertex) {
+                        const numAgents = simulationData.agents.length;
+                        const offset = (agentIdx - (numAgents - 1) / 2) * agentOffsetFactor;
+                        
+                        const agentX = vertex.x + offset;
+                        const agentY = vertex.y - 35;
+                        
+                        // 1. Draw path trail
+                        ctx.strokeStyle = agentColors[agentIdx % agentColors.length];
+                        ctx.lineWidth = 2;
+                        ctx.globalAlpha = 0.5;
+
+                        if (currentStep > 0) {
+                            for (let i = 0; i < currentStep; i++) {
+                                const fromVertex = simulationData.vertices.find(v => v.id === agent.path[i]);
+                                const toVertex = simulationData.vertices.find(v => v.id === agent.path[i + 1]);
+                                
+                                if (fromVertex && toVertex) {
+                                    ctx.beginPath();
+                                    ctx.moveTo(fromVertex.x, fromVertex.y);
+                                    ctx.lineTo(toVertex.x, toVertex.y);
+                                    ctx.stroke();
+                                }
+                            }
+                        }
+                        ctx.globalAlpha = 1;
+
+                        // 2. Draw agent marker (dot)
+                        ctx.beginPath();
+                        ctx.arc(agentX, agentY, agentRadius, 0, 2 * Math.PI);
+                        ctx.fillStyle = agentColors[agentIdx % agentColors.length];
+                        ctx.fill();
+                        ctx.strokeStyle = '#333';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                        
+                        // 3. Draw agent ID label
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 10px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(`A${agentIdx + 1}`, agentX, agentY);
+                        
+                        // 4. Draw equipped indicator
+                        const isEquipped = agent.equipped && agent.equipped[currentStep];
+                        if (isEquipped) {
+                            ctx.fillStyle = '#f39c12'; 
+                            ctx.font = '16px Arial';
+                            ctx.fillText('🤿', agentX + 15, agentY);
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateAgentsList() {
+            if (!simulationData) return;
+
+            const agentsList = document.getElementById('agentsList');
+            if (!agentsList) return;
+
+            agentsList.innerHTML = '<h4 style="margin: 15px 0 10px 0; font-size: 14px;">Active Agents</h4>';
+            
+            simulationData.agents.forEach((agent, idx) => {
+                if (currentStep < agent.path.length) {
+                    const currentVertex = agent.path[currentStep];
+                    
+                    const peopleSaved = agent.people_saved ? agent.people_saved[currentStep] : 0;
+                    const isEquipped = agent.equipped && agent.equipped[currentStep];
+                    const score = agent.score ? agent.score[currentStep].toFixed(1) : 'N/A';
+                    
+                    // The action to REACH the current state (index 0 is START, no action)
+                    const action = (agent.actions && currentStep > 0) ? agent.actions[currentStep - 1] : 'START';
+
+                    const actionIcon = getActionIcon(action);
+
+                    const agentDiv = document.createElement('div');
+                    agentDiv.className = 'agent-info';
+                    agentDiv.style.borderLeftColor = agentColors[idx % agentColors.length];
+                    agentDiv.innerHTML = `
+                        <h4>Agent ${idx + 1} (${agent.type})</h4>
+                        <p>📍 Position: Node ${currentVertex}</p>
+                        <p>📢 Last Action: ${actionIcon} ${action}</p>
+                        <p>👥 Total Saved: ${peopleSaved}</p>
+                        <p>🏆 Score: ${score}</p>
+                        <p>${isEquipped ? '🔧 Equipped' : '⚪ Not equipped'}</p>
+                    `;
+                    agentsList.appendChild(agentDiv);
+                }
+            });
+        }
+
+        function getActionIcon(action) {
+            if (action.includes('EQUIP')) return '🛠️';
+            if (action.includes('UNEQUIP')) return '🧺';
+            if (action.includes('TRAVERSE')) return '🚶';
+            if (action.includes('TERMINATE')) return '🛑';
+            return '⚪';
+        }
+
+        function updateDisplay() {
+            if (!simulationData) return;
+
+            drawGraph();
+            drawAgents();
+            updateAgentsList();
+            
+            const currentStepEl = getControlElement('currentStep');
+            if (currentStepEl) {
+                currentStepEl.textContent = currentStep;
+            }
+            
+            const maxSteps = Math.max(...simulationData.agents.map(a => a.path.length)) - 1;
+            
+            const btnBack = getControlElement('btnBack');
+            if (btnBack) btnBack.disabled = currentStep === 0;
+            
+            const btnContinue = getControlElement('btnContinue');
+            if (btnContinue) btnContinue.disabled = currentStep >= maxSteps;
+            
+            const btnPlay = getControlElement('btnPlay');
+            if (btnPlay) btnPlay.disabled = currentStep >= maxSteps;
+        }
+
+        function nextStep() {
+            if (!simulationData) return;
+            
+            const maxSteps = Math.max(...simulationData.agents.map(a => a.path.length)) - 1;
+            if (currentStep < maxSteps) {
+                currentStep++;
+                updateDisplay();
+            } else {
+                stopAutoPlay();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                updateDisplay();
+            }
+        }
+
+        function resetSimulation() {
+            currentStep = 0;
+            stopAutoPlay();
+            updateDisplay();
+        }
+
+        function toggleAutoPlay() {
+            if (!simulationData) return;
+
+            if (isPlaying) {
+                stopAutoPlay();
+            } else {
+                startAutoPlay();
+            }
+        }
+
+        function startAutoPlay() {
+            if (!simulationData) return;
+            
+            const maxSteps = Math.max(...simulationData.agents.map(a => a.path.length)) - 1;
+            if (currentStep >= maxSteps) {
+                resetSimulation();
+            }
+
+            isPlaying = true;
+            const btnPlay = getControlElement('btnPlay');
+            if (btnPlay) {
+                btnPlay.textContent = '⏸️ Pause';
+            }
+            
+            playInterval = setInterval(() => {
+                if (currentStep >= maxSteps) {
+                    stopAutoPlay();
+                } else {
+                    nextStep();
+                }
+            }, 1000);
+        }
+
+        function stopAutoPlay() {
+            isPlaying = false;
+            const btnPlay = getControlElement('btnPlay');
+            if (btnPlay) {
+                btnPlay.textContent = '▶️ Play';
+            }
+            if (playInterval) {
+                clearInterval(playInterval);
+                playInterval = null;
+            }
+        }
+
+        // --- Initialization ---
+
+        document.addEventListener('DOMContentLoaded', function() {
+            disableControls(true);
+            loadSimulationData();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (!simulationData) return;
+            
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextStep();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousStep();
+            } else if (e.key === 'r' || e.key === 'R') {
+                resetSimulation();
+            } else if (e.key === 'p' || e.key === 'P') {
+                toggleAutoPlay();
+            }
+        });
+    </script>
+</body>
+</html>

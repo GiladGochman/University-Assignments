@@ -1,0 +1,22 @@
+{
+  "description": "Empty Rescue: No people to rescue, all agents should terminate immediately.",
+  "general_settings": {
+    "number_of_vertices": 3,
+    "unequip_time_unit": 1,
+    "equip_time_unit": 1,
+    "amphibian_penalty_factor": 2
+  },
+  "vertices": [
+    { "id": 1, "amphibian_kits": 1, "people_to_rescue": 0 },
+    { "id": 2, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 3, "amphibian_kits": 0, "people_to_rescue": 0 }
+  ],
+  "edges": [
+    { "id": 1, "vertex_a": 1, "vertex_b": 2, "weight": 1, "is_flooded": false },
+    { "id": 2, "vertex_a": 2, "vertex_b": 3, "weight": 1, "is_flooded": false }
+  ],
+  "agents": [
+    { "type": "stupidgreedy", "vertex": 1 },
+    { "type": "stupidgreedy", "vertex": 3 }
+  ]
+}

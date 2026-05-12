@@ -1,0 +1,34 @@
+
+================================================================================
+RUNNING ALL BUILT-IN SCENARIOS
+================================================================================
+
+[Scenario 1] Basic 5-vertex graph with moderate flood risks
+
+--- Starting Scenario: Simple Path ---
+  Start: V1, Target: V5, Runs: 100
+  Building State Space...
+  Solving MDP (States: 50)...
+  Converged in 4 iterations.
+Belief states written to: output/scenario1_states.txt
+
+--- Sample Episode Trace (Agent Actions) ---
+World Instance:
+  2: CLEAR
+  3: CLEAR
+At V1 (Kit=False) -> Action: V2
+At V2 (Kit=False) -> Action: V4
+At V4 (Kit=False) -> Action: V5
+Success! Path: ['V1', 'V2', 'V4', 'V5'], Cost: 8
+--------------------------------------------
+
+  Running Benchmark (100 runs)...
+  Done. Success Rate: 100.0%, Avg Cost: 8.00
+
+======================================== BENCHMARK SUMMARY ========================================
+-------------------------------------------------------------------------------------------------------
+Scenario              States    Iters   Runs    Success%   Avg Cost    Std Dev     Min       Max     
+-------------------------------------------------------------------------------------------------------
+Simple Path           50        4       100     100.0%     8.00        0.00        8.00      8.00    
+-------------------------------------------------------------------------------------------------------
+

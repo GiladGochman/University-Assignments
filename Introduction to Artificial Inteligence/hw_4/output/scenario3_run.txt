@@ -1,0 +1,32 @@
+
+================================================================================
+RUNNING ALL BUILT-IN SCENARIOS
+================================================================================
+
+[Scenario 3] Small graph testing risk/reward decisions with kit usage
+
+--- Starting Scenario: Risk vs Safety ---
+  Start: V1, Target: V4, Runs: 100
+  Building State Space...
+  Solving MDP (States: 18)...
+  Converged in 4 iterations.
+Belief states written to: output/scenario3_states.txt
+
+--- Sample Episode Trace (Agent Actions) ---
+World Instance:
+  2: FLOODED
+At V1 (Kit=False) -> Action: V2
+At V2 (Kit=False) -> Action: V4
+Success! Path: ['V1', 'V2', 'V4'], Cost: 6
+--------------------------------------------
+
+  Running Benchmark (100 runs)...
+  Done. Success Rate: 100.0%, Avg Cost: 5.28
+
+======================================== BENCHMARK SUMMARY ========================================
+-------------------------------------------------------------------------------------------------------
+Scenario              States    Iters   Runs    Success%   Avg Cost    Std Dev     Min       Max     
+-------------------------------------------------------------------------------------------------------
+Risk vs Safety        18        4       100     100.0%     5.28        0.96        4.00      6.00    
+-------------------------------------------------------------------------------------------------------
+

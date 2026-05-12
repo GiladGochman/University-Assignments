@@ -1,0 +1,37 @@
+
+================================================================================
+RUNNING ALL BUILT-IN SCENARIOS
+================================================================================
+
+[Scenario 2] 6-vertex graph with multiple paths and varied flood probabilities
+
+--- Starting Scenario: Complex Network ---
+  Start: V1, Target: V6, Runs: 100
+  Building State Space...
+  Solving MDP (States: 319)...
+  Converged in 7 iterations.
+Belief states written to: output/scenario2_states.txt
+
+--- Sample Episode Trace (Agent Actions) ---
+World Instance:
+  3: CLEAR
+  4: CLEAR
+  5: CLEAR
+  7: CLEAR
+At V1 (Kit=False) -> Action: V2
+At V2 (Kit=False) -> Action: V3
+At V3 (Kit=False) -> Action: V5
+At V5 (Kit=False) -> Action: V6
+Success! Path: ['V1', 'V2', 'V3', 'V5', 'V6'], Cost: 6
+--------------------------------------------
+
+  Running Benchmark (100 runs)...
+  Done. Success Rate: 100.0%, Avg Cost: 9.09
+
+======================================== BENCHMARK SUMMARY ========================================
+-------------------------------------------------------------------------------------------------------
+Scenario              States    Iters   Runs    Success%   Avg Cost    Std Dev     Min       Max     
+-------------------------------------------------------------------------------------------------------
+Complex Network       319       7       100     100.0%     9.09        3.33        6.00      17.00   
+-------------------------------------------------------------------------------------------------------
+

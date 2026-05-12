@@ -1,0 +1,2198 @@
+
+================================================================================
+ BELIEF STATE VALUES AND OPTIMAL ACTIONS
+================================================================================
+
+--- TARGET STATES (Goal Reached) ---
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: False
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+State: V6|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V6 (TARGET)
+  Has Kit: True
+  Value: 0.0000
+  Optimal Action: None (terminal state)
+
+--- REACHABLE STATES ---
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', -1), ('4', -1), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': -1, '4': -1, '5': -1, '7': -1}
+  Value: -8.6600
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': -1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': -1, '5': 1, '7': -1}
+  Value: -10.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'5': -1, '7': -1}
+  Value: -7.2000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'5': -1}
+  Value: -7.2000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'5': -1, '7': 1}
+  Value: -7.2000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'7': -1}
+  Value: -6.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {}
+  Value: -6.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'7': 1}
+  Value: -6.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': -1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'5': 1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': -1, '7': -1}
+  Value: -7.8000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': 1}
+  Value: -6.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': -1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': -1, '7': -1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': -1, '5': 1, '7': -1}
+  Value: -12.5000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': -1, '7': -1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': -1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': -1, '7': 1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': -1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': -1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -8.0000
+  Optimal Action: V2
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': -1, '7': -1}
+  Value: -8.8000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': -1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': -1}
+  Value: -13.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -13.0000
+  Optimal Action: V3
+
+State: V1|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -13.0000
+  Optimal Action: V3
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'4': -1, '7': -1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'4': -1, '5': 1, '7': -1}
+  Value: -12.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'7': -1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'7': 1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': -1}
+  Value: -10.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'5': 1}
+  Value: -10.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -10.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': -1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'4': 1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': -1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': -1, '7': -1}
+  Value: -9.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': -1, '5': 1, '7': -1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': -1}
+  Value: -9.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1}
+  Value: -9.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -9.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': -1}
+  Value: -10.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -10.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -10.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': -1}
+  Value: -9.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -9.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -9.0000
+  Optimal Action: Unequip
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': -1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V1|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V1
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -12.0000
+  Optimal Action: V2
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'5': -1, '7': -1}
+  Value: -5.2000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'5': -1}
+  Value: -5.2000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'5': -1, '7': 1}
+  Value: -5.2000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'7': -1}
+  Value: -4.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {}
+  Value: -4.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'7': 1}
+  Value: -4.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'5': 1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': -1, '7': -1}
+  Value: -5.8000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': -1}
+  Value: -4.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'4': 1}
+  Value: -4.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -4.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': -1}
+  Value: -10.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -10.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -10.0000
+  Optimal Action: V3
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': -1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': -1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': -1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V4
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', -1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': -1, '7': -1}
+  Value: -10.8000
+  Optimal Action: V1
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': -1}
+  Value: -9.0000
+  Optimal Action: V1
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -9.0000
+  Optimal Action: V1
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -9.0000
+  Optimal Action: V1
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': -1}
+  Value: -15.0000
+  Optimal Action: V1
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -15.0000
+  Optimal Action: V1
+
+State: V2|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -15.0000
+  Optimal Action: V1
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'7': -1}
+  Value: -6.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {}
+  Value: -6.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'7': 1}
+  Value: -6.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': -1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'5': 1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'4': 1}
+  Value: -6.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': -1}
+  Value: -8.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -8.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -8.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': -1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': -1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -8.0000
+  Optimal Action: Unequip
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': -1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -7.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': -1}
+  Value: -8.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -8.0000
+  Optimal Action: V3
+
+State: V2|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V2
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -8.0000
+  Optimal Action: V3
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'4': -1, '7': -1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'4': -1, '5': 1, '7': -1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'7': -1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': -1}
+  Value: -7.0000
+  Optimal Action: V2
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'5': 1}
+  Value: -7.0000
+  Optimal Action: V2
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -7.0000
+  Optimal Action: V2
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': -1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'4': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': -1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': -1, '7': -1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': -1, '5': 1, '7': -1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': -1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': -1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': -1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': -1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -9.0000
+  Optimal Action: Equip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'4': -1, '7': -1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'4': -1, '5': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'7': -1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'5': 1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': -1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'4': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': -1, '7': -1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': -1, '5': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': -1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': -1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': -1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V3|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V3
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -6.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'5': -1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', -1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'5': -1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'5': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'4': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': -1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', -1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': -1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -3.0000
+  Optimal Action: V5
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'5': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'4': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'3': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V4|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V4
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -5.0000
+  Optimal Action: Unequip
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'4': -1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'4': -1, '5': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'7': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'5': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'4': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': -1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': -1, '5': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': -1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:False|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: False
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -1.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'4': -1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'4': -1, '5': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'7': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'5': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'5': 1, '7': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'4': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '7': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 0), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'4': 1, '5': 1, '7': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': -1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', -1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': -1, '5': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '7': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 0), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '5': 1, '7': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 0), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '7': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', -1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': -1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 0), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+State: V5|K:True|(('1', 0), ('2', 0), ('3', 1), ('4', 1), ('5', 1), ('6', 0), ('7', 1), ('8', 0))
+  Location: V5
+  Has Kit: True
+  Edge Beliefs: {'3': 1, '4': 1, '5': 1, '7': 1}
+  Value: -2.0000
+  Optimal Action: V6
+
+================================================================================
+Total States: 319
+  Target States: 50
+  Reachable States: 269
+  Irregular States: 0
+================================================================================

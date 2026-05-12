@@ -1,0 +1,11 @@
+#V 4          ; number of vertices n in graph (from 1 to n)
+#P1 0.3       ; Value of parameter P1
+
+#E1 1 3 W1 F 0.2  ; Edge1 between vertices 1 and 3, weight 1, flooded probability given mild weather 0.2
+#E2 2 3 W3 F 0.1  ; Edge2 between vertices 2 and 3, weight 3, flooded probability given mild weather 0.1
+#E3 2 4 W3 F 0.3  ; Edge3 between vertices 2 and 4, weight 3, flooded probability given mild weather 0.3
+#E4 3 4 W4 F 0    ; Edge4 between vertices 3 and 4, weight 4
+           ; Either assume flooding probability 0 by default,
+           ; or make sure to specify this conditional probability for all edges.
+		   
+#W 0.1 0.4 0.5 ; Prior distribution over weather: 0.1 for mild, 0.4 for stormy, 0.5 for extreme

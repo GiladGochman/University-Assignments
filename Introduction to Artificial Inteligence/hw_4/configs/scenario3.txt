@@ -1,0 +1,14 @@
+#V 4    ; Small graph with critical flood decision
+
+#E1 1 2 W1           ; Safe path start
+#E2 2 3 W2 F 0.6     ; Risky shortcut with high flood probability
+#E3 2 4 W5           ; Safe but long path
+#E4 3 4 W1           ; Short path from 3 to target
+
+#K1 1                ; Amphibian kit at start
+#EC 2                ; Takes 2 units of time to equip
+#UC 1                ; and 1 unit to unequip
+#FF 3                ; Movement with kit is 3 times slower
+
+#Start 1
+#Target 4

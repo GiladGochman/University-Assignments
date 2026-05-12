@@ -1,0 +1,2539 @@
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: N/A
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 2
+Amphibian penalty factor: 3
+Duration: 0
+Total agents: 1
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: N/A
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 2
+Amphibian penalty factor: 3
+Duration: 1
+Total agents: 1
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 1
+Final Score: -2.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: N/A
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 2
+Amphibian penalty factor: 3
+Duration: 2
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 5
+Time taken: 5.0
+Actions count: 2
+Final Score: 4995.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 5
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: All Flooded: Every edge is flooded, requiring kit for any movement.
+Number of nodes: 4
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: All Flooded: Every edge is flooded, requiring kit for any movement.
+Number of nodes: 4
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: All Flooded: Every edge is flooded, requiring kit for any movement.
+Number of nodes: 4
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 3.0
+Actions count: 2
+Final Score: -3.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: All Flooded: Every edge is flooded, requiring kit for any movement.
+Number of nodes: 4
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: True
+Terminated: False
+People saved: 1
+Time taken: 5.0
+Actions count: 3
+Final Score: 995.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Basic Rescue: Single stupidgreedy agent rescues one person at adjacent vertex.
+Number of nodes: 2
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Basic Rescue: Single stupidgreedy agent rescues one person at adjacent vertex.
+Number of nodes: 2
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 1.0
+Actions count: 1
+Final Score: 999.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Blocked Path: Agent at V1, people at V2, edge flooded, no kit. Agent must TERMINATE immediately.
+Number of nodes: 2
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 10
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Blocked Path: Agent at V1, people at V2, edge flooded, no kit. Agent must TERMINATE immediately.
+Number of nodes: 2
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 10
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 0.0
+Actions count: 1
+Final Score: 0.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 0
+People remaining: 10
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Complex Pathfinding: Agent must choose optimal path through grid with mixed flooded/dry edges.
+Number of nodes: 9
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Complex Pathfinding: Agent must choose optimal path through grid with mixed flooded/dry edges.
+Number of nodes: 9
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Complex Pathfinding: Agent must choose optimal path through grid with mixed flooded/dry edges.
+Number of nodes: 9
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 2
+Final Score: -2.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Complex Pathfinding: Agent must choose optimal path through grid with mixed flooded/dry edges.
+Number of nodes: 9
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 6
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 3.0
+Actions count: 3
+Final Score: -3.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Complex Pathfinding: Agent must choose optimal path through grid with mixed flooded/dry edges.
+Number of nodes: 9
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 4
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 9
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 4.0
+Actions count: 4
+Final Score: 996.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Empty Rescue: No people to rescue, all agents should terminate immediately.
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 2
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 0
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Flooded Edge: Agent must equip kit at V1 to traverse flooded edge to rescue person at V2.
+Number of nodes: 2
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Flooded Edge: Agent must equip kit at V1 to traverse flooded edge to rescue person at V2.
+Number of nodes: 2
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Flooded Edge: Agent must equip kit at V1 to traverse flooded edge to rescue person at V2.
+Number of nodes: 2
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 1
+Time taken: 3.0
+Actions count: 2
+Final Score: 997.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Greedy Optimization: Tests if agent prefers Equip (cost 2) + Penalty (1*3) over Long Detour (cost 20).
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 2
+Amphibian penalty factor: 3
+Duration: 0
+Total agents: 1
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Greedy Optimization: Tests if agent prefers Equip (cost 2) + Penalty (1*3) over Long Detour (cost 20).
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 2
+Amphibian penalty factor: 3
+Duration: 1
+Total agents: 1
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 1
+Final Score: -2.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Greedy Optimization: Tests if agent prefers Equip (cost 2) + Penalty (1*3) over Long Detour (cost 20).
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 2
+Amphibian penalty factor: 3
+Duration: 2
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 5
+Time taken: 5.0
+Actions count: 2
+Final Score: 4995.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 5
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: High Penalty Factor: With penalty factor 5, long dry detour is better than short flooded path.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 5
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: High Penalty Factor: With penalty factor 5, long dry detour is better than short flooded path.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 5
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: High Penalty Factor: With penalty factor 5, long dry detour is better than short flooded path.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 5
+Duration: 2
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 2
+Final Score: -2.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: High Penalty Factor: With penalty factor 5, long dry detour is better than short flooded path.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 5
+Duration: 3
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 3.0
+Actions count: 3
+Final Score: -3.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: High Penalty Factor: With penalty factor 5, long dry detour is better than short flooded path.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 5
+Duration: 4
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 6
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 4.0
+Actions count: 4
+Final Score: 996.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Impossible Rescue: Person behind flooded edge with no kits available (agent should terminate).
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Impossible Rescue: Person behind flooded edge with no kits available (agent should terminate).
+Number of nodes: 3
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 0.0
+Actions count: 1
+Final Score: 0.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 0
+People remaining: 1
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 2
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 2
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 2
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 2
+Final Score: -2.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 1.0
+Actions count: 2
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 2
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 4.0
+Actions count: 3
+Final Score: -4.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 1.0
+Actions count: 2
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 4
+Total agents: 2
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 1
+Time taken: 6.0
+Actions count: 4
+Final Score: 994.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 1.0
+Actions count: 2
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 5
+Total agents: 2
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 1
+Time taken: 8.0
+Actions count: 5
+Final Score: 992.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 1.0
+Actions count: 2
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 6
+Total agents: 2
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: True
+Terminated: False
+People saved: 1
+Time taken: 10.0
+Actions count: 6
+Final Score: 990.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 1.0
+Actions count: 2
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 7
+Total agents: 2
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: True
+Terminated: False
+People saved: 1
+Time taken: 12.0
+Actions count: 7
+Final Score: 988.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 1.0
+Actions count: 2
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Kit Sharing: Two agents compete for single kit at central location.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 8
+Total agents: 2
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: True
+Terminated: False
+People saved: 2
+Time taken: 14.0
+Actions count: 8
+Final Score: 1986.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 1.0
+Actions count: 2
+Final Score: -1.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 2
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 2
+Final Score: -2.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 3.0
+Actions count: 3
+Final Score: -3.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 4
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 4.0
+Actions count: 4
+Final Score: -4.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 5
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 6
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 5.0
+Actions count: 5
+Final Score: -5.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 6
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 7
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 6.0
+Actions count: 6
+Final Score: -6.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 7
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 8
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 7.0
+Actions count: 7
+Final Score: -7.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 8
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 9
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 8.0
+Actions count: 8
+Final Score: -8.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Long Chain: Linear graph with 10 vertices, victim at the end.
+Number of nodes: 10
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 9
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 10
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 9.0
+Actions count: 9
+Final Score: 991.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Mixed Agents: Thief and stupidgreedy compete for kit and rescue efficiency.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 2
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 6
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Mixed Agents: Thief and stupidgreedy compete for kit and rescue efficiency.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 2
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 6
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Mixed Agents: Thief and stupidgreedy compete for kit and rescue efficiency.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 2
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 3.0
+Actions count: 2
+Final Score: -3.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 3.0
+Actions count: 2
+Final Score: -3.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Mixed Agents: Thief and stupidgreedy compete for kit and rescue efficiency.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 2
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 5.0
+Actions count: 3
+Final Score: -5.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: True
+Terminated: False
+People saved: 3
+Time taken: 5.0
+Actions count: 3
+Final Score: 2995.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Mixed Agents: Thief and stupidgreedy compete for kit and rescue efficiency.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 4
+Total agents: 2
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 7.0
+Actions count: 4
+Final Score: -7.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: True
+Terminated: False
+People saved: 3
+Time taken: 7.0
+Actions count: 4
+Final Score: 2993.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Mixed Agents: Thief and stupidgreedy compete for kit and rescue efficiency.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 5
+Total agents: 2
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 9.0
+Actions count: 5
+Final Score: -9.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 3
+Time taken: 9.0
+Actions count: 5
+Final Score: 2991.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Mixed Agents: Thief and stupidgreedy compete for kit and rescue efficiency.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 6
+Total agents: 2
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 11.0
+Actions count: 6
+Final Score: -11.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: True
+Terminated: False
+People saved: 5
+Time taken: 11.0
+Actions count: 6
+Final Score: 4989.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 5
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multi-Agent Coordination: Two stupidgreedy agents rescue people from opposite ends of the graph.
+Number of nodes: 4
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 2
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multi-Agent Coordination: Two stupidgreedy agents rescue people from opposite ends of the graph.
+Number of nodes: 4
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 2
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 1.0
+Actions count: 1
+Final Score: 999.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 1.0
+Actions count: 1
+Final Score: 999.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 2
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multiple Victims: Agent prioritizes closest victim first, then moves to next.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 6
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multiple Victims: Agent prioritizes closest victim first, then moves to next.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 4
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 2
+Time taken: 1.0
+Actions count: 1
+Final Score: 1999.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multiple Victims: Agent prioritizes closest victim first, then moves to next.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 1
+People remaining to rescue: 4
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 2
+Time taken: 2.0
+Actions count: 2
+Final Score: 1998.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multiple Victims: Agent prioritizes closest victim first, then moves to next.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 1
+People remaining to rescue: 4
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 2
+Time taken: 4.0
+Actions count: 3
+Final Score: 1996.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multiple Victims: Agent prioritizes closest victim first, then moves to next.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 4
+Total agents: 1
+People remaining to rescue: 3
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 3
+Time taken: 5.0
+Actions count: 4
+Final Score: 2995.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multiple Victims: Agent prioritizes closest victim first, then moves to next.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 5
+Total agents: 1
+People remaining to rescue: 3
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 3
+Time taken: 6.0
+Actions count: 5
+Final Score: 2994.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Multiple Victims: Agent prioritizes closest victim first, then moves to next.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 6
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 6
+Time taken: 11.0
+Actions count: 6
+Final Score: 5989.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 6
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Optimal Unequip: Agent should unequip after flooded section for faster non-flooded travel.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Optimal Unequip: Agent should unequip after flooded section for faster non-flooded travel.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Optimal Unequip: Agent should unequip after flooded section for faster non-flooded travel.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 2
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 4.0
+Actions count: 2
+Final Score: -4.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Optimal Unequip: Agent should unequip after flooded section for faster non-flooded travel.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 3
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 5.0
+Actions count: 3
+Final Score: -5.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Optimal Unequip: Agent should unequip after flooded section for faster non-flooded travel.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 4
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 10.0
+Actions count: 4
+Final Score: -10.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Optimal Unequip: Agent should unequip after flooded section for faster non-flooded travel.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 5
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 15.0
+Actions count: 5
+Final Score: -15.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Optimal Unequip: Agent should unequip after flooded section for faster non-flooded travel.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 6
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 20.0
+Actions count: 6
+Final Score: 980.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 2
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 4.0
+Actions count: 2
+Final Score: -4.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 3
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 5.0
+Actions count: 3
+Final Score: -5.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 4
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 8.0
+Actions count: 4
+Final Score: -8.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 5
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 9.0
+Actions count: 5
+Final Score: -9.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 6
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 18.0
+Actions count: 6
+Final Score: -18.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 7
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 21.0
+Actions count: 7
+Final Score: -21.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 8
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 22.0
+Actions count: 8
+Final Score: -22.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Sequential Kit Usage: Agent equips, traverses flooded, unequips, re-equips at next kit location.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 3
+Duration: 9
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 6
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 23.0
+Actions count: 9
+Final Score: 977.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Star Topology: Central hub with multiple spokes, testing pathfinding in star graph.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 6
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Star Topology: Central hub with multiple spokes, testing pathfinding in star graph.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 1.0
+Actions count: 1
+Final Score: 999.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Star Topology: Central hub with multiple spokes, testing pathfinding in star graph.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 1
+People remaining to rescue: 5
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 2.0
+Actions count: 2
+Final Score: 998.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Star Topology: Central hub with multiple spokes, testing pathfinding in star graph.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 1
+People remaining to rescue: 3
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 3
+Time taken: 4.0
+Actions count: 3
+Final Score: 2996.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Star Topology: Central hub with multiple spokes, testing pathfinding in star graph.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 4
+Total agents: 1
+People remaining to rescue: 3
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 3
+Time taken: 6.0
+Actions count: 4
+Final Score: 2994.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Star Topology: Central hub with multiple spokes, testing pathfinding in star graph.
+Number of nodes: 6
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 5
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 6
+Time taken: 11.0
+Actions count: 5
+Final Score: 5989.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 6
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Complex Evasion: Thief navigates Y-shaped graph to maximize distance from multiple agents.
+Number of nodes: 7
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 3
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+--- Agent 3 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Complex Evasion: Thief navigates Y-shaped graph to maximize distance from multiple agents.
+Number of nodes: 7
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 3
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+--- Agent 3 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Complex Evasion: Thief navigates Y-shaped graph to maximize distance from multiple agents.
+Number of nodes: 7
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 3
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 4
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 2
+Final Score: -2.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 2
+Final Score: -2.0
+--- Agent 3 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 2
+Final Score: -2.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Complex Evasion: Thief navigates Y-shaped graph to maximize distance from multiple agents.
+Number of nodes: 7
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 3
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 4.0
+Actions count: 3
+Final Score: -4.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 6
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 3.0
+Actions count: 3
+Final Score: 997.0
+--- Agent 3 ---
+Type: StupidGreedyAgent
+Current vertex: 7
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 3.0
+Actions count: 3
+Final Score: 997.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 2
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Evasion: Thief (V3) must fetch kit at V1, then avoid Agent at V5.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 2
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Evasion: Thief (V3) must fetch kit at V1, then avoid Agent at V5.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 2
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: True
+People saved: 1
+Time taken: 0.0
+Actions count: 1
+Final Score: 1000.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Multi-Kit: Thief chooses nearest kit from multiple options (tie-breaking by lower vertex ID).
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 0
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief No Kits: Thief terminates immediately when no kits are available.
+Number of nodes: 4
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 4
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief No Kits: Thief terminates immediately when no kits are available.
+Number of nodes: 4
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 4
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 2
+Equipped: False
+Terminated: True
+People saved: 0
+Time taken: 0.0
+Actions count: 1
+Final Score: 0.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 0
+People remaining: 4
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Pre-Equipped: Thief starts at kit location and immediately equips, then evades.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 2
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Thief Pre-Equipped: Thief starts at kit location and immediately equips, then evades.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 2
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: ThiefAgent
+Current vertex: 1
+Equipped: True
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+--- Agent 2 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: True
+People saved: 1
+Time taken: 0.0
+Actions count: 1
+Final Score: 1000.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Tie-Breaking: Two equidistant victims, agent should choose lower vertex ID (V2 over V4).
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 2
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Tie-Breaking: Two equidistant victims, agent should choose lower vertex ID (V2 over V4).
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 2
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 2.0
+Actions count: 1
+Final Score: 998.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Tie-Breaking: Two equidistant victims, agent should choose lower vertex ID (V2 over V4).
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 3.0
+Actions count: 2
+Final Score: 997.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Tie-Breaking: Two equidistant victims, agent should choose lower vertex ID (V2 over V4).
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 4.0
+Actions count: 3
+Final Score: 996.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Tie-Breaking: Two equidistant victims, agent should choose lower vertex ID (V2 over V4).
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 4
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 2
+Time taken: 5.0
+Actions count: 4
+Final Score: 1995.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 2
+People remaining: 0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Weighted Edges: Different edge weights force non-obvious shortest path calculation.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 0
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 1
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 0.0
+Actions count: 0
+Final Score: 0.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Weighted Edges: Different edge weights force non-obvious shortest path calculation.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 1
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 3
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 1.0
+Actions count: 1
+Final Score: -1.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Weighted Edges: Different edge weights force non-obvious shortest path calculation.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 2
+Total agents: 1
+People remaining to rescue: 1
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 4
+Equipped: False
+Terminated: False
+People saved: 0
+Time taken: 2.0
+Actions count: 2
+Final Score: -2.0
+############################################################
+###  GLOBAL SIMULATION STATS:
+###  Running: Weighted Edges: Different edge weights force non-obvious shortest path calculation.
+Number of nodes: 5
+Unequip time unit: 1
+Equip time unit: 1
+Amphibian penalty factor: 2
+Duration: 3
+Total agents: 1
+People remaining to rescue: 0
+###  AGENTS STATS:
+--- Agent 1 ---
+Type: StupidGreedyAgent
+Current vertex: 5
+Equipped: False
+Terminated: False
+People saved: 1
+Time taken: 3.0
+Actions count: 3
+Final Score: 997.0
+
+=== SIMULATION ENDED ===
+Total people rescued: 1
+People remaining: 0

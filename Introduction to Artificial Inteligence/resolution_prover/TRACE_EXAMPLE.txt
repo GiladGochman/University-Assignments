@@ -1,0 +1,70 @@
+======================================================================
+Resolution Theorem Prover - PROOF TRACE
+======================================================================
+
+EXAMPLE 1: Simple Logical Proof
+Domain: Parent-Ancestor relationships
+File: examples/example.cnf
+
+======== INITIAL KNOWLEDGE BASE ========
+
+[0] Parent(alice, bob) | ~Ancestor(alice, bob)
+[1] ~Parent(X, Y) | Ancestor(X, Y)
+[2] ~Ancestor(X, Y) | Ancestor(X, Z) | Ancestor(Z, Y)
+[3] Parent(alice, bob)
+[4] ~Ancestor(alice, bob)
+
+======== GOAL TO PROVE ========
+
+Goal: Ancestor(alice, bob)
+Negated Goal: ~Ancestor(alice, bob) [Already in KB as clause [4]]
+
+======== RESOLUTION STEPS ========
+
+Step 1: Resolve clause [3] with clause [1]
+  Clause [3]: Parent(alice, bob)
+  Clause [1]: ~Parent(X, Y) | Ancestor(X, Y)
+  Literal 0 in [3]: Parent(alice, bob)
+  Literal 0 in [1]: ~Parent(X, Y)
+  
+  These are complementary (opposite polarity, same predicate)
+  Unification:
+    - Unify Parent(alice, bob) with Parent(X, Y)
+    - MGU: {X -> alice, Y -> bob}
+  
+  Resolvent: Remove Parent(alice, bob) from [3], remove ~Parent(X, Y) from [1]
+  From [3]: (nothing left)
+  From [1]: Ancestor(X, Y) with substitution {X -> alice, Y -> bob}
+           = Ancestor(alice, bob)
+  
+  Result: Ancestor(alice, bob)
+  Added as clause [5]
+
+Step 2: Resolve clause [5] with clause [4]
+  Clause [5]: Ancestor(alice, bob)
+  Clause [4]: ~Ancestor(alice, bob)
+  Literal 0 in [5]: Ancestor(alice, bob)
+  Literal 0 in [4]: ~Ancestor(alice, bob)
+  
+  These are complementary (opposite polarity, same predicate)
+  Unification:
+    - Unify Ancestor(alice, bob) with Ancestor(alice, bob)
+    - MGU: {} (empty substitution)
+  
+  Resolvent: Remove Ancestor(alice, bob) from [5], remove ~Ancestor(alice, bob) from [4]
+  From [5]: (nothing left)
+  From [4]: (nothing left)
+  
+  Result: <EMPTY CLAUSE>
+  
+  *** CONTRADICTION DERIVED ***
+
+======== PROOF COMPLETION ========
+
+Status: SUCCESS
+Proof found in 2 resolution steps
+Empty clause (NIL) derived
+Therefore: Ancestor(alice, bob) is TRUE
+Goal is PROVED by contradiction
+
+======================================================================

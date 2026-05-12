@@ -1,0 +1,37 @@
+{
+  "description": "Complex Pathfinding: Agent must choose optimal path through grid with mixed flooded/dry edges.",
+  "general_settings": {
+    "number_of_vertices": 9,
+    "unequip_time_unit": 1,
+    "equip_time_unit": 1,
+    "amphibian_penalty_factor": 2
+  },
+  "vertices": [
+    { "id": 1, "amphibian_kits": 1, "people_to_rescue": 0 },
+    { "id": 2, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 3, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 4, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 5, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 6, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 7, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 8, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 9, "amphibian_kits": 0, "people_to_rescue": 1 }
+  ],
+  "edges": [
+    { "id": 1, "vertex_a": 1, "vertex_b": 2, "weight": 1, "is_flooded": false },
+    { "id": 2, "vertex_a": 2, "vertex_b": 3, "weight": 1, "is_flooded": false },
+    { "id": 3, "vertex_a": 1, "vertex_b": 4, "weight": 1, "is_flooded": false },
+    { "id": 4, "vertex_a": 4, "vertex_b": 5, "weight": 1, "is_flooded": true },
+    { "id": 5, "vertex_a": 5, "vertex_b": 6, "weight": 1, "is_flooded": false },
+    { "id": 6, "vertex_a": 2, "vertex_b": 5, "weight": 1, "is_flooded": false },
+    { "id": 7, "vertex_a": 3, "vertex_b": 6, "weight": 1, "is_flooded": true },
+    { "id": 8, "vertex_a": 4, "vertex_b": 7, "weight": 1, "is_flooded": false },
+    { "id": 9, "vertex_a": 5, "vertex_b": 8, "weight": 1, "is_flooded": false },
+    { "id": 10, "vertex_a": 6, "vertex_b": 9, "weight": 1, "is_flooded": false },
+    { "id": 11, "vertex_a": 7, "vertex_b": 8, "weight": 1, "is_flooded": false },
+    { "id": 12, "vertex_a": 8, "vertex_b": 9, "weight": 1, "is_flooded": false }
+  ],
+  "agents": [
+    { "type": "stupidgreedy", "vertex": 1 }
+  ]
+}

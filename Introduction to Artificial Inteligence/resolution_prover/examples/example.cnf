@@ -1,0 +1,9 @@
+# Example KB: simple logical proof
+# Variables: uppercase (X, Y, Z)
+# Constants: lowercase (alice, bob)
+# Goal: prove Ancestor(alice, bob)
+Parent(alice,bob) | ~Ancestor(alice,bob)
+~Parent(X,Y) | Ancestor(X,Y)
+~Ancestor(X,Y) | Ancestor(X,Z) | Ancestor(Z,Y)
+Parent(alice,bob)
+~Ancestor(alice,bob)

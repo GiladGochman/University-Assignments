@@ -1,0 +1,62 @@
+# Hurricane Evacuation Domain - CNF Clauses
+# 4-vertex graph with flooded edge 1-2
+# Goal: rescue all people (at vertices 2 and 4)
+# Agent starts at vertex 1, kit at vertex 1
+
+# Initial State
+At(agent, loc1, s0)
+HasPeople(loc2, s0)
+HasPeople(loc4, s0)
+HasKit(loc1, s0)
+~Equipped(agent, s0)
+
+# Flooded edges (static)
+Flooded(loc1, loc2)
+~Flooded(loc1, loc3)
+~Flooded(loc2, loc3)
+~Flooded(loc3, loc4)
+~Flooded(loc2, loc4)
+
+# Traversal rule: can traverse if not flooded OR equipped
+# ∀s: (Flooded(from, to) ∧ ~Equipped(agent, s)) → ~CanTraverse(from, to, s)
+# Simplified clauses for 1-2 edge:
+~Flooded(loc1, loc2) | Equipped(agent, s) | ~CanTraverse(loc1, loc2, s)
+CanTraverse(loc1, loc2, s) | Flooded(loc1, loc2) | Equipped(agent, s)
+
+# For non-flooded edges, can always traverse:
+CanTraverse(loc1, loc3, s)
+CanTraverse(loc2, loc3, s)
+CanTraverse(loc3, loc4, s)
+CanTraverse(loc2, loc4, s)
+
+# Traverse effects: if agent at location and can traverse, agent moves
+# At(agent, from, s) ∧ CanTraverse(from, to, s) → At(agent, to, Result(traverse))
+~At(agent, loc1, s) | ~CanTraverse(loc1, loc2, s) | At(agent, loc2, result(s))
+~At(agent, loc1, s) | ~CanTraverse(loc1, loc3, s) | At(agent, loc3, result(s))
+~At(agent, loc2, s) | ~CanTraverse(loc2, loc3, s) | At(agent, loc3, result(s))
+~At(agent, loc2, s) | ~CanTraverse(loc2, loc4, s) | At(agent, loc4, result(s))
+~At(agent, loc3, s) | ~CanTraverse(loc3, loc4, s) | At(agent, loc4, result(s))
+
+# Rescue effects: if agent arrives at location with people, they are rescued
+# At(agent, loc, s) ∧ HasPeople(loc, s) → ~HasPeople(loc, s')
+~At(agent, loc2, s) | ~HasPeople(loc2, s) | ~HasPeople(loc2, result(s))
+~At(agent, loc4, s) | ~HasPeople(loc4, s) | ~HasPeople(loc4, result(s))
+
+# Equip action: At(agent, loc, s) ∧ HasKit(loc, s) → Equipped(agent, Result(equip))
+~At(agent, loc1, s) | ~HasKit(loc1, s) | Equipped(agent, equip_result(s))
+~At(agent, loc1, s) | ~HasKit(loc1, s) | ~HasKit(loc1, after_equip(s))
+
+# Unequip action: Equipped(agent, s) → ~Equipped(agent, Result(unequip))
+~Equipped(agent, s) | ~Equipped(agent, unequip_result(s))
+
+# Goal to prove: AllPeopleRescued (negated for resolution)
+# ~AllPeopleRescued means: ∃ location with people still there
+# Using Skolem constant loc_remaining:
+HasPeople(loc_remaining, final_s)
+
+# Negation of all people rescued:
+# The prover should derive that if we execute:
+# 1. Equip kit at loc1 (from s0 to s1)
+# 2. Traverse 1→2 (from s1 to s2)
+# 3. Traverse 2→4 (from s2 to s3)
+# Then all people are rescued in s3, contradicting the negated goal.

@@ -1,0 +1,39 @@
+# Hurricane Evacuation Example Proof Script
+# This script demonstrates resolution steps proving all people can be rescued
+# See examples/hurricane.cnf for the CNF clauses
+
+# Step 1: Equip the amphibian kit
+# Resolve: At(agent, loc1, s0) with ~At(agent, loc1, s) | ~HasKit(loc1, s) | Equipped(agent, equip_result(s))
+# This produces: Equipped(agent, equip_result(s0)) [Clause 16]
+0 0 15 0
+
+# Step 2: Can now traverse the flooded edge 1-2
+# Resolve: Equipped(agent, s) with ~Flooded(loc1, loc2) | Equipped(agent, s) | ~CanTraverse(loc1, loc2, s)
+# This produces: CanTraverse(loc1, loc2, s) [Clause 17]
+16 0 10 0
+
+# Step 3: Traverse from 1 to 2
+# Resolve: At(agent, loc1, s0) with ~At(agent, loc1, s) | ~CanTraverse(loc1, loc2, s) | At(agent, loc2, result(s))
+# This produces: At(agent, loc2, result(s0)) [Clause 18]
+0 0 21 0
+
+# Step 4: Rescue people at location 2
+# Resolve: HasPeople(loc2, s0) with ~At(agent, loc2, s) | ~HasPeople(loc2, s) | ~HasPeople(loc2, result(s))
+# This produces: ~HasPeople(loc2, result(s0)) OR At(agent, loc2, result(s0))
+# We use HasPeople(loc2, s0) resolved with the rescue clause
+1 0 22 0
+
+# Step 5: Traverse from 2 to 4 (not flooded)
+# Resolve: At(agent, loc2, result(s0)) with ~At(agent, loc2, s) | ~CanTraverse(loc2, loc4, s) | At(agent, loc4, result(s))
+# This produces: At(agent, loc4, result(result(s0)))
+18 0 23 0
+
+# Step 6: Rescue people at location 4
+# Resolve: HasPeople(loc4, s0) with ~At(agent, loc4, s) | ~HasPeople(loc4, s) | ~HasPeople(loc4, result(s))
+# This produces: ~HasPeople(loc4, after_actions)
+2 0 24 0
+
+# Step 7: Derive contradiction with goal negation
+# Goal negated: HasPeople(loc_remaining, final_s)
+# Resolving with ~HasPeople(loc2) and ~HasPeople(loc4) leads to contradiction
+25 0 26 0

@@ -1,0 +1,102 @@
+
+<!-- saved from url=(0052)https://www.cs.bgu.ac.il/~shimony/AI2020/AIass2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>AI Assignment 2</title>
+<link rev="made" href="mailto:webmaster@cs.bgu.ac.il">
+
+</head>
+
+<body>
+	<center>
+	<h1>Introduction to Artificial Intelligence </h1>
+	<h3>Assignment 2</h3>
+	</center>
+<hr>
+	<h2>Cooperating and adversarial agents in the Hurricane Evacuation  Problem</h2>
+<p>
+In the second exercise you will be using a simplified version of the environment
+simulator from the first assignment, the Hurricane Evacuation problem,
+as a platform for implementing <b>intelligent</b>
+cooperating and adversarial agents.
+The environment is the same as before, except that now we will
+assume two evacuation agents (perhaps they are employed at competing companies)
+who seek to evacuate as many people as possible. There is also a deadline D (number of time units)
+by which the game ends (stated either in the input file, or received from the user), and the score is computed.
+We will examine settings ranging from cooperative to adversarial.
+
+</p><h3>Game Environment</h3>
+
+<p>
+As before, the environment consists of an undirected weighted graph, but now we will assume that all edge weights are 1.
+An agent can apply 4 types of action: <b>traverse</b>, <b>equip</b>, <b>unequip</b> and <b>no-op</b>.
+Semantics of the action are as in assignment 1, repeated below.
+The traverse action always succeeds if the edge is not flooded, or an amphibian kit is equipped,
+and fails otherwise. A failed action behaves like no-op.
+Although this is a bit unnatural, we will assume for simplicity that the agents
+take turns at every time unit, rather than moving truly in parallel. An agent traversing an edge with an amphibian kit
+is considered to be on that edge for P turns. Likewise, an agent taking an equip action is considered to be taking that action
+for the requisite number of turns (however long it takes to equip). Such motions cannot be aborted.
+The game ends when no more people can be saved or
+when a previously visited world state is revisited, or the time limit. (By a world state being revisited,
+this inclused locations of both agents with the same agent to move, same people saved,
+and location and status of all amphibian kits.)
+
+</p><h3>Implementation Steps</h3>
+
+<p>
+The simulator should query the user about the parameters,
+ the type of game (see below) as well as other
+initialization parameters.
+
+</p><p>
+After the above initialization, the simulator should run each agent in turn,
+performing the actions returned by the agents, and update the world
+accordingly. Additionally, the simulator should be capable of displaying the
+world status after each step, with the appropriate state of the agents and
+their score.  The agent <bf>individual</bf> score ISi is the number of people it has saved.
+The agent <bf>total</bf> score TSi that it tries to optimize depends on the type of game, below.
+Each agent program (a function) works as follows. 
+The agent is called by the simulator, together with
+a set of observations. The agent returns a move to be carried out in the 
+current world state. The agent is allowed to keep an internal state
+if needed.
+In this assignment, the agents can observe the entire state of the world.
+
+You should support the following types of games:
+</p><ol>
+<li> Adversarial (zero sum game): each agent aims to maximize its own individual score 
+(number of people saved) minus the opposing agent's score. That is, TS1=IS1-IS2 and TS2=IS2-IS1.
+Here you should implement an "optimal" agent, using mini-max, with alpha-beta pruning.
+</li><li> A semi-cooperative game: each agent tries to maximize its own individual score. The agent disregards the
+other agent score, except that ties are broken <b>cooperatively</b>. That is, TS1=IS1, breaking ties in favor of greater IS2.
+</li><li> A <b>fully cooperative</b> game: both agents aim to maximize the sum of individual scores, so TS1=TS2=IS1+IS2.
+</li></ol>
+
+<p>
+Since the game tree will usually be too big to reach terminal positions
+in the search, you should also implement a cutoff, and a heuristic static
+evaluation function for each game. You may use the same heuristic for
+all games, if you think this is justified.
+
+</p><h2>Deliverables</h2>
+
+<p>
+The program and code sent to the grader, by e-mail or
+otherwise as specified by the grader, a printout of the code and results.
+You need to show example scenarios where the optimal behavior differs for
+the 3 kinds of games (you will need to make the example
+scenarios  <b>very</b> small 
+in order to be able to reach terminal states in the search).
+A description of your heuristic evaluation functions and their 
+rationale.
+Set up a time for frontal grading checking of the delivered assignment,
+in which both members of each team must demonstrate at least <b>some</b>
+familiarity with their program.
+
+</p><p>
+
+Due date: December 15, 2025.
+
+
+
+</p></body></html>

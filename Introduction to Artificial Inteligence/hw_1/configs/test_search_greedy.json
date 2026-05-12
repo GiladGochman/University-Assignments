@@ -1,0 +1,22 @@
+{
+  "description": "Greedy Search: Simple fork. Agent at V1. People at V2 (dist 2) and V3 (dist 10). Greedy should expand V2 first.",
+  "general_settings": {
+    "number_of_vertices": 3,
+    "unequip_time_unit": 1,
+    "equip_time_unit": 1,
+    "amphibian_penalty_factor": 2
+  },
+  "vertices": [
+    { "id": 1, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 2, "amphibian_kits": 0, "people_to_rescue": 1 },
+    { "id": 3, "amphibian_kits": 0, "people_to_rescue": 1 }
+  ],
+  "edges": [
+    { "id": 1, "vertex_a": 1, "vertex_b": 2, "weight": 2, "is_flooded": false },
+    { "id": 2, "vertex_a": 1, "vertex_b": 3, "weight": 10, "is_flooded": false },
+    { "id": 3, "vertex_a": 2, "vertex_b": 3, "weight": 2, "is_flooded": false }
+  ],
+  "agents": [
+    { "type": "greedySearchAgent", "vertex": 1 }
+  ]
+}

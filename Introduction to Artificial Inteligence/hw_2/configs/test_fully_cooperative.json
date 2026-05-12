@@ -1,0 +1,85 @@
+{
+  "description": "Fully-cooperative game - agents work together to maximize total",
+  "game_settings": {
+    "game_type": "fully_cooperative",
+    "num_vertices": 5,
+    "deadline": 40,
+    "equip_time": 2,
+    "unequip_time": 1,
+    "amphibian_penalty": 3,
+    "cutoff_depth": 5
+  },
+  "vertices": [
+    {
+      "id": 1,
+      "people_to_rescue": 0,
+      "amphibian_kits": 0
+    },
+    {
+      "id": 2,
+      "people_to_rescue": 1,
+      "amphibian_kits": 0
+    },
+    {
+      "id": 3,
+      "people_to_rescue": 2,
+      "amphibian_kits": 1
+    },
+    {
+      "id": 4,
+      "people_to_rescue": 1,
+      "amphibian_kits": 0
+    },
+    {
+      "id": 5,
+      "people_to_rescue": 2,
+      "amphibian_kits": 0
+    }
+  ],
+  "edges": [
+    {
+      "id": 1,
+      "vertex_a": 1,
+      "vertex_b": 2,
+      "weight": 1,
+      "is_flooded": false
+    },
+    {
+      "id": 2,
+      "vertex_a": 1,
+      "vertex_b": 3,
+      "weight": 2,
+      "is_flooded": true
+    },
+    {
+      "id": 3,
+      "vertex_a": 2,
+      "vertex_b": 4,
+      "weight": 1,
+      "is_flooded": false
+    },
+    {
+      "id": 4,
+      "vertex_a": 3,
+      "vertex_b": 4,
+      "weight": 1,
+      "is_flooded": false
+    },
+    {
+      "id": 5,
+      "vertex_a": 3,
+      "vertex_b": 5,
+      "weight": 1,
+      "is_flooded": false
+    },
+    {
+      "id": 6,
+      "vertex_a": 4,
+      "vertex_b": 5,
+      "weight": 1,
+      "is_flooded": true
+    }
+  ],
+  "agent1_start": 1,
+  "agent2_start": 1
+}

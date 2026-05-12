@@ -1,0 +1,20 @@
+# Simple Logical Proof - Resolution Steps
+# Domain: Parent-Ancestor relationships
+# File: examples/example.cnf
+
+# Step 1: Resolve Parent(alice,bob) with ~Parent(X,Y) | Ancestor(X,Y)
+# Clause [3]: Parent(alice, bob)
+# Clause [1]: ~Parent(X, Y) | Ancestor(X, Y)
+# Literals: [0] and [0]
+# Unification: {X -> alice, Y -> bob}
+# Resolvent: Ancestor(alice, bob)
+3 0 1 0
+
+# Step 2: Resolve Ancestor(alice,bob) with ~Ancestor(alice,bob)
+# Clause [5]: Ancestor(alice, bob) (result from step 1)
+# Clause [4]: ~Ancestor(alice, bob)
+# Literals: [0] and [0]
+# Unification: {} (empty)
+# Resolvent: <empty clause> (NIL)
+# Result: CONTRADICTION DERIVED -> Goal Ancestor(alice, bob) PROVED
+5 0 4 0

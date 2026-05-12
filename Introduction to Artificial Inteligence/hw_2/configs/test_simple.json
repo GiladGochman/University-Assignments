@@ -1,0 +1,47 @@
+{
+  "description": "Simple 3-vertex test case for comparing game types",
+  "game_settings": {
+    "game_type": "adversarial",
+    "num_vertices": 3,
+    "deadline": 50,
+    "equip_time": 2,
+    "unequip_time": 1,
+    "amphibian_penalty": 3,
+    "cutoff_depth": 6
+  },
+  "vertices": [
+    {
+      "id": 1,
+      "people_to_rescue": 0,
+      "amphibian_kits": 1
+    },
+    {
+      "id": 2,
+      "people_to_rescue": 2,
+      "amphibian_kits": 0
+    },
+    {
+      "id": 3,
+      "people_to_rescue": 2,
+      "amphibian_kits": 0
+    }
+  ],
+  "edges": [
+    {
+      "id": 1,
+      "vertex_a": 1,
+      "vertex_b": 2,
+      "weight": 1,
+      "is_flooded": false
+    },
+    {
+      "id": 2,
+      "vertex_a": 1,
+      "vertex_b": 3,
+      "weight": 1,
+      "is_flooded": false
+    }
+  ],
+  "agent1_start": 1,
+  "agent2_start": 1
+}

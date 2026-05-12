@@ -1,0 +1,38 @@
+# Quiz Scenario: Simple 3-vertex rescue problem
+# Vertices: loc1, loc2, loc3
+# People at: loc2, loc3
+# Kit at: loc1
+# Flooded edges: 1-2
+# Agent starts at: loc1
+# Goal: rescue all people
+
+# Initial State
+At(agent, loc1, s0)
+HasPeople(loc2, s0)
+HasPeople(loc3, s0)
+HasKit(loc1, s0)
+~Equipped(agent, s0)
+
+# Flooded edges
+Flooded(loc1, loc2)
+~Flooded(loc1, loc3)
+~Flooded(loc2, loc3)
+
+# Traversal preconditions
+~Flooded(loc1, loc2) | Equipped(agent, s) | ~CanTraverse(loc1, loc2, s)
+CanTraverse(loc1, loc3, s)
+CanTraverse(loc2, loc3, s)
+
+# Effects: traverse and rescue
+~At(agent, loc1, s) | ~CanTraverse(loc1, loc2, s) | At(agent, loc2, result(s))
+~At(agent, loc1, s) | ~CanTraverse(loc1, loc3, s) | At(agent, loc3, result(s))
+~At(agent, loc2, s) | ~CanTraverse(loc2, loc3, s) | At(agent, loc3, result(s))
+
+~At(agent, loc2, s) | ~HasPeople(loc2, s) | ~HasPeople(loc2, result(s))
+~At(agent, loc3, s) | ~HasPeople(loc3, s) | ~HasPeople(loc3, result(s))
+
+# Equip at loc1
+~At(agent, loc1, s) | ~HasKit(loc1, s) | Equipped(agent, equip_result(s))
+
+# Goal negated (someone still not rescued)
+HasPeople(loc_unsaved, final_s)

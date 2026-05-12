@@ -1,0 +1,25 @@
+{
+  "description": "Optimal Unequip: Agent should unequip after flooded section for faster non-flooded travel.",
+  "general_settings": {
+    "number_of_vertices": 5,
+    "unequip_time_unit": 1,
+    "equip_time_unit": 1,
+    "amphibian_penalty_factor": 3
+  },
+  "vertices": [
+    { "id": 1, "amphibian_kits": 1, "people_to_rescue": 0 },
+    { "id": 2, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 3, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 4, "amphibian_kits": 0, "people_to_rescue": 0 },
+    { "id": 5, "amphibian_kits": 0, "people_to_rescue": 1 }
+  ],
+  "edges": [
+    { "id": 1, "vertex_a": 1, "vertex_b": 2, "weight": 1, "is_flooded": true },
+    { "id": 2, "vertex_a": 2, "vertex_b": 3, "weight": 5, "is_flooded": false },
+    { "id": 3, "vertex_a": 3, "vertex_b": 4, "weight": 5, "is_flooded": false },
+    { "id": 4, "vertex_a": 4, "vertex_b": 5, "weight": 5, "is_flooded": false }
+  ],
+  "agents": [
+    { "type": "stupidgreedy", "vertex": 1 }
+  ]
+}
